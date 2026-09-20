@@ -144,6 +144,17 @@
       },
       "cart-drawer": {
         "type": "cart-drawer",
+        "blocks": {
+          "recommended_product_gtweLp": {
+            "type": "recommended_product",
+            "settings": {
+              "product": "1000-ml-sanrio-hot-water-bag"
+            }
+          }
+        },
+        "block_order": [
+          "recommended_product_gtweLp"
+        ],
         "settings": {
           "cart_heading": "Your bag",
           "custom_cart_content": "₹99 flat shipping on every order, Extra 5% off when you pay online",
