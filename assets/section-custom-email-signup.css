@@ -24,7 +24,7 @@
   max-width: 90rem;
   margin: 0;
   color: var(--title-color);
-  font-size: clamp(2.2rem, calc(var(--title-size) / 10 * 1rem), 6.4rem);
+  font-size: clamp(2.2rem, calc(var(--title-size) / 10 * 1rem), 6.4rem) !important;
   line-height: 1.15;
 }
 
