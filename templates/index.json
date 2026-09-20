@@ -9,76 +9,137 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero_W7jBWp": {
+      "type": "hero",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "eyebrow_UqPYMi": {
+          "type": "eyebrow",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "text": "FOR THE EVERYDAY ROMANTIC",
+            "icon": "sparkles",
+            "background": "#FFFFFF",
+            "text_color": "#1A1020",
+            "icon_color": "#E64D95",
+            "border_radius": 24
           }
         },
-        "button": {
+        "heading_c6mmpd": {
+          "type": "heading",
+          "settings": {
+            "heading": "Romanticize your everyday. ✨",
+            "heading_tag": "h1",
+            "heading_size": 48,
+            "heading_color": "#241226"
+          }
+        },
+        "content_pgjE4k": {
+          "type": "content",
+          "settings": {
+            "content": "Cute, aesthetic little things — stationery, bottles, keychains and accessories — that make your ordinary routine feel a lot more special.",
+            "font_size": 16,
+            "text_color": "#4A3345"
+          }
+        },
+        "buttons_UzPmkD": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_1_text": "Shop the joy",
+            "button_1_link": "shopify://collections/all",
+            "button_1_background": "#E64D95",
+            "button_1_color": "#FFFFFF",
+            "button_1_arrow": true,
+            "button_1_new_tab": false,
+            "button_2_text": "Explore new arrivals",
+            "button_2_link": "shopify://collections/all",
+            "button_2_background": "#FFFFFF",
+            "button_2_color": "#241226",
+            "button_2_arrow": false,
+            "button_2_new_tab": false
+          }
+        },
+        "feature_7jT3kg": {
+          "type": "feature",
+          "settings": {
+            "icon": "star",
+            "text": "2000+ happy orders",
+            "text_color": "#4A3345",
+            "icon_color": "#E64D95"
+          }
+        },
+        "feature_MwiMzy": {
+          "type": "feature",
+          "settings": {
+            "icon": "truck",
+            "text": "₹99 flat shipping, pan-India",
+            "text_color": "#4A3345",
+            "icon_color": "#E64D95"
+          }
+        },
+        "feature_V8ngAP": {
+          "type": "feature",
+          "settings": {
+            "icon": "sparkles",
+            "text": "5% off on prepaid orders",
+            "text_color": "#4A3345",
+            "icon_color": "#E64D95"
+          }
+        },
+        "feature_Rd96yM": {
+          "type": "feature",
+          "settings": {
+            "icon": "rotate",
+            "text": "Dispatched fast",
+            "text_color": "#4A3345",
+            "icon_color": "#E64D95"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "eyebrow_UqPYMi",
+        "heading_c6mmpd",
+        "content_pgjE4k",
+        "buttons_UzPmkD",
+        "feature_7jT3kg",
+        "feature_MwiMzy",
+        "feature_V8ngAP",
+        "feature_Rd96yM"
       ],
+      "name": "Hero",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "accessibility_label": "Featured promotion",
+        "desktop_height": 500,
+        "mobile_height": 650,
+        "desktop_image": "shopify://shop_images/hero-D6qm_qxI.png",
+        "desktop_image_position": "center",
+        "mobile_image_position": "center",
+        "overlay_color": "#FFFFFF",
+        "overlay_opacity": 65,
+        "content_alignment": "left"
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
         "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
+        "caption": "BESTSELLERS",
+        "title": "Featured products",
+        "view_more_text": "VIEW MORE",
+        "view_more_link": "",
+        "show_view_more_arrow": true,
+        "products_per_row": "4",
+        "products_per_row_mobile": "1",
+        "enable_mobile_slider": true,
+        "maximum_products": 4,
         "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
         "padding_top": 44,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
       }
     }
   },
   "order": [
-    "image_banner",
+    "hero_W7jBWp",
     "featured_collection"
   ]
 }
