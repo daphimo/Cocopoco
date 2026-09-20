@@ -188,11 +188,82 @@
         "mobile_padding_top": 30,
         "mobile_padding_bottom": 30
       }
+    },
+    "collection_list_NaBa8c": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_jaGMfU": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bundle-_-premium_bottle"
+          }
+        },
+        "featured_collection_jzcHpV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection_YE4ihN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection_NbTtwx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection_8pGUTm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection_aNfgMG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_jaGMfU",
+        "featured_collection_jzcHpV",
+        "featured_collection_YE4ihN",
+        "featured_collection_NbTtwx",
+        "featured_collection_8pGUTm",
+        "featured_collection_aNfgMG"
+      ],
+      "name": "Collection list",
+      "settings": {
+        "title": "Shop by Category",
+        "title_size": 30,
+        "title_color": "#2A0F1C",
+        "show_view_all": true,
+        "view_all_text": "EXPLORE ALL",
+        "view_all_link": "",
+        "show_view_all_arrow": true,
+        "link_color": "#E64D95",
+        "link_hover_color": "#BC286E",
+        "item_color": "#2A0F1C",
+        "background_color": "#FCE8F2",
+        "image_size": 140,
+        "columns_desktop": "6",
+        "columns_mobile": "3",
+        "padding_top": 32,
+        "padding_bottom": 36,
+        "mobile_padding_top": 28,
+        "mobile_padding_bottom": 30
+      }
     }
   },
   "order": [
     "hero_W7jBWp",
     "richtext_QVH6wn",
-    "featured_collection_dfJFHU"
+    "featured_collection_dfJFHU",
+    "collection_list_NaBa8c"
   ]
 }
