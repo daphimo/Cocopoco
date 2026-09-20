@@ -126,7 +126,7 @@
             "title": "Why should everyday be boring?",
             "heading_tag": "h2",
             "size": 32,
-            "color": "#2A0F1C"
+            "color": "#2a0f1c"
           }
         },
         "content_zdACTF": {
@@ -134,7 +134,7 @@
           "settings": {
             "content": "<p>Your coffee deserves a cute companion.<br>Your desk deserves some personality.<br>Your bag deserves a little charm.<br>And you deserve some joy. 💕</p>",
             "size": 16,
-            "color": "#3D1729"
+            "color": "#3d1729"
           }
         },
         "buttons_gEci7Y": {
@@ -142,14 +142,14 @@
           "settings": {
             "button_1_text": "Enter the CocoPoco world",
             "button_1_link": "",
-            "button_1_background": "#3D1729",
-            "button_1_text_color": "#FFFFFF",
+            "button_1_background": "#3d1729",
+            "button_1_text_color": "#ffffff",
             "button_1_arrow": true,
             "button_1_new_tab": false,
             "button_2_text": "",
             "button_2_link": "",
-            "button_2_background": "#FFFFFF",
-            "button_2_text_color": "#3D1729",
+            "button_2_background": "#ffffff",
+            "button_2_text_color": "#3d1729",
             "button_2_arrow": false,
             "button_2_new_tab": false
           }
@@ -162,7 +162,7 @@
       ],
       "name": "Custom rich text",
       "settings": {
-        "background_color": "#FAD7E9",
+        "background_color": "#fad7e9",
         "content_width": 760,
         "padding_top": 40,
         "padding_bottom": 36
@@ -195,37 +195,49 @@
         "featured_collection_jaGMfU": {
           "type": "featured_collection",
           "settings": {
-            "collection": "bundle-_-premium_bottle"
+            "collection": "bundle-_-premium_bottle",
+            "image": "shopify://shop_images/cat-bottles-DrhOIdpQ.png",
+            "title": "Bottles"
           }
         },
         "featured_collection_jzcHpV": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "stationery",
+            "image": "shopify://shop_images/cat-stationery-D_Z7RHIt.png",
+            "title": "Stationery"
           }
         },
         "featured_collection_YE4ihN": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "keychains-charms",
+            "image": "shopify://shop_images/cat-keychains-CcOpE2eZ.png",
+            "title": "Keychains"
           }
         },
         "featured_collection_NbTtwx": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "jewellery",
+            "image": "shopify://shop_images/cat-jewellery-D8dBjPvW.png",
+            "title": "Jewellery"
           }
         },
         "featured_collection_8pGUTm": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "clearance",
+            "image": "shopify://shop_images/cat-makeup-CPj42e6q.png",
+            "title": "Makeup"
           }
         },
         "featured_collection_aNfgMG": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "gift-sets",
+            "image": "shopify://shop_images/cat-bundles-BC3pKoCc.png",
+            "title": "Gifts"
           }
         }
       },
@@ -241,15 +253,15 @@
       "settings": {
         "title": "Shop by Category",
         "title_size": 30,
-        "title_color": "#2A0F1C",
+        "title_color": "#2a0f1c",
         "show_view_all": true,
         "view_all_text": "EXPLORE ALL",
         "view_all_link": "",
         "show_view_all_arrow": true,
-        "link_color": "#E64D95",
-        "link_hover_color": "#BC286E",
-        "item_color": "#2A0F1C",
-        "background_color": "#FCE8F2",
+        "link_color": "#e64d95",
+        "link_hover_color": "#bc286e",
+        "item_color": "#2a0f1c",
+        "background_color": "#fce8f2",
         "image_size": 140,
         "columns_desktop": "6",
         "columns_mobile": "3",
