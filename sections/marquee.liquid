@@ -4,7 +4,7 @@
   class="marquee{% if section.settings.pause_on_hover %} marquee--pause-on-hover{% endif %}"
   role="region"
   aria-label="Announcements"
-  style="--marquee-background: {{ section.settings.background_color }}; --marquee-text: {{ section.settings.text_color }}; --marquee-font-size: {{ section.settings.text_size }}px;"
+  style="--marquee-duration: {{ section.settings.animation_speed }}s; --marquee-background: {{ section.settings.background_color }}; --marquee-text: {{ section.settings.text_color }}; --marquee-font-size: {{ section.settings.text_size }}px;"
 >
   <div class="marquee__track">
     {%- for group_index in (1..2) -%}
