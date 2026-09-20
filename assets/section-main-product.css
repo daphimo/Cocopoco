@@ -1372,7 +1372,7 @@ a.product__text {
 /* Recipient form */
 .recipient-form {
   /* (2.88[line-height] - 1.6rem) / 2 */
-  --recipient-checkbox-margin-top: 0.64rem;
+  --recipient-checkbox-margin-top: 0.86rem;
 
   display: block;
   position: relative;
