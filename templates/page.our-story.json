@@ -12,16 +12,51 @@
     "founders": {
       "type": "our-story-founders",
       "blocks": {
-        "sweta": { "type": "founder", "settings": { "name": "Sweta Kindo", "eyebrow": "everyday romantic", "role": "Co-Founder" } },
-        "smita": { "type": "founder", "settings": { "name": "Smita Bara", "eyebrow": "everyday romantic", "role": "Co-Founder" } }
+        "sweta": {
+          "type": "founder",
+          "settings": {
+            "image": "shopify://shop_images/founder-sweta-uYNDNK3W.png",
+            "image_position": "center center",
+            "eyebrow": "everyday romantic",
+            "name": "Sweta Kindo",
+            "role": "Co-Founder"
+          }
+        },
+        "smita": {
+          "type": "founder",
+          "settings": {
+            "image": "shopify://shop_images/founder-smita-Kn6lWcIL.png",
+            "image_position": "center center",
+            "eyebrow": "everyday romantic",
+            "name": "Smita Bara",
+            "role": "Co-Founder"
+          }
+        }
       },
-      "block_order": ["sweta", "smita"],
-      "settings": {}
+      "block_order": [
+        "sweta",
+        "smita"
+      ],
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 28,
+        "mobile_padding_bottom": 28
+      }
     },
     "story_content": {
       "type": "our-story-content",
-      "settings": {}
+      "settings": {
+        "content": "<p>As children, we believed that the smallest things could make an ordinary day feel special — a new notebook, a cute pen, a sticker sheet we never wanted to use because it was simply too pretty.</p><p>Years later, as <strong>mothers ourselves</strong>, we wanted our children to feel that same little joy in everyday moments.</p><h3>So, in 2024, we decided to create one.</h3><p>Founded by sisters <strong>Smita Bara</strong> and <strong>Sweta Kindo</strong>, CocoPoco started with one simple mission: to help you romanticize your everyday.</p><p>Today, CocoPoco brings together kawaii stationery, aesthetic gifts, and cute everyday essentials.</p><p>Because life doesn’t need a special occasion to feel special.</p><h3>So why not “Romanticize your Everyday”</h3>",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 48
+      }
     }
   },
-  "order": ["founders", "story_content"]
+  "order": [
+    "founders",
+    "story_content"
+  ]
 }
