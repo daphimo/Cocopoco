@@ -216,7 +216,7 @@
   }
 
   .hero-section .hero__inner {
-    align-items: center;
+    align-items: flex-end;
     padding: 3rem 1.6rem;
   }
 
