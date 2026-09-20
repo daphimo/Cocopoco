@@ -17,7 +17,11 @@
 <div class="collection-circle-card">
   <a
     class="collection-circle-card__link"
-    {% if collection != blank %}href="{{ collection.url }}"{% else %}role="link" aria-disabled="true"{% endif %}
+    {% if collection != blank %}
+      href="{{ collection.url }}"
+    {% else %}
+      role="link" aria-disabled="true"
+    {% endif %}
   >
     <span class="collection-circle-card__media">
       {%- if card_image != blank -%}
@@ -36,7 +40,8 @@
       {%- endif -%}
     </span>
     <span class="collection-circle-card__title">
-      {{ collection.title | default: 'Collection title' | escape }}
+      {% assign title = block.settings.title | default: collection.title %}
+      {{ title | escape }}
     </span>
   </a>
 </div>
