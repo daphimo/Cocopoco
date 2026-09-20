@@ -671,6 +671,89 @@
         "padding_top": 40,
         "padding_bottom": 36
       }
+    },
+    "instafeed_GMirLW": {
+      "type": "instafeed",
+      "blocks": {
+        "image_BnqPN9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hero-D6qm_qxI.png",
+            "link": "",
+            "open_in_new_tab": false
+          }
+        },
+        "image_yfbnWH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/lifestyle-CU2FVmzE.png",
+            "link": "",
+            "open_in_new_tab": false
+          }
+        },
+        "image_JABLCf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/gifting-CVgp4Sao.png",
+            "link": "",
+            "open_in_new_tab": false
+          }
+        },
+        "image_rQQqnp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hero-D6qm_qxI.png",
+            "link": "",
+            "open_in_new_tab": false
+          }
+        },
+        "image_hGD8wx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/lifestyle-CU2FVmzE.png",
+            "link": "",
+            "open_in_new_tab": false
+          }
+        },
+        "image_BTbV6U": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/gifting-CVgp4Sao.png",
+            "link": "",
+            "open_in_new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "image_BnqPN9",
+        "image_yfbnWH",
+        "image_JABLCf",
+        "image_rQQqnp",
+        "image_hGD8wx",
+        "image_BTbV6U"
+      ],
+      "name": "Instafeed gallery",
+      "settings": {
+        "caption": "@COCOPOCO",
+        "caption_color": "#7A5368",
+        "title": "Your everyday, but cuter. 📸",
+        "title_size": 30,
+        "title_color": "#2A0F1C",
+        "description": "<p>Customer photos • Unboxings • Desk setups • Bag dumps • Gifting moments • Journaling</p>",
+        "description_size": 12,
+        "description_color": "#7A5368",
+        "background_color": "#FFFFFF",
+        "button_label": "Follow the fun",
+        "button_link": "",
+        "button_background": "#FFFFFF",
+        "button_text_color": "#2A0F1C",
+        "button_show_arrow": true,
+        "button_open_in_new_tab": true,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24
+      }
     }
   },
   "order": [
@@ -684,6 +767,7 @@
     "image_with_text_tLinQ7",
     "testimonial_Vgrm9K",
     "featured_collection_mMx74h",
-    "richtext_tPnTPk"
+    "richtext_tPnTPk",
+    "instafeed_GMirLW"
   ]
 }
