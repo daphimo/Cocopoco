@@ -1,0 +1,38 @@
+<div class="header-popup" id="HeaderPopup-{{ block.id }}" data-popup-id="{{ block.id }}" role="dialog" aria-modal="true" aria-labelledby="HeaderPopupTitle-{{ block.id }}" aria-hidden="true" hidden {{ block.shopify_attributes }}>
+  <button class="header-popup__overlay" type="button" data-popup-overlay aria-label="Close popup"></button>
+  <div class="header-popup__dialog">
+    <button class="header-popup__close" type="button" data-popup-close aria-label="Close popup">
+      <span class="svg-wrapper">{{ 'icon-close.svg' | inline_asset_content }}</span>
+    </button>
+    <div class="header-popup__scroll">
+      <div class="header-popup__inner">
+        <header class="header-popup__header">
+          {% if block.settings.caption != blank %}<p class="header-popup__caption">{{ block.settings.caption | escape }}</p>{% endif %}
+          <h2 class="header-popup__title" id="HeaderPopupTitle-{{ block.id }}">{{ block.settings.title }}</h2>
+          {% if block.settings.content != blank %}<div class="header-popup__content">{{ block.settings.content }}</div>{% endif %}
+        </header>
+        <div class="header-popup__grid">
+          {%- for index in (1..12) -%}
+            {%- liquid
+              assign emoji_key = 'emoji_' | append: index
+              assign title_key = 'title_' | append: index
+              assign content_key = 'content_' | append: index
+              assign link_key = 'link_' | append: index
+              assign item_emoji = block.settings[emoji_key]
+              assign item_title = block.settings[title_key]
+              assign item_content = block.settings[content_key]
+              assign item_link = block.settings[link_key]
+            -%}
+            {%- if item_title != blank -%}
+              {%- if item_link != blank -%}<a class="header-popup__item" href="{{ item_link }}">{%- else -%}<div class="header-popup__item">{%- endif -%}
+                {% if item_emoji != blank %}<span class="header-popup__emoji" aria-hidden="true">{{ item_emoji | escape }}</span>{% endif %}
+                <h3 class="header-popup__item-title">{{ item_title | escape }}</h3>
+                {% if item_content != blank %}<p class="header-popup__item-content">{{ item_content | escape | newline_to_br }}</p>{% endif %}
+              {%- if item_link != blank -%}</a>{%- else -%}</div>{%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

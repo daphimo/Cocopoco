@@ -319,6 +319,61 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+
+    <script>
+      (() => {
+        const custCoreChange = {
+          tabSwitchMessage: {{ settings.tab_switch_message | json }},
+          leaveAlertEnabled: {{ settings.enable_leave_alert | json }},
+          leaveAlertMessage: {{ settings.leave_alert_message | json }},
+          originalTitle: document.title,
+          titleInterval: null,
+          showCustomTitle: true,
+        };
+
+        // Alternate titles only while this tab is hidden, with one interval at most.
+        const stopTitleInterval = () => {
+          if (custCoreChange.titleInterval !== null) {
+            window.clearInterval(custCoreChange.titleInterval);
+            custCoreChange.titleInterval = null;
+          }
+        };
+
+        const handleVisibilityChange = () => {
+          stopTitleInterval();
+
+          if (!document.hidden) {
+            document.title = custCoreChange.originalTitle;
+            custCoreChange.showCustomTitle = true;
+            return;
+          }
+
+          if (!custCoreChange.tabSwitchMessage) return;
+
+          document.title = custCoreChange.tabSwitchMessage;
+          custCoreChange.showCustomTitle = false;
+          custCoreChange.titleInterval = window.setInterval(() => {
+            document.title = custCoreChange.showCustomTitle
+              ? custCoreChange.tabSwitchMessage
+              : custCoreChange.originalTitle;
+            custCoreChange.showCustomTitle = !custCoreChange.showCustomTitle;
+          }, 2000);
+        };
+
+        if (custCoreChange.tabSwitchMessage) {
+          document.addEventListener('visibilitychange', handleVisibilityChange);
+        }
+
+        // Browsers control the visible confirmation wording for beforeunload.
+        if (custCoreChange.leaveAlertEnabled) {
+          window.addEventListener('beforeunload', (event) => {
+            event.preventDefault();
+            event.returnValue = custCoreChange.leaveAlertMessage || true;
+            return event.returnValue;
+          });
+        }
+      })();
+    </script>
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
@@ -327,7 +382,7 @@
     </a>
 
     {%- if settings.cart_type == 'drawer' -%}
-      {%- render 'cart-drawer' -%}
+      {% section 'cart-drawer' %}
     {%- endif -%}
 
     {% sections 'header-group' %}

@@ -1,0 +1,99 @@
+{{ 'cust-delhivery-tracking.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cust-delhivery-tracking.js' | asset_url }}" defer="defer"></script>
+
+<section
+  id="CustDelhiveryTracking-{{ section.id }}"
+  class="cust-delhivery-tracking cust-delhivery-tracking--{{ section.settings.alignment }}"
+  style="--cust-tracking-width:{{ section.settings.section_width }}px;--cust-tracking-pt:{{ section.settings.padding_top }}px;--cust-tracking-pb:{{ section.settings.padding_bottom }}px;--cust-tracking-mpt:{{ section.settings.mobile_padding_top }}px;--cust-tracking-mpb:{{ section.settings.mobile_padding_bottom }}px;"
+  data-cust-delhivery-tracking
+  data-endpoint="{{ section.settings.proxy_endpoint | escape }}"
+  data-auto-track="{{ section.settings.auto_track_url }}"
+  data-loading-message="{{ section.settings.loading_message | escape }}"
+  data-error-message="{{ section.settings.error_message | escape }}"
+  data-empty-message="{{ section.settings.empty_message | escape }}"
+  data-show-awb="{{ section.settings.show_awb }}"
+  data-show-reference="{{ section.settings.show_reference }}"
+  data-show-location="{{ section.settings.show_location }}"
+  data-show-updated="{{ section.settings.show_updated }}"
+  data-show-timeline="{{ section.settings.show_timeline }}"
+  data-show-instructions="{{ section.settings.show_instructions }}"
+>
+  <div class="cust-delhivery-tracking__container">
+    <header class="cust-delhivery-tracking__header">
+      {% if section.settings.eyebrow != blank %}<p class="cust-delhivery-tracking__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+      {% if section.settings.title != blank %}<h2 class="cust-delhivery-tracking__title">{{ section.settings.title | escape }}</h2>{% endif %}
+      {% if section.settings.description != blank %}<p class="cust-delhivery-tracking__description">{{ section.settings.description | escape | newline_to_br }}</p>{% endif %}
+    </header>
+
+    <form class="cust-delhivery-tracking__form" data-cust-tracking-form novalidate>
+      <label class="cust-delhivery-tracking__label" for="CustTrackingAwb-{{ section.id }}">{{ section.settings.input_label | escape }}</label>
+      <div class="cust-delhivery-tracking__form-row">
+        <input class="cust-delhivery-tracking__input" id="CustTrackingAwb-{{ section.id }}" name="awb" type="text" inputmode="numeric" autocomplete="off" placeholder="{{ section.settings.input_placeholder | escape }}" aria-describedby="CustTrackingMessage-{{ section.id }}" required data-cust-tracking-input>
+        <button class="cust-delhivery-tracking__button" type="submit" data-cust-tracking-submit><span>{{ section.settings.button_text | escape }}</span><span class="cust-delhivery-tracking__spinner" aria-hidden="true"></span></button>
+      </div>
+    </form>
+
+    <div class="cust-delhivery-tracking__message" id="CustTrackingMessage-{{ section.id }}" role="alert" aria-live="assertive" data-cust-tracking-message hidden></div>
+
+    <div class="cust-delhivery-tracking__results" aria-live="polite" aria-atomic="false" data-cust-tracking-results hidden>
+      <div class="cust-delhivery-tracking__status-card">
+        <p class="cust-delhivery-tracking__status-label">{{ section.settings.success_heading | escape }}</p>
+        <div class="cust-delhivery-tracking__status-row">
+          <span class="cust-delhivery-tracking__status-icon" aria-hidden="true">✓</span>
+          <div>
+            <h3 class="cust-delhivery-tracking__status" data-cust-current-status></h3>
+            <p class="cust-delhivery-tracking__status-copy" data-cust-status-copy></p>
+            <p class="cust-delhivery-tracking__status-meta" data-cust-status-meta hidden></p>
+            <p class="cust-delhivery-tracking__direction" data-cust-direction hidden></p>
+          </div>
+        </div>
+      </div>
+
+      <dl class="cust-delhivery-tracking__facts" data-cust-tracking-facts></dl>
+
+      <div class="cust-delhivery-tracking__timeline-wrap" data-cust-timeline-wrap>
+        <h3 class="cust-delhivery-tracking__timeline-title">Tracking timeline</h3>
+        <ol class="cust-delhivery-tracking__timeline" data-cust-timeline></ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Delhivery tracking",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "TRACK YOUR ORDER" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Where is my order?" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Enter your tracking number below to see the latest status and shipment updates." },
+    { "type": "text", "id": "input_label", "label": "Input label", "default": "AWB / Waybill number" },
+    { "type": "text", "id": "input_placeholder", "label": "Input placeholder", "default": "Enter your AWB number" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Track" },
+    { "type": "header", "content": "Messages" },
+    { "type": "text", "id": "success_heading", "label": "Success heading", "default": "Current status" },
+    { "type": "text", "id": "error_message", "label": "Error message", "default": "We couldn't retrieve tracking information. Please try again." },
+    { "type": "text", "id": "loading_message", "label": "Loading message", "default": "Checking shipment..." },
+    { "type": "text", "id": "empty_message", "label": "Empty result message", "default": "We couldn't find a shipment with that tracking number. Please check the number and try again." },
+    { "type": "header", "content": "Display" },
+    { "type": "checkbox", "id": "show_awb", "label": "Show AWB", "default": true },
+    { "type": "checkbox", "id": "show_reference", "label": "Show reference/order number", "default": true },
+    { "type": "checkbox", "id": "show_location", "label": "Show current location", "default": true },
+    { "type": "checkbox", "id": "show_updated", "label": "Show last updated time", "default": true },
+    { "type": "checkbox", "id": "show_timeline", "label": "Show tracking timeline", "default": true },
+    { "type": "checkbox", "id": "show_instructions", "label": "Show shipment instructions", "default": true },
+    { "type": "checkbox", "id": "auto_track_url", "label": "Automatically track AWB from URL", "default": false },
+    { "type": "text", "id": "proxy_endpoint", "label": "Secure proxy endpoint", "info": "Same-origin Shopify app proxy path. Never enter a Delhivery token here.", "default": "/apps/delhivery-tracking" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "section_width", "label": "Section width", "min": 600, "max": 1200, "step": 20, "unit": "px", "default": 900 },
+    { "type": "select", "id": "alignment", "label": "Content alignment", "options": [{"value":"left","label":"Left"},{"value":"center","label":"Center"}], "default": "center" },
+    { "type": "range", "id": "padding_top", "label": "Desktop top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "label": "Desktop bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "mobile_padding_top", "label": "Mobile top padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "mobile_padding_bottom", "label": "Mobile bottom padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 56 }
+  ],
+  "presets": [{ "name": "Delhivery Order Tracking" }]
+}
+{% endschema %}

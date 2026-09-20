@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "hero": { "type": "about-us-hero", "settings": {} },
+    "intro": {
+      "type": "about-us-intro",
+      "blocks": {
+        "category_1": { "type": "category", "settings": { "label": "Stationery" } },
+        "category_2": { "type": "category", "settings": { "label": "Sipper bottles" } },
+        "category_3": { "type": "category", "settings": { "label": "Keychains & charms" } },
+        "category_4": { "type": "category", "settings": { "label": "Bags & pouches" } },
+        "category_5": { "type": "category", "settings": { "label": "Gifts & hampers" } },
+        "category_6": { "type": "category", "settings": { "label": "The Cute Edit" } }
+      },
+      "block_order": ["category_1", "category_2", "category_3", "category_4", "category_5", "category_6"],
+      "settings": {}
+    },
+    "features": {
+      "type": "about-us-features",
+      "blocks": {
+        "feature_1": { "type": "feature", "settings": { "heading": "Curated by founders", "description": "Every piece picked for quality, cuteness and daily use." } },
+        "feature_2": { "type": "feature", "settings": { "heading": "Affordable", "description": "Gifts from ₹299, flat ₹99 shipping, partial COD." } },
+        "feature_3": { "type": "feature", "settings": { "heading": "Trend-first", "description": "Stitch, Sanrio, Labubu and more — before local shops." } }
+      },
+      "block_order": ["feature_1", "feature_2", "feature_3"],
+      "settings": {}
+    },
+    "mission": { "type": "about-us-mission", "settings": {} },
+    "faq": {
+      "type": "about-us-faq",
+      "blocks": {
+        "faq_1": { "type": "faq", "settings": { "question": "What is CocoPoco?", "answer": "<p>An Indian e-commerce brand selling cute everyday essentials — kawaii stationery, sipper bottles, keychains, pouches and gift hampers — at cocopoco.in.</p>" } },
+        "faq_2": { "type": "faq", "settings": { "question": "Where is CocoPoco based?", "answer": "<p>Kolkata, West Bengal, India. We ship to every state in India.</p>" } },
+        "faq_3": { "type": "faq", "settings": { "question": "Who founded CocoPoco?", "answer": "<p>Sisters Smita Bara and Sweta Kindo, in 2024.</p>" } },
+        "faq_4": { "type": "faq", "settings": { "question": "What does “Romanticize your everyday” mean?", "answer": "<p>Finding small joys in ordinary routines through cute, thoughtful things you use every day.</p>" } }
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4"],
+      "settings": {}
+    }
+  },
+  "order": ["hero", "intro", "features", "mission", "faq"]
+}

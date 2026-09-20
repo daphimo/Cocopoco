@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "founders": {
+      "type": "our-story-founders",
+      "blocks": {
+        "sweta": { "type": "founder", "settings": { "name": "Sweta Kindo", "eyebrow": "everyday romantic", "role": "Co-Founder" } },
+        "smita": { "type": "founder", "settings": { "name": "Smita Bara", "eyebrow": "everyday romantic", "role": "Co-Founder" } }
+      },
+      "block_order": ["sweta", "smita"],
+      "settings": {}
+    },
+    "story_content": {
+      "type": "our-story-content",
+      "settings": {}
+    }
+  },
+  "order": ["founders", "story_content"]
+}

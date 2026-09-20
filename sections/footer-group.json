@@ -13,23 +13,40 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": true,
-        "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+      "blocks": {
+        "store_details": { "type": "store_details", "settings": {} },
+        "navigate": { "type": "menu", "settings": { "heading": "Navigate to" } },
+        "quick_links": { "type": "menu", "settings": { "heading": "Quick links" } },
+        "information": { "type": "menu", "settings": { "heading": "Information" } },
+        "follow_us": { "type": "menu", "settings": { "heading": "Follow us" } }
+      },
+      "block_order": ["store_details", "navigate", "quick_links", "information", "follow_us"],
+      "settings": {}
+    },
+    "footer_utilities": {
+      "type": "footer-utilities",
+      "blocks": {
+        "secure": { "type": "utility", "settings": { "icon": "star", "text": "Secure payments" } },
+        "shipping": { "type": "utility", "settings": { "icon": "truck", "text": "₹99 flat shipping, pan-India" } },
+        "prepaid": { "type": "utility", "settings": { "icon": "sparkles", "text": "5% off on prepaid orders" } },
+        "gifting": { "type": "utility", "settings": { "icon": "star", "text": "Made for gifting" } }
+      },
+      "block_order": ["secure", "shipping", "prepaid", "gifting"],
+      "settings": {}
+    },
+    "floating_whatsapp": {
+      "type": "floating-whatsapp",
+      "settings": {}
+    },
+    "premium_popup": {
+      "type": "cust-premium-popup",
+      "settings": {}
     }
   },
   "order": [
-    "footer"
+    "footer",
+    "footer_utilities",
+    "floating_whatsapp",
+    "premium_popup"
   ]
 }

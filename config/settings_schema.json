@@ -1466,5 +1466,29 @@
         "label": "t:settings_schema.customer_accounts.settings.customer_account_menu.label"
       }
     ]
+  },
+  {
+    "name": "Core change",
+    "settings": [
+      {
+        "type": "text",
+        "id": "tab_switch_message",
+        "label": "Tab switch message",
+        "info": "This message will be shown as the page title when the visitor switches to another browser tab."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_leave_alert",
+        "label": "Alert user before leaving",
+        "default": false,
+        "info": "Shows the browser's native confirmation dialog when the visitor attempts to leave the page."
+      },
+      {
+        "type": "text",
+        "id": "leave_alert_message",
+        "label": "Alert Message",
+        "info": "Custom messages may not be displayed by modern browsers. The browser controls the actual confirmation text."
+      }
+    ]
   }
 ]

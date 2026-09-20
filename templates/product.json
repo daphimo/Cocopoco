@@ -12,74 +12,31 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        "title": {
-          "type": "title",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {}
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {}
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        }
+        "benefit_shipping": { "type": "benefit", "settings": { "icon": "truck", "text": "₹99 flat shipping, pan-India" } },
+        "benefit_quality": { "type": "benefit", "settings": { "icon": "star", "text": "Quality-checked before packing" } },
+        "benefit_secure": { "type": "benefit", "settings": { "icon": "sparkles", "text": "Secure payments" } },
+        "benefit_support": { "type": "benefit", "settings": { "icon": "rotate", "text": "Easy support" } },
+        "pincode_checker": { "type": "pincode_checker", "settings": {} },
+        "details": { "type": "collapsible", "settings": { "heading": "Details & specs" } },
+        "shipping": { "type": "collapsible", "settings": { "heading": "Shipping & delivery" } },
+        "quality": { "type": "collapsible", "settings": { "heading": "Quality promise" } }
       },
       "block_order": [
-        "vendor",
-        "title",
-        "price",
-        "variant_picker",
-        "quantity_selector",
-        "buy_buttons",
-        "description",
-        "share"
+        "benefit_shipping",
+        "benefit_quality",
+        "benefit_secure",
+        "benefit_support",
+        "pincode_checker",
+        "details",
+        "shipping",
+        "quality"
       ],
       "settings": {
-        "enable_sticky_info": true,
-        "color_scheme": "scheme-1",
-        "media_size": "large",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "gallery_layout": "stacked",
-        "mobile_thumbnails": "hide",
-        "media_position": "left",
-        "image_zoom": "lightbox",
-        "hide_variants": true,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 12
+        "show_dynamic_checkout": true,
+        "picker_type": "button",
+        "swatch_shape": "circle",
+        "padding_top": 32,
+        "padding_bottom": 60
       }
     },
     "disclosures": {
