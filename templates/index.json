@@ -291,6 +291,247 @@
         "mobile_padding_top": 30,
         "mobile_padding_bottom": 30
       }
+    },
+    "image_with_text_hhGUDa": {
+      "type": "image-with-text",
+      "blocks": {
+        "title_4U6E4H": {
+          "type": "title",
+          "settings": {
+            "title": "Make your everyday a little more Pinteresty. ✨",
+            "heading_tag": "h2",
+            "heading_size": 32,
+            "heading_color": "#241226"
+          }
+        },
+        "content_kKXjbg": {
+          "type": "content",
+          "settings": {
+            "content": "<p>A bottle for your commute.<br>A notebook for your thoughts.<br>A little charm for your bag.<br>Beautiful things for the moments you live every day.</p>",
+            "content_size": 15,
+            "content_color": "#7A5368"
+          }
+        },
+        "button_kfmFWJ": {
+          "type": "button",
+          "settings": {
+            "text": "Shop the look",
+            "link": "#",
+            "background": "#e64d95",
+            "text_color": "#ffffff",
+            "show_arrow": true,
+            "open_in_new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "title_4U6E4H",
+        "content_kKXjbg",
+        "button_kfmFWJ"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "image": "shopify://shop_images/lifestyle-CU2FVmzE.png",
+        "image_position": "left",
+        "image_object_position": "center",
+        "background_color": "#FFFFFF",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24
+      }
+    },
+    "pill_links_DnYNRy": {
+      "type": "pill-links",
+      "blocks": {
+        "pill_A84pr6": {
+          "type": "pill",
+          "settings": {
+            "text": "☕ Slow mornings",
+            "link": "",
+            "text_size": 13,
+            "background": "#FFFFFF",
+            "border_color": "#F4C3DA",
+            "text_color": "#2A0F1C",
+            "hover_background": "#E64D95",
+            "hover_text_color": "#FFFFFF"
+          }
+        },
+        "pill_8VNe3e": {
+          "type": "pill",
+          "settings": {
+            "text": "📓 Fresh pages",
+            "link": "",
+            "text_size": 13,
+            "background": "#FFFFFF",
+            "border_color": "#F4C3DA",
+            "text_color": "#2A0F1C",
+            "hover_background": "#E64D95",
+            "hover_text_color": "#FFFFFF"
+          }
+        },
+        "pill_jipYLn": {
+          "type": "pill",
+          "settings": {
+            "text": "💻 Work days",
+            "link": "",
+            "text_size": 13,
+            "background": "#FFFFFF",
+            "border_color": "#F4C3DA",
+            "text_color": "#2A0F1C",
+            "hover_background": "#E64D95",
+            "hover_text_color": "#FFFFFF"
+          }
+        },
+        "pill_twtY96": {
+          "type": "pill",
+          "settings": {
+            "text": "🎧 Commutes",
+            "link": "",
+            "text_size": 13,
+            "background": "#FFFFFF",
+            "border_color": "#F4C3DA",
+            "text_color": "#2A0F1C",
+            "hover_background": "#E64D95",
+            "hover_text_color": "#FFFFFF"
+          }
+        },
+        "pill_7f4Nwg": {
+          "type": "pill",
+          "settings": {
+            "text": "🌷 Getting ready",
+            "link": "",
+            "text_size": 13,
+            "background": "#FFFFFF",
+            "border_color": "#F4C3DA",
+            "text_color": "#2A0F1C",
+            "hover_background": "#E64D95",
+            "hover_text_color": "#FFFFFF"
+          }
+        },
+        "pill_4UNgwW": {
+          "type": "pill",
+          "settings": {
+            "text": "🎁 Giving gifts",
+            "link": "",
+            "text_size": 13,
+            "background": "#FFFFFF",
+            "border_color": "#F4C3DA",
+            "text_color": "#2A0F1C",
+            "hover_background": "#E64D95",
+            "hover_text_color": "#FFFFFF"
+          }
+        },
+        "pill_CNgmFY": {
+          "type": "pill",
+          "settings": {
+            "text": "🌞 Little everyday moments",
+            "link": "",
+            "text_size": 13,
+            "background": "#FFFFFF",
+            "border_color": "#F4C3DA",
+            "text_color": "#2A0F1C",
+            "hover_background": "#E64D95",
+            "hover_text_color": "#FFFFFF"
+          }
+        }
+      },
+      "block_order": [
+        "pill_A84pr6",
+        "pill_8VNe3e",
+        "pill_jipYLn",
+        "pill_twtY96",
+        "pill_7f4Nwg",
+        "pill_4UNgwW",
+        "pill_CNgmFY"
+      ],
+      "name": "Pill links",
+      "settings": {
+        "caption": "THE COCOPOCO LIFE",
+        "caption_color": "#7A5368",
+        "title": "Things worth romanticizing 🌸",
+        "title_size": 32,
+        "title_color": "#2A0F1C",
+        "background_color": "#FFFFFF",
+        "alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24
+      }
+    },
+    "image_with_text_tLinQ7": {
+      "type": "image-with-text",
+      "blocks": {
+        "title_7Gfqqd": {
+          "type": "title",
+          "settings": {
+            "title": "Someone deserves a little joy. 🎁",
+            "heading_tag": "h2",
+            "heading_size": 32,
+            "heading_color": "#241226"
+          }
+        },
+        "content_k8bcpD": {
+          "type": "content",
+          "settings": {
+            "content": "<p>For birthdays. For celebrations. For thank-yous. For besties. For family. For “I saw this and thought of you.” Or simply because.</p>",
+            "content_size": 15,
+            "content_color": "#7A5368"
+          }
+        },
+        "icon_text_qTjEn6": {
+          "type": "icon_text",
+          "settings": {
+            "icon": "truck",
+            "text": "Beautiful things for everyday moments",
+            "icon_color": "#E64D95",
+            "text_color": "#241226",
+            "icon_size": 16,
+            "text_size": 14
+          }
+        },
+        "button_bxNjBC": {
+          "type": "button",
+          "settings": {
+            "text": "Find a Gift",
+            "link": "#",
+            "background": "#e64d95",
+            "text_color": "#ffffff",
+            "show_arrow": true,
+            "open_in_new_tab": false
+          }
+        },
+        "button_HcCYEK": {
+          "type": "button",
+          "settings": {
+            "text": "Talk to us for custom orders",
+            "link": "#",
+            "background": "#ffffff",
+            "text_color": "#241226",
+            "show_arrow": false,
+            "open_in_new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "title_7Gfqqd",
+        "content_k8bcpD",
+        "icon_text_qTjEn6",
+        "button_bxNjBC",
+        "button_HcCYEK"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "image": "shopify://shop_images/gifting-CVgp4Sao.png",
+        "image_position": "right",
+        "image_object_position": "center",
+        "background_color": "#FFFFFF",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24
+      }
     }
   },
   "order": [
@@ -298,6 +539,9 @@
     "richtext_QVH6wn",
     "featured_collection_dfJFHU",
     "collection_list_NaBa8c",
-    "featured_collection_kzg84g"
+    "featured_collection_kzg84g",
+    "image_with_text_hhGUDa",
+    "pill_links_DnYNRy",
+    "image_with_text_tLinQ7"
   ]
 }
