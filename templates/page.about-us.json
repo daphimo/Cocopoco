@@ -132,6 +132,7 @@
     "mission": {
       "type": "about-us-mission",
       "settings": {
+        "image": "shopify://shop_images/gifting-CVgp4Sao.png",
         "image_position": "left",
         "eyebrow": "",
         "heading": "Our mission",
