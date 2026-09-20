@@ -754,6 +754,73 @@
         "mobile_padding_top": 24,
         "mobile_padding_bottom": 24
       }
+    },
+    "custom_email_signup_LdNV4k": {
+      "type": "custom-email-signup",
+      "blocks": {
+        "title_jyijzx": {
+          "type": "title",
+          "settings": {
+            "title": "Your everyday called. It wants more joy. ✨",
+            "heading_tag": "h2",
+            "title_size": 45,
+            "title_color": "#FFFFFF"
+          }
+        },
+        "content_mEtr49": {
+          "type": "content",
+          "settings": {
+            "content": "<p>Join our list for joyful finds, new arrivals, and special offers.</p>",
+            "content_size": 15,
+            "content_color": "#E8DCE1"
+          }
+        },
+        "email_form_MNfFDn": {
+          "type": "email_form",
+          "settings": {
+            "placeholder": "Enter your email",
+            "button_label": "Join the fun",
+            "button_background": "#E94791",
+            "button_text_color": "#FFFFFF",
+            "show_arrow": true,
+            "success_message": "Thanks for signing up!"
+          }
+        },
+        "trust_item_4GGCJR": {
+          "type": "trust_item",
+          "settings": {
+            "text": "Secure payments"
+          }
+        },
+        "trust_item_aE963Q": {
+          "type": "trust_item",
+          "settings": {
+            "text": "Carefully packed"
+          }
+        },
+        "trust_item_pdAcG3": {
+          "type": "trust_item",
+          "settings": {
+            "text": "Made for gifting 💌"
+          }
+        }
+      },
+      "block_order": [
+        "title_jyijzx",
+        "content_mEtr49",
+        "email_form_MNfFDn",
+        "trust_item_4GGCJR",
+        "trust_item_aE963Q",
+        "trust_item_pdAcG3"
+      ],
+      "name": "Custom email signup",
+      "settings": {
+        "background_color": "#3A1928",
+        "text_color": "#FFFFFF",
+        "border_radius": 26,
+        "margin_top": 28,
+        "margin_bottom": 28
+      }
     }
   },
   "order": [
@@ -768,6 +835,7 @@
     "testimonial_Vgrm9K",
     "featured_collection_mMx74h",
     "richtext_tPnTPk",
-    "instafeed_GMirLW"
+    "instafeed_GMirLW",
+    "custom_email_signup_LdNV4k"
   ]
 }
