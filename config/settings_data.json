@@ -110,13 +110,13 @@
     "brand_headline": "",
     "brand_description": "<p></p>",
     "brand_image_width": 100,
-    "social_facebook_link": "",
-    "social_instagram_link": "",
-    "social_youtube_link": "",
+    "social_facebook_link": "#",
+    "social_instagram_link": "#",
+    "social_youtube_link": "#",
     "social_tiktok_link": "",
     "social_twitter_link": "",
     "social_snapchat_link": "",
-    "social_pinterest_link": "",
+    "social_pinterest_link": "#",
     "social_tumblr_link": "",
     "social_vimeo_link": "",
     "predictive_search_enabled": true,
@@ -166,13 +166,13 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#FFFDFE",
+          "background": "#fffdfe",
           "background_gradient": "",
           "text": "#000000",
-          "button": "#E34C93",
+          "button": "#e34c93",
           "button_label": "#ffffff",
-          "secondary_button_label": "#E34C93",
-          "shadow": "#E34C93"
+          "secondary_button_label": "#e34c93",
+          "shadow": "#e34c93"
         }
       },
       "scheme-2": {
