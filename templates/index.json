@@ -117,29 +117,60 @@
         "content_alignment": "left"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "richtext_QVH6wn": {
+      "type": "richtext",
+      "blocks": {
+        "title_crLG8x": {
+          "type": "title",
+          "settings": {
+            "title": "Why should everyday be boring?",
+            "heading_tag": "h2",
+            "size": 32,
+            "color": "#2A0F1C"
+          }
+        },
+        "content_zdACTF": {
+          "type": "content",
+          "settings": {
+            "content": "<p>Your coffee deserves a cute companion.<br>Your desk deserves some personality.<br>Your bag deserves a little charm.<br>And you deserve some joy. 💕</p>",
+            "size": 16,
+            "color": "#3D1729"
+          }
+        },
+        "buttons_gEci7Y": {
+          "type": "buttons",
+          "settings": {
+            "button_1_text": "Enter the CocoPoco world",
+            "button_1_link": "",
+            "button_1_background": "#3D1729",
+            "button_1_text_color": "#FFFFFF",
+            "button_1_arrow": true,
+            "button_1_new_tab": false,
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_background": "#FFFFFF",
+            "button_2_text_color": "#3D1729",
+            "button_2_arrow": false,
+            "button_2_new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "title_crLG8x",
+        "content_zdACTF",
+        "buttons_gEci7Y"
+      ],
+      "name": "Custom rich text",
       "settings": {
-        "collection": "all",
-        "caption": "BESTSELLERS",
-        "title": "Featured products",
-        "view_more_text": "VIEW MORE",
-        "view_more_link": "",
-        "show_view_more_arrow": true,
-        "products_per_row": "4",
-        "products_per_row_mobile": "1",
-        "enable_mobile_slider": true,
-        "maximum_products": 4,
-        "color_scheme": "scheme-1",
-        "padding_top": 44,
-        "padding_bottom": 36,
-        "mobile_padding_top": 30,
-        "mobile_padding_bottom": 30
+        "background_color": "#FAD7E9",
+        "content_width": 760,
+        "padding_top": 40,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
     "hero_W7jBWp",
-    "featured_collection"
+    "richtext_QVH6wn"
   ]
 }
