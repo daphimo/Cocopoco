@@ -508,7 +508,7 @@
             "text": "Talk to us for custom orders",
             "link": "#",
             "background": "#ffffff",
-            "text_color": "#241226",
+            "text_color": "#E34C93",
             "show_arrow": false,
             "open_in_new_tab": false
           }
@@ -532,6 +532,145 @@
         "mobile_padding_top": 24,
         "mobile_padding_bottom": 24
       }
+    },
+    "testimonial_Vgrm9K": {
+      "type": "testimonial",
+      "blocks": {
+        "testimonial_GgQ33Y": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "<p>“I bought one for myself and immediately ordered another as a gift!”</p>",
+            "name": "Aditi R.",
+            "location": "Pune",
+            "badge": "Verified buyer"
+          }
+        },
+        "testimonial_QN986R": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "<p>“Everything is SO cute and the quality is actually amazing.”</p>",
+            "name": "Meher K.",
+            "location": "Delhi",
+            "badge": "Verified buyer"
+          }
+        },
+        "testimonial_8BdnAb": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "<p>“The perfect little pick-me-up. My desk finally has a personality.”</p>",
+            "name": "Sanya P.",
+            "location": "Bengaluru",
+            "badge": "Verified buyer"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_GgQ33Y",
+        "testimonial_QN986R",
+        "testimonial_8BdnAb"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "caption": "CUSTOMER LOVE",
+        "caption_color": "#7A5368",
+        "title": "Tiny things. Very big smiles. 💌",
+        "title_size": 32,
+        "title_color": "#2A0F1C",
+        "background_color": "#FFFFFF",
+        "card_background": "#FFFFFF",
+        "star_color": "#E64D95",
+        "text_color": "#2A0F1C",
+        "meta_color": "#7A5368",
+        "text_size": 13,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24
+      }
+    },
+    "featured_collection_mMx74h": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "collection": "bundles",
+        "caption": "BUNDLES",
+        "title": "Why pick one? 💕",
+        "view_more_text": "VIEW MORE",
+        "view_more_link": "",
+        "show_view_more_arrow": true,
+        "products_per_row": "4",
+        "products_per_row_mobile": "1",
+        "enable_mobile_slider": true,
+        "maximum_products": 4,
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 48,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "richtext_tPnTPk": {
+      "type": "richtext",
+      "blocks": {
+        "title_9E9bji": {
+          "type": "title",
+          "settings": {
+            "title": "Welcome to CocoPoco. 🌸",
+            "heading_tag": "h2",
+            "size": 32,
+            "color": "#2A0F1C"
+          }
+        },
+        "content_hBHinX": {
+          "type": "content",
+          "settings": {
+            "content": "<p>We believe you don't need a special occasion to make an ordinary day feel special. So we collect little things that make you smile — things that add colour to your desk, personality to your bag, joy to your routine and a little magic to your everyday.</p>",
+            "size": 16,
+            "color": "#3D1729"
+          }
+        },
+        "content_rQW8en": {
+          "type": "content",
+          "settings": {
+            "content": "<p><strong>Because life is made of little moments. We think they deserve a little more love.</strong></p>",
+            "size": 18,
+            "color": "#3D1729"
+          }
+        },
+        "buttons_QLHQzQ": {
+          "type": "buttons",
+          "settings": {
+            "button_1_text": "Our Story",
+            "button_1_link": "",
+            "button_1_background": "#3D1729",
+            "button_1_text_color": "#FFFFFF",
+            "button_1_arrow": true,
+            "button_1_new_tab": false,
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_background": "#FFFFFF",
+            "button_2_text_color": "#3D1729",
+            "button_2_arrow": false,
+            "button_2_new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "title_9E9bji",
+        "content_hBHinX",
+        "content_rQW8en",
+        "buttons_QLHQzQ"
+      ],
+      "name": "Custom rich text",
+      "settings": {
+        "background_color": "#FAD7E9",
+        "content_width": 760,
+        "padding_top": 40,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -542,6 +681,9 @@
     "featured_collection_kzg84g",
     "image_with_text_hhGUDa",
     "pill_links_DnYNRy",
-    "image_with_text_tLinQ7"
+    "image_with_text_tLinQ7",
+    "testimonial_Vgrm9K",
+    "featured_collection_mMx74h",
+    "richtext_tPnTPk"
   ]
 }
