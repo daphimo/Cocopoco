@@ -167,10 +167,32 @@
         "padding_top": 40,
         "padding_bottom": 36
       }
+    },
+    "featured_collection_dfJFHU": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "collection": "just-in-newly-added-products",
+        "caption": "JUST DROPPED",
+        "title": "New arrivals you'll love 🌸",
+        "view_more_text": "VIEW MORE",
+        "view_more_link": "",
+        "show_view_more_arrow": true,
+        "products_per_row": "4",
+        "products_per_row_mobile": "1",
+        "enable_mobile_slider": true,
+        "maximum_products": 4,
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 48,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
     }
   },
   "order": [
     "hero_W7jBWp",
-    "richtext_QVH6wn"
+    "richtext_QVH6wn",
+    "featured_collection_dfJFHU"
   ]
 }

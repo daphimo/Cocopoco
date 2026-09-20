@@ -141,19 +141,38 @@
         "settings": {
           "color_scheme": "scheme-1"
         }
+      },
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {
+          "cart_heading": "Your bag",
+          "custom_cart_content": "₹99 flat shipping on every order, Extra 5% off when you pay online",
+          "recommendation_heading": "Add a little extra joy ✨",
+          "shipping_text": "Calculated at checkout",
+          "enable_prepaid_discount": true,
+          "prepaid_discount_text": "-5% at checkout",
+          "empty_heading": "Your bag is feeling a little empty",
+          "empty_subtext": "Let's fix that with something cute.",
+          "empty_button_text": "Shop the joy",
+          "empty_button_link": "",
+          "continue_text": "Continue shopping",
+          "accent_color": "#e64d95",
+          "background_color": "#ffffff",
+          "text_color": "#241226"
+        }
       }
     },
     "content_for_index": [],
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#ffffff",
+          "background": "#FFFDFE",
           "background_gradient": "",
-          "text": "#121212",
-          "button": "#121212",
+          "text": "#000000",
+          "button": "#E34C93",
           "button_label": "#ffffff",
-          "secondary_button_label": "#121212",
-          "shadow": "#121212"
+          "secondary_button_label": "#E34C93",
+          "shadow": "#E34C93"
         }
       },
       "scheme-2": {
@@ -202,13 +221,13 @@
       },
       "scheme-149ae49e-ad9f-4caa-aea4-455fa2be427c": {
         "settings": {
-          "background": "#FFFDFE",
+          "background": "#fffdfe",
           "background_gradient": "",
           "text": "#000000",
-          "button": "#E34C93",
+          "button": "#e34c93",
           "button_label": "#ffffff",
-          "secondary_button_label": "#E34C93",
-          "shadow": "#E34C93"
+          "secondary_button_label": "#e34c93",
+          "shadow": "#e34c93"
         }
       }
     }
