@@ -6,3 +6,15 @@
 .main-product :focus-visible{outline:.2rem solid var(--main-product-accent);outline-offset:.3rem}
 @media screen and (max-width:749px){.main-product{padding-block:var(--main-product-mobile-padding-top) var(--main-product-mobile-padding-bottom)}.main-product__inner{padding-inline:1rem}.main-product__breadcrumbs{margin-bottom:1.2rem;font-size:.8rem}.main-product__layout{display:block}.main-product__media{position:static}.main-product__media-slider{display:flex;gap:1rem;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}.main-product__media-slider::-webkit-scrollbar{display:none}.main-product__media-slide,.main-product__media-slide--primary{flex:0 0 100%;scroll-snap-align:start}.main-product__details{padding-top:1.8rem}.main-product__title{font-size:2.8rem}.main-product__purchase{grid-template-columns:10rem minmax(0,1fr)}.main-product__benefits{grid-template-columns:1fr;gap:1.2rem}.main-product__atc-price{display:none}}
 @media (prefers-reduced-motion:reduce){.main-product__collapsible-panel,.main-product__chevron{transition:none}}
+/* The custom product-info element needs a block box for section spacing. */
+.main-product{display:block}
+@media screen and (min-width:750px){
+  .main-product__media{position:static}
+  .main-product__details{position:sticky;top:10rem;align-self:start}
+}
+.main-product__buy-buttons .product-form__submit.loading{position:relative;color:transparent;cursor:wait}
+.main-product__buy-buttons .product-form__submit.loading > span{visibility:hidden}
+.main-product__buy-buttons .product-form__submit.loading > .loading__spinner{position:absolute;top:50%;left:50%;display:flex;align-items:center;justify-content:center;width:2rem;height:2rem;transform:translate(-50%,-50%)}
+.main-product__buy-buttons .product-form__submit.loading > .loading__spinner.hidden{display:none}
+.main-product__buy-buttons .product-form__submit.loading > .loading__spinner .path{stroke:#fff}
+.main-product__buy-buttons:has(.product-form__submit.loading) .main-product__atc-price{visibility:hidden}

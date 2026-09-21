@@ -11,51 +11,90 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
+    "marquee_FLPtJR": {
+      "type": "marquee",
       "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
+        "text_nEjjMi": {
+          "type": "text",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "DELIVERED IN 24–48 HOURS",
+            "link": ""
+          }
+        },
+        "text_pexTwQ": {
+          "type": "text",
+          "settings": {
+            "text": "PARTIAL COD AVAILABLE",
+            "link": ""
+          }
+        },
+        "text_mjVAna": {
+          "type": "text",
+          "settings": {
+            "text": "FREE KEYCHAIN ON ORDERS ABOVE ₹999/-",
+            "link": ""
+          }
+        },
+        "text_6XqC3B": {
+          "type": "text",
+          "settings": {
+            "text": "ADDITIONAL 5% OFF ON ALL PREPAID ORDERS",
+            "link": ""
+          }
+        },
+        "text_HUWbMU": {
+          "type": "text",
+          "settings": {
+            "text": "₹99 FLAT SHIPPING CHARGES ON ALL ORDERS",
+            "link": ""
+          }
+        },
+        "text_mmGtzi": {
+          "type": "text",
+          "settings": {
+            "text": "DISPATCHED IN 24–48 HOURS",
             "link": ""
           }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "text_nEjjMi",
+        "text_pexTwQ",
+        "text_mjVAna",
+        "text_6XqC3B",
+        "text_HUWbMU",
+        "text_mmGtzi"
       ],
+      "name": "Marquee",
       "settings": {
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "color_scheme": "scheme-1",
-        "show_line_separator": true,
-        "show_social": false,
-        "enable_country_selector": false,
-        "enable_language_selector": false
+        "background_color": "#e74695",
+        "text_color": "#ffffff",
+        "text_size": 10,
+        "animation_speed": 200,
+        "pause_on_hover": false
       }
     },
     "header": {
       "type": "header",
       "settings": {
-        "logo_position": "middle-left",
-        "mobile_logo_position": "center",
         "menu": "main-menu",
-        "menu_type_desktop": "dropdown",
+        "show_search": false,
+        "show_account": false,
+        "show_language": false,
+        "show_currency": false,
+        "open_first_mobile_item": false,
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
-        "color_scheme": "scheme-1",
-        "menu_color_scheme": "scheme-1",
-        "enable_country_selector": true,
-        "enable_language_selector": true,
+        "color_scheme": "scheme-149ae49e-ad9f-4caa-aea4-455fa2be427c",
+        "menu_color_scheme": "scheme-149ae49e-ad9f-4caa-aea4-455fa2be427c",
         "margin_bottom": 0,
-        "padding_top": 20,
-        "padding_bottom": 20
+        "padding_top": 8,
+        "padding_bottom": 8
       }
     }
   },
   "order": [
-    "announcement-bar",
+    "marquee_FLPtJR",
     "header"
   ]
 }

@@ -7,6 +7,7 @@
     { "type": "text", "id": "cart_heading", "label": "Cart heading", "default": "Your bag" },
     { "type": "textarea", "id": "custom_cart_content", "label": "Custom Cart Content", "info": "Add multiple cart messages separated by commas.", "default": "₹99 flat shipping on every order, Extra 5% off when you pay online" },
     { "type": "text", "id": "recommendation_heading", "label": "Recommendation heading", "default": "Add a little extra joy ✨" },
+    { "type": "product_list", "id": "recommended_products", "label": "Recommended products", "limit": 12 },
     { "type": "text", "id": "shipping_text", "label": "Shipping text", "default": "Calculated at checkout" },
     { "type": "checkbox", "id": "enable_prepaid_discount", "label": "Show prepaid discount", "default": true },
     { "type": "text", "id": "prepaid_discount_text", "label": "Prepaid discount text", "default": "-5% at checkout" },
@@ -20,7 +21,6 @@
     { "type": "color", "id": "text_color", "label": "Text color", "default": "#241226" }
   ],
   "blocks": [
-    { "type": "recommended_product", "name": "Recommended product", "limit": 8, "settings": [{ "type": "product", "id": "product", "label": "Product" }] },
     { "type": "footer_utility", "name": "Footer utility", "limit": 2, "settings": [
       { "type": "select", "id": "icon", "label": "Icon", "default": "sparkles", "options": [{ "value": "sparkles", "label": "Sparkles" }, { "value": "star", "label": "Star" }, { "value": "truck", "label": "Truck" }, { "value": "rotate", "label": "Rotate" }, { "value": "arrow-right", "label": "Arrow right" }, { "value": "none", "label": "None" }] },
       { "type": "inline_richtext", "id": "text", "label": "Text", "default": "Cart benefit" }

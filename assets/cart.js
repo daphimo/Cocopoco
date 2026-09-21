@@ -220,7 +220,23 @@ class CartItems extends window.StandardEvents.createViewEventElement(HTMLElement
           if (cartFooter) cartFooter.classList.toggle('is-empty', parsedState.item_count === 0);
           if (cartDrawerWrapper) cartDrawerWrapper.classList.toggle('is-empty', parsedState.item_count === 0);
 
+          if (cartDrawerWrapper && parsedState.sections?.['cart-drawer']) {
+            const updatedDrawer = new DOMParser().parseFromString(parsedState.sections['cart-drawer'], 'text/html');
+            const currentRecommendations = cartDrawerWrapper.querySelector('.cart-drawer__recommendations');
+            const updatedRecommendations = updatedDrawer.querySelector('.cart-drawer__recommendations');
+            if (currentRecommendations && updatedRecommendations) currentRecommendations.replaceWith(updatedRecommendations);
+            else if (currentRecommendations) currentRecommendations.remove();
+            else if (updatedRecommendations) cartDrawerWrapper.querySelector('.cart-drawer__content')?.appendChild(updatedRecommendations);
+          }
+
           sectionsToRender.forEach((section) => {
+            if (section.id === 'cart-icon-bubble' && cartDrawerWrapper) {
+              const headerCart = document.getElementById('cart-icon-bubble');
+              const nextBubble = new DOMParser().parseFromString(parsedState.sections[section.section], 'text/html').querySelector('.cart-count-bubble');
+              headerCart?.querySelector('.cart-count-bubble')?.remove();
+              if (headerCart && nextBubble) headerCart.appendChild(nextBubble);
+              return;
+            }
             const elementToReplace =
               document.getElementById(section.id).querySelector(section.selector) ||
               document.getElementById(section.id);

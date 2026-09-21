@@ -26,12 +26,13 @@ class CartDrawer extends HTMLElement {
   }
 
   open(triggeredBy) {
-    if (this.classList.contains('active')) return;
+    if (this.classList.contains('active') || this.classList.contains('opening')) return;
     if (triggeredBy) this.setActiveElement(triggeredBy);
     const cartDrawerNote = this.querySelector('[id^="Details-"] summary');
     if (cartDrawerNote && !cartDrawerNote.hasAttribute('role')) this.setSummaryAccessibility(cartDrawerNote);
-    // here the animation doesn't seem to always get triggered. A timeout seem to help
-    setTimeout(() => {
+    this.classList.add('opening');
+    this.openFrame = requestAnimationFrame(() => {
+      this.classList.remove('opening');
       this.classList.add('animate', 'active');
     });
 
@@ -52,10 +53,12 @@ class CartDrawer extends HTMLElement {
     // cart-drawer-items is a CartItems subclass that extends createViewEventElement.
     // Its `view-event-trigger="manual"` skips auto-dispatch on connect; we fire
     // it here when the drawer opens, with `context: 'dialog'` from the payload attribute.
-    this.querySelector('cart-drawer-items')?.dispatchViewEvent();
+    this.querySelector('cart-drawer-items')?.dispatchViewEvent?.();
   }
 
   close() {
+    if (this.openFrame) cancelAnimationFrame(this.openFrame);
+    this.classList.remove('opening');
     this.classList.remove('active');
     removeTrapFocus(this.activeElement);
     document.body.classList.remove('overflow-hidden');
@@ -76,23 +79,40 @@ class CartDrawer extends HTMLElement {
     cartDrawerNote.parentElement.addEventListener('keyup', onKeyUpEscape);
   }
 
-  renderContents(parsedState) {
-    this.querySelector('.drawer__inner').classList.contains('is-empty') &&
-      this.querySelector('.drawer__inner').classList.remove('is-empty');
+  async renderContents(parsedState) {
+    const renderSequence = this.renderSequence = (this.renderSequence || 0) + 1;
     this.productId = parsedState.id;
-    this.getSectionsToRender().forEach((section) => {
-      const sectionElement = section.selector
-        ? document.querySelector(section.selector)
-        : document.getElementById(section.id);
+    let sections = parsedState.sections;
+    if (!sections?.['cart-drawer'] || !sections?.['cart-icon-bubble']) {
+      const cartRoot = window.Shopify?.routes?.root || window.routes.cart_url.replace(/cart\/?$/, '');
+      const url = `${cartRoot}cart?sections=cart-drawer,cart-icon-bubble`;
+      const response = await fetch(url, { headers: { Accept: 'application/json' }, credentials: 'same-origin' });
+      const contentType = response.headers.get('content-type') || '';
+      if (!response.ok || !contentType.includes('application/json')) {
+        console.error('Cart sections returned an unexpected response', { url: response.url || url, status: response.status, expected: 'application/json', received: contentType || 'unknown' });
+        throw new Error('Cart sections unavailable');
+      }
+      sections = await response.json();
+    }
+    if (renderSequence !== this.renderSequence) return;
+    const drawerHtml = sections['cart-drawer'];
+    const drawerContent = drawerHtml && this.getSectionDOM(drawerHtml, '#CartDrawer');
+    const drawerTarget = this.querySelector('#CartDrawer');
+    if (!drawerContent || !drawerTarget) throw new Error('Cart drawer section missing');
+    drawerTarget.innerHTML = drawerContent.innerHTML;
 
-      if (!sectionElement) return;
-      sectionElement.innerHTML = this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
-    });
+    // The header uses its own bag SVG. Refresh only the count, preserving its icon and listeners.
+    const headerCart = document.getElementById('cart-icon-bubble');
+    const bubbleHtml = sections['cart-icon-bubble'];
+    if (headerCart && bubbleHtml) {
+      const nextBubble = this.getSectionDOM(bubbleHtml)?.querySelector('.cart-count-bubble');
+      headerCart.querySelector('.cart-count-bubble')?.remove();
+      if (nextBubble) headerCart.appendChild(nextBubble);
+    }
 
-    setTimeout(() => {
-      this.querySelector('#CartDrawer-Overlay').addEventListener('click', this.close.bind(this));
-      this.open();
-    });
+    this.querySelector('#CartDrawer-Overlay')?.addEventListener('click', this.close.bind(this));
+    this.classList.remove('is-empty');
+    this.open();
   }
 
   getSectionInnerHTML(html, selector = '.shopify-section') {

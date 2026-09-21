@@ -18,15 +18,21 @@
       this.selected = [...this.querySelectorAll('[data-option-index]')].map((group) => group.querySelector('[aria-pressed=true]').dataset.value);
       this.querySelectorAll('[data-close]').forEach((button) => button.addEventListener('click', () => this.close()));
       this.querySelectorAll('[data-variant-value]').forEach((button) => button.addEventListener('click', () => this.select(button)));
-      this.querySelector('form').addEventListener('submit', () => setTimeout(() => this.close(), 100));
+      this.querySelector('product-form').addEventListener('product-form:added', () => {
+        const cart = document.querySelector('cart-drawer');
+        if (cart && this.trigger) cart.setActiveElement(this.trigger);
+        this.close(true);
+        this.remove();
+      });
       this.update();
     }
     open(trigger) {
-      this.trigger = trigger; this.setAttribute('open', ''); document.body.style.overflow = 'hidden';
+      this.trigger = trigger; this.previousOverflow = document.body.style.overflow; this.setAttribute('open', ''); document.body.style.overflow = 'hidden';
       this.dialog.focus();
     }
-    close() {
-      this.removeAttribute('open'); document.body.style.overflow = ''; if (this.trigger) this.trigger.focus();
+    close(force = false) {
+      if (!force && this.querySelector('[data-popup-add].loading')) return;
+      this.removeAttribute('open'); document.body.style.overflow = this.previousOverflow || ''; if (this.trigger) this.trigger.focus();
     }
     select(button) {
       const group = button.closest('[data-option-index]');
@@ -56,7 +62,19 @@
     }
   }
   customElements.define('cp-variant-picker', VariantPicker);
-  document.addEventListener('click', (event) => { const button = event.target.closest('[data-open-variant-picker]'); if (button) document.getElementById(button.dataset.openVariantPicker)?.open(button); });
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-open-variant-picker]');
+    if (!button) return;
+    const id = button.dataset.openVariantPicker;
+    let picker = document.getElementById(id);
+    if (!picker) {
+      const template = document.getElementById(`${id}-template`);
+      if (!template) return;
+      document.body.appendChild(template.content.cloneNode(true));
+      picker = document.getElementById(id);
+    }
+    picker?.open(button);
+  });
   document.addEventListener('keydown', (event) => {
     const picker = document.querySelector('cp-variant-picker[open]'); if (!picker) return;
     if (event.key === 'Escape') picker.close();

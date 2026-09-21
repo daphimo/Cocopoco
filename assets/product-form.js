@@ -8,7 +8,7 @@ if (!customElements.get('product-form')) {
         this.form = this.querySelector('form');
         this.variantIdInput.disabled = false;
         this.form.addEventListener('submit', this.onSubmitHandler.bind(this));
-        this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+        this.cart = document.querySelector('cart-drawer') || document.querySelector('cart-notification');
         this.submitButton = this.querySelector('[type="submit"]');
         this.submitButtonText = this.submitButton.querySelector('span');
 
@@ -33,11 +33,10 @@ if (!customElements.get('product-form')) {
 
         const formData = new FormData(this.form);
         if (this.cart) {
-          formData.append(
-            'sections',
-            this.cart.getSectionsToRender().map((section) => section.id)
-          );
-          formData.append('sections_url', window.location.pathname);
+          if (this.cart.tagName !== 'CART-DRAWER') {
+            formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
+            formData.append('sections_url', window.location.pathname);
+          }
           this.cart.setActiveElement(document.activeElement);
         }
         config.body = formData;
@@ -46,8 +45,18 @@ if (!customElements.get('product-form')) {
         const quantity = parseInt(formData.get('quantity')) || 1;
         const linesUpdateDeferred = this.createCartLinesUpdateEvent(variantId, quantity);
 
-        fetch(`${routes.cart_add_url}`, config)
-          .then((response) => response.json())
+        const cartRoot = window.Shopify?.routes?.root || window.routes.cart_add_url.replace(/cart\/add\/?$/, '');
+        const addUrl = `${cartRoot}cart/add.js`;
+        let addSucceeded = false;
+        fetch(addUrl, config)
+          .then(async (response) => {
+            const contentType = response.headers.get('content-type') || '';
+            if (!/\b(?:application\/json|application\/javascript|text\/javascript)\b/i.test(contentType)) {
+              console.error('Cart add returned an unexpected response', { url: response.url || addUrl, status: response.status, expected: 'JSON or JavaScript JSON', received: contentType || 'unknown' });
+              throw new Error('Unexpected cart response');
+            }
+            return response.json();
+          })
           .then((response) => {
             if (response.status) {
               publish(PUB_SUB_EVENTS.cartError, {
@@ -68,12 +77,15 @@ if (!customElements.get('product-form')) {
               this.error = true;
               return;
             } else if (!this.cart) {
+              addSucceeded = true;
               this.resolveCartLinesUpdate(linesUpdateDeferred);
               window.location = window.routes.cart_url;
               return;
             }
 
+            addSucceeded = true;
             this.resolveCartLinesUpdate(linesUpdateDeferred);
+            this.dispatchEvent(new CustomEvent('product-form:added', { bubbles: true }));
 
             const startMarker = CartPerformance.createStartingMarker('add:wait-for-subscribers');
             if (!this.error)
@@ -100,14 +112,25 @@ if (!customElements.get('product-form')) {
               );
               quickAddModal.hide(true);
             } else {
-              CartPerformance.measure("add:paint-updated-sections", () => {
-                this.cart.renderContents(response);
-              });
+              if (this.cart?.tagName === 'CART-DRAWER') this.cart.classList.remove('is-empty');
+              Promise.resolve(this.cart.renderContents(response))
+                .catch((error) => {
+                  console.error('Cart drawer refresh failed after add', error);
+                  this.cart.open?.();
+                });
             }
           })
           .catch((e) => {
             console.error(e);
-            this.dispatchCartErrorEvent(e.message || 'Network error', 'SERVICE_UNAVAILABLE');
+            if (addSucceeded) {
+              if (this.cart?.tagName === 'CART-DRAWER') {
+                Promise.resolve(this.cart.renderContents({})).catch((error) => console.error('Cart refresh failed after add', error));
+              }
+              this.cart?.open?.();
+              return;
+            }
+            this.handleErrorMessage('Something went wrong. Please try again.');
+            this.dispatchCartErrorEvent('Something went wrong. Please try again.', 'SERVICE_UNAVAILABLE');
             linesUpdateDeferred?.reject(e);
           })
           .finally(() => {

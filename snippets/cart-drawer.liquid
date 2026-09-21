@@ -80,12 +80,12 @@
 
           {%- assign visible_recommendations = 0 -%}
           {%- capture recommendations_markup -%}
-            {%- for block in section.blocks -%}{%- if block.type == 'recommended_product' and block.settings.product != blank -%}
-              {%- assign recommendation = block.settings.product -%}{%- unless cart_product_ids contains recommendation.id -%}
+            {%- for recommendation in section.settings.recommended_products -%}
+              {%- unless cart_product_ids contains recommendation.id -%}
                 {%- assign recommendation_variant = recommendation.selected_or_first_available_variant -%}
                 {%- if recommendation_variant.available -%}{%- assign visible_recommendations = visible_recommendations | plus: 1 -%}
-                  {%- assign recommendation_form_id = 'CartDrawerRecommendation-' | append: block.id -%}
-                  <article class="cart-drawer__recommendation" {{ block.shopify_attributes }}>
+                  {%- assign recommendation_form_id = 'CartDrawerRecommendation-' | append: recommendation.id -%}
+                  <article class="cart-drawer__recommendation">
                     <a href="{{ recommendation.url }}" class="cart-drawer__recommendation-media">{%- if recommendation.featured_image -%}{{ recommendation.featured_image | image_url: width: 220 | image_tag: class: 'cart-drawer__recommendation-image', loading: 'lazy', alt: recommendation.featured_image.alt }}{%- endif -%}</a>
                     <a href="{{ recommendation.url }}" class="cart-drawer__recommendation-title">{{ recommendation.title | escape }}</a>
                     <span class="cart-drawer__recommendation-price">{{ recommendation_variant.price | money }}</span>
@@ -99,7 +99,7 @@
                   </article>
                 {%- endif -%}
               {%- endunless -%}
-            {%- endif -%}{%- endfor -%}
+            {%- endfor -%}
           {%- endcapture -%}
           {%- if visible_recommendations > 0 -%}
             <section class="cart-drawer__recommendations"><h3>{{ section.settings.recommendation_heading | escape }}</h3><div class="cart-drawer__recommendations-track">{{ recommendations_markup }}</div></section>

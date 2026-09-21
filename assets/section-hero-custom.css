@@ -26,7 +26,7 @@
 
 .hero-section .hero__media img {
   object-fit: cover;
-  object-position: var(--hero-desktop-position) center;
+  object-position: 70% 30%;
 }
 
 .hero-section .hero__placeholder {
@@ -212,11 +212,11 @@
   }
 
   .hero-section .hero__media img {
-    object-position: var(--hero-mobile-position) center;
+    object-position: 62% 28%;
   }
 
   .hero-section .hero__inner {
-    align-items: center;
+    align-items: flex-end;
     padding: 3rem 1.6rem;
   }
 

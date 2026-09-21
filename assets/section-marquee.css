@@ -1,5 +1,4 @@
 .section-marquee {
-  --marquee-duration: 20s;
   --marquee-item-gap: clamp(3.2rem, 4vw, 6.4rem);
 }
 

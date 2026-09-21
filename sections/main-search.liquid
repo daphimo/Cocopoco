@@ -8,6 +8,10 @@
   <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
+{{ 'section-featured-collection-custom.css' | asset_url | stylesheet_tag }}
+{{ 'component-product-card-custom.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'component-product-card-custom.js' | asset_url }}" defer="defer"></script>
+
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
