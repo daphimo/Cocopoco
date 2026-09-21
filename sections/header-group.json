@@ -70,7 +70,10 @@
         "background_color": "#e74695",
         "text_color": "#ffffff",
         "text_size": 10,
+<<<<<<< HEAD
         "animation_speed": 200,
+=======
+>>>>>>> 21de594ce43f5f96adf5bca9df139983de3f6906
         "pause_on_hover": false
       }
     },
