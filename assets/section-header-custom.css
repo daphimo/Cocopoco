@@ -46,7 +46,7 @@
 .section-header .cp-nav__details[open] > .cp-nav__summary { color: var(--cp-pink); }
 .section-header .cp-nav__link.is-active::after,
 .section-header .cp-nav__summary.is-active::after {
-  content: ''; position: absolute; right: 0; bottom: 38%; left: 0;
+  content: ''; position: absolute; right: 0; bottom: 33%; left: 0;
   height: 2px; border-radius: 2px; background: var(--cp-pink);
 }
 .section-header .cp-chevron { width: 1.2rem; height: 1.2rem; transition: transform 180ms ease; }

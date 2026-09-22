@@ -5,11 +5,11 @@
 {%- if product.handle != blank -%}
 <article class="wishlist-product-card" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle | escape }}" data-variant-id="{{ current_variant.id }}" data-product-available="{{ current_variant.available }}">
   <div class="wishlist-product-card__media">
-    <a href="{{ product.url }}" class="wishlist-product-card__image-link" aria-label="{{ product.title | escape }}">
+    <a href="{{ product.url }}" class="wishlist-product-card__image-link" aria-label="{{ product.title | escape }}" tabindex="-1">
       {%- if card_image != blank -%}
         {{ card_image | image_url: width: 900 | image_tag: widths: '240, 360, 480, 640, 750, 900', sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw', loading: 'lazy', class: 'wishlist-product-card__image', alt: card_image.alt }}
       {%- else -%}
-        {{ 'product-1' | placeholder_svg_tag: 'wishlist-product-card__image wishlist-product-card__placeholder' }}
+        {{ 'product-apparel-1' | placeholder_svg_tag: 'wishlist-product-card__image wishlist-product-card__placeholder' }}
       {%- endif -%}
     </a>
     {% render 'wishlist-button', product: product %}
@@ -20,8 +20,8 @@
       {%- if product.price_varies -%}
         <span>From {{ product.price_min | money }}</span>
       {%- else -%}
-        {%- if current_variant.compare_at_price > current_variant.price -%}<s>{{ current_variant.compare_at_price | money }}</s>{%- endif -%}
         <span>{{ current_variant.price | money }}</span>
+        {%- if current_variant.compare_at_price > current_variant.price -%}<s>{{ current_variant.compare_at_price | money }}</s>{%- endif -%}
       {%- endif -%}
       {%- unless product.available -%}<span class="wishlist-product-card__sold-out">{{ 'products.product.sold_out' | t }}</span>{%- endunless -%}
     </div>

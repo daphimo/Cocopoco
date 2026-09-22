@@ -1470,7 +1470,8 @@
   {
     "name": "Wishlist",
     "settings": [
-      {"type":"color","id":"wishlist_color","label":"Wishlist Color","default":"#E74695"}
+      {"type":"color","id":"wishlist_color","label":"Wishlist Color","default":"#E74695"},
+      {"type":"select","id":"wishlist_flow","label":"Wishlist Flow","options":[{"value":"guest_signin","label":"Guest + Sign In"},{"value":"login_required","label":"Login Required"}],"default":"guest_signin"}
     ]
   },
   {

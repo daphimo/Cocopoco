@@ -1,4 +1,10 @@
-<section class="wishlist-page page-width" data-wishlist-section style="--wishlist-padding-top: {{ section.settings.padding_top }}px; --wishlist-padding-bottom: {{ section.settings.padding_bottom }}px; --wishlist-banner-height: {{ section.settings.banner_height }}px; --wishlist-banner-height-mobile: {{ section.settings.mobile_banner_height }}px;">
+{%- liquid
+  assign wishlist_login_required = false
+  if settings.wishlist_flow == 'login_required' and customer == blank
+    assign wishlist_login_required = true
+  endif
+-%}
+<section class="wishlist-page page-width"{% unless wishlist_login_required %} data-wishlist-section{% endunless %} style="--wishlist-padding-top: {{ section.settings.padding_top }}px; --wishlist-padding-bottom: {{ section.settings.padding_bottom }}px; --wishlist-banner-height: {{ section.settings.banner_height }}px; --wishlist-banner-height-mobile: {{ section.settings.mobile_banner_height }}px;">
   {%- if section.settings.image != blank or section.settings.mobile_image != blank -%}
     <div class="wishlist-page__banner">
       <picture>
@@ -14,8 +20,20 @@
       <h1 class="wishlist-page__title">{{ section.settings.title }}</h1>
       {%- if section.settings.description != blank -%}<div class="wishlist-page__description rte">{{ section.settings.description }}</div>{%- endif -%}
     </div>
-    <button type="button" class="wishlist-page__add-all button" data-wishlist-add-all hidden aria-busy="false">{{ section.settings.add_all_label | escape }}</button>
+    {%- unless wishlist_login_required -%}
+      <button type="button" class="wishlist-page__add-all button" data-wishlist-add-all hidden aria-busy="false">{{ section.settings.add_all_label | escape }}</button>
+    {%- endunless -%}
   </header>
+  {%- if wishlist_login_required -%}
+    <div class="wishlist-page__empty wishlist-page__login-required">
+      <span class="wishlist-page__empty-icon">{% render 'wishlist-icon' %}</span>
+      <h2>Please sign in to use your wishlist.</h2>
+      <a class="button" href="{{ routes.account_login_url }}" target="_blank" rel="noopener">Sign In</a>
+    </div>
+  {%- else -%}
+  {%- if settings.wishlist_flow == 'guest_signin' and customer == blank -%}
+    <p class="wishlist-page__signin-message"><a href="{{ routes.account_login_url }}">Sign in</a> to save your wishlist items</p>
+  {%- endif -%}
   <div class="wishlist-page__grid" grid-wishlist aria-live="polite" aria-busy="true">
     <div class="wishlist-page__loader" role="status"><span class="visually-hidden">Loading wishlist</span></div>
   </div>
@@ -26,6 +44,7 @@
     <a class="button" href="{{ routes.all_products_collection_url }}">{{ section.settings.continue_label | escape }}</a>
   </div>
   <p class="wishlist-page__status visually-hidden" data-wishlist-status role="status" aria-live="polite"></p>
+  {%- endif -%}
 </section>
 {% schema %}
 {
