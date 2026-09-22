@@ -1,0 +1,5 @@
+{%- if product.handle != blank -%}
+  <button type="button" class="wishlist-button{% if class != blank %} {{ class }}{% endif %}" button-wishlist data-product-handle="{{ product.handle | escape }}" data-product-title="{{ product.title | escape }}" aria-label="Add {{ product.title | escape }} to wishlist" aria-pressed="false">
+    {% render 'wishlist-icon' %}
+  </button>
+{%- endif -%}

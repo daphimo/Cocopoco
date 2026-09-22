@@ -101,6 +101,10 @@
           <a href="{{ routes.account_url }}" class="cp-action focus-inset" aria-label="{{ 'customer.log_in' | t }}"><span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span></a>
         {%- endif -%}
         {%- for block in section.blocks -%}{%- if block.type == '@app' -%}{% render block %}{%- endif -%}{%- endfor -%}
+        {%- assign wishlist_page = pages['wishlist'] -%}
+        <a href="{{ wishlist_page.url | default: '/pages/wishlist' }}" class="cp-action wishlist-header-link focus-inset" aria-label="Wishlist">
+          {% render 'wishlist-icon' %}<span class="wishlist-count-bubble" hidden>0</span>
+        </a>
         <a href="{{ routes.cart_url }}" class="cp-action cp-cart-action focus-inset" id="cart-icon-bubble" aria-label="{{ 'templates.cart.cart' | t }}">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag size-5" aria-hidden="true" data-tsd-source="/src/components/site/Header.tsx:227:13"><path d="M16 10a4 4 0 0 1-8 0"></path><path d="M3.103 6.034h17.794"></path><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0-2-2H5.4a2 2 0 0 0-2-2V6.667a2 2 0 0 1 .4-1.2l2-2.667A2 2 0 0 1 7 2h10a2 2 0 0 1 1.6.8l2 2.667a2 2 0 0 1 .4 1.2V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6.667a2 2 0 0 1 .4-1.2l2-2.667A2 2 0 0 1 7 2h10a2 2 0 0 1 1.6.8z"></path></svg>
           {%- if cart != empty -%}<div class="cart-count-bubble">{%- if cart.item_count < 100 -%}<span aria-hidden="true">{{ cart.item_count }}</span>{%- endif -%}<span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span></div>{%- endif -%}

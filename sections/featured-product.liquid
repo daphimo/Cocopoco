@@ -412,6 +412,7 @@
                     product_form_id: product_form_id
                   %}
                 {%- when 'buy_buttons' -%}
+                  <div class="main-product__wishlist">{% render 'wishlist-button', product: product %}<span>Save to wishlist</span></div>
                   {%- render 'buy-buttons',
                     block: block,
                     product: product,

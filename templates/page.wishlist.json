@@ -1,0 +1,4 @@
+{
+  "sections": {"main": {"type": "wishlist-products", "settings": {}}},
+  "order": ["main"]
+}

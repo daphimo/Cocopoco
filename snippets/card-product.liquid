@@ -49,6 +49,7 @@
       {%- endif -%}
     </a>
     {%- if card_product != blank -%}
+      {% render 'wishlist-button', product: card_product %}
       {%- if has_saving -%}<span class="cp-product-card__badge cp-product-card__badge--save">Save {{ saving | money }}</span>
       {%- elsif is_bestseller -%}<span class="cp-product-card__badge">Bestseller</span>
       {%- elsif is_new -%}<span class="cp-product-card__badge">New</span>{%- endif -%}

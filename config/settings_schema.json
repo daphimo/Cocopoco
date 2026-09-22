@@ -1468,6 +1468,12 @@
     ]
   },
   {
+    "name": "Wishlist",
+    "settings": [
+      {"type":"color","id":"wishlist_color","label":"Wishlist Color","default":"#E74695"}
+    ]
+  },
+  {
     "name": "Core change",
     "settings": [
       {

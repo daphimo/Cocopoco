@@ -112,6 +112,7 @@
               {% render 'buy-buttons', block: section, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: false %}
               <span class="main-product__atc-price" data-atc-price aria-hidden="true"{% unless selected_variant.available %} hidden{% endunless %}>{% if selected_variant.available %}· {{ selected_variant.price | money }}{% endif %}</span>
             </div>
+            <div class="main-product__wishlist">{% render 'wishlist-button', product: product %}<span>Save to wishlist</span></div>
           </div>
 
           <div class="main-product__benefits">
