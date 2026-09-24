@@ -67,9 +67,10 @@
   display: grid;
   grid-template-columns: repeat(var(--collection-list-columns), minmax(0, 1fr));
   align-items: start;
-  gap: 2rem clamp(1.2rem, 2.5vw, 3.6rem);
-  margin: 0;
+  gap: 1rem;
+  margin: 0 auto;
   padding: 0;
+  max-width: 80%;
   list-style: none;
 }
 

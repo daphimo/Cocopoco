@@ -162,7 +162,7 @@
         "success_redirect": "",
         "enable_badge": true,
         "badge_text": "Get 10% Off",
-        "badge_position": "bottom-right",
+        "badge_position": "bottom-left",
         "badge_icon": "gift",
         "badge_background": "#111111",
         "badge_text_color": "#ffffff",

@@ -117,6 +117,35 @@
         "content_alignment": "left"
       }
     },
+    "quiz_popup_home": {
+      "type": "quiz-popup",
+      "blocks": {
+        "quiz_option_1": { "type": "option", "settings": { "icon": "sparkles", "pill": "AESTHETIC FINDS", "title": "For Me ✨", "content": "Teen / College girlie", "link": "", "background": "#f8e5f6" } },
+        "quiz_option_2": { "type": "option", "settings": { "icon": "briefcase", "pill": "OFFICE AESTHETIC", "title": "Working Babe 💼", "content": "Young working woman", "link": "", "background": "#f7e7f1" } },
+        "quiz_option_3": { "type": "option", "settings": { "icon": "baby", "pill": "KID-APPROVED", "title": "Mom → Kids 🎀", "content": "Gifting my little one", "link": "", "background": "#f7dcf0" } },
+        "quiz_option_4": { "type": "option", "settings": { "icon": "flower", "pill": "SELF-LOVE", "title": "Mom → Me 🌸", "content": "A little something for myself", "link": "", "background": "#f3d8f8" } },
+        "quiz_option_5": { "type": "option", "settings": { "icon": "gift", "pill": "BESTIE-APPROVED", "title": "Gift for a Friend 🎁", "content": "Something cute for my bestie", "link": "", "background": "#f9dce4" } },
+        "quiz_option_6": { "type": "option", "settings": { "icon": "party-popper", "pill": "PARTY READY", "title": "Birthday Return Gifts 🎉", "content": "Mom planning party favors", "link": "", "background": "#f5e7f6" } }
+      },
+      "block_order": ["quiz_option_1", "quiz_option_2", "quiz_option_3", "quiz_option_4", "quiz_option_5", "quiz_option_6"],
+      "name": "Quiz popup",
+      "settings": {
+        "trigger_pill": "30-SEC QUIZ",
+        "trigger_title": "Not sure what to pick? Take the quiz 🎯",
+        "trigger_content": "We'll find the perfect CocoPoco vibe for you in seconds.",
+        "popup_pill": "30-SEC QUIZ",
+        "popup_title": "Who are you shopping for today?",
+        "popup_content": "<p>Tap one — we'll curate the cutest picks just for you 💌</p>",
+        "section_background": "#fff7fb",
+        "card_color_1": "#f9cce5",
+        "card_color_2": "#eddcf8",
+        "card_color_3": "#f9cce5",
+        "accent_color": "#c861c9",
+        "text_color": "#3d1729",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
     "richtext_QVH6wn": {
       "type": "richtext",
       "blocks": {
@@ -825,6 +854,7 @@
   },
   "order": [
     "hero_W7jBWp",
+    "quiz_popup_home",
     "richtext_QVH6wn",
     "featured_collection_dfJFHU",
     "collection_list_NaBa8c",

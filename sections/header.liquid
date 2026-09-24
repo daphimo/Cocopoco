@@ -18,9 +18,7 @@
 -%}
 
 {{ 'section-header-custom.css' | asset_url | stylesheet_tag }}
-{{ 'header-popup.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'section-header-custom.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'header-popup.js' | asset_url }}" defer="defer"></script>
 
 <{{ header_tag }}{% if header_tag == 'sticky-header' %} data-sticky-type="{{ section.settings.sticky_header_type }}"{% endif %}>
   <div class="cp-header-shell{% if section.settings.show_line_separator %} cp-header-shell--border{% endif %} color-{{ section.settings.color_scheme }} gradient"
@@ -45,23 +43,8 @@
       <nav class="cp-nav" aria-label="Primary navigation">
         <ul class="cp-nav__list" role="list">
           {%- for link in section.settings.menu.links -%}
-            {%- liquid
-              assign popup_target = blank
-              assign menu_handle = link.title | handleize
-              for block in section.blocks
-                if block.type == 'popup' and block.settings.item_name != blank
-                  assign popup_handle = block.settings.item_name | handleize
-                  if popup_handle == menu_handle
-                    assign popup_target = block.id
-                    break
-                  endif
-                endif
-              endfor
-            -%}
             <li class="cp-nav__entry">
-              {%- if popup_target != blank -%}
-                <button class="cp-nav__link{% if link.current %} is-active{% endif %}" type="button" data-popup-trigger data-popup-target="{{ popup_target }}" aria-haspopup="dialog" aria-controls="HeaderPopup-{{ popup_target }}">{{ link.title | escape }}</button>
-              {%- elsif link.links != blank -%}
+              {%- if link.links != blank -%}
                 <details class="cp-nav__details" data-desktop-disclosure>
                   <summary class="cp-nav__summary{% if link.active or link.child_active %} is-active{% endif %}" aria-expanded="false">
                     <span>{{ link.title | escape }}</span>
@@ -117,33 +100,14 @@
       <div class="cp-drawer__scroll"><nav aria-label="Mobile navigation"><ul class="cp-mobile-menu" role="list">
         {%- assign first_accordion_rendered = false -%}
         {%- for link in section.settings.menu.links -%}
-          {%- liquid
-            assign popup_target = blank
-            assign menu_handle = link.title | handleize
-            for block in section.blocks
-              if block.type == 'popup' and block.settings.item_name != blank
-                assign popup_handle = block.settings.item_name | handleize
-                if popup_handle == menu_handle
-                  assign popup_target = block.id
-                  break
-                endif
-              endif
-            endfor
-          -%}
           {%- assign is_first_accordion = false -%}
-          {%- if popup_target == blank and link.links != blank and first_accordion_rendered == false -%}{%- assign is_first_accordion = true -%}{%- assign first_accordion_rendered = true -%}{%- endif -%}
-          {% render 'header-mobile-menu-item', link: link, section_id: section.id, item_index: forloop.index, level: 1, is_first_accordion: is_first_accordion, popup_target: popup_target %}
+          {%- if link.links != blank and first_accordion_rendered == false -%}{%- assign is_first_accordion = true -%}{%- assign first_accordion_rendered = true -%}{%- endif -%}
+          {% render 'header-mobile-menu-item', link: link, section_id: section.id, item_index: forloop.index, level: 1, is_first_accordion: is_first_accordion %}
         {%- endfor -%}
       </ul></nav></div>
     </aside>
   </div>
 </{{ header_tag }}>
-
-{%- for block in section.blocks -%}
-  {%- if block.type == 'popup' and block.settings.item_name != blank -%}
-    {% render 'header-popup', block: block %}
-  {%- endif -%}
-{%- endfor -%}
 
 {%- if settings.cart_type == 'notification' -%}{%- render 'cart-notification', color_scheme: section.settings.color_scheme, desktop_menu_type: 'dropdown' -%}{%- endif -%}
 
@@ -177,79 +141,6 @@
     { "type": "range", "id": "padding_top", "min": 8, "max": 28, "step": 2, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 10 },
     { "type": "range", "id": "padding_bottom", "min": 8, "max": 28, "step": 2, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 10 }
   ],
-  "blocks": [
-    { "type": "@app" },
-    {
-      "type": "popup",
-      "name": "Popup",
-      "settings": [
-        { "type": "text", "id": "item_name", "label": "Item name", "info": "Match this with the main navigation item name.", "default": "Stationery" },
-        { "type": "header", "content": "Popup header" },
-        { "type": "text", "id": "caption", "label": "Caption", "default": "30-SEC QUIZ" },
-        { "type": "inline_richtext", "id": "title", "label": "Title", "default": "Who are you shopping for today? 🎯" },
-        { "type": "inline_richtext", "id": "content", "label": "Content", "default": "Tap one — we’ll curate the cutest CocoPoco picks just for you." },
-        { "type": "header", "content": "Item 1" },
-        { "type": "text", "id": "emoji_1", "label": "Emoji 1", "default": "✨" },
-        { "type": "text", "id": "title_1", "label": "Title 1", "default": "For Me" },
-        { "type": "textarea", "id": "content_1", "label": "Content 1", "default": "Aesthetic finds for the teen / college girlie." },
-        { "type": "url", "id": "link_1", "label": "Link 1" },
-        { "type": "header", "content": "Item 2" },
-        { "type": "text", "id": "emoji_2", "label": "Emoji 2", "default": "💼" },
-        { "type": "text", "id": "title_2", "label": "Title 2", "default": "Working Babe" },
-        { "type": "textarea", "id": "content_2", "label": "Content 2", "default": "Office aesthetic for the young working woman." },
-        { "type": "url", "id": "link_2", "label": "Link 2" },
-        { "type": "header", "content": "Item 3" },
-        { "type": "text", "id": "emoji_3", "label": "Emoji 3", "default": "🎀" },
-        { "type": "text", "id": "title_3", "label": "Title 3", "default": "Mom → Kids" },
-        { "type": "textarea", "id": "content_3", "label": "Content 3", "default": "Kid-approved picks for your little one." },
-        { "type": "url", "id": "link_3", "label": "Link 3" },
-        { "type": "header", "content": "Item 4" },
-        { "type": "text", "id": "emoji_4", "label": "Emoji 4", "default": "🌸" },
-        { "type": "text", "id": "title_4", "label": "Title 4", "default": "Mom → Me" },
-        { "type": "textarea", "id": "content_4", "label": "Content 4", "default": "A little self-love something just for you." },
-        { "type": "url", "id": "link_4", "label": "Link 4" },
-        { "type": "header", "content": "Item 5" },
-        { "type": "text", "id": "emoji_5", "label": "Emoji 5", "default": "🎁" },
-        { "type": "text", "id": "title_5", "label": "Title 5", "default": "Gift for a Friend" },
-        { "type": "textarea", "id": "content_5", "label": "Content 5", "default": "Bestie-approved bundles they'll adore." },
-        { "type": "url", "id": "link_5", "label": "Link 5" },
-        { "type": "header", "content": "Item 6" },
-        { "type": "text", "id": "emoji_6", "label": "Emoji 6", "default": "🎉" },
-        { "type": "text", "id": "title_6", "label": "Title 6", "default": "Birthday Return Gifts" },
-        { "type": "textarea", "id": "content_6", "label": "Content 6", "default": "Party favors that make you the cool mom." },
-        { "type": "url", "id": "link_6", "label": "Link 6" },
-        { "type": "header", "content": "Item 7" },
-        { "type": "text", "id": "emoji_7", "label": "Emoji 7" },
-        { "type": "text", "id": "title_7", "label": "Title 7" },
-        { "type": "textarea", "id": "content_7", "label": "Content 7" },
-        { "type": "url", "id": "link_7", "label": "Link 7" },
-        { "type": "header", "content": "Item 8" },
-        { "type": "text", "id": "emoji_8", "label": "Emoji 8" },
-        { "type": "text", "id": "title_8", "label": "Title 8" },
-        { "type": "textarea", "id": "content_8", "label": "Content 8" },
-        { "type": "url", "id": "link_8", "label": "Link 8" },
-        { "type": "header", "content": "Item 9" },
-        { "type": "text", "id": "emoji_9", "label": "Emoji 9" },
-        { "type": "text", "id": "title_9", "label": "Title 9" },
-        { "type": "textarea", "id": "content_9", "label": "Content 9" },
-        { "type": "url", "id": "link_9", "label": "Link 9" },
-        { "type": "header", "content": "Item 10" },
-        { "type": "text", "id": "emoji_10", "label": "Emoji 10" },
-        { "type": "text", "id": "title_10", "label": "Title 10" },
-        { "type": "textarea", "id": "content_10", "label": "Content 10" },
-        { "type": "url", "id": "link_10", "label": "Link 10" },
-        { "type": "header", "content": "Item 11" },
-        { "type": "text", "id": "emoji_11", "label": "Emoji 11" },
-        { "type": "text", "id": "title_11", "label": "Title 11" },
-        { "type": "textarea", "id": "content_11", "label": "Content 11" },
-        { "type": "url", "id": "link_11", "label": "Link 11" },
-        { "type": "header", "content": "Item 12" },
-        { "type": "text", "id": "emoji_12", "label": "Emoji 12" },
-        { "type": "text", "id": "title_12", "label": "Title 12" },
-        { "type": "textarea", "id": "content_12", "label": "Content 12" },
-        { "type": "url", "id": "link_12", "label": "Link 12" }
-      ]
-    }
-  ]
+  "blocks": [{ "type": "@app" }]
 }
 {% endschema %}
