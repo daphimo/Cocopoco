@@ -78,7 +78,7 @@
           "type": "collapsible",
           "settings": {
             "heading": "Details & specs",
-            "content": "",
+            "content": "{{ product.description }}",
             "open_by_default": false
           }
         },
