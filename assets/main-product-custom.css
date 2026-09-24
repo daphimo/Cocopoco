@@ -10,7 +10,7 @@
 .main-product{display:block}
 @media screen and (min-width:750px){
   .main-product__media{position:static}
-  .main-product__details{position:sticky;top:10rem;align-self:start}
+  .main-product__details{position:sticky;top:1rem;align-self:start}
 }
 .main-product__buy-buttons .product-form__submit.loading{position:relative;color:transparent;cursor:wait}
 .main-product__buy-buttons .product-form__submit.loading > span{visibility:hidden}
