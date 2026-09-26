@@ -3,24 +3,35 @@
   const BUTTON = '[button-wishlist]';
   const CARD = '.wishlist-product-card';
   const validHandle = (value) => typeof value === 'string' && /^[a-z0-9][a-z0-9-]*$/i.test(value);
+  let memoryWishlist = [];
   const gridRevisions = new WeakMap();
   const cardCache = new Map();
 
+  function debug(message, details) {
+    let enabled = Boolean(window.WISHLIST_DEBUG || window.ShopifyWishlistDebug);
+    try { enabled ||= localStorage.getItem('shopify-wishlist-debug') === 'true'; } catch (_) { /* unavailable */ }
+    if (!enabled) return;
+    if (details === undefined) console.info(`[Wishlist Debug] ${message}`);
+    else console.info(`[Wishlist Debug] ${message}`, details);
+  }
+
   function read() {
     try {
-      return [...new Set((localStorage.getItem(KEY) || '').split(',').filter(validHandle))];
+      memoryWishlist = [...new Set((localStorage.getItem(KEY) || '').split(',').filter(validHandle))].slice(0, 250);
+      return [...memoryWishlist];
     } catch (_) {
-      return [];
+      return [...memoryWishlist];
     }
   }
 
   function write(handles) {
+    handles = [...new Set(handles.filter(validHandle))].slice(0, 250);
+    memoryWishlist = handles;
     try {
       if (handles.length) localStorage.setItem(KEY, handles.join(','));
       else localStorage.removeItem(KEY);
     } catch (_) {
       announce('Wishlist could not be saved on this device.');
-      return false;
     }
     document.dispatchEvent(new CustomEvent('shopify-wishlist:updated', { detail: { wishlist: handles } }));
     return true;
@@ -122,6 +133,11 @@
       event.stopPropagation();
       const handles = read();
       const next = handles.includes(handle) ? handles.filter((item) => item !== handle) : [...handles, handle];
+      debug(next.includes(handle) ? 'ADD wishlist item' : 'REMOVE wishlist item', {
+        productHandle: handle,
+        wishlistBefore: handles,
+        wishlistAfter: next,
+      });
       if (write(next)) announce(`${button.dataset.productTitle || 'Product'} ${next.includes(handle) ? 'added to' : 'removed from'} wishlist.`);
       return;
     }
