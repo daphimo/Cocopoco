@@ -1,4 +1,4 @@
-.wishlist-button{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;padding:8px;border:1px solid currentColor;border-radius:50px;background:rgba(255,255,255,.92);color:var(--wishlist-color);cursor:pointer;line-height:0;text-decoration:none}
+.wishlist-button{display:inline-flex;align-items:center;justify-content:center;width:35px;height:35px;padding:3px;border:1px solid currentColor;border-radius:50px;background:rgba(255,255,255,.92);color:var(--wishlist-color);cursor:pointer;line-height:0;text-decoration:none}
 .wishlist-button svg{width:24px;height:24px;fill:transparent;transition:fill .2s ease}
 .wishlist-button.active svg{fill:var(--wishlist-color)}
 .wishlist-button:focus-visible,.wishlist-page a:focus-visible,.wishlist-page button:focus-visible{outline:2px solid var(--wishlist-color);outline-offset:3px}
