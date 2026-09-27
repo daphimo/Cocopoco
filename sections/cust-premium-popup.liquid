@@ -153,15 +153,15 @@
         return !state.lastShown || Date.now() - state.lastShown >= period;
       };
       const markShown = () => {
-        setState({ lastShown: Date.now(), badgeDismissed: false });
+        setState({ lastShown: Date.now() });
         safeStorage.set('sessionStorage', sessionKey, { shown: true });
       };
       const setBodyLock = (lock) => {
         if (lock) { previousOverflow = document.body.style.overflow; document.body.classList.add('cust__premium-popup-open'); document.body.style.overflow = 'hidden'; }
         else { document.body.classList.remove('cust__premium-popup-open'); document.body.style.overflow = previousOverflow; }
       };
-      const showBadge = (afterClose = false) => {
-        if (!badge || !config.badgeEnabled || getState().badgeDismissed || getState().completed || (!afterClose && !frequencyAllows())) return;
+      const showBadge = () => {
+        if (!badge || !config.badgeEnabled || getState().badgeDismissed) return;
         window.clearTimeout(badgeTimer);
         badgeTimer = window.setTimeout(() => { badge.hidden = false; }, config.badgeDelay * 1000);
       };
@@ -189,7 +189,7 @@
         if (window.__custPremiumPopupActive === root) window.__custPremiumPopupActive = null;
         window.setTimeout(() => { root.hidden = true; }, 220);
         if (previousFocus?.isConnected) previousFocus.focus();
-        if (showClosedBadge) showBadge(true);
+        if (showClosedBadge) showBadge();
       };
       const showSuccess = () => {
         if (main) main.hidden = true;
@@ -256,7 +256,7 @@
         document.addEventListener('mouseout', onExit);
       }
       if (config.tabReturn) document.addEventListener('visibilitychange', () => { if (document.hidden) tabWasHidden = true; else if (tabWasHidden) { tabWasHidden = false; tryOpen(); } });
-      if (config.trigger === 'manual' && config.badgeEnabled) showBadge();
+      if (config.badgeEnabled) showBadge();
       document.addEventListener('cust:open-premium-popup', (event) => { if (!event.detail?.id || event.detail.id === config.id) openPopup(event.detail?.trigger || null, true); });
       document.addEventListener('shopify:section:unload', (event) => { if (event.detail.sectionId === config.id) closePopup(false); });
     })();
@@ -306,7 +306,7 @@
     { "type": "text", "id": "badge_text", "label": "Badge text", "default": "Get 10% Off", "visible_if": "{{ section.settings.enable_badge }}" },
     { "type": "select", "id": "badge_position", "label": "Badge position", "options": [{"value":"bottom-right","label":"Bottom right"},{"value":"bottom-left","label":"Bottom left"},{"value":"middle-right","label":"Middle right"},{"value":"middle-left","label":"Middle left"}], "default": "bottom-right", "visible_if": "{{ section.settings.enable_badge }}" },
     { "type": "select", "id": "badge_icon", "label": "Badge icon", "options": [{"value":"gift","label":"Gift"},{"value":"tag","label":"Tag"},{"value":"discount","label":"Discount"},{"value":"message","label":"Message"},{"value":"none","label":"None"}], "default": "gift", "visible_if": "{{ section.settings.enable_badge }}" },
-    { "type": "color", "id": "badge_background", "label": "Badge background", "default": "#111111", "visible_if": "{{ section.settings.enable_badge }}" },
+    { "type": "color", "id": "badge_background", "label": "Badge background", "default": "#E83E8C", "visible_if": "{{ section.settings.enable_badge }}" },
     { "type": "color", "id": "badge_text_color", "label": "Badge text color", "default": "#FFFFFF", "visible_if": "{{ section.settings.enable_badge }}" },
     { "type": "range", "id": "badge_delay", "label": "Badge show delay", "min": 0, "max": 30, "step": 1, "unit": "s", "default": 0, "visible_if": "{{ section.settings.enable_badge }}" },
     { "type": "header", "content": "Appearance" },
@@ -314,9 +314,9 @@
     { "type": "range", "id": "overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 50 },
     { "type": "range", "id": "border_radius", "label": "Border radius", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 16 },
     { "type": "select", "id": "animation", "label": "Animation", "options": [{"value":"fade","label":"Fade"},{"value":"scale","label":"Scale"},{"value":"slide-up","label":"Slide up"},{"value":"slide-down","label":"Slide down"},{"value":"none","label":"None"}], "default": "scale" },
-    { "type": "color", "id": "popup_background", "label": "Popup background", "default": "#FFFFFF" },
-    { "type": "color", "id": "popup_text_color", "label": "Popup text color", "default": "#111111" },
-    { "type": "color", "id": "button_color", "label": "Button color", "default": "#111111" }
+    { "type": "color", "id": "popup_background", "label": "Popup background", "default": "#FFFDFE" },
+    { "type": "color", "id": "popup_text_color", "label": "Popup text color", "default": "#341824" },
+    { "type": "color", "id": "button_color", "label": "Button color", "default": "#E83E8C" }
   ],
   "presets": [{ "name": "Premium popup" }],
   "enabled_on": { "groups": ["footer"] }

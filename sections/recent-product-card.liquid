@@ -1,0 +1,19 @@
+<li class="recently-viewed__item" data-recent-product-card>
+  {% render 'card-product',
+    card_product: product,
+    media_aspect_ratio: 'square',
+    image_shape: 'default',
+    show_secondary_image: true,
+    show_vendor: false,
+    show_rating: false,
+    section_id: section.id,
+    product_view_context: 'recently-viewed'
+  %}
+</li>
+
+{% schema %}
+{
+  "name": "Recent product card",
+  "templates": ["product"]
+}
+{% endschema %}

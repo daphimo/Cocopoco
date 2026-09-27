@@ -1,0 +1,46 @@
+{% doc %}
+  Applies role-based, merchant-configurable brand colors to a section.
+
+  @param {section} section - The section whose color settings should be applied.
+{% enddoc %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --cp-section-background: {{ section.settings.brand_background_color }};
+    --cp-section-caption: {{ section.settings.brand_caption_color }};
+    --cp-section-heading: {{ section.settings.brand_heading_color }};
+    --cp-section-text: {{ section.settings.brand_text_color }};
+    --cp-section-border: {{ section.settings.brand_border_color }};
+    --cp-section-button-background: {{ section.settings.brand_button_background }};
+    --cp-section-button-text: {{ section.settings.brand_button_text_color }};
+    background-color: var(--cp-section-background);
+    color: var(--cp-section-text);
+  }
+
+  #shopify-section-{{ section.id }} :is(h1, h2, .h0, .h1, .h2, [class*='__title'], [class*='__heading']) {
+    color: var(--cp-section-heading);
+  }
+
+  #shopify-section-{{ section.id }} :is([class*='__caption'], [class*='__eyebrow'], [class*='__kicker'], [class*='__subtitle'], [class*='breadcrumb']) {
+    color: var(--cp-section-caption);
+  }
+
+  #shopify-section-{{ section.id }} :is(p, .rte, [class*='__description'], [class*='__text'], [class*='__meta']) {
+    color: var(--cp-section-text);
+  }
+
+  #shopify-section-{{ section.id }} :is([class*='__card'], [class*='__item'], details, input, textarea, select) {
+    border-color: var(--cp-section-border);
+  }
+
+  #shopify-section-{{ section.id }} :is(.button, button[type='submit'], button[class*='__button'], a[class*='__button']) {
+    border-radius: 999px;
+  }
+
+  #shopify-section-{{ section.id }} :is(.button, button[type='submit'], button[class*='__button'], a[class*='__button']):not(.button--secondary) {
+    --color-button: var(--cp-section-button-background);
+    --color-button-text: var(--cp-section-button-text);
+    background-color: var(--cp-section-button-background);
+    color: var(--cp-section-button-text);
+  }
+{% endstyle %}

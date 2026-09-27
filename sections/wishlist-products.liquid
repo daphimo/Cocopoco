@@ -46,10 +46,12 @@
   <p class="wishlist-page__status visually-hidden" data-wishlist-status role="status" aria-live="polite"></p>
   {%- endif -%}
 </section>
+{% render 'section-brand-colors', section: section %}
+
 {% schema %}
 {
   "name": "Wishlist products",
-  "settings": [
+  "settings": [{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
     {"type":"image_picker","id":"image","label":"Desktop cover image"},
     {"type":"image_picker","id":"mobile_image","label":"Mobile cover image"},
     {"type":"range","id":"banner_height","min":180,"max":600,"step":20,"unit":"px","label":"Desktop cover height","default":360},

@@ -1,0 +1,214 @@
+{{ 'custom-hero-slider.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom-hero-slider.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign slides = section.blocks | where: 'type', 'slide'
+  assign benefits = section.blocks | where: 'type', 'benefit'
+  assign splide_type = section.settings.slide_type
+  if splide_type == 'slide' and section.settings.loop
+    assign splide_type = 'loop'
+  endif
+-%}
+
+<section
+  id="CustHeroSlider-{{ section.id }}"
+  class="cust__hero-slider"
+  data-cust-hero-slider
+  aria-label="{{ section.settings.accessibility_label | escape }}"
+  style="--cust-slider-page-width:{{ settings.page_width | divided_by: 10.0 }}rem;--cust-slider-height:{{ section.settings.desktop_height }}px;--cust-slider-mobile-height:{{ section.settings.mobile_height }}px;--cust-benefit-count:{{ benefits.size | at_least: 1 }};"
+>
+  <div class="splide" data-cust-hero-splide>
+    <div class="splide__track">
+      <ul class="splide__list">
+        {%- for block in slides -%}
+          {%- liquid
+            assign desktop_image = block.settings.desktop_image
+            if desktop_image == blank
+              assign desktop_image = block.settings.mobile_image
+            endif
+            assign loading = block.settings.image_loading
+            assign fetch_priority = 'auto'
+            if section.index == 1 and forloop.first
+              assign loading = 'eager'
+              assign fetch_priority = 'high'
+            endif
+            assign horizontal = 'flex-start'
+            assign items = 'flex-start'
+            if block.settings.horizontal_position == 'center'
+              assign horizontal = 'center'
+              assign items = 'center'
+            elsif block.settings.horizontal_position == 'right'
+              assign horizontal = 'flex-end'
+              assign items = 'flex-end'
+            endif
+          -%}
+          <li
+            class="splide__slide cust__hero-slider-slide"
+            style="--cust-slide-focal:{{ block.settings.image_position }};--cust-slide-overlay:{{ block.settings.overlay_color }};--cust-slide-overlay-opacity:{{ block.settings.overlay_opacity | divided_by: 100.0 }};--cust-slide-horizontal:{{ horizontal }};--cust-slide-vertical:{{ block.settings.vertical_position }};--cust-slide-items:{{ items }};--cust-slide-align:{{ block.settings.text_alignment }};--cust-slide-content-width:{{ block.settings.content_width }}px;--cust-slide-eyebrow-color:{{ block.settings.eyebrow_text_color }};--cust-slide-eyebrow-background:{{ block.settings.eyebrow_background }};--cust-slide-eyebrow-border:{{ block.settings.eyebrow_border }};--cust-slide-eyebrow-radius:{{ block.settings.eyebrow_radius }}px;--cust-slide-eyebrow-py:{{ block.settings.eyebrow_padding_y }}px;--cust-slide-eyebrow-px:{{ block.settings.eyebrow_padding_x }}px;--cust-slide-title-color:{{ block.settings.heading_color }};--cust-slide-title-size:{{ block.settings.heading_size }}px;--cust-slide-description-color:{{ block.settings.description_color }};--cust-slide-description-size:{{ block.settings.description_size }}px;--cust-slide-primary-background:{{ block.settings.primary_background }};--cust-slide-primary-text:{{ block.settings.primary_text_color }};--cust-slide-primary-border:{{ block.settings.primary_border }};--cust-slide-secondary-background:{{ block.settings.secondary_background }};--cust-slide-secondary-text:{{ block.settings.secondary_text_color }};--cust-slide-secondary-border:{{ block.settings.secondary_border }};--cust-button-radius:{{ block.settings.button_radius }}px;--cust-slide-nav-color:{{ block.settings.navigation_color }};--cust-slide-nav-background:{{ block.settings.navigation_background }};--cust-slide-pagination-color:{{ block.settings.pagination_color }};--cust-slide-pagination-active:{{ block.settings.pagination_active_color }};"
+            {{ block.shopify_attributes }}
+          >
+            <div class="cust__hero-slider-media">
+              {%- if desktop_image != blank -%}
+                <picture>
+                  {%- if block.settings.mobile_image != blank -%}
+                    <source media="(max-width:749px)" srcset="{{ block.settings.mobile_image | image_url: width: 375 }} 375w, {{ block.settings.mobile_image | image_url: width: 550 }} 550w, {{ block.settings.mobile_image | image_url: width: 750 }} 750w, {{ block.settings.mobile_image | image_url: width: 1100 }} 1100w" sizes="100vw">
+                  {%- endif -%}
+                  {{ desktop_image | image_url: width: 2400 | image_tag: widths: '750, 1100, 1500, 1780, 2000, 2400', sizes: '100vw', loading: loading, fetchpriority: fetch_priority, alt: block.settings.image_alt }}
+                </picture>
+              {%- else -%}
+                <div class="cust__hero-slider-placeholder">{{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+              {%- endif -%}
+            </div>
+
+            <div class="cust__hero-slider-inner">
+              <div class="cust__hero-slider-content">
+                {%- if block.settings.eyebrow != blank -%}
+                  <div class="cust__hero-slider-eyebrow">
+                    {%- unless block.settings.eyebrow_icon == 'none' -%}<span>{% render 'icons', icon: block.settings.eyebrow_icon %}</span>{%- endunless -%}
+                    <span>{{ block.settings.eyebrow }}</span>
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.heading != blank -%}<h2 class="cust__hero-slider-heading">{{ block.settings.heading }}</h2>{%- endif -%}
+                {%- if block.settings.description != blank -%}<div class="cust__hero-slider-description rte">{{ block.settings.description }}</div>{%- endif -%}
+                {%- if block.settings.primary_text != blank and block.settings.primary_link != blank or block.settings.secondary_text != blank and block.settings.secondary_link != blank -%}
+                  <div class="cust__hero-slider-buttons">
+                    {%- if block.settings.primary_text != blank and block.settings.primary_link != blank -%}
+                      <a class="cust__hero-slider-button cust__hero-slider-button--primary" href="{{ block.settings.primary_link }}">{{ block.settings.primary_text }}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    {%- endif -%}
+                    {%- if block.settings.secondary_text != blank and block.settings.secondary_link != blank -%}
+                      <a class="cust__hero-slider-button cust__hero-slider-button--secondary" href="{{ block.settings.secondary_link }}">{{ block.settings.secondary_text }}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </li>
+        {%- else -%}
+          <li class="splide__slide cust__hero-slider-slide"><div class="cust__hero-slider-inner"><div class="cust__hero-slider-content"><h2 class="cust__hero-slider-heading">Add a slide</h2></div></div></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    {%- if section.settings.show_navigation and slides.size > 1 -%}
+      <div class="splide__arrows">
+        <button class="splide__arrow splide__arrow--prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="splide__arrow splide__arrow--next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if benefits.size > 0 -%}
+    <div class="cust__hero-slider-benefits" aria-label="Store benefits">
+      {%- for block in benefits -%}
+        <div class="cust__hero-slider-benefit" style="--cust-benefit-icon:{{ block.settings.icon_color }};--cust-benefit-text:{{ block.settings.text_color }};" {{ block.shopify_attributes }}>
+          {%- if block.settings.link != blank -%}<a class="cust__hero-slider-benefit-link" href="{{ block.settings.link }}">{%- endif -%}
+          <span class="cust__hero-slider-benefit-icon">{% render 'icons', icon: block.settings.icon %}</span><span>{{ block.settings.text }}</span>
+          {%- if block.settings.link != blank -%}</a>{%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  <script type="application/json" data-cust-hero-config>
+    {"type":{{ splide_type | json }},"rewind":{{ section.settings.loop | json }},"autoplay":{{ section.settings.autoplay | json }},"interval":{{ section.settings.autoplay_speed | json }},"pauseOnHover":{{ section.settings.pause_on_hover | json }},"pauseOnFocus":{{ section.settings.pause_on_focus | json }},"arrows":{{ section.settings.show_navigation | json }},"pagination":{{ section.settings.show_pagination | json }},"keyboard":"global","speed":700,"drag":true,"reducedMotion":{"speed":0,"rewindSpeed":0,"autoplay":"pause"}}
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Custom hero slider",
+  "tag": "section",
+  "class": "custom-hero-slider-section section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "header", "content": "Slider settings" },
+    { "type": "text", "id": "accessibility_label", "label": "Accessibility label", "default": "Featured promotions" },
+    { "type": "checkbox", "id": "autoplay", "label": "Enable autoplay", "default": true },
+    { "type": "range", "id": "autoplay_speed", "label": "Autoplay interval", "min": 3000, "max": 7000, "step": 1000, "unit": "ms", "default": 5000 },
+    { "type": "select", "id": "slide_type", "label": "Transition type", "default": "slide", "options": [{"value":"slide","label":"Slide"},{"value":"fade","label":"Fade"}] },
+    { "type": "checkbox", "id": "loop", "label": "Loop slider", "default": true },
+    { "type": "checkbox", "id": "show_navigation", "label": "Show navigation arrows", "default": true },
+    { "type": "checkbox", "id": "show_pagination", "label": "Show pagination", "default": true },
+    { "type": "checkbox", "id": "pause_on_hover", "label": "Pause autoplay on hover", "default": true },
+    { "type": "checkbox", "id": "pause_on_focus", "label": "Pause autoplay when focused", "default": true },
+    { "type": "header", "content": "Layout settings" },
+    { "type": "range", "id": "desktop_height", "label": "Desktop height", "min": 350, "max": 900, "step": 10, "unit": "px", "default": 500 },
+    { "type": "range", "id": "mobile_height", "label": "Mobile height", "min": 500, "max": 1000, "step": 10, "unit": "px", "default": 720 }
+  ],
+  "blocks": [
+    {
+      "type": "slide", "name": "Slide", "limit": 8,
+      "settings": [
+        { "type": "header", "content": "Slide content" },
+        { "type": "image_picker", "id": "desktop_image", "label": "Desktop image" },
+        { "type": "image_picker", "id": "mobile_image", "label": "Mobile image" },
+        { "type": "text", "id": "image_alt", "label": "Image alt text" },
+        { "type": "select", "id": "image_position", "label": "Image focal position", "default": "70% 30%", "options": [{"value":"left top","label":"Left top"},{"value":"left center","label":"Left center"},{"value":"center top","label":"Center top"},{"value":"center center","label":"Center"},{"value":"center bottom","label":"Center bottom"},{"value":"right top","label":"Right top"},{"value":"right center","label":"Right center"},{"value":"70% 30%","label":"Existing hero position"}] },
+        { "type": "select", "id": "image_loading", "label": "Image loading", "default": "lazy", "options": [{"value":"lazy","label":"Lazy"},{"value":"eager","label":"Eager"}] },
+        { "type": "inline_richtext", "id": "eyebrow", "label": "Eyebrow", "default": "FOR THE EVERYDAY ROMANTIC" },
+        { "type": "select", "id": "eyebrow_icon", "label": "Eyebrow icon", "default": "sparkles", "options": [{"value":"sparkles","label":"Sparkles"},{"value":"star","label":"Star"},{"value":"truck","label":"Truck"},{"value":"rotate","label":"Dispatch"},{"value":"none","label":"None"}] },
+        { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Romanticize your everyday." },
+        { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Cute, aesthetic little things — stationery, bottles, keychains and accessories — that make your ordinary routine feel a lot more special.</p>" },
+        { "type": "header", "content": "Buttons" },
+        { "type": "text", "id": "primary_text", "label": "Primary button text", "default": "Shop the joy" },
+        { "type": "url", "id": "primary_link", "label": "Primary button link" },
+        { "type": "text", "id": "secondary_text", "label": "Secondary button text", "default": "Explore new arrivals" },
+        { "type": "url", "id": "secondary_link", "label": "Secondary button link" },
+        { "type": "header", "content": "Layout" },
+        { "type": "select", "id": "horizontal_position", "label": "Horizontal position", "default": "left", "options": [{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}] },
+        { "type": "select", "id": "vertical_position", "label": "Vertical position", "default": "center", "options": [{"value":"flex-start","label":"Top"},{"value":"center","label":"Center"},{"value":"flex-end","label":"Bottom"}] },
+        { "type": "select", "id": "text_alignment", "label": "Text alignment", "default": "left", "options": [{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}] },
+        { "type": "range", "id": "content_width", "label": "Content maximum width", "min": 320, "max": 760, "step": 20, "unit": "px", "default": 620 },
+        { "type": "range", "id": "heading_size", "label": "Heading size", "min": 28, "max": 90, "step": 1, "unit": "px", "default": 48 },
+        { "type": "range", "id": "description_size", "label": "Description size", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 16 },
+        { "type": "range", "id": "eyebrow_radius", "label": "Eyebrow radius", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 24 },
+        { "type": "range", "id": "eyebrow_padding_x", "label": "Eyebrow horizontal padding", "min": 4, "max": 30, "step": 1, "unit": "px", "default": 12 },
+        { "type": "range", "id": "eyebrow_padding_y", "label": "Eyebrow vertical padding", "min": 2, "max": 20, "step": 1, "unit": "px", "default": 7 },
+        { "type": "range", "id": "button_radius", "label": "Button radius", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 40 },
+        { "type": "header", "content": "Colors" },
+        { "type": "color", "id": "overlay_color", "label": "Overlay", "default": "#FFFFFF" },
+        { "type": "range", "id": "overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 65 },
+        { "type": "color", "id": "eyebrow_text_color", "label": "Eyebrow text", "default": "#B86A8A" },
+        { "type": "color", "id": "eyebrow_background", "label": "Eyebrow background", "default": "#FFFFFF" },
+        { "type": "color", "id": "eyebrow_border", "label": "Eyebrow border", "default": "#F9D5E6" },
+        { "type": "color", "id": "heading_color", "label": "Heading", "default": "#341824" },
+        { "type": "color", "id": "description_color", "label": "Description", "default": "#4A4145" },
+        { "type": "color", "id": "primary_background", "label": "Primary button background", "default": "#E83E8C" },
+        { "type": "color", "id": "primary_text_color", "label": "Primary button text", "default": "#FFFFFF" },
+        { "type": "color", "id": "primary_border", "label": "Primary button border", "default": "#E83E8C" },
+        { "type": "color", "id": "secondary_background", "label": "Secondary button background", "default": "#FFFFFF" },
+        { "type": "color", "id": "secondary_text_color", "label": "Secondary button text", "default": "#341824" },
+        { "type": "color", "id": "secondary_border", "label": "Secondary button border", "default": "#F9D5E6" },
+        { "type": "color", "id": "navigation_color", "label": "Navigation arrows", "default": "#341824" },
+        { "type": "color", "id": "navigation_background", "label": "Navigation background", "default": "#FFFFFF" },
+        { "type": "color", "id": "pagination_color", "label": "Pagination", "default": "#F9D5E6" },
+        { "type": "color", "id": "pagination_active_color", "label": "Active pagination", "default": "#E83E8C" }
+      ]
+    },
+    {
+      "type": "benefit", "name": "Benefit", "limit": 4,
+      "settings": [
+        { "type": "header", "content": "Benefit" },
+        { "type": "select", "id": "icon", "label": "SVG icon", "default": "star", "options": [{"value":"star","label":"Star"},{"value":"truck","label":"Delivery truck"},{"value":"sparkles","label":"Discount sparkles"},{"value":"rotate","label":"Dispatch"}] },
+        { "type": "inline_richtext", "id": "text", "label": "Text", "default": "Store benefit" },
+        { "type": "url", "id": "link", "label": "Optional link" },
+        { "type": "header", "content": "Colors" },
+        { "type": "color", "id": "icon_color", "label": "Icon", "default": "#E83E8C" },
+        { "type": "color", "id": "text_color", "label": "Text", "default": "#4A4145" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [{
+    "name": "Custom hero slider",
+    "blocks": [
+      { "type": "slide" },
+      { "type": "slide", "settings": { "eyebrow": "LITTLE THINGS, BIG JOY", "heading": "Make every day feel special.", "description": "<p>Thoughtful finds, charming details and gifts made for everyday delight.</p>", "primary_text": "Discover the edit", "secondary_text": "Shop gifts" } },
+      { "type": "benefit", "settings": { "icon": "star", "text": "2000+ happy orders" } },
+      { "type": "benefit", "settings": { "icon": "truck", "text": "₹99 flat shipping, pan-India" } },
+      { "type": "benefit", "settings": { "icon": "sparkles", "text": "5% off on prepaid orders" } },
+      { "type": "benefit", "settings": { "icon": "rotate", "text": "Dispatched fast" } }
+    ]
+  }]
+}
+{% endschema %}

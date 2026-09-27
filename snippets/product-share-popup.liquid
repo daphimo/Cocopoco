@@ -1,0 +1,48 @@
+{% doc %}
+  Renders an accessible product share trigger and popup.
+
+  @param {product} product - Product being shared.
+  @param {block} block - Share popup block settings.
+{% enddoc %}
+
+{%- liquid
+  assign share_url = canonical_url
+  assign share_title = product.title | url_encode
+  assign encoded_url = share_url | url_encode
+  assign share_image = blank
+  if product.featured_image != blank
+    assign share_image = product.featured_image | image_url: width: 1200 | prepend: 'https:' | url_encode
+  endif
+  assign dialog_id = 'ProductShareDialog-' | append: section.id | append: '-' | append: block.id
+-%}
+
+<cust-share-popup class="cust-share" style="--share-accent:{{ block.settings.accent_color }};--share-heading:{{ block.settings.heading_color }};--share-text:{{ block.settings.text_color }};--share-background:{{ block.settings.background_color }};--share-border:{{ block.settings.border_color }};" {{ block.shopify_attributes }}>
+  <button class="cust-share__trigger" type="button" aria-haspopup="dialog" aria-controls="{{ dialog_id }}" data-share-open>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5"/></svg>
+    <span>{{ block.settings.button_label | escape }}</span>
+  </button>
+
+  <dialog class="cust-share__dialog" id="{{ dialog_id }}" aria-labelledby="{{ dialog_id }}-title" data-share-dialog>
+    <header class="cust-share__header">
+      <h2 id="{{ dialog_id }}-title">{{ block.settings.popup_heading | escape }}</h2>
+      <button class="cust-share__close" type="button" aria-label="Close share popup" data-share-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    </header>
+    <div class="cust-share__content">
+      <p class="cust-share__label">{{ block.settings.social_heading | escape }}</p>
+      <div class="cust-share__icons">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ encoded_url }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">{{ 'icon-facebook.svg' | inline_asset_content }}</a>
+        <a href="https://twitter.com/intent/tweet?url={{ encoded_url }}&amp;text={{ share_title }}" target="_blank" rel="noopener noreferrer" aria-label="Share on X">{{ 'icon-twitter.svg' | inline_asset_content }}</a>
+        <a href="https://pinterest.com/pin/create/button/?url={{ encoded_url }}&amp;media={{ share_image }}&amp;description={{ share_title }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Pinterest">{{ 'icon-pinterest.svg' | inline_asset_content }}</a>
+        <a href="https://api.whatsapp.com/send?text={{ share_title }}%20{{ encoded_url }}" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.8a8 8 0 0 1-11.8 7L4 20l1.2-4.1A8 8 0 1 1 20 11.8Z"/><path d="M9 8.5c.5 3 2 4.5 5 5l1-1.2c.2-.3.5-.3.8-.2l2 1c.3.1.4.4.4.7-.2 1.3-1.3 2.2-2.6 2.2-4.5-.3-7.3-3.1-7.6-7.6 0-1.3.9-2.4 2.2-2.6.3 0 .6.1.7.4l1 2c.1.3.1.6-.2.8L9 8.5Z"/></svg></a>
+        <a href="https://t.me/share/url?url={{ encoded_url }}&amp;text={{ share_title }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 4-3 16-6-4-3 3v-5l8-7-10 6-4-1 18-8Z"/></svg></a>
+      </div>
+      <p class="cust-share__label">{{ block.settings.copy_heading | escape }}</p>
+      <div class="cust-share__field">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l2.3-2.3A4 4 0 0 0 12.3 6L11 7.3M14 10a4 4 0 0 0-5.7 0L6 12.3A4 4 0 0 0 11.7 18l1.3-1.3"/></svg>
+        <input type="text" value="{{ share_url }}" readonly aria-label="Product link" data-share-url>
+        <button type="button" data-share-copy data-copy-label="{{ block.settings.copy_button | escape }}" data-copied-label="{{ block.settings.copied_text | escape }}">{{ block.settings.copy_button | escape }}</button>
+      </div>
+      <span class="visually-hidden" role="status" aria-live="polite" data-share-status></span>
+    </div>
+  </dialog>
+</cust-share-popup>

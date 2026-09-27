@@ -15,10 +15,13 @@
     </div>
   </div>
 </section>
+{% render 'section-brand-colors', section: section %}
+
 {% schema %}
 {
   "name": "About mission",
   "settings": [
+{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
     { "type": "image_picker", "id": "image", "label": "Mission image" },
     { "type": "select", "id": "image_position", "label": "Image position", "options": [{"value":"left","label":"Left"},{"value":"right","label":"Right"}], "default": "left" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow" },

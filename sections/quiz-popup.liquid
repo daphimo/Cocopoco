@@ -48,6 +48,8 @@
   </div>
 </section>
 
+{% render 'section-brand-colors', section: section %}
+
 {% schema %}
 {
   "name": "Quiz popup",
@@ -55,6 +57,7 @@
   "class": "section-quiz-popup",
   "max_blocks": 12,
   "settings": [
+{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
     { "type": "header", "content": "Section card" },
     { "type": "text", "id": "trigger_pill", "label": "Pill", "default": "30-SEC QUIZ" },
     { "type": "inline_richtext", "id": "trigger_title", "label": "Title", "default": "Not sure what to pick? Take the quiz 🎯" },
@@ -79,6 +82,7 @@
       "type": "option",
       "name": "Quiz option",
       "settings": [
+{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
         { "type": "select", "id": "icon", "label": "Icon", "default": "sparkles", "options": [
           { "value": "sparkles", "label": "Sparkle" },
           { "value": "briefcase", "label": "Bag" },

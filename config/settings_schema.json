@@ -1468,6 +1468,22 @@
     ]
   },
   {
+    "name": "Product cards",
+    "settings": [
+      { "type": "color", "id": "product_card_background", "label": "Card background", "default": "#FFFFFF" },
+      { "type": "color", "id": "product_card_border", "label": "Card border", "default": "#F9D5E6" },
+      { "type": "color", "id": "product_card_title", "label": "Product title", "default": "#341824" },
+      { "type": "color", "id": "product_card_description", "label": "Description", "default": "#4A4145" },
+      { "type": "color", "id": "product_card_price", "label": "Price", "default": "#341824" },
+      { "type": "color", "id": "product_card_compare_price", "label": "Compare-at price", "default": "#B86A8A" },
+      { "type": "color", "id": "product_card_rating", "label": "Rating accent", "default": "#E83E8C" },
+      { "type": "color", "id": "product_card_badge_background", "label": "Badge background", "default": "#FEDBEF" },
+      { "type": "color", "id": "product_card_badge_text", "label": "Badge text", "default": "#341824" },
+      { "type": "color", "id": "product_card_button_background", "label": "Button background", "default": "#E83E8C" },
+      { "type": "color", "id": "product_card_button_text", "label": "Button text", "default": "#FFFFFF" }
+    ]
+  },
+  {
     "name": "Wishlist",
     "settings": [
       {"type":"color","id":"wishlist_color","label":"Wishlist Color","default":"#E74695"},

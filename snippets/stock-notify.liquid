@@ -1,0 +1,64 @@
+{% doc %}
+  Renders a variant-aware back-in-stock registration block.
+
+  @param {product} product - Product containing the variants.
+  @param {block} block - Stock Notify block settings.
+{% enddoc %}
+
+{%- liquid
+  assign selected_variant = product.selected_or_first_available_variant
+  assign dialog_id = 'StockNotifyDialog-' | append: section.id | append: '-' | append: block.id
+  assign form_id = 'StockNotifyForm-' | append: section.id | append: '-' | append: block.id
+-%}
+
+<stock-notify
+  class="stock-notify"
+  data-section-id="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+  data-product-handle="{{ product.handle | escape }}"
+  data-product-title="{{ product.title | escape }}"
+  data-selected-variant-id="{{ selected_variant.id }}"
+  data-endpoint="{{ block.settings.endpoint | escape }}"
+  data-debug="{{ block.settings.debug }}"
+  data-enabled="{{ block.settings.enabled }}"
+  style="--stock-notify-accent:{{ block.settings.button_background }};--stock-notify-button-text:{{ block.settings.button_text_color }};--stock-notify-background:{{ block.settings.popup_background }};--stock-notify-heading:{{ block.settings.heading_color }};--stock-notify-text:{{ block.settings.text_color }};--stock-notify-border:{{ block.settings.border_color }};--stock-notify-radius:{{ block.settings.button_radius }}px;"
+  {{ block.shopify_attributes }}
+  hidden
+>
+  <button class="stock-notify__trigger" type="button" aria-haspopup="dialog" aria-controls="{{ dialog_id }}" data-stock-notify-open>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+    <span>{{ block.settings.button_text | escape }}</span>
+  </button>
+
+  <dialog class="stock-notify__dialog" id="{{ dialog_id }}" aria-labelledby="{{ dialog_id }}-heading" data-stock-notify-dialog>
+    <button class="stock-notify__close" type="button" aria-label="Close notification popup" data-stock-notify-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    <div class="stock-notify__content" data-stock-notify-content>
+      <span class="stock-notify__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg></span>
+      <h2 id="{{ dialog_id }}-heading">{{ block.settings.popup_heading | escape }}</h2>
+      <p>{{ block.settings.popup_description | escape }}</p>
+      <p class="stock-notify__variant" data-stock-notify-variant>{{ selected_variant.title | escape }}</p>
+
+      {%- form 'contact', id: form_id, class: 'stock-notify__form', data-stock-notify-form: '' -%}
+        <input type="hidden" name="contact[request_type]" value="Stock Notify">
+        <input type="hidden" name="contact[product_id]" value="{{ product.id }}">
+        <input type="hidden" name="contact[product_handle]" value="{{ product.handle | escape }}">
+        <input type="hidden" name="contact[variant_id]" value="{{ selected_variant.id }}" data-stock-notify-variant-id>
+        <input type="hidden" name="contact[variant_title]" value="{{ selected_variant.title | escape }}" data-stock-notify-variant-title>
+        <input type="hidden" name="contact[body]" value="Stock Notify request for {{ product.title | escape }} — {{ selected_variant.title | escape }} (variant {{ selected_variant.id }})" data-stock-notify-body>
+        <label for="StockNotifyEmail-{{ section.id }}-{{ block.id }}">Email address</label>
+        <input id="StockNotifyEmail-{{ section.id }}-{{ block.id }}" class="stock-notify__email" type="email" name="contact[email]" autocomplete="email" placeholder="{{ block.settings.email_placeholder | escape }}" required data-stock-notify-email>
+        <button class="stock-notify__submit" type="submit" data-stock-notify-submit><span data-stock-notify-submit-label>{{ block.settings.submit_text | escape }}</span><span class="stock-notify__spinner" aria-hidden="true"></span></button>
+        <p class="stock-notify__message" role="alert" data-stock-notify-error hidden>{{ block.settings.error_message | escape }}</p>
+      {%- endform -%}
+    </div>
+    <div class="stock-notify__success" role="status" aria-live="polite" data-stock-notify-success hidden>
+      <span class="stock-notify__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span>
+      <h2>{{ block.settings.success_heading | escape }}</h2>
+      <p data-stock-notify-success-message>{{ block.settings.success_message | escape }}</p>
+      <button type="button" class="stock-notify__done" data-stock-notify-close>Done</button>
+    </div>
+  </dialog>
+
+  <script type="application/json" data-stock-notify-variants>{{ product.variants | json }}</script>
+  <script type="application/json" data-stock-notify-messages>{"success":{{ block.settings.success_message | json }},"duplicate":{{ block.settings.duplicate_message | json }},"error":{{ block.settings.error_message | json }},"submit":{{ block.settings.submit_text | json }}}</script>
+</stock-notify>

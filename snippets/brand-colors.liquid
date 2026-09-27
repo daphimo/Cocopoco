@@ -1,0 +1,32 @@
+{% doc %}
+  CocoPoco brand color palette.
+
+  @example
+  color: var(--color-cocopoco-pink);
+{% enddoc %}
+
+{% style %}
+  :root {
+    --color-cocopoco-pink: #e83e8c;
+    --color-blush-pink: #fedbef;
+    --color-soft-blush: #feeef5;
+    --color-deep-cocoa: #341824;
+    --color-pure-white: #ffffff;
+    --color-warm-white: #fffdfe;
+    --color-rose-mist: #f9d5e6;
+    --color-muted-rose: #b86a8a;
+    --color-soft-gold: #f4c95d;
+    --color-charcoal: #4a4145;
+    --cp-product-card-background: {{ settings.product_card_background }};
+    --cp-product-card-border: {{ settings.product_card_border }};
+    --cp-product-card-title: {{ settings.product_card_title }};
+    --cp-product-card-description: {{ settings.product_card_description }};
+    --cp-product-card-price: {{ settings.product_card_price }};
+    --cp-product-card-compare-price: {{ settings.product_card_compare_price }};
+    --cp-product-card-rating: {{ settings.product_card_rating }};
+    --cp-product-card-badge-background: {{ settings.product_card_badge_background }};
+    --cp-product-card-badge-text: {{ settings.product_card_badge_text }};
+    --cp-product-card-button-background: {{ settings.product_card_button_background }};
+    --cp-product-card-button-text: {{ settings.product_card_button_text }};
+  }
+{% endstyle %}

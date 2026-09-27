@@ -20,10 +20,10 @@
     "methods": {
       "type": "contact-methods",
       "blocks": {
-        "call": { "type": "contact_method", "settings": { "icon": "phone", "heading": "Call Us", "content": "<p>+91 85840 72905</p>" } },
-        "whatsapp": { "type": "contact_method", "settings": { "icon": "phone", "heading": "WhatsApp", "content": "<p>+91 85840 72905</p>" } },
-        "email": { "type": "contact_method", "settings": { "icon": "mail", "heading": "Email", "content": "<p>info@cocopoco.in</p>" } },
-        "visit": { "type": "contact_method", "settings": { "icon": "location", "heading": "Visit Us", "content": "<p>Ground floor, Plot No A1-97, New Town, Kolkata – 700156</p>" } }
+        "call": { "type": "contact_method", "settings": { "icon": "phone", "heading": "Call Us", "content": "<p>+91 85840 72905</p>", "link": "tel:+918584072905", "open_new_tab": false } },
+        "whatsapp": { "type": "contact_method", "settings": { "icon": "phone", "heading": "WhatsApp", "content": "<p>+91 85840 72905</p>", "link": "https://wa.me/918584072905", "open_new_tab": true } },
+        "email": { "type": "contact_method", "settings": { "icon": "mail", "heading": "Email", "content": "<p>info@cocopoco.in</p>", "link": "mailto:info@cocopoco.in", "open_new_tab": false } },
+        "visit": { "type": "contact_method", "settings": { "icon": "location", "heading": "Visit Us", "content": "<p>Ground floor, Plot No A1-97, New Town, Kolkata – 700156</p>", "link": "https://www.google.com/maps/search/?api=1&query=Ground+floor%2C+Plot+No+A1-97%2C+New+Town%2C+Kolkata+700156", "open_new_tab": true } }
       },
       "block_order": ["call", "whatsapp", "email", "visit"],
       "settings": {}
@@ -34,10 +34,10 @@
         "heading": "Send us a message"
       },
       "blocks": {
-        "instagram": { "type": "quick_contact", "settings": { "icon": "instagram", "heading": "Instagram DMs", "content": "@cocopocothegiftshop" } },
-        "whatsapp": { "type": "quick_contact", "settings": { "icon": "phone", "heading": "WhatsApp", "content": "+91 85840 72905" } },
-        "email": { "type": "quick_contact", "settings": { "icon": "mail", "heading": "Email", "content": "info@cocopoco.in" } },
-        "hours": { "type": "quick_contact", "settings": { "icon": "clock", "heading": "Support hours", "content": "Mon–Sat, 10am–6pm" } }
+        "instagram": { "type": "quick_contact", "settings": { "icon": "instagram", "heading": "Instagram DMs", "content": "@cocopocothegiftshop", "link": "https://www.instagram.com/cocopocothegiftshop/", "open_new_tab": true } },
+        "whatsapp": { "type": "quick_contact", "settings": { "icon": "phone", "heading": "WhatsApp", "content": "+91 85840 72905", "link": "https://wa.me/918584072905", "open_new_tab": true } },
+        "email": { "type": "quick_contact", "settings": { "icon": "mail", "heading": "Email", "content": "info@cocopoco.in", "link": "mailto:info@cocopoco.in", "open_new_tab": false } },
+        "hours": { "type": "quick_contact", "settings": { "icon": "clock", "heading": "Support hours", "content": "Mon–Sat, 10am–6pm", "link": "#contact-form", "open_new_tab": false } }
       },
       "block_order": ["instagram", "whatsapp", "email", "hours"]
     }

@@ -4,7 +4,7 @@
   class="marquee{% if section.settings.pause_on_hover %} marquee--pause-on-hover{% endif %}"
   role="region"
   aria-label="Announcements"
-  style="--marquee-duration: {{ section.settings.animation_speed }}s; --marquee-background: {{ section.settings.background_color }}; --marquee-text: {{ section.settings.text_color }}; --marquee-font-size: {{ section.settings.text_size }}px;"
+  style="--marquee-duration: {{ section.settings.animation_speed }}s; --marquee-background: {{ section.settings.background_color }}; --marquee-text: {{ section.settings.text_color }}; --marquee-font-size: {{ section.settings.text_size }}px; --marquee-padding-top: {{ section.settings.padding_top }}px; --marquee-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="marquee__track">
     {%- for group_index in (1..2) -%}
@@ -32,12 +32,15 @@
   </div>
 </div>
 
+{% render 'section-brand-colors', section: section %}
+
 {% schema %}
 {
   "name": "Marquee",
   "tag": "section",
   "class": "section-marquee",
   "settings": [
+{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
     {
       "type": "color",
       "id": "background_color",
@@ -71,6 +74,26 @@
       "default": 200
     },
     {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 10
+    },
+    {
       "type": "checkbox",
       "id": "pause_on_hover",
       "label": "Pause animation on hover",
@@ -82,6 +105,7 @@
       "type": "text",
       "name": "Marquee item",
       "settings": [
+{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
         {
           "type": "inline_richtext",
           "id": "text",

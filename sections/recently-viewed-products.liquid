@@ -1,0 +1,39 @@
+{{ 'component-product-card-custom.css' | asset_url | stylesheet_tag }}
+{{ 'recently-viewed-products.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'recently-viewed-products.js' | asset_url }}" defer="defer"></script>
+
+<section
+  class="recently-viewed"
+  data-recently-viewed
+  data-product-handle="{{ product.handle | escape }}"
+  style="--recent-page-width:{{ settings.page_width | divided_by: 10.0 }}rem;--recent-background:{{ section.settings.background_color }};--recent-heading:{{ section.settings.heading_color }};--recent-padding-top:{{ section.settings.padding_top }}px;--recent-padding-bottom:{{ section.settings.padding_bottom }}px;--recent-mobile-padding-top:{{ section.settings.mobile_padding_top }}px;--recent-mobile-padding-bottom:{{ section.settings.mobile_padding_bottom }}px;"
+  hidden
+>
+  <div class="recently-viewed__inner">
+    {%- if section.settings.heading != blank -%}<h2 class="recently-viewed__heading {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>{%- endif -%}
+    <ul class="recently-viewed__grid" role="list" data-recently-viewed-grid></ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Recently viewed products",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Recently viewed" },
+    { "type": "select", "id": "heading_size", "label": "Heading size", "default": "h2", "options": [{"value":"h2","label":"Small"},{"value":"h1","label":"Medium"},{"value":"h0","label":"Large"}] },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#FFFFFF" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#341824" },
+    { "type": "header", "content": "Desktop spacing" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 36 },
+    { "type": "header", "content": "Mobile spacing" },
+    { "type": "range", "id": "mobile_padding_top", "label": "Top padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 28 },
+    { "type": "range", "id": "mobile_padding_bottom", "label": "Bottom padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 28 }
+  ],
+  "presets": [{ "name": "Recently viewed products" }]
+}
+{% endschema %}

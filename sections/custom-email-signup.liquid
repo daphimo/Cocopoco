@@ -102,12 +102,15 @@
   </div>
 </section>
 
+{% render 'section-brand-colors', section: section %}
+
 {% schema %}
 {
   "name": "Custom email signup",
   "tag": "section",
   "class": "section",
   "settings": [
+{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
     { "type": "color", "id": "background_color", "label": "Background color", "default": "#3A1928" },
     { "type": "color", "id": "text_color", "label": "Default text color", "default": "#FFFFFF" },
     { "type": "range", "id": "border_radius", "label": "Corner radius", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 26 },
@@ -121,6 +124,7 @@
       "name": "Title",
       "limit": 1,
       "settings": [
+{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
         { "type": "inline_richtext", "id": "title", "label": "Title", "default": "Your everyday called. It wants more joy. ✨" },
         { "type": "select", "id": "heading_tag", "label": "Heading tag", "default": "h2", "options": [{ "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }, { "value": "p", "label": "Paragraph" }] },
         { "type": "range", "id": "title_size", "label": "Title size", "min": 20, "max": 64, "step": 1, "unit": "px", "default": 30 },
@@ -132,6 +136,7 @@
       "name": "Content",
       "limit": 1,
       "settings": [
+{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
         { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Join our list for joyful finds, new arrivals, and special offers.</p>" },
         { "type": "range", "id": "content_size", "label": "Text size", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 15 },
         { "type": "color", "id": "content_color", "label": "Text color", "default": "#E8DCE1" }
@@ -142,6 +147,7 @@
       "name": "Email signup field",
       "limit": 1,
       "settings": [
+{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
         { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "Enter your email" },
         { "type": "text", "id": "button_label", "label": "Button label", "default": "Join the fun" },
         { "type": "color", "id": "button_background", "label": "Button background", "default": "#E94791" },
@@ -154,6 +160,7 @@
       "type": "trust_item",
       "name": "Bottom text item",
       "settings": [
+{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
         { "type": "text", "id": "text", "label": "Text", "default": "Secure payments" }
       ]
     }

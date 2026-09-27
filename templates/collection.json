@@ -82,6 +82,9 @@
       "settings": {
         "background_color": "#ffffff",
         "accent_color": "#e64d95",
+        "enable_filtering": true,
+        "filter_label": "Filter",
+        "drawer_heading": "Filter products",
         "heading_tag": "h1",
         "info_icon": "truck",
         "info_text": "₹99 flat shipping, pan-India",

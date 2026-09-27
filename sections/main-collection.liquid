@@ -10,6 +10,7 @@
 <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'main-collection-context.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'collection-filter-drawer.js' | asset_url }}" defer="defer"></script>
 
 {%- style -%}
   #shopify-section-{{ section.id }} {
@@ -66,7 +67,72 @@
 
       {%- paginate collection.products by section.settings.products_per_page -%}
         <div class="main-collection__meta">
-          <p class="main-collection__count" role="status">{{ collection.products_count }}{% if section.settings.product_count_suffix != blank %} {{ section.settings.product_count_suffix | escape }}{% endif %}</p>
+          <div class="main-collection__meta-start">
+            {%- if section.settings.enable_filtering and collection.filters != empty -%}
+              {%- assign active_filter_count = 0 -%}
+              {%- for filter in collection.filters -%}
+                {%- assign active_filter_count = active_filter_count | plus: filter.active_values.size -%}
+                {%- if filter.type == 'price_range' and filter.min_value.value != blank or filter.type == 'price_range' and filter.max_value.value != blank -%}{%- assign active_filter_count = active_filter_count | plus: 1 -%}{%- endif -%}
+              {%- endfor -%}
+              <collection-filter-drawer class="collection-filter">
+                <button class="collection-filter__trigger" type="button" aria-haspopup="dialog" aria-controls="CollectionFilterDrawer-{{ section.id }}" data-filter-open>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4v6M6 14v6"/></svg>
+                  <span>{{ section.settings.filter_label | escape }}</span>
+                  {%- if active_filter_count > 0 -%}<span class="collection-filter__count">{{ active_filter_count }}</span>{%- endif -%}
+                </button>
+                <dialog class="collection-filter__dialog" id="CollectionFilterDrawer-{{ section.id }}" data-filter-dialog>
+                  <div class="collection-filter__panel">
+                    <header class="collection-filter__header">
+                      <div><span class="collection-filter__eyebrow">Shop your way</span><h2>{{ section.settings.drawer_heading | escape }}</h2></div>
+                      <button class="collection-filter__close" type="button" aria-label="Close filters" data-filter-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+                    </header>
+                    <form class="collection-filter__form" action="{{ collection.url }}" method="get">
+                      {%- assign current_sort = collection.sort_by | default: collection.default_sort_by -%}
+                      <input type="hidden" name="sort_by" value="{{ current_sort | escape }}">
+                      <div class="collection-filter__body">
+                        {%- for filter in collection.filters -%}
+                          <fieldset class="collection-filter__group">
+                            <legend>{{ filter.label | escape }}</legend>
+                            {%- case filter.type -%}
+                              {%- when 'boolean', 'list' -%}
+                                <ul class="collection-filter__options" role="list">
+                                  {%- for value in filter.values -%}
+                                    <li>
+                                      <label class="collection-filter__option{% if value.count == 0 and value.active == false %} is-disabled{% endif %}">
+                                        <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value | escape }}"{% if value.active %} checked{% endif %}{% if value.count == 0 and value.active == false %} disabled{% endif %}>
+                                        <span class="collection-filter__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8 3 3 7-7"/></svg></span>
+                                        <span>{{ value.label | escape }}</span><span class="collection-filter__value-count">{{ value.count }}</span>
+                                      </label>
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              {%- when 'price_range' -%}
+                                {%- liquid
+                                  assign price_ceiling = filter.range_max | divided_by: 100.0 | ceil
+                                  assign price_min = filter.min_value.value | default: 0 | divided_by: 100.0 | floor
+                                  assign price_max = filter.max_value.value | default: filter.range_max | divided_by: 100.0 | ceil
+                                -%}
+                                <div class="collection-filter__price" data-price-range data-currency="{{ cart.currency.symbol | escape }}">
+                                  <div class="collection-filter__price-values"><span data-price-min-output></span><span data-price-max-output></span></div>
+                                  <div class="collection-filter__range-track"></div>
+                                  <input type="range" name="{{ filter.min_value.param_name }}" min="0" max="{{ price_ceiling }}" step="1" value="{{ price_min }}" aria-label="Minimum price" data-price-min>
+                                  <input type="range" name="{{ filter.max_value.param_name }}" min="0" max="{{ price_ceiling }}" step="1" value="{{ price_max }}" aria-label="Maximum price" data-price-max>
+                                </div>
+                            {%- endcase -%}
+                          </fieldset>
+                        {%- endfor -%}
+                      </div>
+                      <footer class="collection-filter__footer">
+                        <a class="collection-filter__clear" href="{{ collection.url }}?sort_by={{ current_sort | url_encode }}">Clear all</a>
+                        <button class="collection-filter__apply" type="submit">Apply filters</button>
+                      </footer>
+                    </form>
+                  </div>
+                </dialog>
+              </collection-filter-drawer>
+            {%- endif -%}
+            <p class="main-collection__count" role="status">{{ collection.products_count }}{% if section.settings.product_count_suffix != blank %} {{ section.settings.product_count_suffix | escape }}{% endif %}</p>
+          </div>
           <form class="main-collection__sort-form" action="{{ collection.url }}" method="get">
             {%- for filter in collection.filters -%}
               {%- if filter.type == 'price_range' -%}
@@ -103,14 +169,21 @@
   </section>
 </collection-component>
 
+{% render 'section-brand-colors', section: section %}
+
 {% schema %}
 {
   "name": "Main collection",
   "tag": "section",
   "class": "section",
   "settings": [
+{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
     { "type": "color", "id": "background_color", "label": "Background color", "default": "#FFFFFF" },
     { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#E64D95" },
+    { "type": "header", "content": "Filtering" },
+    { "type": "checkbox", "id": "enable_filtering", "label": "Enable filter drawer", "default": true },
+    { "type": "text", "id": "filter_label", "label": "Filter button label", "default": "Filter" },
+    { "type": "text", "id": "drawer_heading", "label": "Drawer heading", "default": "Filter products" },
     { "type": "select", "id": "heading_tag", "label": "Heading tag", "default": "h1", "options": [{ "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }, { "value": "h4", "label": "H4" }, { "value": "h5", "label": "H5" }, { "value": "h6", "label": "H6" }] },
     { "type": "header", "content": "Information row" },
     { "type": "select", "id": "info_icon", "label": "Icon", "default": "truck", "options": [{ "value": "sparkles", "label": "Sparkles" }, { "value": "star", "label": "Star" }, { "value": "truck", "label": "Truck" }, { "value": "rotate", "label": "Rotate" }, { "value": "arrow-right", "label": "Arrow right" }, { "value": "none", "label": "None" }] },
@@ -132,7 +205,8 @@
     { "type": "range", "id": "mobile_padding_top", "label": "Mobile top padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 20 },
     { "type": "range", "id": "mobile_padding_bottom", "label": "Mobile bottom padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 40 }
   ],
-  "blocks": [{ "type": "collection_link", "name": "Collection pill", "settings": [{ "type": "collection", "id": "collection", "label": "Collection" }, { "type": "text", "id": "title_override", "label": "Title override", "info": "Leave blank to use the selected collection title." }] }],
+  "blocks": [{ "type": "collection_link", "name": "Collection pill", "settings": [
+{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},{ "type": "collection", "id": "collection", "label": "Collection" }, { "type": "text", "id": "title_override", "label": "Title override", "info": "Leave blank to use the selected collection title." }] }],
   "presets": [{ "name": "Main collection", "blocks": [{ "type": "collection_link" }, { "type": "collection_link" }, { "type": "collection_link" }, { "type": "collection_link" }] }]
 }
 {% endschema %}
