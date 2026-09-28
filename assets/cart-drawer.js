@@ -86,7 +86,11 @@ class CartDrawer extends HTMLElement {
     if (!sections?.['cart-drawer'] || !sections?.['cart-icon-bubble']) {
       const cartRoot = window.Shopify?.routes?.root || window.routes.cart_url.replace(/cart\/?$/, '');
       const url = `${cartRoot}cart?sections=cart-drawer,cart-icon-bubble`;
-      const response = await fetch(url, { headers: { Accept: 'application/json' }, credentials: 'same-origin' });
+      const response = await fetch(url, {
+        headers: { Accept: 'application/json' },
+        credentials: 'same-origin',
+        cache: 'no-store',
+      });
       const contentType = response.headers.get('content-type') || '';
       if (!response.ok || !contentType.includes('application/json')) {
         console.error('Cart sections returned an unexpected response', { url: response.url || url, status: response.status, expected: 'application/json', received: contentType || 'unknown' });

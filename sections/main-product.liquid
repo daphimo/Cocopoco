@@ -14,6 +14,10 @@
 <script src="{{ 'cust-pincode-checker.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'product-share-popup.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'stock-notify.js' | asset_url }}" defer="defer"></script>
+{%- if section.settings.show_sticky_checkout -%}
+  {{ 'sticky-product-checkout.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'sticky-product-checkout.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 
 {%- style -%}
   #shopify-section-{{ section.id }} {
@@ -176,6 +180,40 @@
       </div>
     </div>
   </product-component>
+  {%- if section.settings.show_sticky_checkout -%}
+    {%- assign sticky_form_id = 'sticky-product-form-' | append: section.id -%}
+    {%- assign sticky_image = selected_variant.featured_image | default: product.featured_image -%}
+    <div class="sticky-product-checkout" data-sticky-checkout data-display-mode="{{ section.settings.sticky_checkout_behavior }}" data-section-id="{{ section.id }}" aria-hidden="true">
+      <div class="sticky-product-checkout__inner">
+        <div class="sticky-product-checkout__product">
+          {%- if sticky_image != blank -%}
+            {{ sticky_image | image_url: width: 160 | image_tag: class: 'sticky-product-checkout__image', widths: '80, 120, 160', sizes: '64px', loading: 'lazy', alt: product.title }}
+          {%- endif -%}
+          <div class="sticky-product-checkout__copy">
+            <p class="sticky-product-checkout__title">{{ product.title | escape }}</p>
+            <p class="sticky-product-checkout__price" data-sticky-price>{{ selected_variant.price | money }}</p>
+          </div>
+        </div>
+        <product-form class="sticky-product-checkout__form product-form" data-hide-errors="false" data-section-id="{{ section.id }}">
+          <div class="product-form__error-message-wrapper sticky-product-checkout__error" role="alert" hidden>
+            <span class="product-form__error-message"></span>
+          </div>
+          {%- form 'product', product, id: sticky_form_id, class: 'sticky-product-checkout__controls', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+            <input class="product-variant-id" type="hidden" name="id" value="{{ selected_variant.id }}" data-sticky-variant-id{% unless selected_variant.available %} disabled{% endunless %}>
+            <quantity-input class="quantity sticky-product-checkout__quantity">
+              <button class="quantity__button" name="minus" type="button"><span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title }}</span><span class="svg-wrapper">{{ 'icon-minus.svg' | inline_asset_content }}</span></button>
+              <input class="quantity__input" type="number" name="quantity" value="{{ selected_variant.quantity_rule.min }}" min="{{ selected_variant.quantity_rule.min }}" data-min="{{ selected_variant.quantity_rule.min }}"{% if selected_variant.quantity_rule.max != null %} max="{{ selected_variant.quantity_rule.max }}" data-max="{{ selected_variant.quantity_rule.max }}"{% endif %} step="{{ selected_variant.quantity_rule.increment }}" aria-label="{{ 'products.product.quantity.label' | t }}">
+              <button class="quantity__button" name="plus" type="button"><span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title }}</span><span class="svg-wrapper">{{ 'icon-plus.svg' | inline_asset_content }}</span></button>
+            </quantity-input>
+            <button class="sticky-product-checkout__button button button--full-width" type="submit" name="add"{% unless selected_variant.available %} disabled aria-disabled="true"{% endunless %}>
+              <span data-sticky-button-label>{% if selected_variant.available %}{{ 'products.product.add_to_cart' | t }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+              {%- render 'loading-spinner' -%}
+            </button>
+          {%- endform -%}
+        </product-form>
+      </div>
+    </div>
+  {%- endif -%}
 </product-info>
 
 {% render 'section-brand-colors', section: section %}
@@ -187,6 +225,9 @@
   "class": "section",
   "settings": [
 {"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
+    { "type": "header", "content": "Sticky checkout" },
+    { "type": "checkbox", "id": "show_sticky_checkout", "label": "Show sticky checkout", "default": true },
+    { "type": "select", "id": "sticky_checkout_behavior", "label": "Display behavior", "options": [{ "value": "always", "label": "Always" }, { "value": "after_buy_button", "label": "After scrolling past buy buttons" }], "default": "after_buy_button", "visible_if": "{{ section.settings.show_sticky_checkout }}" },
     { "type": "color", "id": "background_color", "label": "Background color", "default": "#FFFFFF" },
     { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#E64D95" },
     { "type": "inline_richtext", "id": "product_message", "label": "Additional product message", "info": "Use only for store-supported information such as COD availability." },

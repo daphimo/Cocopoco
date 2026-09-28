@@ -33,10 +33,8 @@ if (!customElements.get('product-form')) {
 
         const formData = new FormData(this.form);
         if (this.cart) {
-          if (this.cart.tagName !== 'CART-DRAWER') {
-            formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
-            formData.append('sections_url', window.location.pathname);
-          }
+          formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
+          formData.append('sections_url', window.location.pathname);
           this.cart.setActiveElement(document.activeElement);
         }
         config.body = formData;
@@ -87,15 +85,6 @@ if (!customElements.get('product-form')) {
             this.resolveCartLinesUpdate(linesUpdateDeferred);
             this.dispatchEvent(new CustomEvent('product-form:added', { bubbles: true }));
 
-            const startMarker = CartPerformance.createStartingMarker('add:wait-for-subscribers');
-            if (!this.error)
-              publish(PUB_SUB_EVENTS.cartUpdate, {
-                source: 'product-form',
-                productVariantId: variantId,
-                cartData: response,
-              }).then(() => {
-                CartPerformance.measureFromMarker('add:wait-for-subscribers', startMarker);
-              });
             this.error = false;
             const quickAddModal = this.closest('quick-add-modal');
             if (quickAddModal) {
@@ -103,9 +92,7 @@ if (!customElements.get('product-form')) {
                 'modalClosed',
                 () => {
                   setTimeout(() => {
-                    CartPerformance.measure("add:paint-updated-sections", () => {
-                      this.cart.renderContents(response);
-                    });
+                    this.renderCart(response, variantId);
                   });
                 },
                 { once: true }
@@ -113,11 +100,7 @@ if (!customElements.get('product-form')) {
               quickAddModal.hide(true);
             } else {
               if (this.cart?.tagName === 'CART-DRAWER') this.cart.classList.remove('is-empty');
-              Promise.resolve(this.cart.renderContents(response))
-                .catch((error) => {
-                  console.error('Cart drawer refresh failed after add', error);
-                  this.cart.open?.();
-                });
+              this.renderCart(response, variantId);
             }
           })
           .catch((e) => {
@@ -141,6 +124,21 @@ if (!customElements.get('product-form')) {
 
             CartPerformance.measureFromEvent("add:user-action", evt);
           });
+      }
+
+      renderCart(response, variantId) {
+        CartPerformance.measure('add:paint-updated-sections', () => {
+          Promise.resolve(this.cart.renderContents(response))
+            .then(() => publish(PUB_SUB_EVENTS.cartUpdate, {
+              source: 'product-form',
+              productVariantId: variantId,
+              cartData: response,
+            }))
+            .catch((error) => {
+              console.error('Cart drawer refresh failed after add', error);
+              this.cart.open?.();
+            });
+        });
       }
 
       handleErrorMessage(errorMessage = false) {

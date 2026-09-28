@@ -69,18 +69,39 @@
   if (!customElements.get('sticky-header')) {
     customElements.define('sticky-header', class StickyHeader extends HTMLElement {
       connectedCallback() {
-        this.header = document.querySelector('.section-header'); this.type = this.dataset.stickyType;
-        this.always = this.type === 'always' || this.type === 'reduce-logo-size'; this.lastScroll = window.scrollY;
-        this.onScroll = this.handleScroll.bind(this); document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
-        if (this.always) this.header.classList.add('shopify-section-header-sticky');
+        this.header = this.closest('.section-header');
+        if (!this.header) return;
+        this.type = this.dataset.stickyType;
+        this.lastScroll = window.scrollY;
+        this.stickyThreshold = this.getBoundingClientRect().bottom + window.scrollY;
+        this.onScroll = this.handleScroll.bind(this);
+        this.header.classList.add('animate');
+        document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
+        if (this.type === 'always' || this.type === 'reduce-logo-size') this.header.classList.add('shopify-section-header-sticky');
+        this.handleScroll();
         window.addEventListener('scroll', this.onScroll, { passive: true });
       }
-      disconnectedCallback() { window.removeEventListener('scroll', this.onScroll); }
+      disconnectedCallback() { if (this.onScroll) window.removeEventListener('scroll', this.onScroll); }
       handleScroll() {
         const current = window.scrollY;
-        if (!this.always && current > this.offsetHeight && current > this.lastScroll) this.header.classList.add('shopify-section-header-hidden', 'shopify-section-header-sticky');
-        else if (current < this.lastScroll || current <= this.offsetHeight) this.header.classList.remove('shopify-section-header-hidden');
-        if (current <= 0 && !this.always) this.header.classList.remove('shopify-section-header-sticky'); this.lastScroll = current;
+        if (this.type === 'reduce-logo-size') {
+          this.header.classList.toggle('shopify-section-header-reduced-logo', current > this.stickyThreshold);
+          this.lastScroll = current;
+          return;
+        }
+        if (this.type === 'always') {
+          this.lastScroll = current;
+          return;
+        }
+        if (current <= 0) {
+          this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-sticky');
+        } else if (current > this.lastScroll && current > this.stickyThreshold) {
+          this.header.classList.add('shopify-section-header-hidden', 'shopify-section-header-sticky');
+        } else if (current < this.lastScroll) {
+          this.header.classList.add('shopify-section-header-sticky');
+          this.header.classList.remove('shopify-section-header-hidden');
+        }
+        this.lastScroll = current;
       }
     });
   }

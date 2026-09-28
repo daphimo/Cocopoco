@@ -37,6 +37,7 @@ class CartItems extends window.StandardEvents.createViewEventElement(HTMLElement
 
     this.cartUpdateUnsubscriber = subscribe(PUB_SUB_EVENTS.cartUpdate, (event) => {
       if (event.source === 'cart-items') return;
+      if (event.source === 'product-form' && this.tagName === 'CART-DRAWER-ITEMS') return;
       return this.onCartUpdate();
     });
   }
@@ -46,7 +47,7 @@ class CartItems extends window.StandardEvents.createViewEventElement(HTMLElement
   // post-mutation cart aggregates). De-duplicated across concurrent callers.
   static fetchCartData() {
     if (!CartItems.pendingCartDataPromise) {
-      const pendingCartDataPromise = fetch(`${routes.cart_url}.json`)
+      const pendingCartDataPromise = fetch(`${routes.cart_url}.json`, { cache: 'no-store', credentials: 'same-origin' })
         .then((response) => response.json())
         .catch(() => null)
         .finally(() => {
