@@ -12,13 +12,20 @@
     "hero": {
       "type": "about-us-hero",
       "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
         "eyebrow": "ABOUT US",
         "heading": "Romanticize Your Everyday",
         "description": "Cute everyday essentials — why be boring when you can be cute?",
-        "desktop_height": 280,
-        "mobile_height": 220,
-        "padding_top": 48,
-        "padding_bottom": 48,
+        "desktop_height": 220,
+        "mobile_height": 180,
+        "padding_top": 28,
+        "padding_bottom": 28,
         "mobile_padding_top": 28,
         "mobile_padding_bottom": 28
       }
@@ -29,6 +36,13 @@
         "category_1": {
           "type": "category",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "label": "Stationery",
             "link": ""
           }
@@ -36,6 +50,13 @@
         "category_2": {
           "type": "category",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "label": "Sipper bottles",
             "link": ""
           }
@@ -43,6 +64,13 @@
         "category_3": {
           "type": "category",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "label": "Keychains & charms",
             "link": ""
           }
@@ -50,6 +78,13 @@
         "category_4": {
           "type": "category",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "label": "Bags & pouches",
             "link": ""
           }
@@ -57,6 +92,13 @@
         "category_5": {
           "type": "category",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "label": "Gifts & hampers",
             "link": ""
           }
@@ -64,6 +106,13 @@
         "category_6": {
           "type": "category",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "label": "The Cute Edit",
             "link": ""
           }
@@ -78,6 +127,13 @@
         "category_6"
       ],
       "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
         "eyebrow": "WHO WE ARE",
         "heading": "India’s Cute Essentials Store",
         "image": "shopify://shop_images/lifestyle-CU2FVmzE.png",
@@ -97,6 +153,13 @@
         "feature_1": {
           "type": "feature",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "heading": "Curated by founders",
             "description": "Every piece picked for quality, cuteness and daily use."
           }
@@ -104,6 +167,13 @@
         "feature_2": {
           "type": "feature",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "heading": "Affordable",
             "description": "Gifts from ₹299, flat ₹99 shipping, partial COD."
           }
@@ -111,6 +181,13 @@
         "feature_3": {
           "type": "feature",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "heading": "Trend-first",
             "description": "Stitch, Sanrio, Labubu and more — before local shops."
           }
@@ -122,6 +199,13 @@
         "feature_3"
       ],
       "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
         "heading": "Why CocoPoco",
         "padding_top": 48,
         "padding_bottom": 48,
@@ -132,6 +216,13 @@
     "mission": {
       "type": "about-us-mission",
       "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
         "image": "shopify://shop_images/gifting-CVgp4Sao.png",
         "image_position": "left",
         "eyebrow": "",
@@ -156,6 +247,13 @@
         "faq_1": {
           "type": "faq",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "question": "What is CocoPoco?",
             "answer": "<p>An Indian e-commerce brand selling cute everyday essentials — kawaii stationery, sipper bottles, keychains, pouches and gift hampers — at cocopoco.in.</p>"
           }
@@ -163,6 +261,13 @@
         "faq_2": {
           "type": "faq",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "question": "Where is CocoPoco based?",
             "answer": "<p>Kolkata, West Bengal, India. We ship to every state in India.</p>"
           }
@@ -170,6 +275,13 @@
         "faq_3": {
           "type": "faq",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "question": "Who founded CocoPoco?",
             "answer": "<p>Sisters Smita Bara and Sweta Kindo, in 2024.</p>"
           }
@@ -177,6 +289,13 @@
         "faq_4": {
           "type": "faq",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "question": "What does “Romanticize your everyday” mean?",
             "answer": "<p>Finding small joys in ordinary routines through cute, thoughtful things you use every day.</p>"
           }
@@ -189,6 +308,13 @@
         "faq_4"
       ],
       "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
         "heading": "FAQs",
         "padding_top": 48,
         "padding_bottom": 96,
