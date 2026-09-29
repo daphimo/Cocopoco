@@ -24,6 +24,13 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "logo_width": 100,
             "content": "Little things that make ordinary days feel a little more special. Designed in India, packed with far too much love.",
             "show_social": true
@@ -254,17 +261,16 @@
         "badge_text": "Get 10% Off",
         "badge_position": "bottom-left",
         "badge_icon": "gift",
-        "badge_background": "#e34c93",
-        "badge_text_color": "#fffdfe",
+        "badge_background": "#e83e8c",
+        "badge_text_color": "#ffffff",
         "badge_delay": 0,
         "popup_width": 800,
         "overlay_opacity": 60,
         "border_radius": 16,
         "animation": "scale",
-        "popup_background": "#e34c93",
-        "popup_text_color": "#fffdfe",
-        "button_color": "#fffdfe",
-        "button_text_color": "#E34C93"
+        "popup_background": "#fffdfe",
+        "popup_text_color": "#341824",
+        "button_color": "#e83e8c"
       }
     }
   },
