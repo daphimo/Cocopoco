@@ -9,175 +9,159 @@
  */
 {
   "sections": {
-    "hero_W7jBWp": {
-      "type": "hero",
+    "custom_hero_slider_NqXFt9": {
+      "type": "custom-hero-slider",
       "blocks": {
-        "eyebrow_UqPYMi": {
-          "type": "eyebrow",
+        "slide_ghqa7Q": {
+          "type": "slide",
           "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_text_color": "#ffffff",
-            "text": "FOR THE EVERYDAY ROMANTIC",
-            "icon": "sparkles",
-            "background": "#ffffff",
-            "text_color": "#1a1020",
-            "icon_color": "#e64d95",
-            "border_radius": 24
-          }
-        },
-        "heading_c6mmpd": {
-          "type": "heading",
-          "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_text_color": "#ffffff",
-            "heading": "Romanticize your everyday. ✨",
-            "heading_tag": "h1",
+            "desktop_image": "shopify://shop_images/hero-D6qm_qxI.png",
+            "image_alt": "",
+            "image_position": "70% 30%",
+            "image_loading": "lazy",
+            "eyebrow": "FOR THE EVERYDAY ROMANTIC",
+            "eyebrow_icon": "sparkles",
+            "heading": "Romanticize your everyday.",
+            "description": "<p>Cute, aesthetic little things — stationery, bottles, keychains and accessories — that make your ordinary routine feel a lot more special.</p>",
+            "primary_text": "Shop the joy",
+            "primary_link": "",
+            "secondary_text": "Explore new arrivals",
+            "secondary_link": "",
+            "horizontal_position": "left",
+            "vertical_position": "center",
+            "text_alignment": "left",
+            "content_width": 620,
             "heading_size": 48,
-            "heading_color": "#241226"
+            "description_size": 16,
+            "eyebrow_radius": 24,
+            "eyebrow_padding_x": 12,
+            "eyebrow_padding_y": 7,
+            "button_radius": 40,
+            "overlay_color": "#FFFFFF",
+            "overlay_opacity": 65,
+            "eyebrow_text_color": "#B86A8A",
+            "eyebrow_background": "#FFFFFF",
+            "eyebrow_border": "#F9D5E6",
+            "heading_color": "#341824",
+            "description_color": "#4A4145",
+            "primary_background": "#E83E8C",
+            "primary_text_color": "#FFFFFF",
+            "primary_border": "#E83E8C",
+            "secondary_background": "#FFFFFF",
+            "secondary_text_color": "#341824",
+            "secondary_border": "#F9D5E6",
+            "navigation_color": "#341824",
+            "navigation_background": "#FFFFFF",
+            "pagination_color": "#F9D5E6",
+            "pagination_active_color": "#E83E8C"
           }
         },
-        "content_pgjE4k": {
-          "type": "content",
+        "slide_XPCKp7": {
+          "type": "slide",
           "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_text_color": "#ffffff",
-            "content": "Cute, aesthetic little things — stationery, bottles, keychains and accessories — that make your ordinary routine feel a lot more special.",
-            "font_size": 16,
-            "text_color": "#4a3345"
+            "desktop_image": "shopify://shop_images/hero-D6qm_qxI.png",
+            "image_alt": "",
+            "image_position": "70% 30%",
+            "image_loading": "lazy",
+            "eyebrow": "FOR THE EVERYDAY ROMANTIC",
+            "eyebrow_icon": "sparkles",
+            "heading": "Romanticize your everyday.",
+            "description": "<p>Cute, aesthetic little things — stationery, bottles, keychains and accessories — that make your ordinary routine feel a lot more special.</p>",
+            "primary_text": "Shop the joy",
+            "primary_link": "",
+            "secondary_text": "Explore new arrivals",
+            "secondary_link": "",
+            "horizontal_position": "left",
+            "vertical_position": "center",
+            "text_alignment": "left",
+            "content_width": 620,
+            "heading_size": 48,
+            "description_size": 16,
+            "eyebrow_radius": 24,
+            "eyebrow_padding_x": 12,
+            "eyebrow_padding_y": 7,
+            "button_radius": 40,
+            "overlay_color": "#FFFFFF",
+            "overlay_opacity": 65,
+            "eyebrow_text_color": "#B86A8A",
+            "eyebrow_background": "#FFFFFF",
+            "eyebrow_border": "#F9D5E6",
+            "heading_color": "#341824",
+            "description_color": "#4A4145",
+            "primary_background": "#E83E8C",
+            "primary_text_color": "#FFFFFF",
+            "primary_border": "#E83E8C",
+            "secondary_background": "#FFFFFF",
+            "secondary_text_color": "#341824",
+            "secondary_border": "#F9D5E6",
+            "navigation_color": "#341824",
+            "navigation_background": "#FFFFFF",
+            "pagination_color": "#F9D5E6",
+            "pagination_active_color": "#E83E8C"
           }
         },
-        "buttons_UzPmkD": {
-          "type": "buttons",
+        "benefit_zinXTA": {
+          "type": "benefit",
           "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_text_color": "#ffffff",
-            "button_1_text": "Shop the joy",
-            "button_1_link": "shopify://collections/all",
-            "button_1_background": "#e64d95",
-            "button_1_color": "#ffffff",
-            "button_1_arrow": true,
-            "button_1_new_tab": false,
-            "button_2_text": "Explore new arrivals",
-            "button_2_link": "shopify://collections/all",
-            "button_2_background": "#ffffff",
-            "button_2_color": "#241226",
-            "button_2_arrow": false,
-            "button_2_new_tab": false
-          }
-        },
-        "feature_7jT3kg": {
-          "type": "feature",
-          "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_text_color": "#ffffff",
             "icon": "star",
             "text": "2000+ happy orders",
-            "text_color": "#4a3345",
-            "icon_color": "#e64d95"
+            "link": "",
+            "icon_color": "#E83E8C",
+            "text_color": "#4A4145"
           }
         },
-        "feature_MwiMzy": {
-          "type": "feature",
+        "benefit_FY9a9f": {
+          "type": "benefit",
           "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_text_color": "#ffffff",
             "icon": "truck",
             "text": "₹99 flat shipping, pan-India",
-            "text_color": "#4a3345",
-            "icon_color": "#e64d95"
+            "link": "",
+            "icon_color": "#E83E8C",
+            "text_color": "#4A4145"
           }
         },
-        "feature_V8ngAP": {
-          "type": "feature",
+        "benefit_7pNwPA": {
+          "type": "benefit",
           "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_text_color": "#ffffff",
             "icon": "sparkles",
             "text": "5% off on prepaid orders",
-            "text_color": "#4a3345",
-            "icon_color": "#e64d95"
+            "link": "",
+            "icon_color": "#E83E8C",
+            "text_color": "#4A4145"
           }
         },
-        "feature_Rd96yM": {
-          "type": "feature",
+        "benefit_hYfmkG": {
+          "type": "benefit",
           "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_text_color": "#ffffff",
             "icon": "rotate",
             "text": "Dispatched fast",
-            "text_color": "#4a3345",
-            "icon_color": "#e64d95"
+            "link": "",
+            "icon_color": "#E83E8C",
+            "text_color": "#4A4145"
           }
         }
       },
       "block_order": [
-        "eyebrow_UqPYMi",
-        "heading_c6mmpd",
-        "content_pgjE4k",
-        "buttons_UzPmkD",
-        "feature_7jT3kg",
-        "feature_MwiMzy",
-        "feature_V8ngAP",
-        "feature_Rd96yM"
+        "slide_ghqa7Q",
+        "slide_XPCKp7",
+        "benefit_zinXTA",
+        "benefit_FY9a9f",
+        "benefit_7pNwPA",
+        "benefit_hYfmkG"
       ],
-      "name": "Hero",
+      "name": "Custom hero slider",
       "settings": {
-        "brand_background_color": "#ffffff",
-        "brand_caption_color": "#b86a8a",
-        "brand_heading_color": "#341824",
-        "brand_text_color": "#4a4145",
-        "brand_border_color": "#f9d5e6",
-        "brand_button_background": "#e83e8c",
-        "brand_button_text_color": "#ffffff",
-        "accessibility_label": "Featured promotion",
+        "accessibility_label": "Featured promotions",
+        "autoplay": true,
+        "autoplay_speed": 5000,
+        "slide_type": "slide",
+        "loop": true,
+        "show_navigation": true,
+        "show_pagination": true,
+        "pause_on_hover": true,
+        "pause_on_focus": true,
         "desktop_height": 500,
-        "mobile_height": 650,
-        "desktop_image": "shopify://shop_images/hero-D6qm_qxI.png",
-        "desktop_image_position": "top",
-        "mobile_image_position": "top",
-        "overlay_color": "#ffffff",
-        "overlay_opacity": 55,
-        "content_alignment": "left"
+        "mobile_height": 720
       }
     },
     "richtext_QVH6wn": {
@@ -1417,7 +1401,7 @@
     }
   },
   "order": [
-    "hero_W7jBWp",
+    "custom_hero_slider_NqXFt9",
     "richtext_QVH6wn",
     "quiz_popup_home",
     "featured_collection_dfJFHU",
