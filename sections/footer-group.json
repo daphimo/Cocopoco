@@ -17,6 +17,13 @@
         "store_details": {
           "type": "store_details",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "logo_width": 100,
             "content": "Little things that make ordinary days feel a little more special. Designed in India, packed with far too much love.",
             "show_social": true
@@ -25,6 +32,13 @@
         "navigate": {
           "type": "menu",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "heading": "Navigate to",
             "menu": "navigate-to"
           }
@@ -32,6 +46,13 @@
         "quick_links": {
           "type": "menu",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "heading": "Quick links",
             "menu": "quick-links-1"
           }
@@ -39,6 +60,13 @@
         "information": {
           "type": "menu",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "heading": "Information",
             "menu": "information"
           }
@@ -46,6 +74,13 @@
         "follow_us": {
           "type": "menu",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "heading": "Follow us",
             "menu": "follow-us"
           }
@@ -59,6 +94,13 @@
         "follow_us"
       ],
       "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
         "background_color": "#fff0f7",
         "text_color": "#4a1c32",
         "accent_color": "#e64d95",
@@ -74,6 +116,13 @@
         "secure": {
           "type": "utility",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "icon": "star",
             "text": "Secure payments"
           }
@@ -81,6 +130,13 @@
         "shipping": {
           "type": "utility",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "icon": "truck",
             "text": "₹99 flat shipping, pan-India"
           }
@@ -88,6 +144,13 @@
         "prepaid": {
           "type": "utility",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "icon": "sparkles",
             "text": "5% off on prepaid orders"
           }
@@ -95,6 +158,13 @@
         "gifting": {
           "type": "utility",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "icon": "star",
             "text": "Made for gifting"
           }
@@ -107,6 +177,13 @@
         "gifting"
       ],
       "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
         "background_color": "#fff0f7",
         "text_color": "#5f3a50",
         "icon_color": "#e64d95",
@@ -121,6 +198,13 @@
     "floating_whatsapp": {
       "type": "floating-whatsapp",
       "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
         "whatsapp_number": "+91 85840 72905",
         "message": "Hello, I would like to know more about your products.",
         "accessible_label": "Chat with us on WhatsApp",
@@ -138,14 +222,20 @@
         "enable_popup": true,
         "popup_heading": "Get 10% Off Your First Order",
         "popup_description": "Join our list for first access to new arrivals, offers and little everyday joys.",
-        "image_position": "left",
+        "popup_logo": "shopify://shop_images/coco_logo.png",
+        "logo_width": 100,
+        "content_alignment": "left",
+        "popup_image": "shopify://shop_images/cat-bundles-BC3pKoCc.png",
+        "image_position": "right",
+        "image_overlay_color": "#000000",
+        "image_overlay_opacity": 40,
         "trigger_type": "delay",
         "trigger_delay": 5,
         "scroll_percentage": 50,
         "show_desktop": true,
         "show_mobile": true,
         "display_frequency": "session",
-        "enable_exit_intent": false,
+        "enable_exit_intent": true,
         "show_on_tab_return": false,
         "primary_action": "email",
         "email_placeholder": "Enter your email address",
@@ -167,8 +257,8 @@
         "badge_background": "#e83e8c",
         "badge_text_color": "#ffffff",
         "badge_delay": 0,
-        "popup_width": 600,
-        "overlay_opacity": 50,
+        "popup_width": 800,
+        "overlay_opacity": 60,
         "border_radius": 16,
         "animation": "scale",
         "popup_background": "#fffdfe",
