@@ -130,7 +130,7 @@
     "cart_color_scheme": "scheme-1",
     "customer_account_menu": "customer-account-main-menu",
     "product_card_border": "#E34C93",
-    "enable_leave_alert": false,
+    "enable_leave_alert": true,
     "leave_alert_message": "Wait! Explore our latest collection",
     "sections": {
       "main-password-header": {
