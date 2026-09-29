@@ -23,7 +23,7 @@
 .cp-product-card__button.loading > .loading__spinner { position:absolute; top:50%; left:50%; display:flex; align-items:center; justify-content:center; transform:translate(-50%,-50%); }
 .cp-product-card__button.loading > .loading__spinner.hidden { display:none; }
 @media (hover:hover) and (pointer:fine) {
-  .cp-product-card:hover { border-color:rgba(230,77,149,.42); box-shadow:0 12px 30px rgba(83,25,54,.13); transform:translateY(-2px); }
+  .cp-product-card:hover { box-shadow:0 12px 30px rgba(83,25,54,.13); transform:translateY(-2px); }
   .cp-product-card:hover .cp-product-card__image { transform:scale(1.05); }
 }
 
