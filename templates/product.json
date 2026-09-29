@@ -175,7 +175,7 @@
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
             "heading": "Shipping & delivery",
-            "content": "",
+            "content": "<p><strong>Shipping Charges</strong></p><p>A flat delivery charge of Rs 99 applies on all orders across India. Shipping is added at checkout. Taxes are included in the product price.</p><p><strong>Order Processing</strong></p><p>Orders are typically processed within 1 business day. Orders placed on Mondays or public holidays are processed on the next working day. You'll receive a confirmation email with tracking details once your order is dispatched.</p><p><strong>Delivery Time (from dispatch)</strong></p><ul><li>Kolkata: Usually delivered within 1–2 working days.</li><li>Other areas in West Bengal: Usually delivered within 2–4 working days.</li><li>Metro cities: Usually delivered within 2–4 working days.</li><li>Rest of India: Usually delivered within 5–7 working days.</li></ul><p><strong>Please Note</strong></p><ul><li>Delivery timelines are estimates and may vary due to weather, courier delays, or local disruptions.</li><li>Please ensure your address and phone number are correct at checkout — we can't change the address once the order is dispatched.</li><li>If your package hasn't arrived within the expected window, reach out to us with your order number and we'll track it for you.</li></ul>",
             "open_by_default": false
           }
         },
@@ -189,8 +189,23 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "heading": "Quality promise",
-            "content": "",
+            "heading": "Returns and Refunds",
+            "content": "<p><strong>Return & Exchange</strong></p><p>At CocoPoco, every item is checked before it's packed. As most of our products are small, delicate or gift-ready, we don't accept returns or exchanges for change of mind. We do, however, make it right if something arrives damaged, defective or incorrect.</p><p><strong>When can I request a return or exchange?</strong></p><ul><li>The product arrived damaged or broken</li><li>The product is defective or not working</li><li>You received the wrong item or a missing item from your order</li></ul><p><strong>How to raise a request</strong></p><ol><li>Contact us within 24 hours of delivery — this helps us take it up with the courier.</li><li>Email <a href=\"mailto:info@cocopoco.in\">info@cocopoco.in</a> or WhatsApp +91 85840 72905 with your order number and clear photos (or a short video) of the item and packaging.</li><li>Once reviewed and approved, we'll send you the return instructions or arrange a replacement. Please don't send anything back before we confirm — unrequested returns can't be accepted.</li></ol><p><strong>Conditions</strong></p><ul><li>The item must be unused, in its original condition and packaging, with all tags and accessories.</li><li>An unboxing video makes approval faster, especially for jewellery, bottles and fragile items.</li><li>Requests made after 24 hours of delivery can't be processed.</li></ul><p><strong>Refunds</strong></p><p>If a replacement isn't possible, we'll refund the amount to your original payment method once the return is received and inspected. Refunds usually take 5–7 working days to reflect, depending on your bank. For COD orders, we'll ask for your UPI or bank details.</p><p>Questions? Reach us at <a href=\"mailto:info@cocopoco.in\">info@cocopoco.in</a> or +91 85840 72905.</p>",
+            "open_by_default": false
+          }
+        },
+        "collapsible_YXP8wN": {
+          "type": "collapsible",
+          "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
+            "heading": "Payment Methods",
+            "content": "<p><strong>Prepaid — 5% OFF</strong></p><p>Pay via UPI, cards, net banking or wallets and get an extra 5% off, applied automatically at checkout. Secure and encrypted — we never store your card details.</p><p><strong>Partial Cash on Delivery</strong></p><p>Pay a small advance online and the rest in cash on delivery. COD orders carry a Rs 40 handling charge and do not qualify for the 5% prepaid discount. The advance is non-refundable if the order is refused.</p><p><strong>Good to Know</strong></p><ul><li>Flat Rs 99 shipping on all orders.</li><li>Payment issue? WhatsApp <a href=\"https://wa.me/918584072905\">+91 85840 72905</a> or email <a href=\"mailto:info@cocopoco.in\">info@cocopoco.in</a>.</li></ul><p><strong>Prepaid vs COD (on a Rs 1,000 order)</strong></p><ul><li><strong>Order value:</strong> Rs 1,000 for both prepaid and COD.</li><li><strong>Prepaid:</strong> Rs 50 discount, Rs 99 shipping — you pay Rs 1,049.</li><li><strong>COD:</strong> Rs 40 COD charge, Rs 99 shipping — you pay Rs 1,139.</li></ul><p><br/><strong>That's Rs 90 saved</strong> just by <strong>paying online</strong> — plus faster dispatch and no cash to arrange at the door. <strong>The bigger the order, the more you save.</strong></p>",
             "open_by_default": false
           }
         }
@@ -205,7 +220,8 @@
         "pincode_checker",
         "details",
         "shipping",
-        "quality"
+        "quality",
+        "collapsible_YXP8wN"
       ],
       "settings": {
         "brand_background_color": "#ffffff",
