@@ -186,11 +186,6 @@
         "disabled": false,
         "settings": {}
       },
-      "16178409538858199964": {
-        "type": "shopify://apps/powr-sales-popup-email-pop-up/blocks/app-embed/c42eddd7-7bc0-47cc-aa8a-df388049f012",
-        "disabled": false,
-        "settings": {}
-      },
       "144831480468751239": {
         "type": "shopify://apps/essential-upsell/blocks/app-embed/50627fd9-24fd-4250-8614-accc12826d80",
         "disabled": false,
@@ -219,6 +214,11 @@
           "mobile_horizontal_padding": 20,
           "mobile_vertical_padding": 20
         }
+      },
+      "16178409538858199964": {
+        "type": "shopify://apps/powr-sales-popup-email-pop-up/blocks/app-embed/c42eddd7-7bc0-47cc-aa8a-df388049f012",
+        "disabled": true,
+        "settings": {}
       }
     },
     "color_schemes": {
