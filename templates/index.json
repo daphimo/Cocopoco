@@ -1151,6 +1151,109 @@
         "padding_bottom": 36
       }
     },
+    "shoppable_videos_mcC6A3": {
+      "type": "shoppable-videos",
+      "blocks": {
+        "shoppable_video_wAz7F7": {
+          "type": "shoppable_video",
+          "settings": {
+            "video": "shopify://files/videos/2025-07-24_14_27_45_video (1).MP4",
+            "product": "gamer-ultimate-combo-pack"
+          }
+        },
+        "shoppable_video_Tcfyjt": {
+          "type": "shoppable_video",
+          "settings": {
+            "video": "shopify://files/videos/2025-07-24_14_27_45_video (1).MP4",
+            "product": "gamer-ultimate-combo-pack"
+          }
+        },
+        "shoppable_video_GCef7p": {
+          "type": "shoppable_video",
+          "settings": {
+            "video": "shopify://files/videos/2025-07-24_14_27_45_video (1).MP4",
+            "product": "gamer-ultimate-combo-pack"
+          }
+        },
+        "shoppable_video_bxCyrJ": {
+          "type": "shoppable_video",
+          "settings": {
+            "video": "shopify://files/videos/2025-07-24_14_27_45_video (1).MP4",
+            "product": "gamer-ultimate-combo-pack"
+          }
+        },
+        "shoppable_video_PkqWjc": {
+          "type": "shoppable_video",
+          "settings": {
+            "video": "shopify://files/videos/2025-07-24_14_27_45_video (1).MP4",
+            "product": "gamer-ultimate-combo-pack"
+          }
+        },
+        "shoppable_video_XmCYXE": {
+          "type": "shoppable_video",
+          "settings": {
+            "video": "shopify://files/videos/2025-07-24_14_27_45_video (1).MP4",
+            "product": "gamer-ultimate-combo-pack"
+          }
+        },
+        "shoppable_video_J6dYW6": {
+          "type": "shoppable_video",
+          "settings": {
+            "video": "shopify://files/videos/2025-07-24_14_27_45_video (1).MP4",
+            "product": "gamer-ultimate-combo-pack"
+          }
+        }
+      },
+      "block_order": [
+        "shoppable_video_wAz7F7",
+        "shoppable_video_Tcfyjt",
+        "shoppable_video_GCef7p",
+        "shoppable_video_bxCyrJ",
+        "shoppable_video_PkqWjc",
+        "shoppable_video_XmCYXE",
+        "shoppable_video_J6dYW6"
+      ],
+      "name": "Shoppable Videos",
+      "settings": {
+        "show_header": true,
+        "accent_title": "Shop the moment",
+        "heading": "Watch. Discover. Shop.",
+        "description": "",
+        "header_alignment": "left",
+        "data_source": "blocks",
+        "metaobject_limit": 12,
+        "section_width": "page_width",
+        "max_width": 1480,
+        "slide_type": "loop",
+        "desktop_count": 4.5,
+        "mobile_count": 1.5,
+        "show_nav_button": true,
+        "show_pagination": true,
+        "enable_drag": true,
+        "autoplay_slides": true,
+        "slide_speed": 4,
+        "card_gap": 16,
+        "card_gap_mobile": 12,
+        "video_aspect_ratio": "9 / 14",
+        "autoplay": true,
+        "loop": true,
+        "muted": true,
+        "pause_offscreen": true,
+        "show_sound_button": true,
+        "card_radius": 18,
+        "show_card_border": true,
+        "card_border_opacity": 18,
+        "product_stripe_bottom": 12,
+        "product_stripe_inset": 12,
+        "stripe_radius": 12,
+        "stripe_product_image_size": 54,
+        "shop_button_label": "Shop",
+        "padding_top": 64,
+        "padding_bottom": 72,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 48
+      }
+    },
     "instafeed_GMirLW": {
       "type": "instafeed",
       "blocks": {
@@ -1413,6 +1516,7 @@
     "testimonial_Vgrm9K",
     "featured_collection_mMx74h",
     "richtext_tPnTPk",
+    "shoppable_videos_mcC6A3",
     "instafeed_GMirLW",
     "custom_email_signup_LdNV4k"
   ]
