@@ -10,7 +10,7 @@
 {
   "current": {
     "logo": "shopify://shop_images/coco_logo.png",
-    "logo_width": 50,
+    "logo_width": 100,
     "favicon": "shopify://shop_images/coco_logo.png",
     "type_header_font": "fraunces_n4",
     "heading_scale": 100,
@@ -145,10 +145,12 @@
       "cart-drawer": {
         "type": "cart-drawer",
         "settings": {
-          "recommended_products": ["1000-ml-sanrio-hot-water-bag"],
           "cart_heading": "Your bag",
           "custom_cart_content": "₹99 flat shipping on every order, Extra 5% off when you pay online",
           "recommendation_heading": "Add a little extra joy ✨",
+          "recommended_products": [
+            "1000-ml-sanrio-hot-water-bag"
+          ],
           "shipping_text": "Calculated at checkout",
           "enable_prepaid_discount": true,
           "prepaid_discount_text": "-5% at checkout",

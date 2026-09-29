@@ -17,6 +17,13 @@
         "text_nEjjMi": {
           "type": "text",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "text": "DELIVERED IN 24–48 HOURS",
             "link": ""
           }
@@ -24,6 +31,13 @@
         "text_pexTwQ": {
           "type": "text",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "text": "PARTIAL COD AVAILABLE",
             "link": ""
           }
@@ -31,6 +45,13 @@
         "text_mjVAna": {
           "type": "text",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "text": "FREE KEYCHAIN ON ORDERS ABOVE ₹999/-",
             "link": ""
           }
@@ -38,6 +59,13 @@
         "text_6XqC3B": {
           "type": "text",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "text": "ADDITIONAL 5% OFF ON ALL PREPAID ORDERS",
             "link": ""
           }
@@ -45,6 +73,13 @@
         "text_HUWbMU": {
           "type": "text",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "text": "₹99 FLAT SHIPPING CHARGES ON ALL ORDERS",
             "link": ""
           }
@@ -52,6 +87,13 @@
         "text_mmGtzi": {
           "type": "text",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "text": "DISPATCHED IN 24–48 HOURS",
             "link": ""
           }
@@ -67,16 +109,32 @@
       ],
       "name": "Marquee",
       "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
         "background_color": "#e74695",
         "text_color": "#ffffff",
-        "text_size": 10,
+        "text_size": 12,
         "animation_speed": 200,
+        "padding_top": 5,
+        "padding_bottom": 5,
         "pause_on_hover": false
       }
     },
     "header": {
       "type": "header",
       "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
         "menu": "main-menu",
         "show_search": false,
         "show_account": false,
