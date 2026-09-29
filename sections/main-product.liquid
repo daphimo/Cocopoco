@@ -95,8 +95,8 @@
 
           {%- if cart.taxes_included or shop.shipping_policy.body != blank or section.settings.product_message != blank -%}
             <div class="main-product__message rte">
-              {%- if cart.taxes_included -%}{{ 'products.product.taxes_included' | t }}{%- endif -%}
-              {%- if shop.shipping_policy.body != blank -%} {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}{%- endif -%}
+              {% comment %} {%- if cart.taxes_included -%}{{ 'products.product.taxes_included' | t }}{%- endif -%}
+              {%- if shop.shipping_policy.body != blank -%} {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}{%- endif -%} {% endcomment %}
               {%- if section.settings.product_message != blank -%}<span>{{ section.settings.product_message }}</span>{%- endif -%}
             </div>
           {%- endif -%}

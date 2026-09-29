@@ -37,6 +37,25 @@
     });
   };
 
+  const trackOptionSelection = (option) => {
+    const quiz = option.closest('[data-quiz-section]');
+    if (!quiz || typeof window.Shopify?.analytics?.publish !== 'function') return;
+
+    const eventPayload = {
+      quiz_id: quiz.dataset.quizId,
+      question_id: quiz.dataset.quizQuestionId,
+      question: quiz.dataset.quizQuestion,
+      option_id: option.dataset.optionId,
+      option: option.dataset.optionLabel,
+      option_position: Number(option.dataset.optionPosition),
+    };
+
+    try {
+      const publication = window.Shopify.analytics.publish('cocopoco:quiz_option_selected', eventPayload);
+      publication?.catch(() => {});
+    } catch {}
+  };
+
   document.addEventListener('click', (event) => {
     const opener = event.target.closest('[data-quiz-open]');
     if (opener) {
@@ -45,6 +64,9 @@
     } else if (event.target.closest('[data-quiz-close]')) {
       event.preventDefault();
       close();
+    } else {
+      const option = event.target.closest('[data-quiz-option]');
+      if (option) trackOptionSelection(option);
     }
   });
 

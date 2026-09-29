@@ -11,35 +11,229 @@
   "sections": {
     "intro": {
       "type": "contact-intro",
-      "settings": {}
+      "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
+        "eyebrow": "CONTACT",
+        "heading": "Say hi 💌",
+        "description": "<p>Order help, gifting advice, bulk hampers or just to show us your desk setup — we read everything.</p>",
+        "padding_top": 48,
+        "padding_bottom": 24,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 20
+      }
     },
     "heading": {
       "type": "contact-get-in-touch",
-      "settings": {}
+      "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
+        "heading": "Get in Touch",
+        "description": "<p>We'd love to hear from you. Call, message, or drop by our shop.</p>",
+        "padding_top": 24,
+        "padding_bottom": 20,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 16
+      }
     },
     "methods": {
       "type": "contact-methods",
       "blocks": {
-        "call": { "type": "contact_method", "settings": { "icon": "phone", "heading": "Call Us", "content": "<p>+91 85840 72905</p>", "link": "tel:+918584072905", "open_new_tab": false } },
-        "whatsapp": { "type": "contact_method", "settings": { "icon": "phone", "heading": "WhatsApp", "content": "<p>+91 85840 72905</p>", "link": "https://wa.me/918584072905", "open_new_tab": true } },
-        "email": { "type": "contact_method", "settings": { "icon": "mail", "heading": "Email", "content": "<p>info@cocopoco.in</p>", "link": "mailto:info@cocopoco.in", "open_new_tab": false } },
-        "visit": { "type": "contact_method", "settings": { "icon": "location", "heading": "Visit Us", "content": "<p>Ground floor, Plot No A1-97, New Town, Kolkata – 700156</p>", "link": "https://www.google.com/maps/search/?api=1&query=Ground+floor%2C+Plot+No+A1-97%2C+New+Town%2C+Kolkata+700156", "open_new_tab": true } }
+        "call": {
+          "type": "contact_method",
+          "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
+            "icon": "phone",
+            "heading": "Call Us",
+            "content": "<p>+91 85840 72905</p>",
+            "link": "tel:+918584072905",
+            "open_new_tab": false
+          }
+        },
+        "whatsapp": {
+          "type": "contact_method",
+          "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
+            "icon": "phone",
+            "heading": "WhatsApp",
+            "content": "<p>+91 85840 72905</p>",
+            "link": "https://wa.me/918584072905",
+            "open_new_tab": true
+          }
+        },
+        "email": {
+          "type": "contact_method",
+          "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
+            "icon": "mail",
+            "heading": "Email",
+            "content": "<p>info@cocopoco.in</p>",
+            "link": "mailto:info@cocopoco.in",
+            "open_new_tab": false
+          }
+        },
+        "visit": {
+          "type": "contact_method",
+          "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
+            "icon": "location",
+            "heading": "Visit Us",
+            "content": "<p>Ground floor, Plot No A1-97, New Town, Kolkata – 700156</p>",
+            "link": "https://www.google.com/maps/search/?api=1&query=Ground+floor%2C+Plot+No+A1-97%2C+New+Town%2C+Kolkata+700156",
+            "open_new_tab": true
+          }
+        }
       },
-      "block_order": ["call", "whatsapp", "email", "visit"],
-      "settings": {}
+      "block_order": [
+        "call",
+        "whatsapp",
+        "email",
+        "visit"
+      ],
+      "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 48,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 32
+      }
     },
     "form": {
       "type": "contact-form",
-      "settings": {
-        "heading": "Send us a message"
-      },
       "blocks": {
-        "instagram": { "type": "quick_contact", "settings": { "icon": "instagram", "heading": "Instagram DMs", "content": "@cocopocothegiftshop", "link": "https://www.instagram.com/cocopocothegiftshop/", "open_new_tab": true } },
-        "whatsapp": { "type": "quick_contact", "settings": { "icon": "phone", "heading": "WhatsApp", "content": "+91 85840 72905", "link": "https://wa.me/918584072905", "open_new_tab": true } },
-        "email": { "type": "quick_contact", "settings": { "icon": "mail", "heading": "Email", "content": "info@cocopoco.in", "link": "mailto:info@cocopoco.in", "open_new_tab": false } },
-        "hours": { "type": "quick_contact", "settings": { "icon": "clock", "heading": "Support hours", "content": "Mon–Sat, 10am–6pm", "link": "#contact-form", "open_new_tab": false } }
+        "instagram": {
+          "type": "quick_contact",
+          "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
+            "icon": "instagram",
+            "heading": "Instagram DMs",
+            "content": "@cocopocothegiftshop",
+            "link": "https://www.instagram.com/cocopocothegiftshop/",
+            "open_new_tab": true
+          }
+        },
+        "whatsapp": {
+          "type": "quick_contact",
+          "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
+            "icon": "phone",
+            "heading": "WhatsApp",
+            "content": "+91 85840 72905",
+            "link": "https://wa.me/918584072905",
+            "open_new_tab": true
+          }
+        },
+        "email": {
+          "type": "quick_contact",
+          "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
+            "icon": "mail",
+            "heading": "Email",
+            "content": "info@cocopoco.in",
+            "link": "mailto:info@cocopoco.in",
+            "open_new_tab": false
+          }
+        },
+        "hours": {
+          "type": "quick_contact",
+          "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
+            "icon": "clock",
+            "heading": "Support hours",
+            "content": "Mon–Sat, 10am–6pm",
+            "link": "#contact-form",
+            "open_new_tab": false
+          }
+        }
       },
-      "block_order": ["instagram", "whatsapp", "email", "hours"]
+      "block_order": [
+        "instagram",
+        "whatsapp",
+        "email",
+        "hours"
+      ],
+      "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
+        "heading": "Send us a message",
+        "subject_options": "My order, Product question, Bulk order, Gift help, Other",
+        "message_placeholder": "Tell us everything...",
+        "button_text": "Send message",
+        "response_text": "We usually reply within a few hours, Mon–Sat.",
+        "padding_top": 24,
+        "padding_bottom": 64,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 48
+      }
     }
   },
   "order": [

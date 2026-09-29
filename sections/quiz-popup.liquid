@@ -1,7 +1,7 @@
 {{ 'quiz-popup.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'quiz-popup.js' | asset_url }}" defer="defer"></script>
 
-<section class="quiz-banner" style="--quiz-section-bg: {{ section.settings.section_background }}; --quiz-card-start: {{ section.settings.card_color_1 }}; --quiz-card-middle: {{ section.settings.card_color_2 }}; --quiz-card-end: {{ section.settings.card_color_3 }}; --quiz-accent: {{ section.settings.accent_color }}; --quiz-ink: {{ section.settings.text_color }}; --quiz-pt: {{ section.settings.padding_top }}px; --quiz-pb: {{ section.settings.padding_bottom }}px;" data-quiz-section>
+<section class="quiz-banner" style="--quiz-section-bg: {{ section.settings.section_background }}; --quiz-card-start: {{ section.settings.card_color_1 }}; --quiz-card-middle: {{ section.settings.card_color_2 }}; --quiz-card-end: {{ section.settings.card_color_3 }}; --quiz-accent: {{ section.settings.accent_color }}; --quiz-ink: {{ section.settings.text_color }}; --quiz-pt: {{ section.settings.padding_top }}px; --quiz-pb: {{ section.settings.padding_bottom }}px;" data-quiz-section data-quiz-id="quiz-popup-{{ section.id }}" data-quiz-question-id="{{ section.settings.question_id | default: section.id | escape }}" data-quiz-question="{{ section.settings.popup_title | strip_html | escape }}">
   <div class="quiz-banner__container">
     <button class="quiz-banner__card" type="button" data-quiz-open aria-haspopup="dialog" aria-controls="QuizPopup-{{ section.id }}">
       <span class="quiz-banner__copy">
@@ -34,7 +34,7 @@
                   assign card_tag = 'a'
                 endif
               %}
-              <{{ card_tag }} class="quiz-popup__option"{% if block.settings.link != blank %} href="{{ block.settings.link }}"{% endif %} style="--option-bg: {{ block.settings.background }};" {{ block.shopify_attributes }}>
+              <{{ card_tag }} class="quiz-popup__option"{% if block.settings.link != blank %} href="{{ block.settings.link }}" data-quiz-option data-option-id="{{ block.id }}" data-option-label="{{ block.settings.title | strip_html | escape }}" data-option-position="{{ forloop.index }}"{% endif %} style="--option-bg: {{ block.settings.background }};" {{ block.shopify_attributes }}>
                 <span class="quiz-popup__icon" aria-hidden="true">{% render 'icons', icon: block.settings.icon %}</span>
                 {% if block.settings.pill != blank %}<span class="quiz-popup__option-pill">{{ block.settings.pill | escape }}</span>{% endif %}
                 {% if block.settings.title != blank %}<h3 class="quiz-popup__option-title">{{ block.settings.title }}</h3>{% endif %}
@@ -65,6 +65,7 @@
     { "type": "header", "content": "Popup" },
     { "type": "text", "id": "popup_pill", "label": "Pill", "default": "30-SEC QUIZ" },
     { "type": "inline_richtext", "id": "popup_title", "label": "Title", "default": "Who are you shopping for today?" },
+    { "type": "text", "id": "question_id", "label": "Question ID", "default": "shopping-for", "info": "Stable analytics identifier for this question." },
     { "type": "richtext", "id": "popup_content", "label": "Content", "default": "<p>Tap one — we'll curate the cutest picks just for you 💌</p>" },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "section_background", "label": "Section background", "default": "#fff7fb" },
