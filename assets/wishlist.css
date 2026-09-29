@@ -4,7 +4,7 @@
 .wishlist-button:focus-visible,.wishlist-page a:focus-visible,.wishlist-page button:focus-visible{outline:2px solid var(--wishlist-color);outline-offset:3px}
 .cp-product-card__media{position:relative}
 .cp-product-card__media>.wishlist-button{position:absolute;right:12px;top:12px;z-index:2}
-.main-product__wishlist{display:flex;align-items:center;gap:10px;margin-top:12px}
+.main-product__wishlist{display:flex;align-items:center;margin-left:auto}
 .wishlist-header-link{position:relative}
 .wishlist-header-link svg{width:24px;height:24px}
 .wishlist-count-bubble{position:absolute;top:.1rem;right:-.1rem;display:flex;align-items:center;justify-content:center;min-width:17px;height:17px;padding:0 3px;border-radius:50%;background:var(--wishlist-color);color:#fff;font-size:10px;line-height:1}

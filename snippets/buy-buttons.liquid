@@ -70,6 +70,17 @@
               assign quantity_rule_soldout = true
             endif
           -%}
+          {%- if show_main_quantity -%}
+            <div class="main-product__primary-actions">
+              <div id="Quantity-Form-{{ section.id }}" class="main-product__quantity product-form__quantity">
+                <label class="visually-hidden" for="Quantity-{{ section.id }}">{{ 'products.product.quantity.label' | t }}</label>
+                <quantity-input class="quantity">
+                  <button class="quantity__button" name="minus" type="button"><span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title }}</span><span class="svg-wrapper">{{ 'icon-minus.svg' | inline_asset_content }}</span></button>
+                  <input id="Quantity-{{ section.id }}" class="quantity__input" type="number" name="quantity" value="{{ product.selected_or_first_available_variant.quantity_rule.min }}" min="{{ product.selected_or_first_available_variant.quantity_rule.min }}" data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"{% if product.selected_or_first_available_variant.quantity_rule.max != null %} max="{{ product.selected_or_first_available_variant.quantity_rule.max }}" data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"{% endif %} step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}">
+                  <button class="quantity__button" name="plus" type="button"><span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title }}</span><span class="svg-wrapper">{{ 'icon-plus.svg' | inline_asset_content }}</span></button>
+                </quantity-input>
+              </div>
+          {%- endif -%}
           <button
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
@@ -91,10 +102,20 @@
                 {{ 'products.product.add_to_cart' | t }}
               {%- endif -%}
             </span>
+            {%- if show_product_price and product.selected_or_first_available_variant.available -%}
+              <span class="main-product__atc-price" data-atc-price aria-hidden="true">
+                · {{ product.selected_or_first_available_variant.price | money }}
+              </span>
+            {%- endif -%}
             {%- render 'loading-spinner' -%}
           </button>
+          {%- if show_main_quantity -%}
+            </div>
+          {%- endif -%}
           {%- if show_dynamic_checkout -%}
+            {%- if show_main_quantity -%}<div class="main-product__dynamic-checkout">{%- endif -%}
             {{ form | payment_button }}
+            {%- if show_main_quantity -%}</div>{%- endif -%}
           {%- endif -%}
         </div>
       {%- endform -%}

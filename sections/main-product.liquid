@@ -85,12 +85,15 @@
           <h1 class="main-product__title">{{ product.title | escape }}</h1>
           {%- if product.metafields.custom.card_highlight.value != blank -%}<div class="main-product__highlight">{{ product.metafields.custom.card_highlight.value }}</div>{%- endif -%}
 
-          <div class="main-product__price" id="price-{{ section.id }}" role="status">
-            <span class="main-product__current-price">{{ selected_variant.price | money }}</span>
-            {%- if selected_variant.compare_at_price > selected_variant.price -%}
-              <s class="main-product__compare-price">{{ selected_variant.compare_at_price | money }}</s>
-              {%- assign saving = selected_variant.compare_at_price | minus: selected_variant.price -%}<span class="main-product__save">Save {{ saving | money }}</span>
-            {%- endif -%}
+          <div class="main-product__price-row">
+            <div class="main-product__price" id="price-{{ section.id }}" role="status">
+              <span class="main-product__current-price">{{ selected_variant.price | money }}</span>
+              {%- if selected_variant.compare_at_price > selected_variant.price -%}
+                <s class="main-product__compare-price">{{ selected_variant.compare_at_price | money }}</s>
+                {%- assign saving = selected_variant.compare_at_price | minus: selected_variant.price -%}<span class="main-product__save">Save {{ saving | money }}</span>
+              {%- endif -%}
+            </div>
+            <div class="main-product__wishlist">{% render 'wishlist-button', product: product %}</div>
           </div>
 
           {%- if cart.taxes_included or shop.shipping_policy.body != blank or section.settings.product_message != blank -%}
@@ -107,24 +110,13 @@
           {%- endunless -%}
 
           <div class="main-product__purchase">
-            <div id="Quantity-Form-{{ section.id }}" class="main-product__quantity product-form__quantity">
-              <label class="visually-hidden" for="Quantity-{{ section.id }}">{{ 'products.product.quantity.label' | t }}</label>
-              <quantity-input class="quantity">
-                <button class="quantity__button" name="minus" type="button"><span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title }}</span><span class="svg-wrapper">{{ 'icon-minus.svg' | inline_asset_content }}</span></button>
-                <input id="Quantity-{{ section.id }}" class="quantity__input" type="number" name="quantity" value="{{ selected_variant.quantity_rule.min }}" min="{{ selected_variant.quantity_rule.min }}" data-min="{{ selected_variant.quantity_rule.min }}"{% if selected_variant.quantity_rule.max != null %} max="{{ selected_variant.quantity_rule.max }}" data-max="{{ selected_variant.quantity_rule.max }}"{% endif %} step="{{ selected_variant.quantity_rule.increment }}" form="{{ product_form_id }}">
-                <button class="quantity__button" name="plus" type="button"><span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title }}</span><span class="svg-wrapper">{{ 'icon-plus.svg' | inline_asset_content }}</span></button>
-              </quantity-input>
-            </div>
             <div class="main-product__buy-buttons">
-              {% render 'buy-buttons', block: section, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: false %}
-              <span class="main-product__atc-price" data-atc-price aria-hidden="true"{% unless selected_variant.available %} hidden{% endunless %}>{% if selected_variant.available %}· {{ selected_variant.price | money }}{% endif %}</span>
+              {% render 'buy-buttons', block: section, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: false, show_product_price: true, show_main_quantity: true %}
             </div>
-            <div class="main-product__wishlist">{% render 'wishlist-button', product: product %}<span>Save to wishlist</span></div>
           </div>
 
           {%- for block in section.blocks -%}
             {%- case block.type -%}
-              {%- when 'share_popup' -%}{% render 'product-share-popup', product: product, block: block %}
               {%- when 'stock_notify' -%}{% render 'stock-notify', product: product, block: block %}
             {%- endcase -%}
           {%- endfor -%}
@@ -176,6 +168,10 @@
               </div>
             {%- endif -%}{%- endfor -%}
           </div>
+
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'share_popup' -%}{% render 'product-share-popup', product: product, block: block %}{%- endif -%}
+          {%- endfor -%}
         </div>
       </div>
     </div>

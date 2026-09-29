@@ -377,9 +377,63 @@
           document.addEventListener('visibilitychange', handleVisibilityChange);
         }
 
-        // Browsers control the visible confirmation wording for beforeunload.
+        // Browsers expose tab closing and page navigation through the same
+        // beforeunload event. Allow intentional same-store navigation first so
+        // the native warning is reserved for closing or leaving the storefront.
         if (custCoreChange.leaveAlertEnabled) {
+          let allowStoreNavigation = false;
+
+          const isSameStoreUrl = (value) => {
+            try {
+              return new URL(value, window.location.href).origin === window.location.origin;
+            } catch (error) {
+              return false;
+            }
+          };
+
+          const allowCurrentNavigation = () => {
+            allowStoreNavigation = true;
+
+            // Restore the warning when a click or submit is cancelled by
+            // another script and the current page remains open.
+            window.setTimeout(() => {
+              allowStoreNavigation = false;
+            }, 0);
+          };
+
+          document.addEventListener('click', (event) => {
+            if (event.defaultPrevented || event.button !== 0) return;
+
+            const target = event.target;
+            if (!(target instanceof Element)) return;
+
+            const link = target.closest('a[href]');
+            if (
+              !link ||
+              link.hasAttribute('download') ||
+              (link.target && link.target.toLowerCase() !== '_self') ||
+              !isSameStoreUrl(link.href)
+            ) return;
+
+            allowCurrentNavigation();
+          }, true);
+
+          document.addEventListener('submit', (event) => {
+            if (event.defaultPrevented) return;
+
+            const form = event.target;
+            if (
+              !(form instanceof HTMLFormElement) ||
+              (form.target && form.target.toLowerCase() !== '_self') ||
+              !isSameStoreUrl(form.action || window.location.href)
+            ) return;
+
+            allowCurrentNavigation();
+          }, true);
+
           window.addEventListener('beforeunload', (event) => {
+            if (allowStoreNavigation) return;
+
             event.preventDefault();
             event.returnValue = custCoreChange.leaveAlertMessage || true;
             return event.returnValue;
