@@ -12,6 +12,37 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "fbp_fast_bundle_volume_position_dnA3cd": {
+          "type": "shopify://apps/fbp-fast-bundle/blocks/volume_position/9e87fbe2-9041-4c23-acf5-322413994cef",
+          "settings": {}
+        },
+        "fbp_fast_bundle_product_bundle_with_ids_WBqf3n": {
+          "type": "shopify://apps/fbp-fast-bundle/blocks/product_bundle_with_ids/9e87fbe2-9041-4c23-acf5-322413994cef",
+          "settings": {
+            "bundle_ids": "",
+            "products": []
+          }
+        },
+        "fbp_fast_bundle_product_bundles_68AkLm": {
+          "type": "shopify://apps/fbp-fast-bundle/blocks/product_bundles/9e87fbe2-9041-4c23-acf5-322413994cef",
+          "settings": {}
+        },
+        "fbp_fast_bundle_fbt_position_zrCctF": {
+          "type": "shopify://apps/fbp-fast-bundle/blocks/fbt_position/9e87fbe2-9041-4c23-acf5-322413994cef",
+          "settings": {}
+        },
+        "fbp_fast_bundle_all_bundles_qbdb9E": {
+          "type": "shopify://apps/fbp-fast-bundle/blocks/all_bundles/9e87fbe2-9041-4c23-acf5-322413994cef",
+          "settings": {}
+        },
+        "fbp_fast_bundle_add_on_position_DKpPBE": {
+          "type": "shopify://apps/fbp-fast-bundle/blocks/addOn_position/9e87fbe2-9041-4c23-acf5-322413994cef",
+          "settings": {}
+        },
+        "fbp_fast_bundle_bap_position_CzVzyb": {
+          "type": "shopify://apps/fbp-fast-bundle/blocks/bap_position/9e87fbe2-9041-4c23-acf5-322413994cef",
+          "settings": {}
+        },
         "benefit_shipping": {
           "type": "benefit",
           "settings": {
@@ -227,6 +258,13 @@
         }
       },
       "block_order": [
+        "fbp_fast_bundle_volume_position_dnA3cd",
+        "fbp_fast_bundle_product_bundle_with_ids_WBqf3n",
+        "fbp_fast_bundle_product_bundles_68AkLm",
+        "fbp_fast_bundle_fbt_position_zrCctF",
+        "fbp_fast_bundle_all_bundles_qbdb9E",
+        "fbp_fast_bundle_add_on_position_DKpPBE",
+        "fbp_fast_bundle_bap_position_CzVzyb",
         "benefit_shipping",
         "benefit_quality",
         "benefit_secure",
