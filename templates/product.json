@@ -130,6 +130,7 @@
         },
         "pincode_checker": {
           "type": "pincode_checker",
+          "disabled": true,
           "settings": {
             "brand_background_color": "#ffffff",
             "brand_caption_color": "#b86a8a",
@@ -150,7 +151,7 @@
             "show_cod": true,
             "show_prepaid": true,
             "show_location": true,
-            "delhivery_api_token": "42aee75df734d21c8b6783b664c40ab76dda5508",
+            "delhivery_api_token": "42aee75df734d21c8b6783b664c40ab76dda5508"
           }
         },
         "details": {
