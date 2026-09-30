@@ -62,6 +62,7 @@
           "type": "slide",
           "settings": {
             "desktop_image": "shopify://shop_images/hero_1.png",
+            "mobile_image": "shopify://shop_images/hero_mobile.png",
             "image_alt": "",
             "image_link": "",
             "image_position": "70% 30%",
