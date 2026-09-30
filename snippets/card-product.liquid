@@ -127,6 +127,7 @@
       </div>
       {%- if quick_add != blank and quick_add != 'none' -%}
         {% if card_product.tags contains 'bundle' %}
+          {%else %}
         <div class="cp-product-card__action">
           {%- if available_variants.size == 1 -%}
             <product-form data-section-id="{{ section_id }}">
