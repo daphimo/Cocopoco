@@ -248,14 +248,14 @@
         "disabled": true,
         "settings": {}
       },
-      "144831480468751239": {
-        "type": "shopify://apps/essential-upsell/blocks/app-embed/50627fd9-24fd-4250-8614-accc12826d80",
-        "disabled": true,
-        "settings": {}
-      },
       "15710897563947040993": {
         "type": "shopify://apps/avada-boost-sales-trust-badge/blocks/app-embed/45454b7f-f6a7-4852-b770-8e0c3992a226",
         "disabled": true,
+        "settings": {}
+      },
+      "144831480468751239": {
+        "type": "shopify://apps/essential-upsell/blocks/app-embed/50627fd9-24fd-4250-8614-accc12826d80",
+        "disabled": false,
         "settings": {}
       }
     },
