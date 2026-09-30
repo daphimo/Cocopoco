@@ -143,14 +143,14 @@
             "input_placeholder": "Enter your pincode",
             "button_text": "Check",
             "loading_text": "Checking availability...",
-            "success_message": "Delivery available to [pincode].",
-            "unavailable_message": "Sorry, delivery is currently unavailable to this pincode.",
+            "success_message": "Delivery available to this pincode.",
+            "unavailable_message": "Delivery is not available to this pincode.",
             "invalid_message": "Please enter a valid 6-digit pincode.",
-            "error_message": "We couldn't check availability right now. Please try again.",
+            "error_message": "Unable to check pincode right now. Please try again.",
             "show_cod": true,
             "show_prepaid": true,
             "show_location": true,
-            "proxy_endpoint": "/apps/delhivery-serviceability"
+            "delhivery_api_token": "42aee75df734d21c8b6783b664c40ab76dda5508",
           }
         },
         "details": {

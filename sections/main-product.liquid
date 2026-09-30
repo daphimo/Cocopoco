@@ -269,7 +269,14 @@
               <div
                 class="cust-pincode-checker"
                 data-cust-pincode-checker
-                data-endpoint="{{ block.settings.proxy_endpoint | escape }}"
+                {% comment %}
+                  NOTE:
+                  This implementation intentionally uses the Delhivery API directly from the storefront.
+                  The API token is therefore visible to storefront visitors.
+                  The client has explicitly accepted this frontend-only architecture.
+                {% endcomment %}
+                data-delhivery-token="{{ block.settings.delhivery_api_token | escape }}"
+                data-design-mode="{{ request.design_mode }}"
                 data-show-cod="{{ block.settings.show_cod }}"
                 data-show-prepaid="{{ block.settings.show_prepaid }}"
                 data-show-location="{{ block.settings.show_location }}"
@@ -805,13 +812,13 @@
           "type": "text",
           "id": "success_message",
           "label": "Success message",
-          "default": "Delivery available to [pincode]."
+          "default": "Delivery available to this pincode."
         },
         {
           "type": "text",
           "id": "unavailable_message",
           "label": "Non-serviceable message",
-          "default": "Sorry, delivery is currently unavailable to this pincode."
+          "default": "Delivery is not available to this pincode."
         },
         {
           "type": "text",
@@ -823,17 +830,16 @@
           "type": "text",
           "id": "error_message",
           "label": "API error message",
-          "default": "We couldn't check availability right now. Please try again."
+          "default": "Unable to check pincode right now. Please try again."
         },
         { "type": "checkbox", "id": "show_cod", "label": "Show COD availability", "default": true },
         { "type": "checkbox", "id": "show_prepaid", "label": "Show prepaid availability", "default": true },
         { "type": "checkbox", "id": "show_location", "label": "Show city or location", "default": true },
         {
           "type": "text",
-          "id": "proxy_endpoint",
-          "label": "Secure proxy endpoint",
-          "info": "Same-origin Shopify app proxy path. Never enter a Delhivery token here.",
-          "default": "/apps/delhivery-serviceability"
+          "id": "delhivery_api_token",
+          "label": "Delhivery API Token",
+          "info": "Enter your Delhivery API token. This token will be exposed in the storefront because the checker uses a frontend-only API request."
         }
       ]
     }

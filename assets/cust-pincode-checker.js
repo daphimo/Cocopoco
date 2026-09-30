@@ -1,5 +1,5 @@
 (() => {
-  const cache = new Map();
+  const DELHIVERY_PINCODE_API_URL = 'https://track.delhivery.com/c/api/pin-codes/json/';
 
   const escapeHtml = (value) => {
     const node = document.createElement('span');
@@ -26,7 +26,8 @@
     const showCod = root.dataset.showCod === 'true';
     const showPrepaid = root.dataset.showPrepaid === 'true';
     const showLocation = root.dataset.showLocation === 'true';
-    let controller = null;
+    const cache = new Map();
+    let activePincode = null;
 
     const setLoading = (loading) => {
       root.classList.toggle('is-loading', loading);
@@ -39,16 +40,20 @@
       result.hidden = false;
     };
     const renderResponse = (data, pincode) => {
-      if (!data || typeof data.serviceable !== 'boolean') throw new Error('Unexpected proxy response');
-      if (!data.serviceable) { render('error', [data.message || messages.unavailable]); return; }
+      if (!data || !Array.isArray(data.delivery_codes)) throw new Error('Unexpected Delhivery response');
+      const postalCode = data.delivery_codes[0]?.postal_code;
+      if (!postalCode || typeof postalCode !== 'object') { render('error', [messages.unavailable]); return; }
+      if (typeof postalCode.remarks !== 'string') throw new Error('Unexpected Delhivery response');
+      const remarks = postalCode.remarks.trim();
+      if (remarks !== '') { render('error', [messages.unavailable]); return; }
       const lines = [(messages.success || 'Delivery available to [pincode].').replace('[pincode]', pincode)];
       if (showLocation) {
-        const location = [data.city, data.district, data.stateCode].filter(Boolean).filter((value, index, values) => values.indexOf(value) === index).join(', ');
+        const location = [postalCode.city, postalCode.district, postalCode.state_code].filter(Boolean).filter((value, index, values) => values.indexOf(value) === index).join(', ');
         if (location) lines.push(`Delivering to ${location}`);
       }
-      if (showCod && data.cod === true) lines.push('Cash on Delivery available');
-      if (showPrepaid && data.prepaid === true) lines.push('Online payment available');
-      if (data.oda === true) lines.push('This is an out-of-delivery-area location; delivery may take longer.');
+      if (showCod && postalCode.cod === 'Y') lines.push('Cash on Delivery available');
+      if (showPrepaid && postalCode.pre_paid === 'Y') lines.push('Online payment available');
+      if (postalCode.is_oda === 'Y') lines.push('This is an out-of-delivery-area location; delivery may take longer.');
       render('success', lines);
     };
 
@@ -56,24 +61,30 @@
       event.preventDefault();
       const pincode = input.value.trim();
       if (!/^\d{6}$/.test(pincode)) { render('error', [messages.invalid]); input.focus(); return; }
-      if (!root.dataset.endpoint) { render('error', [messages.error]); return; }
+      const token = root.dataset.delhiveryToken?.trim();
+      if (!token) {
+        render('error', [root.dataset.designMode === 'true' ? 'Pincode service is not configured.' : messages.error]);
+        return;
+      }
       if (cache.has(pincode)) { renderResponse(cache.get(pincode), pincode); return; }
-      controller?.abort();
-      controller = new AbortController();
+      if (activePincode !== null) return;
+      activePincode = pincode;
       result.className = 'cust-pincode-checker__result'; result.textContent = messages.loading; result.hidden = false;
       setLoading(true);
       try {
-        const endpoint = new URL(root.dataset.endpoint, window.location.origin);
-        if (endpoint.origin !== window.location.origin) throw new Error('Proxy endpoint must be same-origin');
-        endpoint.searchParams.set('pincode', pincode);
-        const response = await fetch(endpoint.toString(), { headers: { Accept: 'application/json' }, credentials: 'same-origin', signal: controller.signal });
-        if (!response.ok) throw new Error(`Proxy returned ${response.status}`);
+        const endpoint = new URL(DELHIVERY_PINCODE_API_URL);
+        endpoint.searchParams.set('filter_codes', pincode);
+        const response = await fetch(endpoint.toString(), {
+          headers: { Accept: 'application/json', Authorization: `Token ${token}` },
+        });
+        if (!response.ok) throw new Error(`Delhivery returned ${response.status}`);
         const data = await response.json();
-        cache.set(pincode, data);
         renderResponse(data, pincode);
+        cache.set(pincode, data);
       } catch (error) {
-        if (error.name !== 'AbortError') { console.warn('[Pincode checker] Serviceability request failed.'); render('error', [messages.error]); }
-      } finally { setLoading(false); controller = null; }
+        console.warn('[Pincode checker] Serviceability request failed.');
+        render('error', [messages.error]);
+      } finally { setLoading(false); activePincode = null; }
     });
   };
 
