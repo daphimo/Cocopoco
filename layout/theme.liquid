@@ -14,9 +14,14 @@
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
+        {% assign title = collection.metafields.custom.display_name | default: collection.title %}
 
     <title>
+      {% if template contains 'collection' %}
+        {{ title | escape }}
+      {% else %}
       {{ page_title }}
+      {% endif %}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
