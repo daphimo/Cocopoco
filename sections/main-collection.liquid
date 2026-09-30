@@ -30,18 +30,18 @@
     --main-collection-mobile-padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
   }
 {%- endstyle -%}
-
+{% assign title = collection.metafields.custom.display_name | default: collection.title %}
 <collection-component view-event-payload="{{ collection | standard_event_data: 'view' | escape }}" data-collection-id="{{ collection.id }}">
   <section class="main-collection" data-collection-context data-collection-handle="{{ collection.handle | escape }}" data-collection-title="{{ collection.title | escape }}" data-collection-url="{{ collection.url }}">
     <div class="main-collection__inner">
       <nav class="main-collection__breadcrumbs" aria-label="Breadcrumb">
         <a href="{{ routes.root_url }}">Home</a>
         <span aria-hidden="true">/</span>
-        <span aria-current="page">{{ collection.title | escape }}</span>
+        
+        <span aria-current="page">{{ title | escape }}</span>
       </nav>
 
       <header class="main-collection__header">
-        {% assign title = collection.metafields.custom.display_name | default: collection.title %}
         <{{ section.settings.heading_tag }} class="main-collection__title">{{ title | escape }}</{{ section.settings.heading_tag }}>
         {%- if collection.description != blank -%}<div class="main-collection__description rte">{{ collection.description }}</div>{%- endif -%}
         {%- if section.settings.info_text != blank -%}
