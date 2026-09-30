@@ -130,6 +130,7 @@
     "cart_color_scheme": "scheme-1",
     "customer_account_menu": "customer-account-main-menu",
     "product_card_border": "#E34C93",
+    "tab_switch_message": "WE MISS YOU!!",
     "enable_leave_alert": false,
     "leave_alert_message": "Wait! Explore our latest collection",
     "sections": {
