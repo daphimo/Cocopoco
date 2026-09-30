@@ -45,6 +45,7 @@
         },
         "text_mjVAna": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "brand_background_color": "#ffffff",
             "brand_caption_color": "#b86a8a",
@@ -67,7 +68,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "text": "FREE SHIPPING ON ORDERS ABOVE ₹999/-",
+            "text": "ANNIVERSARY DEALS NOW LIVE",
             "link": ""
           }
         },
