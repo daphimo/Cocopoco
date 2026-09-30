@@ -160,7 +160,7 @@
         "show_pagination": true,
         "pause_on_hover": true,
         "pause_on_focus": true,
-        "desktop_height": 640,
+        "desktop_height": 590,
         "mobile_height": 720
       }
     },
