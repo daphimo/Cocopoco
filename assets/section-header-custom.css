@@ -137,7 +137,7 @@
 @media screen and (max-width: 989px) {
   .section-header .cp-header { grid-template-columns: 1fr auto 1fr; min-height: 5.2rem; padding: 0.5rem 1.2rem; }
   .section-header .cp-header__brand { justify-self: center; }
-  .section-header .cp-header__logo { max-height: 4.2rem; }
+  .section-header .cp-header__logo { max-height: 7.2rem; }
   .section-header .cp-nav { display: none; }
   .section-header .cp-header__actions > :not(.cp-cart-action):not(.cp-search-action) { display: none; }
   .section-header .cp-mobile-toggle { display: inline-flex; justify-self: start; cursor: pointer; }
