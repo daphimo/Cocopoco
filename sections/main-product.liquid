@@ -61,7 +61,11 @@
           href="{% if fallback_collection != blank %}{{ fallback_collection.url }}{% else %}{{ routes.all_products_collection_url }}{% endif %}"
           data-product-collection-link
         >
+<<<<<<< HEAD
           {%- if fallback_collection != blank %}{{ collection_title | escape }}{% else %}Shop{% endif -%}
+=======
+          {%- if fallback_collection != blank %}{{ fallback_collection.title | escape }}{% else %}Shop{% endif -%}
+>>>>>>> 5f27724de2a2542292b7c93f210bc2915023c155
         </a>
         <span aria-hidden="true">/</span><span aria-current="page">{{ product.title | escape }}</span>
       </nav>
