@@ -41,7 +41,8 @@
       </nav>
 
       <header class="main-collection__header">
-        <{{ section.settings.heading_tag }} class="main-collection__title">{{ collection.title | escape }}</{{ section.settings.heading_tag }}>
+        {% assign title = collection.metafields.custom.display_name | default: collection.title %}
+        <{{ section.settings.heading_tag }} class="main-collection__title">{{ title | escape }}</{{ section.settings.heading_tag }}>
         {%- if collection.description != blank -%}<div class="main-collection__description rte">{{ collection.description }}</div>{%- endif -%}
         {%- if section.settings.info_text != blank -%}
           <div class="main-collection__info">
