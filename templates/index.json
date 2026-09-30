@@ -910,7 +910,7 @@
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
             "text": "Talk to us for custom orders",
-            "link": "#",
+            "link": "shopify://pages/contact",
             "background": "#ffffff",
             "text_color": "#e34c93",
             "show_arrow": false,
