@@ -12,35 +12,8 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "fbp_fast_bundle_volume_position_yTyam3": {
-          "type": "shopify://apps/fbp-fast-bundle/blocks/volume_position/9e87fbe2-9041-4c23-acf5-322413994cef",
-          "settings": {}
-        },
-        "fbp_fast_bundle_product_bundle_with_ids_M8ECzt": {
-          "type": "shopify://apps/fbp-fast-bundle/blocks/product_bundle_with_ids/9e87fbe2-9041-4c23-acf5-322413994cef",
-          "settings": {
-            "bundle_ids": "",
-            "products": []
-          }
-        },
-        "fbp_fast_bundle_product_bundles_ewcXbj": {
-          "type": "shopify://apps/fbp-fast-bundle/blocks/product_bundles/9e87fbe2-9041-4c23-acf5-322413994cef",
-          "settings": {}
-        },
-        "fbp_fast_bundle_fbt_position_qQPEEb": {
-          "type": "shopify://apps/fbp-fast-bundle/blocks/fbt_position/9e87fbe2-9041-4c23-acf5-322413994cef",
-          "settings": {}
-        },
         "fbp_fast_bundle_bap_position_ytJ7BQ": {
           "type": "shopify://apps/fbp-fast-bundle/blocks/bap_position/9e87fbe2-9041-4c23-acf5-322413994cef",
-          "settings": {}
-        },
-        "fbp_fast_bundle_all_bundles_QqyQwA": {
-          "type": "shopify://apps/fbp-fast-bundle/blocks/all_bundles/9e87fbe2-9041-4c23-acf5-322413994cef",
-          "settings": {}
-        },
-        "fbp_fast_bundle_add_on_position_PBGzMW": {
-          "type": "shopify://apps/fbp-fast-bundle/blocks/addOn_position/9e87fbe2-9041-4c23-acf5-322413994cef",
           "settings": {}
         },
         "benefit_shipping": {
@@ -258,13 +231,7 @@
         }
       },
       "block_order": [
-        "fbp_fast_bundle_volume_position_yTyam3",
-        "fbp_fast_bundle_product_bundle_with_ids_M8ECzt",
-        "fbp_fast_bundle_product_bundles_ewcXbj",
-        "fbp_fast_bundle_fbt_position_qQPEEb",
         "fbp_fast_bundle_bap_position_ytJ7BQ",
-        "fbp_fast_bundle_all_bundles_QqyQwA",
-        "fbp_fast_bundle_add_on_position_PBGzMW",
         "benefit_shipping",
         "benefit_quality",
         "benefit_secure",
