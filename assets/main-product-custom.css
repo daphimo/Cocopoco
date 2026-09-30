@@ -33,5 +33,5 @@
 .main-product__dynamic-checkout{margin-top:1rem}
 .main-product__dynamic-checkout .shopify-payment-button{margin-top:0}
 .main-product__secure-checkout{padding-block:var(--secure-checkout-padding-top) var(--secure-checkout-padding-bottom);text-align:center}.main-product__secure-checkout-title{margin:0 0 1.2rem;color:var(--cp-section-heading,var(--color-deep-cocoa));font-size:var(--secure-checkout-title-size);font-weight:600;line-height:1.3}.main-product__secure-checkout-title p{margin:0}.main-product__secure-checkout-icons{display:flex;flex-flow:row nowrap;align-items:center;justify-content:center;gap:clamp(.6rem,2vw,1.2rem);width:100%}.main-product__secure-checkout-icon{display:flex;flex:0 1 var(--secure-checkout-image-size);align-items:center;justify-content:center;min-width:0;max-width:var(--secure-checkout-image-size)}.main-product__secure-checkout-icon img{display:block;width:100%;max-width:var(--secure-checkout-image-size);height:auto;max-height:var(--secure-checkout-image-size);object-fit:contain}
-@media screen and (max-width:749px){.main-product__primary-actions{grid-template-columns:10rem minmax(0,1fr)}}
+@media screen and (max-width:749px){.main-product__primary-actions{grid-template-columns:14rem minmax(0,1fr)}}
 .main-product__media-slide--primary{order:-1}
