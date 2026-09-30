@@ -2,6 +2,7 @@
 {{ 'custom-cart-drawer.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cart-tier-progress.js' | asset_url }}" defer="defer"></script>
 
 {%- style -%}
   #shopify-section-{{ section.id }} { --cart-drawer-accent: {{ section.settings.accent_color }}; --cart-drawer-bg: {{ section.settings.background_color }}; --cart-drawer-text: {{ section.settings.text_color }}; }
@@ -16,6 +17,10 @@
         <h2 class="cart-drawer__title">{{ section.settings.cart_heading | escape }}{% if cart.item_count > 0 %} <span>({{ cart.item_count }})</span>{% endif %}</h2>
         <button class="drawer__close cart-drawer__close" type="button" onclick="this.closest('cart-drawer').close()" aria-label="{{ 'accessibility.close' | t }}"><span class="svg-wrapper">{{ 'icon-close.svg' | inline_asset_content }}</span></button>
       </header>
+
+      {%- if section.settings.enable_tiered_discount_progress -%}
+        {% render 'cart-tier-progress', cart: cart, section: section %}
+      {%- endif -%}
 
       {%- if cart == empty -%}
         <div class="drawer__inner-empty cart-drawer__content cart-drawer__content--empty">
@@ -92,7 +97,28 @@
                     <product-form class="cart-drawer__recommendation-form" data-section-id="{{ section.id }}">
                       <div class="product-form__error-message-wrapper" role="alert" hidden><span class="product-form__error-message"></span></div>
                       {%- form 'product', recommendation, id: recommendation_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-                        <input class="product-variant-id" type="hidden" name="id" value="{{ recommendation_variant.id }}">
+                        {%- if recommendation.has_only_default_variant -%}
+                          <input class="product-variant-id" type="hidden" name="id" value="{{ recommendation_variant.id }}">
+                        {%- else -%}
+                          <label class="visually-hidden" for="CartDrawerRecommendationVariant-{{ recommendation.id }}">
+                            {{ 'products.product.choose_product_options' | t: product_name: recommendation.title }}
+                          </label>
+                          <select
+                            id="CartDrawerRecommendationVariant-{{ recommendation.id }}"
+                            class="product-variant-id cart-drawer__recommendation-variant"
+                            name="id"
+                          >
+                            {%- for variant in recommendation.variants -%}
+                              <option
+                                value="{{ variant.id }}"
+                                {% if variant == recommendation_variant %}selected="selected"{% endif %}
+                                {% unless variant.available %}disabled="disabled"{% endunless %}
+                              >
+                                {{ variant.title | escape }} — {{ variant.price | money }}{% unless variant.available %} — {{ 'products.product.sold_out' | t }}{% endunless %}
+                              </option>
+                            {%- endfor -%}
+                          </select>
+                        {%- endif -%}
                         <button type="submit" name="add" class="cart-drawer__recommendation-add"><span>Add</span>{% render 'loading-spinner' %}</button>
                       {%- endform -%}
                     </product-form>

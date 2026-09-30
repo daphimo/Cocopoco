@@ -79,7 +79,7 @@
             {%- if show_language -%}<localization-form>{%- form 'localization', id: 'CpHeaderLanguageForm', class: 'localization-form' -%}<h2 class="visually-hidden" id="CpHeaderLanguageLabel">{{ 'localization.language_label' | t }}</h2>{%- render 'language-localization', localPosition: 'CpHeaderLanguage' -%}{%- endform -%}</localization-form>{%- endif -%}
           </div>
         {%- endif -%}
-        {%- if section.settings.show_search -%}<div class="cp-action">{% render 'header-search', input_id: 'CpSearch-In-Modal' %}</div>{%- endif -%}
+        {%- if section.settings.show_search -%}<div class="cp-action cp-search-action">{% render 'header-search', input_id: 'CpSearch-In-Modal' %}</div>{%- endif -%}
         {%- if section.settings.show_account and shop.customer_accounts_enabled -%}
           <a href="{{ routes.account_url }}" class="cp-action focus-inset" aria-label="{{ 'customer.log_in' | t }}"><span class="svg-wrapper"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg></span></a>
         {%- endif -%}

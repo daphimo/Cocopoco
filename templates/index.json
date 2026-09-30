@@ -12,17 +12,18 @@
     "custom_hero_slider_NqXFt9": {
       "type": "custom-hero-slider",
       "blocks": {
-        "slide_ghqa7Q": {
+        "slide_XPCKp7": {
           "type": "slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/hero-D6qm_qxI.png",
+            "desktop_image": "shopify://shop_images/anniversary_Banner_Cocopoco.png",
+            "mobile_image": "shopify://shop_images/anniversary_Banner_Cocopoco_mobile.png",
             "image_alt": "",
             "image_position": "70% 30%",
             "image_loading": "lazy",
-            "eyebrow": "FOR THE EVERYDAY ROMANTIC",
-            "eyebrow_icon": "sparkles",
-            "heading": "Romanticize your everyday.",
-            "description": "<p>Cute, aesthetic little things — stationery, bottles, keychains and accessories — that make your ordinary routine feel a lot more special.</p>",
+            "eyebrow": "",
+            "eyebrow_icon": "none",
+            "heading": "",
+            "description": "",
             "primary_text": "Shop the joy",
             "primary_link": "",
             "secondary_text": "Explore new arrivals",
@@ -38,7 +39,7 @@
             "eyebrow_padding_y": 7,
             "button_radius": 40,
             "overlay_color": "#ffffff",
-            "overlay_opacity": 65,
+            "overlay_opacity": 0,
             "eyebrow_text_color": "#b86a8a",
             "eyebrow_background": "#ffffff",
             "eyebrow_border": "#f9d5e6",
@@ -56,7 +57,7 @@
             "pagination_active_color": "#e83e8c"
           }
         },
-        "slide_XPCKp7": {
+        "slide_ghqa7Q": {
           "type": "slide",
           "settings": {
             "desktop_image": "shopify://shop_images/hero-D6qm_qxI.png",
@@ -142,8 +143,8 @@
         }
       },
       "block_order": [
-        "slide_ghqa7Q",
         "slide_XPCKp7",
+        "slide_ghqa7Q",
         "benefit_zinXTA",
         "benefit_FY9a9f",
         "benefit_7pNwPA",
@@ -377,6 +378,7 @@
         "trigger_content": "We'll find the perfect CocoPoco vibe for you in seconds.",
         "popup_pill": "30-SEC QUIZ",
         "popup_title": "Who are you shopping for today?",
+        "question_id": "shopping-for",
         "popup_content": "<p>Tap one — we'll curate the cutest picks just for you 💌</p>",
         "section_background": "#fff7fb",
         "card_color_1": "#f9cce5",
@@ -399,14 +401,14 @@
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
         "brand_button_text_color": "#ffffff",
-        "collection": "new-arrival",
+        "collection": "just-in-newly-added-products",
         "caption": "JUST DROPPED",
         "title": "New arrivals you'll love 🌸",
         "view_more_text": "VIEW MORE",
-        "view_more_link": "",
+        "view_more_link": "shopify://collections/just-in-newly-added-products",
         "show_view_more_arrow": true,
         "products_per_row": "4",
-        "products_per_row_mobile": "1",
+        "products_per_row_mobile": "2",
         "enable_mobile_slider": true,
         "maximum_products": 4,
         "color_scheme": "",
@@ -534,10 +536,10 @@
         "view_all_text": "EXPLORE ALL",
         "view_all_link": "",
         "show_view_all_arrow": true,
-        "link_color": "#FFFDFE",
-        "link_hover_color": "#FFFDFE",
-        "item_color": "#FFFDFE",
-        "background_color": "#E34C93",
+        "link_color": "#fffdfe",
+        "link_hover_color": "#fffdfe",
+        "item_color": "#fffdfe",
+        "background_color": "#e34c93",
         "image_size": 140,
         "columns_desktop": "6",
         "columns_mobile": "3",
@@ -908,7 +910,7 @@
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
             "text": "Talk to us for custom orders",
-            "link": "#",
+            "link": "shopify://pages/contact",
             "background": "#ffffff",
             "text_color": "#e34c93",
             "show_arrow": false,
@@ -1157,50 +1159,50 @@
         "shoppable_video_wAz7F7": {
           "type": "shoppable_video",
           "settings": {
-            "video": "shopify://files/videos/2025-07-24_14_27_45_video (1).MP4",
-            "product": "gamer-ultimate-combo-pack"
+            "video": "shopify://files/videos/1200ml Vacuum Insulated Water Bottle – Stainless Steel Reusable Bottle.MP4",
+            "product": "premium-water-bottle"
           }
         },
         "shoppable_video_Tcfyjt": {
           "type": "shoppable_video",
           "settings": {
-            "video": "shopify://files/videos/2025-07-24_14_27_45_video (1).MP4",
-            "product": "gamer-ultimate-combo-pack"
+            "video": "shopify://files/videos/Kuromi Pop Up Keychain.MP4",
+            "product": "kuromi-pop-up-keychain"
           }
         },
         "shoppable_video_GCef7p": {
           "type": "shoppable_video",
           "settings": {
-            "video": "shopify://files/videos/2025-07-24_14_27_45_video (1).MP4",
-            "product": "gamer-ultimate-combo-pack"
+            "video": "shopify://files/videos/Sanrio Character Mini Hot Water Bag 400ml.MP4",
+            "product": "sanrio-mini-hot-water-bag"
           }
         },
         "shoppable_video_bxCyrJ": {
           "type": "shoppable_video",
           "settings": {
-            "video": "shopify://files/videos/2025-07-24_14_27_45_video (1).MP4",
+            "video": "shopify://files/videos/Watercolor Book.MP4",
             "product": "gamer-ultimate-combo-pack"
           }
         },
         "shoppable_video_PkqWjc": {
           "type": "shoppable_video",
           "settings": {
-            "video": "shopify://files/videos/2025-07-24_14_27_45_video (1).MP4",
-            "product": "gamer-ultimate-combo-pack"
+            "video": "shopify://files/videos/Viral Chicu Tom 3D Animal Insulated Stainless Steel Water Bottle (480ml).MP4",
+            "product": "viral-chicu-tom-3d-animal-insulated-stainless-steel-water-bottle-480ml"
           }
         },
         "shoppable_video_XmCYXE": {
           "type": "shoppable_video",
           "settings": {
-            "video": "shopify://files/videos/2025-07-24_14_27_45_video (1).MP4",
-            "product": "gamer-ultimate-combo-pack"
+            "video": "shopify://files/videos/13-14 Inch Waterproof Puffer Laptop Sleeve.MP4",
+            "product": "laptop-sleeve"
           }
         },
         "shoppable_video_J6dYW6": {
           "type": "shoppable_video",
           "settings": {
-            "video": "shopify://files/videos/2025-07-24_14_27_45_video (1).MP4",
-            "product": "gamer-ultimate-combo-pack"
+            "video": "shopify://files/videos/Premium Kids Backpack with Detachable Sling Bag.MP4",
+            "product": "premium-kids-backpack-with-detachable-sling-bag"
           }
         }
       },

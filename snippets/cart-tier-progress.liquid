@@ -1,0 +1,101 @@
+{% doc %}
+  Renders the cart drawer tiered discount progress component.
+
+  @param {object} cart - The current cart object.
+  @param {object} section - The cart drawer section and its tier blocks.
+
+  @example
+  {% render 'cart-tier-progress', cart: cart, section: section %}
+{% enddoc %}
+
+{%- liquid
+  assign tier_count = 0
+  assign unlocked_count = 0
+  assign next_tier = nil
+  assign latest_unlocked_tier = nil
+  assign final_threshold = 0
+
+  for block in section.blocks
+    if block.type == 'discount_tier' and block.settings.threshold > 0
+      assign tier_count = tier_count | plus: 1
+      assign threshold_cents = block.settings.threshold | times: 100 | round
+      assign final_threshold = threshold_cents
+      if cart.items_subtotal_price >= threshold_cents
+        assign unlocked_count = unlocked_count | plus: 1
+        assign latest_unlocked_tier = block
+      elsif next_tier == nil
+        assign next_tier = block
+      endif
+    endif
+  endfor
+-%}
+
+{%- if tier_count > 0 -%}
+  {%- liquid
+    assign status_tier = next_tier
+    assign status_template = next_tier.settings.before_message
+    assign remaining_cents = 0
+    if next_tier
+      assign next_threshold_cents = next_tier.settings.threshold | times: 100 | round
+      assign remaining_cents = next_threshold_cents | minus: cart.items_subtotal_price | at_least: 0
+    else
+      assign status_tier = latest_unlocked_tier
+      assign status_template = latest_unlocked_tier.settings.after_message
+    endif
+
+    assign remaining_money = remaining_cents | money | strip_html
+    assign threshold_cents = status_tier.settings.threshold | times: 100 | round
+    assign threshold_money = threshold_cents | money | strip_html
+    assign status_message = status_template | replace: '{amount}', remaining_money | replace: '{discount}', status_tier.settings.discount | replace: '{threshold}', threshold_money
+    if unlocked_count == tier_count
+      assign progress_percent = 100
+    else
+      assign target_position = unlocked_count | times: 100 | plus: 50 | times: 1.0 | divided_by: tier_count
+      assign previous_position = 0
+      assign previous_threshold = 0
+      if latest_unlocked_tier
+        assign previous_position = unlocked_count | minus: 1 | times: 100 | plus: 50 | times: 1.0 | divided_by: tier_count
+        assign previous_threshold = latest_unlocked_tier.settings.threshold | times: 100 | round
+      endif
+      assign interval_total = threshold_cents | minus: previous_threshold
+      assign interval_current = cart.items_subtotal_price | minus: previous_threshold | at_least: 0
+      assign interval_progress = interval_current | times: 1.0 | divided_by: interval_total | at_most: 1
+      assign position_span = target_position | minus: previous_position
+      assign progress_percent = position_span | times: interval_progress | plus: previous_position
+    endif
+  -%}
+
+  <cart-tier-progress class="cart-tier-progress" style="--cart-tier-progress: {{ progress_percent }}%; --cart-tier-count: {{ tier_count }};" data-unlocked-count="{{ unlocked_count }}">
+    <p class="cart-tier-progress__status" data-tier-status aria-live="polite" aria-atomic="true">{{ status_message | escape }}</p>
+    <div class="cart-tier-progress__visual" aria-hidden="true">
+      <div class="cart-tier-progress__track"><span class="cart-tier-progress__fill" data-tier-fill></span></div>
+      <div class="cart-tier-progress__tiers">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'discount_tier' and block.settings.threshold > 0 -%}
+            {%- assign block_threshold_cents = block.settings.threshold | times: 100 | round -%}
+            {%- assign tier_unlocked = false -%}
+            {%- if cart.items_subtotal_price >= block_threshold_cents -%}{%- assign tier_unlocked = true -%}{%- endif -%}
+            <div class="cart-tier-progress__tier{% if tier_unlocked %} is-unlocked{% endif %}" data-tier-marker {{ block.shopify_attributes }}>
+              <span class="cart-tier-progress__marker"><svg viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path d="m3.25 8.25 3 3 6.5-6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="cart-tier-progress__threshold">{{ block_threshold_cents | money | strip_html }}</span>
+              <strong class="cart-tier-progress__discount">{{ block.settings.discount }}% OFF</strong>
+              <span class="visually-hidden">{% if tier_unlocked %}Unlocked{% else %}Locked{% endif %}</span>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+    <script type="application/json" data-cart-tier-config>
+      {"cartAmount":{{ cart.items_subtotal_price | json }},"moneyFormat":{{ shop.money_format | json }},"tiers":[
+        {%- assign config_index = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'discount_tier' and block.settings.threshold > 0 -%}
+            {%- if config_index > 0 -%},{%- endif -%}
+            {"discount":{{ block.settings.discount | json }},"threshold":{{ block.settings.threshold | times: 100 | round | json }},"beforeMessage":{{ block.settings.before_message | json }},"afterMessage":{{ block.settings.after_message | json }}}
+            {%- assign config_index = config_index | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+      ]}
+    </script>
+  </cart-tier-progress>
+{%- endif -%}

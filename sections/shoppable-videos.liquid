@@ -48,12 +48,6 @@
           <svg class="shoppable-videos__play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg>
           <svg class="shoppable-videos__pause-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden><path d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg>
         </button>
-        {% if section.settings.show_sound_button %}
-          <button class="shoppable-videos__sound" type="button" aria-label="Unmute video">
-            <svg class="shoppable-videos__sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg>
-            <svg class="shoppable-videos__sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16 9 5 6m0-6-5 6"/></svg>
-          </button>
-        {% endif %}
         {% render 'shoppable-video-product-stripe', product: current_product, button_label: section.settings.shop_button_label %}
       </li>
     {% endif %}
@@ -104,7 +98,7 @@
                   <span>Wishlist</span>
                 </div>
               {% endif %}
-              <button class="shoppable-reel__sound" type="button" aria-label="Mute video">
+              <button class="shoppable-reel__sound" type="button" aria-label="Mute video" aria-pressed="false">
                 <svg class="shoppable-reel__sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg>
                 <svg class="shoppable-reel__sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16 9 5 6m0-6-5 6"/></svg>
               </button>
@@ -428,12 +422,6 @@
       "type": "checkbox",
       "id": "pause_offscreen",
       "label": "Pause videos outside viewport",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_sound_button",
-      "label": "Show sound button",
       "default": true
     },
     {

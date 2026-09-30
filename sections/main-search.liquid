@@ -4,8 +4,8 @@
 {{ 'component-search.css' | asset_url | stylesheet_tag }}
 
 {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
-  {{ 'component-facets.css' | asset_url | stylesheet_tag }}
-  <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+  {{ 'section-main-collection.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'collection-filter-drawer.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
 {{ 'section-featured-collection-custom.css' | asset_url | stylesheet_tag }}
@@ -50,11 +50,12 @@
 {%- liquid
   assign sort_by = search.sort_by | default: search.default_sort_by
   assign terms = search.terms | escape
-  assign search_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+  assign search_url = '?q=' | append: terms | append: '&type=product&options%5Bprefix%5D=last&sort_by=' | append: sort_by
 -%}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
+    --main-collection-accent: var(--color-cocopoco-pink);
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
@@ -70,7 +71,8 @@
 {% paginate search.results by 24 %}
   <div class="template-search{% unless search.performed and search.results_count > 0 %} template-search--empty{% endunless %} section-{{ section.id }}-padding">
     <div class="template-search__header page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      <h1 class="h2 center">
+      <p class="template-search__eyebrow">{{ 'general.search.search' | t }}</p>
+      <h1 class="template-search__title">
         {%- if search.performed -%}
           {{- 'templates.search.title' | t -}}
         {%- else -%}
@@ -106,6 +108,7 @@
               >
               <label class="field__label" for="Search-In-Template">{{ 'general.search.search' | t }}</label>
               <input name="options[prefix]" type="hidden" value="last">
+              <input name="type" type="hidden" value="product">
 
               {%- if settings.predictive_search_enabled -%}
                 <div class="predictive-search predictive-search--search-template" tabindex="-1" data-predictive-search>
@@ -150,86 +153,98 @@
       {%- endif -%}
     </div>
     {%- if search.performed -%}
-      {%- if section.settings.enable_sorting
-        and section.settings.filter_type == 'vertical'
-        and search.filters != empty
-      -%}
-        <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
-          <form class="facets-vertical-form" id="FacetSortForm">
-            <div class="facet-filters sorting caption">
-              <div class="facet-filters__field">
-                <h2 class="facet-filters__label caption-large text-body">
-                  <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
-                </h2>
-                <div class="select">
-                  {%- assign sort_by = search.sort_by | default: search.default_sort_by -%}
-                  <select
-                    name="sort_by"
-                    class="facet-filters__sort select__select caption-large"
-                    id="SortBy"
-                    aria-describedby="a11y-refresh-page-message"
-                  >
-                    {%- for option in search.sort_options -%}
-                      <option
-                        value="{{ option.value | escape }}"
-                        {% if option.value == sort_by %}
-                          selected="selected"
-                        {% endif %}
-                      >
-                        {{ option.name | escape }}
-                      </option>
-                    {%- endfor -%}
-                  </select>
-                  <span class="svg-wrapper">
-                    {{- 'icon-caret.svg' | inline_asset_content -}}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="product-count-vertical light" role="status">
-              <h2 class="product-count__text text-body">
-                <span id="ProductCountDesktop">
-                  {%- if search.results_count -%}
-                    {{ 'templates.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
-                  {%- elsif search.products_count == search.all_products_count -%}
-                    {{ 'products.facets.product_count_simple' | t: count: search.products_count }}
-                  {%- else -%}
-                    {{
-                      'products.facets.product_count'
-                      | t: product_count: search.products_count, count: search.all_products_count
-                    }}
-                  {%- endif -%}
-                </span>
-              </h2>
-              {%- render 'loading-spinner' -%}
-            </div>
-          </form>
-        </facet-filters-form>
-      {%- endif -%}
-      <div
-        {% if section.settings.filter_type == 'vertical' %}
-          class="facets-vertical page-width"
-        {% endif %}
-      >
-        {%- if search.filters != empty -%}
-          {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
-            <aside
-              aria-labelledby="verticalTitle"
-              class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
-              id="main-search-filters"
-              data-id="{{ section.id }}"
-            >
-              {% render 'facets',
-                results: search,
-                enable_filtering: section.settings.enable_filtering,
-                enable_sorting: section.settings.enable_sorting,
-                filter_type: section.settings.filter_type,
-                paginate: paginate
-              %}
-            </aside>
+      {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+        <div class="main-collection__meta page-width">
+          <div class="main-collection__meta-start">
+            {%- if section.settings.enable_filtering and search.filters != empty -%}
+              {%- assign active_filter_count = 0 -%}
+              {%- for filter in search.filters -%}
+                {%- assign active_filter_count = active_filter_count | plus: filter.active_values.size -%}
+                {%- if filter.type == 'price_range' and filter.min_value.value != blank or filter.type == 'price_range' and filter.max_value.value != blank -%}
+                  {%- assign active_filter_count = active_filter_count | plus: 1 -%}
+                {%- endif -%}
+              {%- endfor -%}
+              <collection-filter-drawer class="collection-filter">
+                <button class="collection-filter__trigger" type="button" aria-haspopup="dialog" aria-controls="SearchFilterDrawer-{{ section.id }}" data-filter-open>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4v6M6 14v6"/></svg>
+                  <span>{{ 'products.facets.filter_button' | t }}</span>
+                  {%- if active_filter_count > 0 -%}<span class="collection-filter__count">{{ active_filter_count }}</span>{%- endif -%}
+                </button>
+                <dialog class="collection-filter__dialog" id="SearchFilterDrawer-{{ section.id }}" data-filter-dialog>
+                  <div class="collection-filter__panel">
+                    <header class="collection-filter__header">
+                      <div><span class="collection-filter__eyebrow">Search your way</span><h2>{{ 'products.facets.filter_button' | t }}</h2></div>
+                      <button class="collection-filter__close" type="button" aria-label="Close filters" data-filter-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+                    </header>
+                    <form class="collection-filter__form" action="{{ routes.search_url }}" method="get">
+                      <input type="hidden" name="q" value="{{ search.terms | escape }}">
+                      <input type="hidden" name="type" value="product">
+                      <input type="hidden" name="options[prefix]" value="last">
+                      <input type="hidden" name="sort_by" value="{{ sort_by | escape }}">
+                      <div class="collection-filter__body">
+                        {%- for filter in search.filters -%}
+                          <fieldset class="collection-filter__group">
+                            <legend>{{ filter.label | escape }}</legend>
+                            {%- case filter.type -%}
+                              {%- when 'boolean', 'list' -%}
+                                <ul class="collection-filter__options" role="list">
+                                  {%- for value in filter.values -%}
+                                    <li><label class="collection-filter__option{% if value.count == 0 and value.active == false %} is-disabled{% endif %}">
+                                      <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value | escape }}"{% if value.active %} checked{% endif %}{% if value.count == 0 and value.active == false %} disabled{% endif %}>
+                                      <span class="collection-filter__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8 3 3 7-7"/></svg></span>
+                                      <span>{{ value.label | escape }}</span><span class="collection-filter__value-count">{{ value.count }}</span>
+                                    </label></li>
+                                  {%- endfor -%}
+                                </ul>
+                              {%- when 'price_range' -%}
+                                {%- liquid
+                                  assign price_ceiling = filter.range_max | divided_by: 100.0 | ceil
+                                  assign price_min = filter.min_value.value | default: 0 | divided_by: 100.0 | floor
+                                  assign price_max = filter.max_value.value | default: filter.range_max | divided_by: 100.0 | ceil
+                                -%}
+                                <div class="collection-filter__price" data-price-range data-currency="{{ cart.currency.symbol | escape }}">
+                                  <div class="collection-filter__price-values"><span data-price-min-output></span><span data-price-max-output></span></div>
+                                  <div class="collection-filter__range-track"></div>
+                                  <input type="range" name="{{ filter.min_value.param_name }}" min="0" max="{{ price_ceiling }}" step="1" value="{{ price_min }}" aria-label="Minimum price" data-price-min>
+                                  <input type="range" name="{{ filter.max_value.param_name }}" min="0" max="{{ price_ceiling }}" step="1" value="{{ price_max }}" aria-label="Maximum price" data-price-max>
+                                </div>
+                            {%- endcase -%}
+                          </fieldset>
+                        {%- endfor -%}
+                      </div>
+                      <footer class="collection-filter__footer">
+                        <a class="collection-filter__clear" href="{{ search_url }}">{{ 'products.facets.clear_all' | t }}</a>
+                        <button class="collection-filter__apply" type="submit">{{ 'products.facets.apply' | t }}</button>
+                      </footer>
+                    </form>
+                  </div>
+                </dialog>
+              </collection-filter-drawer>
+            {%- endif -%}
+            <p class="main-collection__count" role="status">{{ search.results_count }} results</p>
+          </div>
+          {%- if section.settings.enable_sorting -%}
+            <form class="main-collection__sort-form" action="{{ routes.search_url }}" method="get">
+              <input type="hidden" name="q" value="{{ search.terms | escape }}">
+              <input type="hidden" name="type" value="product">
+              <input type="hidden" name="options[prefix]" value="last">
+              {%- for filter in search.filters -%}
+                {%- if filter.type == 'price_range' -%}
+                  {%- if filter.min_value.value != blank -%}<input type="hidden" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}">{%- endif -%}
+                  {%- if filter.max_value.value != blank -%}<input type="hidden" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}">{%- endif -%}
+                {%- else -%}
+                  {%- for value in filter.active_values -%}<input type="hidden" name="{{ value.param_name }}" value="{{ value.value | escape }}">{%- endfor -%}
+                {%- endif -%}
+              {%- endfor -%}
+              <label class="visually-hidden" for="SearchSort-{{ section.id }}">{{ 'products.facets.sort_by_label' | t }}</label>
+              <select id="SearchSort-{{ section.id }}" class="main-collection__sort" name="sort_by" onchange="this.form.submit()">
+                {%- for option in search.sort_options -%}<option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>{%- endfor -%}
+              </select>
+            </form>
           {%- endif -%}
-        {%- endif -%}
+        </div>
+      {%- endif -%}
+      <div>
         <div class="product-grid-container" id="ProductGridContainer">
           {%- if search.results.size == 0 and search.filters != empty -%}
             <div
@@ -283,6 +298,7 @@
                           show_secondary_image: section.settings.show_secondary_image,
                           show_vendor: section.settings.show_vendor,
                           show_rating: section.settings.show_rating,
+                          quick_add: 'standard',
                           lazy_load: lazy_load,
                           skip_styles: skip_card_product_styles,
                           product_view_context: 'search'
@@ -480,7 +496,7 @@
           "label": "t:sections.main-collection-product-grid.settings.filter_type.options__3.label"
         }
       ],
-      "default": "horizontal",
+      "default": "drawer",
       "label": "t:sections.main-collection-product-grid.settings.filter_type.label"
     },
     {

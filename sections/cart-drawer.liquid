@@ -5,6 +5,7 @@
   "name": "Cart drawer",
   "settings": [
     { "type": "text", "id": "cart_heading", "label": "Cart heading", "default": "Your bag" },
+    { "type": "checkbox", "id": "enable_tiered_discount_progress", "label": "Enable tiered discount progress bar", "default": true },
     { "type": "textarea", "id": "custom_cart_content", "label": "Custom Cart Content", "info": "Add multiple cart messages separated by commas.", "default": "₹99 flat shipping on every order, Extra 5% off when you pay online" },
     { "type": "text", "id": "recommendation_heading", "label": "Recommendation heading", "default": "Add a little extra joy ✨" },
     { "type": "product_list", "id": "recommended_products", "label": "Recommended products", "limit": 12 },
@@ -21,6 +22,12 @@
     { "type": "color", "id": "text_color", "label": "Text color", "default": "#241226" }
   ],
   "blocks": [
+    { "type": "discount_tier", "name": "Tiered discount progress", "limit": 3, "settings": [
+      { "type": "number", "id": "discount", "label": "Discount", "default": 5 },
+      { "type": "number", "id": "threshold", "label": "Price to achieve", "info": "Enter the amount in your store currency, for example 999.", "default": 999 },
+      { "type": "text", "id": "before_message", "label": "Before success message", "default": "Add item worth {amount} to get {discount}% OFF" },
+      { "type": "text", "id": "after_message", "label": "After success message", "default": "Congratulations! You unlocked {discount}% discount" }
+    ] },
     { "type": "footer_utility", "name": "Footer utility", "limit": 2, "settings": [
       { "type": "select", "id": "icon", "label": "Icon", "default": "sparkles", "options": [{ "value": "sparkles", "label": "Sparkles" }, { "value": "star", "label": "Star" }, { "value": "truck", "label": "Truck" }, { "value": "rotate", "label": "Rotate" }, { "value": "arrow-right", "label": "Arrow right" }, { "value": "none", "label": "None" }] },
       { "type": "inline_richtext", "id": "text", "label": "Text", "default": "Cart benefit" }

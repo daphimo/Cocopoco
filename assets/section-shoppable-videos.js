@@ -50,8 +50,20 @@
       const button = video?.closest('.shoppable-reel__player')?.querySelector('.shoppable-reel__sound');
       if (!button) return;
       button.setAttribute('aria-label', video.muted ? 'Unmute video' : 'Mute video');
-      button.querySelector('.shoppable-reel__sound-on').hidden = video.muted;
-      button.querySelector('.shoppable-reel__sound-off').hidden = !video.muted;
+      button.setAttribute('aria-pressed', String(video.muted));
+      button.classList.toggle('is-muted', video.muted);
+      const soundOn = button.querySelector('.shoppable-reel__sound-on');
+      const soundOff = button.querySelector('.shoppable-reel__sound-off');
+      if (soundOn) soundOn.hidden = video.muted;
+      if (soundOff) soundOff.hidden = !video.muted;
+    }
+
+    function setReelMuted(muted) {
+      popupMuted = muted;
+      modal?.querySelectorAll('.shoppable-reel__video').forEach((video) => {
+        video.muted = muted;
+        updateReelSound(video);
+      });
     }
 
     function playActiveReel() {
@@ -103,13 +115,7 @@
 
     function updateControls(video) {
       const card = video.closest('.shoppable-videos__card');
-      const sound = card?.querySelector('.shoppable-videos__sound');
       const play = card?.querySelector('.shoppable-videos__play');
-      if (sound) {
-        sound.setAttribute('aria-label', video.muted ? 'Unmute video' : 'Mute video');
-        sound.querySelector('.shoppable-videos__sound-on').hidden = video.muted;
-        sound.querySelector('.shoppable-videos__sound-off').hidden = !video.muted;
-      }
       if (play) {
         play.hidden = autoplay;
         play.setAttribute('aria-label', video.paused ? 'Play video' : 'Pause video');
@@ -217,7 +223,7 @@
     }, { signal });
     if (dragEnabled) {
       track.addEventListener('pointerdown', (event) => {
-        if (event.button !== 0 || event.target.closest('.shoppable-videos__sound, .shoppable-videos__play, .shoppable-videos__shop')) return;
+        if (event.button !== 0 || event.target.closest('.shoppable-videos__play, .shoppable-videos__shop')) return;
         dragStart = { x: event.clientX, scrollLeft: track.scrollLeft, pointerId: event.pointerId };
         dragMoved = false;
       }, { signal });
@@ -277,11 +283,10 @@
         openReel(Number(openButton.dataset.reelIndex) || 0, openButton);
         return;
       }
-      const button = event.target.closest('.shoppable-videos__sound, .shoppable-videos__play');
+      const button = event.target.closest('.shoppable-videos__play');
       if (!button || !sliderRoot.contains(button)) return;
       const video = button.closest('.shoppable-videos__card').querySelector('video');
-      if (button.classList.contains('shoppable-videos__sound')) video.muted = !video.muted;
-      else if (video.paused) video.play().catch(() => updateControls(video));
+      if (video.paused) video.play().catch(() => updateControls(video));
       else video.pause();
       updateControls(video);
     }, { signal });
@@ -295,9 +300,7 @@
       const soundButton = event.target.closest('.shoppable-reel__sound');
       if (soundButton) {
         const video = soundButton.closest('.shoppable-reel__player').querySelector('video');
-        popupMuted = !video.muted;
-        video.muted = popupMuted;
-        updateReelSound(video);
+        setReelMuted(!video.muted);
       }
     }, { signal });
 
@@ -310,6 +313,10 @@
         if (event.target instanceof HTMLVideoElement) updateControls(event.target);
       }, { capture: true, signal });
     });
+
+    modal?.addEventListener('volumechange', (event) => {
+      if (event.target instanceof HTMLVideoElement) updateReelSound(event.target);
+    }, { capture: true, signal });
 
     updateLayout();
     observeVideos();

@@ -10,7 +10,7 @@
 {
   "current": {
     "logo": "shopify://shop_images/coco_logo.png",
-    "logo_width": 100,
+    "logo_width": 90,
     "favicon": "shopify://shop_images/coco_logo.png",
     "type_header_font": "fraunces_n4",
     "heading_scale": 100,
@@ -149,6 +149,7 @@
         "type": "cart-drawer",
         "settings": {
           "cart_heading": "Your bag",
+          "enable_tiered_discount_progress": true,
           "custom_cart_content": "₹99 flat shipping on every order, Extra 5% off when you pay online",
           "recommendation_heading": "Add a little extra joy ✨",
           "recommended_products": [
@@ -165,7 +166,37 @@
           "accent_color": "#e64d95",
           "background_color": "#ffffff",
           "text_color": "#241226"
-        }
+        },
+        "blocks": {
+          "tier_1": {
+            "type": "discount_tier",
+            "settings": {
+              "discount": 5,
+              "threshold": 999,
+              "before_message": "Add item worth {amount} to get 5% OFF",
+              "after_message": "Congratulations! You unlocked 5% discount"
+            }
+          },
+          "tier_2": {
+            "type": "discount_tier",
+            "settings": {
+              "discount": 10,
+              "threshold": 1599,
+              "before_message": "Add item worth {amount} to get 10% OFF",
+              "after_message": "Congratulations! You unlocked 10% discount"
+            }
+          },
+          "tier_3": {
+            "type": "discount_tier",
+            "settings": {
+              "discount": 15,
+              "threshold": 2199,
+              "before_message": "Add item worth {amount} to get 15% OFF",
+              "after_message": "Congratulations! You unlocked 15% discount"
+            }
+          }
+        },
+        "block_order": ["tier_1", "tier_2", "tier_3"]
       }
     },
     "content_for_index": [],

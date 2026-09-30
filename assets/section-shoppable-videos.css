@@ -194,7 +194,6 @@
 
 .shoppable-videos__open:focus-visible { outline: 2px solid var(--color-soft-gold); outline-offset: -4px; }
 
-.shoppable-videos__sound,
 .shoppable-videos__play {
   position: absolute;
   z-index: 2;
@@ -211,14 +210,10 @@
   backdrop-filter: blur(8px);
 }
 
-.shoppable-videos__sound { top: 12px; right: 12px; }
 .shoppable-videos__play { top: 12px; left: 12px; }
 .shoppable-videos__play[hidden] { display: none; }
-.shoppable-videos__sound svg,
 .shoppable-videos__play svg { width: 18px; height: 18px; }
-.shoppable-videos__sound [hidden],
 .shoppable-videos__play [hidden] { display: none; }
-.shoppable-videos__sound:focus-visible,
 .shoppable-videos__play:focus-visible,
 .shoppable-videos__shop:focus-visible { outline: 2px solid var(--color-soft-gold); outline-offset: 2px; }
 
@@ -406,6 +401,10 @@
 .shoppable-reel__sound svg,
 .shoppable-reel__wishlist svg { width: 22px; height: 22px; fill: none; stroke: currentColor; }
 .shoppable-reel__sound [hidden] { display: none; }
+.shoppable-reel__sound.is-muted .shoppable-reel__sound-on { display: none; }
+.shoppable-reel__sound.is-muted .shoppable-reel__sound-off { display: block; }
+.shoppable-reel__sound:not(.is-muted) .shoppable-reel__sound-on { display: block; }
+.shoppable-reel__sound:not(.is-muted) .shoppable-reel__sound-off { display: none; }
 .shoppable-reel__close:focus-visible,
 .shoppable-reel__sound:focus-visible,
 .shoppable-reel__wishlist .wishlist-button:focus-visible { outline: 2px solid var(--color-soft-gold); outline-offset: 2px; }

@@ -72,3 +72,129 @@ input::-webkit-search-decoration {
 .template-search__results {
   position: relative;
 }
+
+.template-search {
+  color: var(--color-charcoal);
+  background:
+    radial-gradient(circle at 92% 3%, var(--color-soft-blush) 0, transparent 26rem),
+    var(--color-warm-white);
+}
+
+.template-search__header {
+  padding-block: clamp(3rem, 6vw, 7rem) clamp(2.5rem, 4vw, 4.5rem);
+  text-align: center;
+}
+
+.template-search__eyebrow {
+  margin: 0 0 0.8rem;
+  color: var(--color-cocopoco-pink);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.template-search__title {
+  margin: 0;
+  color: var(--color-deep-cocoa);
+  font-size: clamp(3.2rem, 5vw, 5.8rem);
+  line-height: 1.08;
+}
+
+.template-search__search {
+  position: relative;
+  width: min(76rem, 100%);
+}
+
+.template-search__search .field {
+  border: 0.1rem solid var(--color-rose-mist);
+  border-radius: 999px;
+  background: var(--color-pure-white);
+  box-shadow: 0 1.2rem 3.5rem rgba(52, 24, 36, 0.08);
+}
+
+.template-search__search .field::before,
+.template-search__search .field::after {
+  content: none;
+}
+
+.template-search__search .field__input {
+  height: 6rem;
+  padding-left: 2.2rem;
+  border: 0;
+  border-radius: inherit;
+  color: var(--color-deep-cocoa);
+  box-shadow: none;
+}
+
+.template-search__search .field__label {
+  left: 2.2rem;
+}
+
+.template-search__search .field__button {
+  height: 5.8rem;
+}
+
+.template-search__search .search__button {
+  right: 0.1rem;
+  width: 5.8rem;
+  border-radius: 50%;
+  color: var(--color-cocopoco-pink);
+  background-color: transparent!important;
+}
+
+.template-search__search .reset__button {
+  right: 6rem;
+}
+
+.template-search__header > [role='status'] {
+  color: var(--color-muted-rose);
+}
+
+.template-search__results .product-grid {
+  row-gap: clamp(2.8rem, 5vw, 5rem);
+}
+
+.template-search .facets-container,
+.template-search .facets-vertical-form {
+  border-color: var(--color-rose-mist);
+}
+
+.template-search .facet-filters__sort,
+.template-search .mobile-facets__open,
+.template-search .facets__summary {
+  color: var(--color-deep-cocoa);
+}
+
+.template-search .active-facets__button-inner {
+  border-color: var(--color-rose-mist);
+  color: var(--color-deep-cocoa);
+  background: var(--color-soft-blush);
+}
+
+.template-search .pagination__item--current::after {
+  background: var(--color-cocopoco-pink);
+}
+
+@media screen and (max-width: 749px) {
+  .template-search__header {
+    padding-top: 3rem;
+  }
+
+  .template-search__search .field__input {
+    height: 5.4rem;
+    padding-left: 1.8rem;
+  }
+
+  .template-search__search .field__button {
+    height: 5.2rem;
+  }
+
+  .template-search__search .search__button {
+    width: 5.2rem;
+  }
+
+  .template-search__search .reset__button {
+    right: 5.4rem;
+  }
+}

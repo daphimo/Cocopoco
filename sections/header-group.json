@@ -16,6 +16,7 @@
       "blocks": {
         "text_nEjjMi": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "brand_background_color": "#ffffff",
             "brand_caption_color": "#b86a8a",
@@ -56,6 +57,20 @@
             "link": ""
           }
         },
+        "text_Bf96Px": {
+          "type": "text",
+          "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
+            "text": "FREE SHIPPING ON ORDERS ABOVE ₹999/-",
+            "link": ""
+          }
+        },
         "text_6XqC3B": {
           "type": "text",
           "settings": {
@@ -80,7 +95,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "text": "₹99 FLAT SHIPPING CHARGES ON ALL ORDERS",
+            "text": "₹99 FLAT SHIPPING CHARGES&nbsp;",
             "link": ""
           }
         },
@@ -103,6 +118,7 @@
         "text_nEjjMi",
         "text_pexTwQ",
         "text_mjVAna",
+        "text_Bf96Px",
         "text_6XqC3B",
         "text_HUWbMU",
         "text_mmGtzi"
@@ -136,12 +152,12 @@
         "brand_button_background": "#e83e8c",
         "brand_button_text_color": "#ffffff",
         "menu": "main-menu-copy",
-        "show_search": false,
-        "show_account": false,
+        "show_search": true,
+        "show_account": true,
         "show_language": false,
         "show_currency": false,
         "open_first_mobile_item": false,
-        "sticky_header_type": "on-scroll-up",
+        "sticky_header_type": "reduce-logo-size",
         "show_line_separator": true,
         "color_scheme": "scheme-149ae49e-ad9f-4caa-aea4-455fa2be427c",
         "menu_color_scheme": "scheme-149ae49e-ad9f-4caa-aea4-455fa2be427c",

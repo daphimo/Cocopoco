@@ -11,6 +11,7 @@
 <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'main-product-custom.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'main-product-variant-gallery.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'cust-pincode-checker.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'product-share-popup.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'stock-notify.js' | asset_url }}" defer="defer"></script>
@@ -55,7 +56,17 @@
         <div class="main-product__media">
           <div class="main-product__media-slider" role="list" aria-label="{{ product.title | escape }} media">
             {%- for media in product.media -%}
-              <div class="main-product__media-slide{% if forloop.first %} main-product__media-slide--primary{% endif %}" role="listitem" data-media-id="{{ section.id }}-{{ media.id }}">
+              {%- liquid
+                assign is_primary_media = false
+                if selected_variant.featured_media != blank
+                  if media.id == selected_variant.featured_media.id
+                    assign is_primary_media = true
+                  endif
+                elsif forloop.first
+                  assign is_primary_media = true
+                endif
+              -%}
+              <div class="main-product__media-slide{% if is_primary_media %} main-product__media-slide--primary{% endif %}" role="listitem" data-media-id="{{ section.id }}-{{ media.id }}">
                 {%- if media.media_type == 'image' -%}
                   {%- liquid
                     assign media_loading = 'lazy'
@@ -114,6 +125,39 @@
               {% render 'buy-buttons', block: section, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: false, show_product_price: true, show_main_quantity: true %}
             </div>
           </div>
+
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'secure_checkout' -%}
+              <div
+                class="main-product__secure-checkout"
+                style="--secure-checkout-padding-top: {{ block.settings.padding_top }}px; --secure-checkout-padding-bottom: {{ block.settings.padding_bottom }}px; --secure-checkout-title-size: {{ block.settings.title_size }}px; --secure-checkout-image-size: {{ block.settings.image_size }}px;"
+                {{ block.shopify_attributes }}
+              >
+                {%- if block.settings.title != blank -%}
+                  <div class="main-product__secure-checkout-title">{{ block.settings.title }}</div>
+                {%- endif -%}
+                <div class="main-product__secure-checkout-icons" role="list">
+                  {%- for index in (1..6) -%}
+                    {%- assign image_key = 'image_' | append: index -%}
+                    {%- assign checkout_image = block.settings[image_key] -%}
+                    {%- if checkout_image != blank -%}
+                      <div class="main-product__secure-checkout-icon" role="listitem">
+                        {{
+                          checkout_image
+                          | image_url: width: 240
+                          | image_tag:
+                            widths: '40, 60, 80, 100, 120, 160, 200, 240',
+                            sizes: '(max-width: 749px) 15vw, 120px',
+                            loading: 'lazy',
+                            alt: checkout_image.alt
+                        }}
+                      </div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
 
           {%- for block in section.blocks -%}
             {%- case block.type -%}
@@ -239,6 +283,19 @@
     { "type": "range", "id": "mobile_padding_bottom", "label": "Mobile bottom padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 40 }
   ],
   "blocks": [
+    { "type": "secure_checkout", "name": "Secure checkout icons", "limit": 1, "settings": [
+      { "type": "inline_richtext", "id": "title", "label": "Title", "default": "Secure checkout" },
+      { "type": "range", "id": "title_size", "label": "Title size", "min": 10, "max": 32, "step": 1, "unit": "px", "default": 14 },
+      { "type": "range", "id": "image_size", "label": "Image size", "min": 24, "max": 120, "step": 4, "unit": "px", "default": 48 },
+      { "type": "image_picker", "id": "image_1", "label": "Image 1" },
+      { "type": "image_picker", "id": "image_2", "label": "Image 2" },
+      { "type": "image_picker", "id": "image_3", "label": "Image 3" },
+      { "type": "image_picker", "id": "image_4", "label": "Image 4" },
+      { "type": "image_picker", "id": "image_5", "label": "Image 5" },
+      { "type": "image_picker", "id": "image_6", "label": "Image 6" },
+      { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 20 },
+      { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 20 }
+    ] },
     { "type": "benefit", "name": "Benefit", "limit": 4, "settings": [
 {"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
       { "type": "select", "id": "icon", "label": "Icon", "default": "truck", "options": [{ "value": "sparkles", "label": "Sparkles" }, { "value": "star", "label": "Star" }, { "value": "truck", "label": "Truck" }, { "value": "rotate", "label": "Rotate" }, { "value": "arrow-right", "label": "Arrow right" }, { "value": "none", "label": "None" }] },

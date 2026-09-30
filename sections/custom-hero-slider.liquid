@@ -59,6 +59,13 @@
                 <div class="cust__hero-slider-placeholder">{{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
               {%- endif -%}
             </div>
+            {%- if block.settings.image_link != blank -%}
+              <a
+                class="cust__hero-slider-image-link"
+                href="{{ block.settings.image_link }}"
+                aria-label="{{ block.settings.image_alt | default: block.settings.heading | default: section.settings.accessibility_label | strip_html | escape }}"
+              ></a>
+            {%- endif -%}
 
             <div class="cust__hero-slider-inner">
               <div class="cust__hero-slider-content">
@@ -143,6 +150,7 @@
         { "type": "image_picker", "id": "desktop_image", "label": "Desktop image" },
         { "type": "image_picker", "id": "mobile_image", "label": "Mobile image" },
         { "type": "text", "id": "image_alt", "label": "Image alt text" },
+        { "type": "url", "id": "image_link", "label": "Image link" },
         { "type": "select", "id": "image_position", "label": "Image focal position", "default": "70% 30%", "options": [{"value":"left top","label":"Left top"},{"value":"left center","label":"Left center"},{"value":"center top","label":"Center top"},{"value":"center center","label":"Center"},{"value":"center bottom","label":"Center bottom"},{"value":"right top","label":"Right top"},{"value":"right center","label":"Right center"},{"value":"70% 30%","label":"Existing hero position"}] },
         { "type": "select", "id": "image_loading", "label": "Image loading", "default": "lazy", "options": [{"value":"lazy","label":"Lazy"},{"value":"eager","label":"Eager"}] },
         { "type": "inline_richtext", "id": "eyebrow", "label": "Eyebrow", "default": "FOR THE EVERYDAY ROMANTIC" },

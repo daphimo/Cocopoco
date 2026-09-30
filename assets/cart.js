@@ -116,7 +116,7 @@ class CartItems extends window.StandardEvents.createViewEventElement(HTMLElement
         .then((response) => response.text())
         .then((responseText) => {
           const html = new DOMParser().parseFromString(responseText, 'text/html');
-          const selectors = ['cart-drawer-items', '.cart-drawer__footer'];
+          const selectors = ['cart-tier-progress', 'cart-drawer-items', '.cart-drawer__footer'];
           for (const selector of selectors) {
             const targetElement = document.querySelector(selector);
             const sourceElement = html.querySelector(selector);
