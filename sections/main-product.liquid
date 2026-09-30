@@ -122,7 +122,11 @@
 
           <div class="main-product__purchase">
             <div class="main-product__buy-buttons">
+              {% if product.tags contains 'bundle' %}
+              {% render 'bundle-buy', block: section, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: false, show_product_price: true, show_main_quantity: true %}
+              {% else %}
               {% render 'buy-buttons', block: section, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: false, show_product_price: true, show_main_quantity: true %}
+           {%endif %}
             </div>
           </div>
 
