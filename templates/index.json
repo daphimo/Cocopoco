@@ -1303,6 +1303,29 @@
     },
     "instafeed_GMirLW": {
       "type": "instafeed",
+      "blocks": {
+        "instafeed_app_block_UPF4Q6": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_UPF4Q6"
+      ],
       "name": "Instafeed gallery",
       "settings": {
         "brand_background_color": "#ffffff",
@@ -1322,7 +1345,7 @@
         "description_color": "#7a5368",
         "background_color": "#ffffff",
         "button_label": "Follow the fun",
-        "button_link": "",
+        "button_link": "https://www.instagram.com/cocopocothegiftshop/",
         "button_background": "#ffffff",
         "button_text_color": "#2a0f1c",
         "button_show_arrow": true,
