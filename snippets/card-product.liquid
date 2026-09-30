@@ -123,6 +123,7 @@
             </div>
           {%- endfor -%}
         </div>
+        {% if product.tags contains 'bundle' %}
         <product-form class="cp-variant-picker__add" data-section-id="{{ section_id }}">
           {%- form 'product', card_product, id: popup_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
             <input type="hidden" name="id" value="{{ first_variant.id }}" class="product-variant-id">
@@ -130,6 +131,7 @@
             <div class="product-form__error-message-wrapper cp-variant-picker__error" role="alert" hidden><span class="product-form__error-message"></span></div>
           {%- endform -%}
         </product-form>
+        {%endif %}
       </div>
     </div>
     <script type="application/json" data-product-variants>{{ card_product.variants | json }}</script>
