@@ -59,14 +59,14 @@
         "slide_XPCKp7": {
           "type": "slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/hero-D6qm_qxI.png",
+            "desktop_image": "shopify://shop_images/anniversary_Banner_Cocopoco.png",
             "image_alt": "",
             "image_position": "70% 30%",
             "image_loading": "lazy",
-            "eyebrow": "FOR THE EVERYDAY ROMANTIC",
-            "eyebrow_icon": "sparkles",
-            "heading": "Romanticize your everyday.",
-            "description": "<p>Cute, aesthetic little things — stationery, bottles, keychains and accessories — that make your ordinary routine feel a lot more special.</p>",
+            "eyebrow": "",
+            "eyebrow_icon": "none",
+            "heading": "",
+            "description": "",
             "primary_text": "Shop the joy",
             "primary_link": "",
             "secondary_text": "Explore new arrivals",
@@ -82,7 +82,7 @@
             "eyebrow_padding_y": 7,
             "button_radius": 40,
             "overlay_color": "#ffffff",
-            "overlay_opacity": 65,
+            "overlay_opacity": 0,
             "eyebrow_text_color": "#b86a8a",
             "eyebrow_background": "#ffffff",
             "eyebrow_border": "#f9d5e6",
@@ -160,7 +160,7 @@
         "show_pagination": true,
         "pause_on_hover": true,
         "pause_on_focus": true,
-        "desktop_height": 500,
+        "desktop_height": 640,
         "mobile_height": 720
       }
     },
