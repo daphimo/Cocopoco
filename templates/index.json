@@ -369,9 +369,9 @@
       "name": "Quiz popup",
       "settings": {
         "brand_background_color": "#ffffff",
-        "brand_caption_color": "#FFFDFE",
-        "brand_heading_color": "#FFFDFE",
-        "brand_text_color": "#FFFDFE",
+        "brand_caption_color": "#fffdfe",
+        "brand_heading_color": "#fffdfe",
+        "brand_text_color": "#fffdfe",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
         "brand_button_text_color": "#ffffff",
@@ -383,11 +383,9 @@
         "question_id": "shopping-for",
         "popup_content": "<p>Tap one — we'll curate the cutest picks just for you 💌</p>",
         "section_background": "#fff7fb",
-        "card_color_1": "#E34C93",
-        "card_color_2": "#E34C93",
-        "card_color_3": "#E34C93",
-        "accent_color": "#FFFDFE",
-        "text_color": "#FFFDFE",
+        "card_color_1": "#e34c93",
+        "accent_color": "#fffdfe",
+        "text_color": "#fffdfe",
         "padding_top": 32,
         "padding_bottom": 32
       }
@@ -1257,6 +1255,52 @@
         "padding_bottom_mobile": 48
       }
     },
+    "179077457400d04445": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_cards_carousel_YgtzJa": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "reviews_selection": "all",
+            "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "medium",
+            "image_ratio": "1",
+            "reviews_shown": 4,
+            "show_reviewer_name": true,
+            "show_product_name": true,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#F9F9F9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_cards_carousel_YgtzJa"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "instafeed_GMirLW": {
       "type": "instafeed",
       "blocks": {
@@ -1520,6 +1564,7 @@
     "featured_collection_mMx74h",
     "richtext_tPnTPk",
     "shoppable_videos_mcC6A3",
+    "179077457400d04445",
     "instafeed_GMirLW",
     "custom_email_signup_LdNV4k"
   ]
