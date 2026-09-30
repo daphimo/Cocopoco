@@ -1284,7 +1284,7 @@
             "corner_styling": "soft",
             "header_text_color": "#000000",
             "text_color": "#000000",
-            "card_color": "#F9F9F9",
+            "card_color": "#f9f9f9",
             "stars_color": "",
             "arrows_color": "#000000",
             "transition_speed": 5,
@@ -1548,6 +1548,76 @@
         "margin_top": 28,
         "margin_bottom": 44
       }
+    },
+    "featured_product_EY7WRy": {
+      "type": "featured-product",
+      "blocks": {
+        "text_F3GKaQ": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_7AJRNk": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_UYjrWQ": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_BJqBR8": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_j7nVHy": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_i3rUTR": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_AcmdaF": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_F3GKaQ",
+        "title_7AJRNk",
+        "price_UYjrWQ",
+        "variant_picker_BJqBR8",
+        "quantity_selector_j7nVHy",
+        "buy_buttons_i3rUTR",
+        "share_AcmdaF"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "gamer-ultimate-combo-pack",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -1566,6 +1636,7 @@
     "shoppable_videos_mcC6A3",
     "179077457400d04445",
     "instafeed_GMirLW",
-    "custom_email_signup_LdNV4k"
+    "custom_email_signup_LdNV4k",
+    "featured_product_EY7WRy"
   ]
 }
