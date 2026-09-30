@@ -33,5 +33,155 @@
 .main-product__dynamic-checkout{margin-top:1rem}
 .main-product__dynamic-checkout .shopify-payment-button{margin-top:0}
 .main-product__secure-checkout{padding-block:var(--secure-checkout-padding-top) var(--secure-checkout-padding-bottom);text-align:center}.main-product__secure-checkout-title{margin:0 0 1.2rem;color:var(--cp-section-heading,var(--color-deep-cocoa));font-size:var(--secure-checkout-title-size);font-weight:600;line-height:1.3}.main-product__secure-checkout-title p{margin:0}.main-product__secure-checkout-icons{display:flex;flex-flow:row nowrap;align-items:center;justify-content:center;gap:clamp(.6rem,2vw,1.2rem);width:100%}.main-product__secure-checkout-icon{display:flex;flex:0 1 var(--secure-checkout-image-size);align-items:center;justify-content:center;min-width:0;max-width:var(--secure-checkout-image-size)}.main-product__secure-checkout-icon img{display:block;width:100%;max-width:var(--secure-checkout-image-size);height:auto;max-height:var(--secure-checkout-image-size);object-fit:contain}
-@media screen and (max-width:749px){.main-product__primary-actions{grid-template-columns:10rem minmax(0,1fr)}}
+@media screen and (max-width:749px){.main-product__primary-actions{grid-template-columns:14rem minmax(0,1fr)}}
 .main-product__media-slide--primary{order:-1}
+
+.main-product__variant-picker {
+  position: relative;
+  display: grid;
+  gap: 1.6rem;
+  overflow: hidden;
+  padding: 1.8rem;
+  border: 0.1rem solid var(--cp-section-border);
+  border-radius: 1.8rem;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--cp-section-caption) 5%, var(--cp-section-background)), var(--cp-section-background) 72%);
+  box-shadow: 0 1.2rem 3rem color-mix(in srgb, var(--cp-section-heading) 6%, transparent);
+}
+
+.main-product__variant-picker .product-form__input {
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.main-product__variant-picker .product-form__input:not(:last-of-type) {
+  padding-bottom: 1.6rem;
+  border-bottom: 0.1rem solid color-mix(in srgb, var(--cp-section-border) 72%, transparent);
+}
+
+.main-product__variant-picker .form__label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  margin: 0 0 1rem;
+  color: var(--cp-section-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.main-product__variant-picker [data-selected-value],
+.main-product__variant-value {
+  color: var(--cp-section-caption);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.main-product__variant-picker .product-form__input--pill input[type='radio'] + label {
+  min-width: 4.8rem;
+  margin: 0 0.6rem 0.6rem 0;
+  padding: 1rem 1.5rem;
+  border: 0.1rem solid var(--cp-section-border);
+  border-radius: 999px;
+  color: var(--cp-section-text);
+  background: color-mix(in srgb, var(--cp-section-background) 94%, white);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  box-shadow: 0 0.4rem 1.2rem color-mix(in srgb, var(--cp-section-heading) 3%, transparent);
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.main-product__variant-picker .product-form__input--pill input[type='radio'] + label:hover {
+  border-color: color-mix(in srgb, var(--cp-section-button-background) 55%, var(--cp-section-border));
+  transform: translateY(-0.1rem);
+}
+
+.main-product__variant-picker .product-form__input--pill input[type='radio']:checked + label {
+  border-color: var(--cp-section-button-background);
+  color: var(--cp-section-button-text);
+  background: var(--cp-section-button-background);
+  box-shadow: 0 0.6rem 1.6rem color-mix(in srgb, var(--cp-section-button-background) 18%, transparent);
+}
+
+.main-product__variant-picker .product-form__input--pill input[type='radio']:focus-visible + label,
+.main-product__variant-picker .product-form__input--pill input[type='radio'].focused + label {
+  outline: 0.2rem solid var(--cp-section-button-background);
+  outline-offset: 0.3rem;
+  box-shadow: none;
+}
+
+.main-product__variant-picker .product-form__input--pill input[type='radio'].disabled + label,
+.main-product__variant-picker .product-form__input--pill input[type='radio']:disabled + label {
+  border-color: color-mix(in srgb, var(--cp-section-border) 65%, transparent);
+  color: color-mix(in srgb, var(--cp-section-text) 45%, transparent);
+  background: color-mix(in srgb, var(--cp-section-background) 88%, var(--cp-section-border));
+  box-shadow: none;
+}
+
+.main-product__variant-picker .product-form__input--swatch {
+  align-items: center;
+}
+
+.main-product__variant-picker .product-form__input--swatch .form__label {
+  flex-basis: 100%;
+}
+
+.main-product__variant-picker .product-form__input--swatch .swatch-input__input + .swatch-input__label {
+  --swatch-input--size: 3.4rem;
+  margin: 0 1rem 0.6rem 0;
+  padding: 0.3rem;
+  background: var(--cp-section-background);
+  box-shadow: 0 0 0 0.1rem var(--cp-section-border);
+}
+
+.main-product__variant-picker .swatch-input__input:checked + .swatch-input__label {
+  outline: 0.2rem solid var(--cp-section-button-background);
+  outline-offset: 0.2rem;
+  box-shadow: 0 0.4rem 1.2rem color-mix(in srgb, var(--cp-section-button-background) 14%, transparent);
+}
+
+.main-product__variant-picker .product-form__input--dropdown .select {
+  width: 100%;
+}
+
+.main-product__variant-picker .product-form__input--dropdown .select__select {
+  min-height: 4.8rem;
+  border: 0.1rem solid var(--cp-section-border);
+  border-radius: 1.2rem;
+  color: var(--cp-section-text);
+  background: var(--cp-section-background);
+  box-shadow: 0 0.4rem 1.2rem color-mix(in srgb, var(--cp-section-heading) 3%, transparent);
+}
+
+.main-product__variant-picker .product-form__input--dropdown .select__select:focus-visible {
+  outline: 0.2rem solid var(--cp-section-button-background);
+  outline-offset: 0.2rem;
+  box-shadow: none;
+}
+
+@media screen and (max-width: 749px) {
+  .main-product__variant-picker {
+    gap: 1.4rem;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .main-product__variant-picker .product-form__input:not(:last-of-type) {
+    padding-bottom: 1.4rem;
+  }
+
+  .main-product__variant-picker .product-form__input--pill input[type='radio'] + label {
+    min-width: 4.4rem;
+    padding: 0.9rem 1.3rem;
+  }
+}

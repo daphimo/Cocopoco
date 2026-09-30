@@ -25,6 +25,7 @@
   endif
   assign card_color_scheme = settings.card_color_scheme
   assign card_style = settings.card_style
+  assign title = card_collection.metafields.custom.display_name | default: card_collection.title
   if wrapper_class == null or wrapper_class == 'none'
     assign card_color_scheme = settings.collection_card_color_scheme
     assign card_style = settings.collection_card_style
@@ -92,8 +93,8 @@
                 {% endif %}
                 class="full-unstyled-link"
               >
-                {%- if card_collection.title != blank -%}
-                  {{- card_collection.title | escape -}}
+                {%- if title != blank -%}
+                  {{- title | escape -}}
                 {%- else -%}
                   {{ 'onboarding.collection_title' | t }}
                 {%- endif -%}
@@ -128,8 +129,8 @@
               {% endif %}
               class="full-unstyled-link"
             >
-              {%- if card_collection.title != blank -%}
-                {{- card_collection.title | escape -}}
+              {%- if title != blank -%}
+                {{- title | escape -}}
               {%- else -%}
                 {{ 'onboarding.collection_title' | t }}
               {%- endif -%}

@@ -13,7 +13,7 @@
       </div>
     {%- endif -%}
 
-    <ul class="instafeed__grid" role="list">
+    {% comment %} <ul class="instafeed__grid" role="list">
       {%- for block in section.blocks -%}
         <li class="instafeed__item" {{ block.shopify_attributes }}>
           {%- capture media_content -%}
@@ -40,7 +40,13 @@
           {%- endif -%}
         </li>
       {%- endfor -%}
-    </ul>
+    </ul> {% endcomment %}
+      {%- for block in section.blocks -%}
+                  {%- case block.type -%}
+                    {% when '@app' %}
+                      {% render block %}
+                  {%- endcase -%}
+                {%- endfor -%}
 
     {%- if section.settings.button_label != blank -%}
       <div class="instafeed__button-wrap">
@@ -95,27 +101,12 @@
   ],
   "blocks": [
     {
-      "type": "image",
-      "name": "Image",
-      "settings": [
-{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "url", "id": "link", "label": "Image link" },
-        { "type": "checkbox", "id": "open_in_new_tab", "label": "Open image link in a new tab", "default": false }
-      ]
+      "type": "@app"
     }
   ],
   "presets": [
     {
-      "name": "Instafeed gallery",
-      "blocks": [
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" }
-      ]
+      "name": "Instafeed gallery"
     }
   ]
 }

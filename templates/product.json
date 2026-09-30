@@ -12,6 +12,10 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "fbp_fast_bundle_bap_position_ytJ7BQ": {
+          "type": "shopify://apps/fbp-fast-bundle/blocks/bap_position/9e87fbe2-9041-4c23-acf5-322413994cef",
+          "settings": {}
+        },
         "benefit_shipping": {
           "type": "benefit",
           "settings": {
@@ -106,6 +110,22 @@
             "text_color": "#4a4145",
             "border_color": "#f9d5e6",
             "button_radius": 40
+          }
+        },
+        "secure_checkout_ByfhHL": {
+          "type": "secure_checkout",
+          "settings": {
+            "title": "Secure checkout",
+            "title_size": 16,
+            "image_size": 60,
+            "image_1": "shopify://shop_images/visa-light.png",
+            "image_2": "shopify://shop_images/google-pay-light.png",
+            "image_3": "shopify://shop_images/apple-pay-light.png",
+            "image_4": "shopify://shop_images/paypal-light.png",
+            "image_5": "shopify://shop_images/american-express-light.png",
+            "image_6": "shopify://shop_images/discover-light.png",
+            "padding_top": 20,
+            "padding_bottom": 20
           }
         },
         "pincode_checker": {
@@ -211,11 +231,13 @@
         }
       },
       "block_order": [
+        "fbp_fast_bundle_bap_position_ytJ7BQ",
         "benefit_shipping",
         "benefit_quality",
         "benefit_secure",
         "benefit_support",
         "stock_notify",
+        "secure_checkout_ByfhHL",
         "pincode_checker",
         "details",
         "shipping",
@@ -232,7 +254,7 @@
         "brand_button_background": "#e83e8c",
         "brand_button_text_color": "#ffffff",
         "show_sticky_checkout": true,
-        "sticky_checkout_behavior": "after_buy_button",
+        "sticky_checkout_behavior": "always",
         "background_color": "#ffffff",
         "accent_color": "#e64d95",
         "product_message": "Taxes included. Flat shipping of Rs 99 on total order value.",

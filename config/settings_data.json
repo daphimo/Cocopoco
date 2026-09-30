@@ -130,7 +130,8 @@
     "cart_color_scheme": "scheme-1",
     "customer_account_menu": "customer-account-main-menu",
     "product_card_border": "#E34C93",
-    "enable_leave_alert": true,
+    "tab_switch_message": "WE MISS YOU!!",
+    "enable_leave_alert": false,
     "leave_alert_message": "Wait! Explore our latest collection",
     "sections": {
       "main-password-header": {
@@ -147,26 +148,6 @@
       },
       "cart-drawer": {
         "type": "cart-drawer",
-        "settings": {
-          "cart_heading": "Your bag",
-          "enable_tiered_discount_progress": true,
-          "custom_cart_content": "₹99 flat shipping on every order, Extra 5% off when you pay online",
-          "recommendation_heading": "Add a little extra joy ✨",
-          "recommended_products": [
-            "1000-ml-sanrio-hot-water-bag"
-          ],
-          "shipping_text": "Calculated at checkout",
-          "enable_prepaid_discount": true,
-          "prepaid_discount_text": "-5% at checkout",
-          "empty_heading": "Your bag is feeling a little empty",
-          "empty_subtext": "Let's fix that with something cute.",
-          "empty_button_text": "Shop the joy",
-          "empty_button_link": "",
-          "continue_text": "Continue shopping",
-          "accent_color": "#e64d95",
-          "background_color": "#ffffff",
-          "text_color": "#241226"
-        },
         "blocks": {
           "tier_1": {
             "type": "discount_tier",
@@ -196,7 +177,31 @@
             }
           }
         },
-        "block_order": ["tier_1", "tier_2", "tier_3"]
+        "block_order": [
+          "tier_1",
+          "tier_2",
+          "tier_3"
+        ],
+        "settings": {
+          "cart_heading": "Your bag",
+          "enable_tiered_discount_progress": true,
+          "custom_cart_content": "₹99 flat shipping on every order, Extra 5% off when you pay online",
+          "recommendation_heading": "Add a little extra joy ✨",
+          "recommended_products": [
+            "1000-ml-sanrio-hot-water-bag"
+          ],
+          "shipping_text": "Calculated at checkout",
+          "enable_prepaid_discount": true,
+          "prepaid_discount_text": "-5% at checkout",
+          "empty_heading": "Your bag is feeling a little empty",
+          "empty_subtext": "Let's fix that with something cute.",
+          "empty_button_text": "Shop the joy",
+          "empty_button_link": "",
+          "continue_text": "Continue shopping",
+          "accent_color": "#e64d95",
+          "background_color": "#ffffff",
+          "text_color": "#241226"
+        }
       }
     },
     "content_for_index": [],
@@ -243,14 +248,19 @@
         "disabled": true,
         "settings": {}
       },
+      "15710897563947040993": {
+        "type": "shopify://apps/avada-boost-sales-trust-badge/blocks/app-embed/45454b7f-f6a7-4852-b770-8e0c3992a226",
+        "disabled": true,
+        "settings": {}
+      },
       "144831480468751239": {
         "type": "shopify://apps/essential-upsell/blocks/app-embed/50627fd9-24fd-4250-8614-accc12826d80",
         "disabled": true,
         "settings": {}
       },
-      "15710897563947040993": {
-        "type": "shopify://apps/avada-boost-sales-trust-badge/blocks/app-embed/45454b7f-f6a7-4852-b770-8e0c3992a226",
-        "disabled": true,
+      "1232542678405107163": {
+        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
+        "disabled": false,
         "settings": {}
       }
     },

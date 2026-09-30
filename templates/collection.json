@@ -15,6 +15,13 @@
         "collection_link_QWnpTX": {
           "type": "collection_link",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "collection": "best-sellers",
             "title_override": "All"
           }
@@ -22,6 +29,13 @@
         "collection_link_UAJeaJ": {
           "type": "collection_link",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "collection": "stationery",
             "title_override": "Stationery"
           }
@@ -29,6 +43,13 @@
         "collection_link_V4GJMV": {
           "type": "collection_link",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "collection": "bundle-_-premium_bottle",
             "title_override": "Bottles"
           }
@@ -36,6 +57,13 @@
         "collection_link_hFzUka": {
           "type": "collection_link",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "collection": "keychains-charms",
             "title_override": "Keychains"
           }
@@ -43,6 +71,13 @@
         "collection_link_WQUyiB": {
           "type": "collection_link",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "collection": "jewellery",
             "title_override": ""
           }
@@ -50,6 +85,13 @@
         "collection_link_8b4xH7": {
           "type": "collection_link",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "collection": "bundles",
             "title_override": "Bundles & Gifts"
           }
@@ -57,6 +99,13 @@
         "collection_link_WGGhMh": {
           "type": "collection_link",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "collection": "just-in-newly-added-products",
             "title_override": "New Arrivals"
           }
@@ -64,6 +113,13 @@
         "collection_link_344Njm": {
           "type": "collection_link",
           "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_text_color": "#ffffff",
             "collection": "best-sellers",
             "title_override": "Bestsellers"
           }
@@ -80,6 +136,13 @@
         "collection_link_344Njm"
       ],
       "settings": {
+        "brand_background_color": "#ffffff",
+        "brand_caption_color": "#b86a8a",
+        "brand_heading_color": "#341824",
+        "brand_text_color": "#4a4145",
+        "brand_border_color": "#f9d5e6",
+        "brand_button_background": "#e83e8c",
+        "brand_button_text_color": "#ffffff",
         "background_color": "#ffffff",
         "accent_color": "#e64d95",
         "enable_filtering": true,

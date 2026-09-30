@@ -18,6 +18,7 @@
             "desktop_image": "shopify://shop_images/anniversary_Banner_Cocopoco.png",
             "mobile_image": "shopify://shop_images/anniversary_Banner_Cocopoco_mobile.png",
             "image_alt": "",
+            "image_link": "",
             "image_position": "70% 30%",
             "image_loading": "lazy",
             "eyebrow": "",
@@ -60,30 +61,32 @@
         "slide_ghqa7Q": {
           "type": "slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/hero-D6qm_qxI.png",
+            "desktop_image": "shopify://shop_images/hero_1.png",
+            "mobile_image": "shopify://shop_images/hero_mobile.png",
             "image_alt": "",
+            "image_link": "",
             "image_position": "70% 30%",
             "image_loading": "lazy",
-            "eyebrow": "FOR THE EVERYDAY ROMANTIC",
+            "eyebrow": "",
             "eyebrow_icon": "sparkles",
-            "heading": "Romanticize your everyday.",
-            "description": "<p>Cute, aesthetic little things — stationery, bottles, keychains and accessories — that make your ordinary routine feel a lot more special.</p>",
+            "heading": "",
+            "description": "",
             "primary_text": "Shop the joy",
-            "primary_link": "",
+            "primary_link": "shopify://collections/show-me-all",
             "secondary_text": "Explore new arrivals",
-            "secondary_link": "",
+            "secondary_link": "shopify://collections/just-in-newly-added-products",
             "horizontal_position": "left",
-            "vertical_position": "center",
+            "vertical_position": "flex-end",
             "text_alignment": "left",
             "content_width": 620,
             "heading_size": 48,
             "description_size": 16,
-            "eyebrow_radius": 24,
+            "eyebrow_radius": 19,
             "eyebrow_padding_x": 12,
             "eyebrow_padding_y": 7,
             "button_radius": 40,
             "overlay_color": "#ffffff",
-            "overlay_opacity": 65,
+            "overlay_opacity": 0,
             "eyebrow_text_color": "#b86a8a",
             "eyebrow_background": "#ffffff",
             "eyebrow_border": "#f9d5e6",
@@ -161,7 +164,7 @@
         "show_pagination": true,
         "pause_on_hover": true,
         "pause_on_focus": true,
-        "desktop_height": 500,
+        "desktop_height": 600,
         "mobile_height": 720
       }
     },
@@ -210,7 +213,7 @@
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
             "button_1_text": "Enter the CocoPoco world",
-            "button_1_link": "",
+            "button_1_link": "shopify://collections/all",
             "button_1_background": "#3d1729",
             "button_1_text_color": "#ffffff",
             "button_1_arrow": true,
@@ -367,9 +370,9 @@
       "name": "Quiz popup",
       "settings": {
         "brand_background_color": "#ffffff",
-        "brand_caption_color": "#b86a8a",
-        "brand_heading_color": "#341824",
-        "brand_text_color": "#4a4145",
+        "brand_caption_color": "#fffdfe",
+        "brand_heading_color": "#fffdfe",
+        "brand_text_color": "#fffdfe",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
         "brand_button_text_color": "#ffffff",
@@ -381,11 +384,9 @@
         "question_id": "shopping-for",
         "popup_content": "<p>Tap one — we'll curate the cutest picks just for you 💌</p>",
         "section_background": "#fff7fb",
-        "card_color_1": "#f9cce5",
-        "card_color_2": "#f9cce5",
-        "card_color_3": "#f9cce5",
-        "accent_color": "#c861c9",
-        "text_color": "#3d1729",
+        "card_color_1": "#e34c93",
+        "accent_color": "#fffdfe",
+        "text_color": "#fffdfe",
         "padding_top": 32,
         "padding_bottom": 32
       }
@@ -407,10 +408,10 @@
         "view_more_text": "VIEW MORE",
         "view_more_link": "shopify://collections/just-in-newly-added-products",
         "show_view_more_arrow": true,
-        "products_per_row": "4",
+        "products_per_row": "6",
         "products_per_row_mobile": "2",
         "enable_mobile_slider": true,
-        "maximum_products": 4,
+        "maximum_products": 6,
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 48,
@@ -566,10 +567,10 @@
         "view_more_text": "VIEW MORE",
         "view_more_link": "",
         "show_view_more_arrow": true,
-        "products_per_row": "4",
-        "products_per_row_mobile": "1",
+        "products_per_row": "6",
+        "products_per_row_mobile": "2",
         "enable_mobile_slider": true,
-        "maximum_products": 4,
+        "maximum_products": 6,
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 48,
@@ -622,7 +623,7 @@
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
             "text": "Shop the look",
-            "link": "#",
+            "link": "shopify://collections/all",
             "background": "#e64d95",
             "text_color": "#ffffff",
             "show_arrow": true,
@@ -892,7 +893,7 @@
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
             "text": "Find a Gift",
-            "link": "#",
+            "link": "shopify://collections/all",
             "background": "#e64d95",
             "text_color": "#ffffff",
             "show_arrow": true,
@@ -1048,7 +1049,7 @@
         "view_more_link": "",
         "show_view_more_arrow": true,
         "products_per_row": "4",
-        "products_per_row_mobile": "1",
+        "products_per_row_mobile": "2",
         "enable_mobile_slider": true,
         "maximum_products": 4,
         "color_scheme": "",
@@ -1118,7 +1119,7 @@
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
             "button_1_text": "Our Story",
-            "button_1_link": "",
+            "button_1_link": "shopify://pages/our-story",
             "button_1_background": "#3d1729",
             "button_1_text_color": "#ffffff",
             "button_1_arrow": true,
@@ -1241,7 +1242,6 @@
         "loop": true,
         "muted": true,
         "pause_offscreen": true,
-        "show_sound_button": true,
         "card_radius": 18,
         "show_card_border": true,
         "card_border_opacity": 18,
@@ -1256,107 +1256,77 @@
         "padding_bottom_mobile": 48
       }
     },
-    "instafeed_GMirLW": {
-      "type": "instafeed",
+    "179077457400d04445": {
+      "type": "apps",
       "blocks": {
-        "image_BnqPN9": {
-          "type": "image",
+        "judge_me_reviews_cards_carousel_YgtzJa": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
           "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_text_color": "#ffffff",
-            "image": "shopify://shop_images/hero-D6qm_qxI.png",
-            "link": "",
-            "open_in_new_tab": false
-          }
-        },
-        "image_yfbnWH": {
-          "type": "image",
-          "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_text_color": "#ffffff",
-            "image": "shopify://shop_images/lifestyle-CU2FVmzE.png",
-            "link": "",
-            "open_in_new_tab": false
-          }
-        },
-        "image_JABLCf": {
-          "type": "image",
-          "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_text_color": "#ffffff",
-            "image": "shopify://shop_images/gifting-CVgp4Sao.png",
-            "link": "",
-            "open_in_new_tab": false
-          }
-        },
-        "image_rQQqnp": {
-          "type": "image",
-          "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_text_color": "#ffffff",
-            "image": "shopify://shop_images/hero-D6qm_qxI.png",
-            "link": "",
-            "open_in_new_tab": false
-          }
-        },
-        "image_hGD8wx": {
-          "type": "image",
-          "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_text_color": "#ffffff",
-            "image": "shopify://shop_images/lifestyle-CU2FVmzE.png",
-            "link": "",
-            "open_in_new_tab": false
-          }
-        },
-        "image_BTbV6U": {
-          "type": "image",
-          "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_text_color": "#ffffff",
-            "image": "shopify://shop_images/gifting-CVgp4Sao.png",
-            "link": "",
-            "open_in_new_tab": false
+            "show_sample_reviews": true,
+            "reviews_selection": "all",
+            "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "medium",
+            "image_ratio": "1",
+            "reviews_shown": 4,
+            "show_reviewer_name": true,
+            "show_product_name": true,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true,
+            "rating_display": "default"
           }
         }
       },
       "block_order": [
-        "image_BnqPN9",
-        "image_yfbnWH",
-        "image_JABLCf",
-        "image_rQQqnp",
-        "image_hGD8wx",
-        "image_BTbV6U"
+        "judge_me_reviews_cards_carousel_YgtzJa"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "instafeed_GMirLW": {
+      "type": "instafeed",
+      "blocks": {
+        "instafeed_app_block_UPF4Q6": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_UPF4Q6"
       ],
       "name": "Instafeed gallery",
       "settings": {
@@ -1377,7 +1347,7 @@
         "description_color": "#7a5368",
         "background_color": "#ffffff",
         "button_label": "Follow the fun",
-        "button_link": "",
+        "button_link": "https://www.instagram.com/cocopocothegiftshop/",
         "button_background": "#ffffff",
         "button_text_color": "#2a0f1c",
         "button_show_arrow": true,
@@ -1519,6 +1489,7 @@
     "featured_collection_mMx74h",
     "richtext_tPnTPk",
     "shoppable_videos_mcC6A3",
+    "179077457400d04445",
     "instafeed_GMirLW",
     "custom_email_signup_LdNV4k"
   ]

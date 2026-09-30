@@ -37,10 +37,11 @@
             <h2 id="predictive-search-collections" class="predictive-search__heading">{{ 'templates.search.collections' | t }}</h2>
             <ul class="predictive-search__results-list list-unstyled" role="group">
               {%- for collection in predictive_search.resources.collections limit: 4 -%}
+                {%- assign title = collection.metafields.custom.display_name | default: collection.title -%}
                 <li id="predictive-search-option-collection-{{ forloop.index }}" class="predictive-search__list-item" role="option" aria-selected="false">
                   <a href="{{ collection.url }}" class="predictive-search__item link" tabindex="-1">
                     <span class="predictive-search__type-mark" aria-hidden="true">C</span>
-                    <span class="predictive-search__item-heading">{{ collection.title | escape }}</span>
+                    <span class="predictive-search__item-heading">{{ title | escape }}</span>
                     <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
                   </a>
                 </li>

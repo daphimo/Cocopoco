@@ -40,7 +40,8 @@
       {%- endif -%}
     </span>
     <span class="collection-circle-card__title">
-      {% assign title = block.settings.title | default: collection.title %}
+      {% assign title = collection.metafields.custom.display_name | default: collection.title %}
+      {% assign title = block.settings.title | default: title %}
       {{ title | escape }}
     </span>
   </a>

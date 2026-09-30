@@ -11,6 +11,7 @@
 {%- unless product.has_only_default_variant -%}
   <variant-selects
     id="variant-selects-{{ section.id }}"
+    class="main-product__variant-picker"
     data-section="{{ section.id }}"
     data-product-handle="{{ product.handle }}"
     data-product-title="{{ product.title | escape }}"
@@ -51,7 +52,10 @@
         </fieldset>
       {%- elsif picker_type == 'button' -%}
         <fieldset class="js product-form__input product-form__input--pill">
-          <legend class="form__label">{{ option.name }}</legend>
+          <legend class="form__label">
+            <span>{{ option.name }}</span>
+            <span class="main-product__variant-value" data-selected-value>{{ option.selected_value }}</span>
+          </legend>
           {% render 'product-variant-options',
             product: product,
             option: option,

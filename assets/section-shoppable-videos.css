@@ -104,7 +104,7 @@
 
 .shoppable-videos__arrows {
   position: absolute;
-  z-index: 5;
+  z-index: 1;
   top: 50%;
   right: 8px;
   left: 8px;
@@ -219,7 +219,7 @@
 
 .shoppable-videos__stripe {
   position: absolute;
-  z-index: 3;
+  z-index: 1;
   right: var(--sv-stripe-inset);
   bottom: var(--sv-stripe-bottom);
   left: var(--sv-stripe-inset);
