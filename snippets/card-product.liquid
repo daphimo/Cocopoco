@@ -126,8 +126,7 @@
         {%- endif -%}
       </div>
       {%- if quick_add != blank and quick_add != 'none' -%}
-        {{product.tags }}
-        {% if product.tags contains 'bundle' %}
+        {% if card_product.tags contains 'bundle' %}
         <div class="cp-product-card__action">
           {%- if available_variants.size == 1 -%}
             <product-form data-section-id="{{ section_id }}">
