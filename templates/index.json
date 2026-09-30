@@ -16,6 +16,7 @@
           "type": "slide",
           "settings": {
             "desktop_image": "shopify://shop_images/anniversary_Banner_Cocopoco.png",
+            "mobile_image": "shopify://shop_images/anniversary_Banner_Cocopoco_mobile.png",
             "image_alt": "",
             "image_position": "70% 30%",
             "image_loading": "lazy",
