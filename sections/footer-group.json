@@ -106,7 +106,7 @@
         "show_once": true,
         "desktop_scale": 100,
         "mobile_scale": 100,
-        "popup_width": 720,
+        "popup_width": 600,
         "popup_height": 440,
         "popup_radius": 16,
         "content_padding": 48,
