@@ -479,7 +479,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "collection": "jewellery",
+            "collection": "new_-jewellery",
             "image": "shopify://shop_images/cat-jewellery-D8dBjPvW.png",
             "title": "Jewellery"
           }
@@ -509,7 +509,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "collection": "gift-sets",
+            "collection": "new_return-gifs",
             "image": "shopify://shop_images/gift-wrapped-with-a-big-red-bow.jpg",
             "title": "Gifts"
           }
