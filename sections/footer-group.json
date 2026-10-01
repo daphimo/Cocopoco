@@ -373,7 +373,7 @@
         "open_new_tab": false,
         "success_heading": "Thank You!",
         "success_message": "You're successfully subscribed. Your exclusive offer is ready!",
-        "success_action": "redirect",
+        "success_action": "thanks",
         "enable_discount": false,
         "discount_code": "WELCOME10",
         "discount_message": "Your exclusive discount code:",

@@ -168,6 +168,77 @@
         "mobile_height": 720
       }
     },
+    "card_color_tester_9WkwXa": {
+      "type": "card-color-tester",
+      "blocks": {
+        "sample_card_Yba3px": {
+          "type": "sample_card",
+          "settings": {
+            "heading": "Original pink",
+            "text": "<p>This is sample text to compare readability and the overall feel of this background color.</p>",
+            "background_color": "#e83e8c",
+            "text_color": "#FFFFFF"
+          }
+        },
+        "sample_card_6PjArM": {
+          "type": "sample_card",
+          "settings": {
+            "heading": "Pink shade 2",
+            "text": "<p>This is sample text to compare readability and the overall feel of this background color.</p>",
+            "background_color": "#EA5198",
+            "text_color": "#FFFFFF"
+          }
+        },
+        "sample_card_NnmN3V": {
+          "type": "sample_card",
+          "settings": {
+            "heading": "Pink shade 3",
+            "text": "<p>This is sample text to compare readability and the overall feel of this background color.</p>",
+            "background_color": "#EC64A4",
+            "text_color": "#FFFFFF"
+          }
+        },
+        "sample_card_pQUX7f": {
+          "type": "sample_card",
+          "settings": {
+            "heading": "Pink shade 4",
+            "text": "<p>This is sample text to compare readability and the overall feel of this background color.</p>",
+            "background_color": "#EF77B0",
+            "text_color": "#FFFFFF"
+          }
+        },
+        "sample_card_3NK7qG": {
+          "type": "sample_card",
+          "settings": {
+            "heading": "Pink shade 5",
+            "text": "<p>This is sample text to compare readability and the overall feel of this background color.</p>",
+            "background_color": "#F18ABC",
+            "text_color": "#FFFFFF"
+          }
+        },
+        "sample_card_nepjey": {
+          "type": "sample_card",
+          "settings": {
+            "heading": "Pink shade 6",
+            "text": "<p>This is sample text to compare readability and the overall feel of this background color.</p>",
+            "background_color": "#F39DC8",
+            "text_color": "#FFFFFF"
+          }
+        }
+      },
+      "block_order": [
+        "sample_card_Yba3px",
+        "sample_card_6PjArM",
+        "sample_card_NnmN3V",
+        "sample_card_pQUX7f",
+        "sample_card_3NK7qG",
+        "sample_card_nepjey"
+      ],
+      "name": "Card color tester",
+      "settings": {
+        "heading": "Card background color test"
+      }
+    },
     "richtext_QVH6wn": {
       "type": "richtext",
       "blocks": {
@@ -1482,6 +1553,7 @@
   },
   "order": [
     "custom_hero_slider_NqXFt9",
+    "card_color_tester_9WkwXa",
     "richtext_QVH6wn",
     "quiz_popup_home",
     "featured_collection_dfJFHU",

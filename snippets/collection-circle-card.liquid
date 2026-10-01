@@ -25,6 +25,7 @@
   >
     <span class="collection-circle-card__media">
       {%- if card_image != blank -%}
+        {% assign title = collection.metafields.custom.display_name | default: collection.title %}
         {{
           card_image
           | image_url: width: 700
@@ -33,7 +34,7 @@
             widths: '160, 240, 320, 480, 600, 700',
             sizes: '(max-width: 749px) 45vw, 180px',
             loading: 'lazy',
-            alt: card_image.alt
+            alt: title
         }}
       {%- else -%}
         {{ placeholder | default: 'collection-apparel-1' | placeholder_svg_tag: 'collection-circle-card__placeholder' }}

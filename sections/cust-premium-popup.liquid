@@ -201,9 +201,6 @@
         if (main) main.hidden = true;
         if (success) success.hidden = false;
         setState({ completed: true });
-        if (config.successAction === 'redirect' && config.redirectUrl) {
-          window.setTimeout(() => { window.location.assign(config.redirectUrl); }, 900);
-        }
       };
       const copyCode = async (button) => {
         const code = button.dataset.code || '';
@@ -224,36 +221,36 @@
         if (event.target.closest('[data-cust-badge-close]')) { event.stopPropagation(); badge.hidden = true; setState({ badgeDismissed: true }); return; }
         const opener = event.target.closest('[data-cust-badge-open]'); if (opener) openPopup(opener, true);
       });
-      form?.addEventListener('submit', async (event) => {
+      form?.addEventListener('submit', (event) => {
         event.preventDefault();
         if (form.dataset.submitting === 'true') return;
         const email = form.querySelector('input[type="email"]');
-        if (!email.checkValidity()) { errorNode.textContent = 'Please enter a valid email address.'; errorNode.hidden = false; email.focus(); return; }
+        const emailValue = email.value.trim();
+        const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
+        if (!isValidEmail) { email.setAttribute('aria-invalid', 'true'); errorNode.textContent = 'Please enter a valid email address.'; errorNode.hidden = false; email.focus(); return; }
+        email.value = emailValue;
+        email.removeAttribute('aria-invalid');
         errorNode.hidden = true; form.dataset.submitting = 'true';
-        const submit = form.querySelector('[data-cust-popup-submit]'); submit.disabled = true; submit.classList.add('is-loading');
+        const submit = form.querySelector('[data-cust-popup-submit]'); submit.disabled = true;
+        if (config.successAction === 'discount' && !config.discountEnabled) config.successAction = 'thanks';
+        showSuccess();
         try {
           const formData = new FormData(form);
           const body = new URLSearchParams();
           formData.forEach((value, key) => body.append(key, value));
-          const response = await fetch(form.action.split('#')[0], {
+          void fetch(form.action.split('#')[0], {
             method: 'POST',
             body,
             credentials: 'same-origin',
-            redirect: 'manual',
+            redirect: 'follow',
+            keepalive: true,
             headers: {
               Accept: 'text/html',
               'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
               'X-Requested-With': 'XMLHttpRequest',
             },
-          });
-          // Shopify commonly answers a successful customer/newsletter form with
-          // a redirect. With manual redirect handling that response is exposed as
-          // an opaque redirect (status 0), so it must not be treated as an error.
-          if (!response.ok && response.type !== 'opaqueredirect' && response.status !== 0) throw new Error('Subscription failed');
-          if (config.successAction === 'discount' && !config.discountEnabled) config.successAction = 'thanks';
-          showSuccess();
-        } catch (error) { errorNode.textContent = 'We could not subscribe you right now. Please try again.'; errorNode.hidden = false; }
-        finally { form.dataset.submitting = 'false'; submit.disabled = false; submit.classList.remove('is-loading'); }
+          }).catch((error) => { console.error('[cust-premium-popup] Background subscription failed:', error); });
+        } catch (error) { console.error('[cust-premium-popup] Background subscription failed:', error); }
       });
       document.addEventListener('keydown', (event) => {
         if (!isPopupOpen) return;
