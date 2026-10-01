@@ -10,6 +10,7 @@
         style="--card-background: {{ block.settings.background_color }}; --card-text: {{ block.settings.text_color }};"
         {{ block.shopify_attributes }}
       >
+        {{ forloop.index }}
         <span class="card-color-tester__swatch-value">{{ block.settings.background_color }}</span>
         <h3>{{ block.settings.heading | escape }}</h3>
         <div class="card-color-tester__text rte">{{ block.settings.text }}</div>
