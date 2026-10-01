@@ -185,7 +185,7 @@
           "settings": {
             "heading": "Pink shade 2",
             "text": "<p>This is sample text to compare readability and the overall feel of this background color.</p>",
-            "background_color": "#d9387f",
+            "background_color": "#EA5198",
             "text_color": "#FFFFFF"
           }
         },
@@ -194,7 +194,7 @@
           "settings": {
             "heading": "Pink shade 3",
             "text": "<p>This is sample text to compare readability and the overall feel of this background color.</p>",
-            "background_color": "#ca3272",
+            "background_color": "#EC64A4",
             "text_color": "#FFFFFF"
           }
         },
@@ -203,7 +203,7 @@
           "settings": {
             "heading": "Pink shade 4",
             "text": "<p>This is sample text to compare readability and the overall feel of this background color.</p>",
-            "background_color": "#bb2c66",
+            "background_color": "#EF77B0",
             "text_color": "#FFFFFF"
           }
         },
@@ -212,7 +212,7 @@
           "settings": {
             "heading": "Pink shade 5",
             "text": "<p>This is sample text to compare readability and the overall feel of this background color.</p>",
-            "background_color": "#ac265a",
+            "background_color": "#F18ABC",
             "text_color": "#FFFFFF"
           }
         },
@@ -221,7 +221,7 @@
           "settings": {
             "heading": "Pink shade 6",
             "text": "<p>This is sample text to compare readability and the overall feel of this background color.</p>",
-            "background_color": "#9d204e",
+            "background_color": "#F39DC8",
             "text_color": "#FFFFFF"
           }
         }
