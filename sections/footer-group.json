@@ -11,6 +11,135 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "exit_intent_popup_qJdXLd": {
+      "type": "exit-intent-popup",
+      "blocks": {
+        "heading_Edejkp": {
+          "type": "heading",
+          "settings": {
+            "text": "WAIT! DON'T MISS OUT",
+            "font_size": 48,
+            "mobile_font_size": 34,
+            "font_weight": "800",
+            "color": "#ffffff",
+            "alignment": "center",
+            "bottom_spacing": 16
+          }
+        },
+        "subheading_CqYAVQ": {
+          "type": "subheading",
+          "settings": {
+            "text": "Get 20% off your first order before you go!",
+            "font_size": 20,
+            "mobile_font_size": 17,
+            "color": "#ffffff",
+            "alignment": "center",
+            "bottom_spacing": 24
+          }
+        },
+        "countdown_f7WBwp": {
+          "type": "countdown",
+          "settings": {
+            "enable": true,
+            "hours": 0,
+            "minutes": 14,
+            "seconds": 59,
+            "expiry_behavior": "loop",
+            "number_size": 40,
+            "label_size": 11,
+            "number_color": "#ffffff",
+            "label_color": "#ffffff",
+            "hours_label": "Hours",
+            "minutes_label": "Minutes",
+            "seconds_label": "Seconds",
+            "alignment": "center",
+            "bottom_spacing": 28
+          }
+        },
+        "cta_x8p6rn": {
+          "type": "cta",
+          "settings": {
+            "text": "SHOP THE OFFER",
+            "link": "",
+            "open_new_tab": false,
+            "background": "#ffffff",
+            "color": "#4e1f6f",
+            "border_color": "#ffffff",
+            "border_width": 1,
+            "border_radius": 8,
+            "font_size": 16,
+            "font_weight": "700",
+            "vertical_padding": 15,
+            "horizontal_padding": 34,
+            "alignment": "center",
+            "bottom_spacing": 16
+          }
+        },
+        "discount_Y8zVCH": {
+          "type": "discount",
+          "settings": {
+            "code": "SAVE20",
+            "button_text": "COPY CODE",
+            "success_text": "Copied to clipboard!",
+            "background": "#24102f",
+            "color": "#ffffff",
+            "border_color": "#ffffff",
+            "border_radius": 8,
+            "font_size": 14,
+            "vertical_padding": 12,
+            "horizontal_padding": 28,
+            "alignment": "center",
+            "bottom_spacing": 0
+          }
+        }
+      },
+      "block_order": [
+        "heading_Edejkp",
+        "subheading_CqYAVQ",
+        "countdown_f7WBwp",
+        "cta_x8p6rn",
+        "discount_Y8zVCH"
+      ],
+      "name": "Exit intent popup",
+      "settings": {
+        "enable_popup": true,
+        "show_once": true,
+        "desktop_scale": 100,
+        "mobile_scale": 100,
+        "popup_width": 600,
+        "popup_height": 440,
+        "popup_radius": 16,
+        "content_padding": 48,
+        "trigger_type": "exit",
+        "top_threshold": "50",
+        "initialization_delay": 3,
+        "desktop_delay": "10",
+        "separate_mobile_delay": true,
+        "mobile_delay": "5",
+        "desktop_background_type": "gradient",
+        "desktop_video_url": "",
+        "desktop_video_blur": 0,
+        "desktop_gradient_type": "linear",
+        "desktop_gradient_1": "#4e1f6f",
+        "desktop_gradient_2": "#d94873",
+        "desktop_gradient_angle": 135,
+        "mobile_background_type": "gradient",
+        "mobile_video_url": "",
+        "mobile_video_blur": 0,
+        "mobile_gradient_type": "linear",
+        "mobile_gradient_1": "#4e1f6f",
+        "mobile_gradient_2": "#d94873",
+        "mobile_gradient_angle": 160,
+        "image_overlay": 20,
+        "desktop_position": "center",
+        "mobile_position": "center",
+        "enable_overlay": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 65,
+        "animation": "scale",
+        "animation_duration": 350
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -269,6 +398,7 @@
     }
   },
   "order": [
+    "exit_intent_popup_qJdXLd",
     "footer",
     "footer_utilities",
     "floating_whatsapp",
