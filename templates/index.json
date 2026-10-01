@@ -232,6 +232,7 @@
         "content_zdACTF",
         "buttons_gEci7Y"
       ],
+      "disabled": true,
       "name": "Custom rich text",
       "settings": {
         "brand_background_color": "#ffffff",
@@ -367,6 +368,7 @@
         "quiz_option_5",
         "quiz_option_6"
       ],
+      "disabled": true,
       "name": "Quiz popup",
       "settings": {
         "brand_background_color": "#ffffff",
@@ -432,7 +434,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "collection": "bundle-_-premium_bottle",
+            "collection": "new_bottles",
             "image": "shopify://shop_images/cat-bottles-DrhOIdpQ.png",
             "title": "Bottles"
           }
@@ -447,7 +449,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "collection": "stationery",
+            "collection": "new_stationery",
             "image": "shopify://shop_images/cat-stationery-D_Z7RHIt.png",
             "title": "Stationery"
           }
@@ -462,7 +464,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "collection": "keychains-charms",
+            "collection": "new_keychains-charms",
             "image": "shopify://shop_images/cat-keychains-CcOpE2eZ.png",
             "title": "Keychains"
           }
@@ -477,7 +479,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "collection": "jewellery",
+            "collection": "new_-jewellery",
             "image": "shopify://shop_images/cat-jewellery-D8dBjPvW.png",
             "title": "Jewellery"
           }
@@ -492,7 +494,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "collection": "clearance",
+            "collection": "new_-beauty-cosmetics",
             "image": "shopify://shop_images/cat-makeup-CPj42e6q.png",
             "title": "Makeup"
           }
@@ -507,7 +509,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "collection": "gift-sets",
+            "collection": "new_return-gifs",
             "image": "shopify://shop_images/gift-wrapped-with-a-big-red-bow.jpg",
             "title": "Gifts"
           }
@@ -607,7 +609,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "content": "<p>A bottle for your commute.<br>A notebook for your thoughts.<br>A little charm for your bag.<br>Beautiful things for the moments you live every day.</p>",
+            "content": "<p>A bottle for your commute.<br/>A notebook for your thoughts.<br/>A little charm for your bag.<br/>Beautiful things for the moments you live every day.</p>",
             "content_size": 15,
             "content_color": "#7a5368"
           }
@@ -622,8 +624,8 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "text": "Shop the look",
-            "link": "shopify://collections/all",
+            "text": "Your Everday Trio",
+            "link": "shopify://collections/bundles",
             "background": "#e64d95",
             "text_color": "#ffffff",
             "show_arrow": true,
@@ -645,7 +647,7 @@
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
         "brand_button_text_color": "#ffffff",
-        "image": "shopify://shop_images/lifestyle-CU2FVmzE.png",
+        "image": "shopify://shop_images/05a78dc9-9ae7-4012-9b37-7cf52d9a0223.png",
         "image_position": "left",
         "image_object_position": "center",
         "background_color": "#ffffff",
@@ -843,7 +845,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "title": "Someone deserves a little joy. 🎁",
+            "title": "Little Gifts. Big Smiles 🎁",
             "heading_tag": "h2",
             "heading_size": 32,
             "heading_color": "#241226"
@@ -859,7 +861,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "content": "<p>For birthdays. For celebrations. For thank-yous. For besties. For family. For “I saw this and thought of you.” Or simply because.</p>",
+            "content": "<p>Fun return gifts for little guests — cute, useful and budget-friendly picks they’ll be excited to take home.<br/></p>",
             "content_size": 15,
             "content_color": "#7a5368"
           }
@@ -875,7 +877,7 @@
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
             "icon": "truck",
-            "text": "Beautiful things for everyday moments",
+            "text": "&nbsp;🎉 <strong>Perfect for birthdays, school parties & celebrations</strong>&nbsp;",
             "icon_color": "#e64d95",
             "text_color": "#241226",
             "icon_size": 16,
@@ -892,8 +894,8 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "text": "Find a Gift",
-            "link": "shopify://collections/all",
+            "text": "Shop Return Gifts",
+            "link": "shopify://collections/new_return-gifs",
             "background": "#e64d95",
             "text_color": "#ffffff",
             "show_arrow": true,
@@ -910,7 +912,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "text": "Talk to us for custom orders",
+            "text": "Need 10+ Gifts? Talk to Us",
             "link": "shopify://pages/contact",
             "background": "#ffffff",
             "text_color": "#e34c93",
@@ -935,7 +937,7 @@
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
         "brand_button_text_color": "#ffffff",
-        "image": "shopify://shop_images/gifting-CVgp4Sao.png",
+        "image": "shopify://shop_images/ChatGPT_Image_Oct_1_2026_09_19_51_AM.png",
         "image_position": "right",
         "image_object_position": "center",
         "background_color": "#ffffff",
@@ -1019,6 +1021,9 @@
         "title": "Tiny things. Very big smiles. 💌",
         "title_size": 32,
         "title_color": "#2a0f1c",
+        "show_view_all": true,
+        "view_all_text": "VIEW ALL",
+        "view_all_link": "",
         "background_color": "#ffffff",
         "card_background": "#ffffff",
         "star_color": "#e64d95",
@@ -1337,7 +1342,7 @@
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
         "brand_button_text_color": "#ffffff",
-        "caption": "@COCOPOCO",
+        "caption": "@COCOPOCOTHEGIFTSHOP",
         "caption_color": "#7a5368",
         "title": "Your everyday, but cuter. 📸",
         "title_size": 30,
