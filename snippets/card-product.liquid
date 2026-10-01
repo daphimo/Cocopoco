@@ -35,9 +35,39 @@
   if lazy_load == false
     assign image_loading = 'eager'
   endif
+  assign media_quick_add = false
+  if product_view_context == 'recently-viewed' or product_view_context == 'recommendation'
+    assign media_quick_add = true
+  endif
 -%}
 
-<article class="cp-product-card">
+{%- capture quick_add_markup -%}
+  {%- if card_product != blank and quick_add != blank and quick_add != 'none' -%}
+    {%- unless card_product.tags contains 'bundle' -%}
+      <div class="cp-product-card__action">
+        {%- if available_variants.size == 1 -%}
+          <product-form data-section-id="{{ section_id }}">
+            {%- form 'product', card_product, id: form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+              <input type="hidden" name="id" value="{{ direct_variant.id }}" class="product-variant-id">
+              <button type="submit" name="add" class="cp-product-card__button">
+                <span>{{ 'products.product.add_to_cart' | t }}</span>{% render 'loading-spinner' %}
+              </button>
+            {%- endform -%}
+          </product-form>
+        {%- elsif available_variants.size > 1 -%}
+          <button type="button" class="cp-product-card__button" aria-haspopup="dialog" data-open-variant-picker="{{ popup_id }}">
+            {{ 'products.product.add_to_cart' | t }}
+          </button>
+        {%- else -%}
+          <button type="button" class="cp-product-card__button" disabled>{{ 'products.product.sold_out' | t }}</button>
+        {%- endif -%}
+      </div>
+    {%- endunless -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+<article class="cp-product-card{% if media_quick_add %} cp-product-card--media-action{% endif %}">
+  {%- if media_quick_add -%}<div class="cp-product-card__media-shell">{%- endif -%}
   <div class="cp-product-card__media">
     <a
       class="cp-product-card__media-link"
@@ -75,6 +105,10 @@
       {%- endif -%}
     {%- endif -%}
   </div>
+  {%- if media_quick_add -%}
+    {{ quick_add_markup }}
+    </div>
+  {%- endif -%}
 
   <div class="cp-product-card__body">
     {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
@@ -125,42 +159,7 @@
           <s class="cp-product-card__compare">{{ first_compare | money }}</s>
         {%- endif -%}
       </div>
-      {%- if quick_add != blank and quick_add != 'none' -%}
-        {% if card_product.tags contains 'bundle' %}
-          {%else %}
-        <div class="cp-product-card__action">
-          {%- if available_variants.size == 1 -%}
-            <product-form data-section-id="{{ section_id }}">
-              {%- form 'product',
-                card_product,
-                id: form_id,
-                class: 'form',
-                novalidate: 'novalidate',
-                data-type: 'add-to-cart-form'
-              -%}
-                <input type="hidden" name="id" value="{{ direct_variant.id }}" class="product-variant-id">
-                <button type="submit" name="add" class="cp-product-card__button">
-                  <span>{{ 'products.product.add_to_cart' | t }}</span>{% render 'loading-spinner' %}
-                </button>
-              {%- endform -%}
-            </product-form>
-          {%- elsif available_variants.size > 1 -%}
-            <button
-              type="button"
-              class="cp-product-card__button"
-              aria-haspopup="dialog"
-              data-open-variant-picker="{{ popup_id }}"
-            >
-              {{ 'products.product.add_to_cart' | t }}
-            </button>
-          {%- else -%}
-            <button type="button" class="cp-product-card__button" disabled>
-              {{ 'products.product.sold_out' | t }}
-            </button>
-          {%- endif -%}
-        </div>
-        {%endif %}
-      {%- endif -%}
+      {%- unless media_quick_add -%}{{ quick_add_markup }}{%- endunless -%}
     {%- endif -%}
   </div>
 </article>

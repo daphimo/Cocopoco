@@ -339,8 +339,8 @@
         "accessible_label": "Chat with us on WhatsApp",
         "enable_pulse": true,
         "button_size": 56,
-        "bottom_spacing": 20,
-        "right_spacing": 20,
+        "bottom_spacing": 2,
+        "right_spacing": 2,
         "enable_mobile": true,
         "enable_desktop": true
       }

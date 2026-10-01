@@ -5,8 +5,8 @@
 
 {%- if whatsapp_number != blank -%}
   <div
-    class="cust__whatsapp cust__whatsapp--{{ section.id }}{% if section.settings.enable_pulse %} cust__whatsapp--pulse{% endif %}{% unless section.settings.enable_mobile %} cust__whatsapp--hide-mobile{% endunless %}{% unless section.settings.enable_desktop %} cust__whatsapp--hide-desktop{% endunless %}"
-    style="--cust-whatsapp-size: {{ section.settings.button_size }}px; --cust-whatsapp-bottom: {{ section.settings.bottom_spacing }}px; --cust-whatsapp-right: {{ section.settings.right_spacing }}px;"
+    class="cust__whatsapp cust__whatsapp--{{ section.id }}{% if request.page_type == 'product' %} cust__whatsapp--product{% endif %}{% if section.settings.enable_pulse %} cust__whatsapp--pulse{% endif %}{% unless section.settings.enable_mobile %} cust__whatsapp--hide-mobile{% endunless %}{% unless section.settings.enable_desktop %} cust__whatsapp--hide-desktop{% endunless %}"
+    style="--cust-whatsapp-size: {{ section.settings.button_size }}px; --cust-whatsapp-bottom: {{ section.settings.bottom_spacing }}rem; --cust-whatsapp-right: {{ section.settings.right_spacing }}rem;"
     data-cust-whatsapp
     data-number="{{ whatsapp_number | escape }}"
     data-message="{{ section.settings.message | escape }}"
@@ -27,12 +27,14 @@
 
   <style>
     .cust__whatsapp--{{ section.id }}{position:fixed;right:var(--cust-whatsapp-right);bottom:var(--cust-whatsapp-bottom);z-index:35;width:var(--cust-whatsapp-size);height:var(--cust-whatsapp-size);max-width:calc(100vw - 2rem);max-height:calc(100vh - 2rem);isolation:isolate}
+    .cust__whatsapp--{{ section.id }}.cust__whatsapp--product{bottom:9rem}
     .cust__whatsapp--{{ section.id }} .cust__whatsapp-link{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:0;color:#fff;text-decoration:none;background:#25d366;border-radius:50%;box-shadow:0 .6rem 1.8rem rgba(20,92,53,.28);transition:transform 180ms ease,box-shadow 180ms ease}
     .cust__whatsapp--{{ section.id }} .cust__whatsapp-icon{display:block;width:56%;height:56%}
     .cust__whatsapp--{{ section.id }} .cust__whatsapp-link:focus-visible{outline:.3rem solid #241226;outline-offset:.4rem}
     .cust__whatsapp--{{ section.id }}.cust__whatsapp--pulse::before{position:absolute;inset:0;z-index:-1;border:.2rem solid rgba(37,211,102,.55);border-radius:50%;content:'';animation:cust-whatsapp-pulse-{{ section.id }} 2.4s ease-out infinite;pointer-events:none}
     @media (hover:hover){.cust__whatsapp--{{ section.id }} .cust__whatsapp-link:hover{box-shadow:0 .9rem 2.4rem rgba(20,92,53,.38);transform:scale(1.06)}}
-    @media screen and (max-width:749px){.cust__whatsapp--{{ section.id }}{right:min(var(--cust-whatsapp-right),15px);bottom:min(var(--cust-whatsapp-bottom),15px);width:max(44px,calc(var(--cust-whatsapp-size) - 4px));height:max(44px,calc(var(--cust-whatsapp-size) - 4px))}.cust__whatsapp--{{ section.id }}.cust__whatsapp--hide-mobile{display:none}}
+    @media screen and (max-width:749px){.cust__whatsapp--{{ section.id }}{right:var(--cust-whatsapp-right);bottom:var(--cust-whatsapp-bottom);width:max(44px,calc(var(--cust-whatsapp-size) - 4px));height:max(44px,calc(var(--cust-whatsapp-size) - 4px))}.cust__whatsapp--{{ section.id }}.cust__whatsapp--hide-mobile{display:none}}
+    @media screen and (max-width:749px){.cust__whatsapp--{{ section.id }}.cust__whatsapp--product{bottom:7.6rem}}
     @media screen and (min-width:750px){.cust__whatsapp--{{ section.id }}.cust__whatsapp--hide-desktop{display:none}}
     @media (prefers-reduced-motion:reduce){.cust__whatsapp--{{ section.id }}.cust__whatsapp--pulse::before{animation:none}.cust__whatsapp--{{ section.id }} .cust__whatsapp-link{transition:none}}
     @keyframes cust-whatsapp-pulse-{{ section.id }}{0%{opacity:.7;transform:scale(1)}70%,100%{opacity:0;transform:scale(1.42)}}
@@ -69,8 +71,8 @@
     { "type": "text", "id": "accessible_label", "label": "Accessible label", "default": "Chat with us on WhatsApp" },
     { "type": "checkbox", "id": "enable_pulse", "label": "Enable Pulse Animation", "default": true },
     { "type": "range", "id": "button_size", "label": "Button Size", "min": 44, "max": 72, "step": 2, "unit": "px", "default": 56 },
-    { "type": "range", "id": "bottom_spacing", "label": "Bottom Spacing", "min": 10, "max": 100, "step": 5, "unit": "px", "default": 20 },
-    { "type": "range", "id": "right_spacing", "label": "Right Spacing", "min": 10, "max": 100, "step": 5, "unit": "px", "default": 20 },
+    { "type": "range", "id": "bottom_spacing", "label": "Bottom Spacing", "min": 0, "max": 10, "step": 0.5, "unit": "rem", "default": 2 },
+    { "type": "range", "id": "right_spacing", "label": "Right Spacing", "min": 0, "max": 10, "step": 0.5, "unit": "rem", "default": 2 },
     { "type": "checkbox", "id": "enable_mobile", "label": "Enable on Mobile", "default": true },
     { "type": "checkbox", "id": "enable_desktop", "label": "Enable on Desktop", "default": true }
   ],

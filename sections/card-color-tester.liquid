@@ -1,0 +1,191 @@
+<section class="card-color-tester page-width">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="card-color-tester__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+
+  <div class="card-color-tester__grid">
+    {%- for block in section.blocks -%}
+      <article
+        class="card-color-tester__card"
+        style="--card-background: {{ block.settings.background_color }}; --card-text: {{ block.settings.text_color }};"
+        {{ block.shopify_attributes }}
+      >
+        <span class="card-color-tester__swatch-value">{{ block.settings.background_color }}</span>
+        <h3>{{ block.settings.heading | escape }}</h3>
+        <div class="card-color-tester__text rte">{{ block.settings.text }}</div>
+      </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .card-color-tester {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .card-color-tester__heading {
+    margin: 0 0 2.4rem;
+    text-align: center;
+  }
+
+  .card-color-tester__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.6rem;
+  }
+
+  .card-color-tester__card {
+    min-height: 20rem;
+    padding: 2.4rem;
+    color: var(--card-text);
+    background: var(--card-background);
+    border-radius: 1.6rem;
+    box-shadow: 0 1rem 3rem rgb(52 24 36 / 12%);
+  }
+
+  .card-color-tester__swatch-value {
+    display: inline-block;
+    margin-bottom: 2rem;
+    padding: 0.4rem 0.8rem;
+    color: inherit;
+    background: rgb(0 0 0 / 12%);
+    border-radius: 999px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .card-color-tester__card h3 {
+    margin: 0 0 1rem;
+    color: inherit;
+    font-size: 2rem;
+  }
+
+  .card-color-tester__text,
+  .card-color-tester__text p {
+    margin: 0;
+    color: inherit;
+  }
+
+  @media screen and (max-width: 989px) {
+    .card-color-tester__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .card-color-tester {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .card-color-tester__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card-color-tester__card {
+      min-height: 16rem;
+      padding: 2rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Card color tester",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Card background color test"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "sample_card",
+      "name": "Sample card",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Sample card"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>This is sample text to compare readability and the overall feel of this background color.</p>"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background color",
+          "default": "#E83E8C"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#FFFFFF"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Card color tester",
+      "blocks": [
+        {
+          "type": "sample_card",
+          "settings": {
+            "heading": "Original pink",
+            "background_color": "#E83E8C"
+          }
+        },
+        {
+          "type": "sample_card",
+          "settings": {
+            "heading": "Pink shade 2",
+            "background_color": "#D9387F"
+          }
+        },
+        {
+          "type": "sample_card",
+          "settings": {
+            "heading": "Pink shade 3",
+            "background_color": "#CA3272"
+          }
+        },
+        {
+          "type": "sample_card",
+          "settings": {
+            "heading": "Pink shade 4",
+            "background_color": "#BB2C66"
+          }
+        },
+        {
+          "type": "sample_card",
+          "settings": {
+            "heading": "Pink shade 5",
+            "background_color": "#AC265A"
+          }
+        },
+        {
+          "type": "sample_card",
+          "settings": {
+            "heading": "Pink shade 6",
+            "background_color": "#9D204E"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
