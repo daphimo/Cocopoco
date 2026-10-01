@@ -87,7 +87,7 @@
 }
 .section-header .cp-dropdown__nested { margin: 0 0 0.4rem 1.2rem; padding-left: 0.8rem; border-left: 1px solid rgba(230, 77, 149, 0.35); }
 .section-header .cp-dropdown__nested .cp-dropdown__link { padding-block: 0.55rem; font-size: 1.15rem; }
-.section-header .cp-header__actions { display: flex; align-items: center; justify-self: end; gap: 0.4rem; }
+.section-header .cp-header__actions { display: flex; align-items: center; justify-self: end; }
 .section-header .cp-action {
   position: relative; display: inline-flex; align-items: center; justify-content: center; width: 4rem; height: 4rem;
   padding: 0; border: 0.1rem solid transparent; border-radius: 50%; color: inherit; background: transparent; text-decoration: none;
