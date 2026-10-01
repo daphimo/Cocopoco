@@ -39,7 +39,7 @@
 .section-header .cp-nav__list,
 .section-header .cp-dropdown,
 .section-header .cp-dropdown__nested { margin: 0; padding: 0; list-style: none; }
-.section-header .cp-nav__list { display: flex; align-items: stretch; height: 100%; gap: clamp(1.6rem, 2vw, 3rem); }
+.section-header .cp-nav__list { display: flex; align-items: stretch; height: 100%; gap: clamp(0.6rem, 1vw, 2rem); }
 .section-header .cp-nav__entry,
 .section-header .cp-nav__details { position: relative; height: 100%; }
 .section-header .cp-nav__link,
