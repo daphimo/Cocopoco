@@ -9,3 +9,7 @@ fieldset {
     padding-block: 0.35em 0.625em;
     padding-inline: 0.75em;
 }
+
+.cust__premium-badge--bottom-left.product-page{
+    bottom: 9rem
+}
