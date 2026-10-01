@@ -895,7 +895,7 @@
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
             "text": "Find a Gift",
-            "link": "shopify://collections/all",
+            "link": "shopify://collections/new_return-gifs",
             "background": "#e64d95",
             "text_color": "#ffffff",
             "show_arrow": true,
