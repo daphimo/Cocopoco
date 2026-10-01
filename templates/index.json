@@ -609,7 +609,7 @@
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
-            "content": "<p>A bottle for your commute.<br>A notebook for your thoughts.<br>A little charm for your bag.<br>Beautiful things for the moments you live every day.</p>",
+            "content": "<p>A bottle for your commute.<br/>A notebook for your thoughts.<br/>A little charm for your bag.<br/>Beautiful things for the moments you live every day.</p>",
             "content_size": 15,
             "content_color": "#7a5368"
           }
