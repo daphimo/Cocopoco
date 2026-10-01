@@ -625,7 +625,7 @@
             "brand_button_background": "#e83e8c",
             "brand_button_text_color": "#ffffff",
             "text": "Your Everday Trio",
-            "link": "shopify://collections/all",
+            "link": "shopify://collections/bundles",
             "background": "#e64d95",
             "text_color": "#ffffff",
             "show_arrow": true,
