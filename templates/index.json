@@ -232,6 +232,7 @@
         "content_zdACTF",
         "buttons_gEci7Y"
       ],
+      "disabled": true,
       "name": "Custom rich text",
       "settings": {
         "brand_background_color": "#ffffff",
@@ -367,6 +368,7 @@
         "quiz_option_5",
         "quiz_option_6"
       ],
+      "disabled": true,
       "name": "Quiz popup",
       "settings": {
         "brand_background_color": "#ffffff",
