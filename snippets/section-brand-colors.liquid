@@ -7,20 +7,30 @@
 {% style %}
   #shopify-section-{{ section.id }} {
     --cp-section-background: {{ section.settings.brand_background_color }};
+    --cp-section-background-mobile: {{ section.settings.brand_background_color_mobile }};
     --cp-section-caption: {{ section.settings.brand_caption_color }};
     --cp-section-heading: {{ section.settings.brand_heading_color }};
     --cp-section-text: {{ section.settings.brand_text_color }};
     --cp-section-border: {{ section.settings.brand_border_color }};
+    --cp-section-border-mobile: {{ section.settings.brand_border_color_mobile }};
     --cp-section-button-background: {{ section.settings.brand_button_background }};
     --cp-section-button-background-mobile: {{ section.settings.brand_button_background_mobile }};
     --cp-section-button-text: {{ section.settings.brand_button_text_color }};
+    --cp-section-button-text-mobile: {{ section.settings.brand_button_text_color_mobile }};
     background-color: var(--cp-section-background);
     color: var(--cp-section-text);
   }
 
   @media screen and (max-width: 749px) {
+    {% assign section_background = section.settings.brand_background_color | downcase %}
+    {% assign section_border = section.settings.brand_border_color | downcase %}
+    {% assign section_button_background = section.settings.brand_button_background | downcase %}
+    {% assign section_button_text = section.settings.brand_button_text_color | downcase %}
     #shopify-section-{{ section.id }} {
-      --cp-section-button-background: var(--cp-section-button-background-mobile);
+      {% if section_background == '#e83e8c' and section.settings.brand_background_color_mobile != blank %}--cp-section-background: var(--cp-section-background-mobile);{% endif %}
+      {% if section_border == '#e83e8c' and section.settings.brand_border_color_mobile != blank %}--cp-section-border: var(--cp-section-border-mobile);{% endif %}
+      {% if section_button_background == '#e83e8c' %}--cp-section-button-background: var(--cp-section-button-background-mobile);{% endif %}
+      {% if section_button_text == '#e83e8c' and section.settings.brand_button_text_color_mobile != blank %}--cp-section-button-text: var(--cp-section-button-text-mobile);{% endif %}
     }
   }
 
@@ -42,12 +52,5 @@
 
   #shopify-section-{{ section.id }} :is(.button, button[type='submit'], button[class*='__button'], a[class*='__button']) {
     border-radius: 999px;
-  }
-
-  #shopify-section-{{ section.id }} :is(.button, button[type='submit'], button[class*='__button'], a[class*='__button']):not(.button--secondary) {
-    --color-button: var(--cp-section-button-background);
-    --color-button-text: var(--cp-section-button-text);
-    background-color: var(--cp-section-button-background);
-    color: var(--cp-section-button-text);
   }
 {% endstyle %}

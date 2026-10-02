@@ -145,6 +145,7 @@
   .custom-collection-list {
     padding-top: var(--collection-list-mobile-padding-top);
     padding-bottom: var(--collection-list-mobile-padding-bottom);
+    background: var(--collection-list-background-mobile, var(--collection-list-background));
   }
 
   .custom-collection-list__inner {

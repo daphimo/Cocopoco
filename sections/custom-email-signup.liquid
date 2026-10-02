@@ -6,9 +6,21 @@
     --email-signup-margin-top: {{ section.settings.margin_top }}px;
     --email-signup-margin-bottom: {{ section.settings.margin_bottom }}px;
     --email-signup-background: {{ section.settings.background_color }};
+    {% assign email_signup_background = section.settings.background_color | downcase %}
+    {% if email_signup_background == '#e83e8c' %}
+      --email-signup-background-mobile: {{ section.settings.background_color_mobile }};
+    {% endif %}
     --email-signup-text: {{ section.settings.text_color }};
     --email-signup-radius: {{ section.settings.border_radius }}px;
   }
+
+  {% if email_signup_background == '#e83e8c' %}
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} {
+        --email-signup-background: var(--email-signup-background-mobile);
+      }
+    }
+  {% endif %}
 {%- endstyle -%}
 
 <section class="custom-email-signup" aria-labelledby="EmailSignupTitle-{{ section.id }}">
@@ -112,6 +124,7 @@
   "settings": [
 {"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_background_mobile","label":"Button background — Mobile","default":"#EC64A4"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
     { "type": "color", "id": "background_color", "label": "Background color", "default": "#3A1928" },
+    { "type": "color", "id": "background_color_mobile", "label": "Background color — Mobile", "default": "#EC64A4" },
     { "type": "color", "id": "text_color", "label": "Default text color", "default": "#FFFFFF" },
     { "type": "range", "id": "border_radius", "label": "Corner radius", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 26 },
     { "type": "header", "content": "Section spacing" },

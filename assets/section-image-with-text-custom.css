@@ -218,6 +218,8 @@
 
   .custom-image-with-text-section .custom-image-with-text__button {
     width: 100%;
+    color: var(--button-text-mobile);
+    background: var(--button-background-mobile);
   }
 }
 

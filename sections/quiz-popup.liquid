@@ -1,7 +1,18 @@
 {{ 'quiz-popup.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'quiz-popup.js' | asset_url }}" defer="defer"></script>
 
-<section class="quiz-banner" style="--quiz-section-bg: {{ section.settings.section_background }}; --quiz-card-start: {{ section.settings.card_color_1 }}; --quiz-accent: {{ section.settings.accent_color }}; --quiz-ink: {{ section.settings.text_color }}; --quiz-pt: {{ section.settings.padding_top }}px; --quiz-pb: {{ section.settings.padding_bottom }}px;" data-quiz-section data-quiz-id="quiz-popup-{{ section.id }}" data-quiz-question-id="{{ section.settings.question_id | default: section.id | escape }}" data-quiz-question="{{ section.settings.popup_title | strip_html | escape }}">
+{% assign quiz_card_color_mobile_check = section.settings.card_color_1 | downcase %}
+{% if quiz_card_color_mobile_check == '#e83e8c' %}
+  {% style %}
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} .quiz-banner {
+        --quiz-card-start: var(--quiz-card-start-mobile);
+      }
+    }
+  {% endstyle %}
+{% endif %}
+
+<section class="quiz-banner" style="--quiz-section-bg: {{ section.settings.section_background }}; --quiz-card-start: {{ section.settings.card_color_1 }};{% assign quiz_card_color = section.settings.card_color_1 | downcase %}{% if quiz_card_color == '#e83e8c' %} --quiz-card-start-mobile: {{ section.settings.card_color_1_mobile }};{% endif %} --quiz-accent: {{ section.settings.accent_color }}; --quiz-ink: {{ section.settings.text_color }}; --quiz-pt: {{ section.settings.padding_top }}px; --quiz-pb: {{ section.settings.padding_bottom }}px;" data-quiz-section data-quiz-id="quiz-popup-{{ section.id }}" data-quiz-question-id="{{ section.settings.question_id | default: section.id | escape }}" data-quiz-question="{{ section.settings.popup_title | strip_html | escape }}">
   <div class="quiz-banner__container">
     <button class="quiz-banner__card" type="button" data-quiz-open aria-haspopup="dialog" aria-controls="QuizPopup-{{ section.id }}">
       <span class="quiz-banner__copy">
@@ -70,6 +81,7 @@
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "section_background", "label": "Section background", "default": "#fff7fb" },
     { "type": "color", "id": "card_color_1", "label": "Card gradient start", "default": "#f9cce5" },
+    { "type": "color", "id": "card_color_1_mobile", "label": "Card gradient start — Mobile", "default": "#EC64A4" },
     { "type": "color", "id": "accent_color", "label": "Accent", "default": "#c861c9" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#3d1729" },
     { "type": "header", "content": "Spacing" },

@@ -98,6 +98,13 @@
           "on_secondary_button": "secondary_button_label",
           "secondary_button_border": "secondary_button_label"
         }
+      },
+      {
+        "type": "color",
+        "id": "e83e8c_mobile",
+        "label": "#E83E8C replacement — Mobile",
+        "default": "#EC64A4",
+        "info": "Used on mobile only when a color-scheme role is exactly #E83E8C."
       }
     ]
   },
@@ -1472,6 +1479,7 @@
     "settings": [
       { "type": "color", "id": "product_card_background", "label": "Card background", "default": "#FFFFFF" },
       { "type": "color", "id": "product_card_border", "label": "Card border", "default": "#F9D5E6" },
+      { "type": "color", "id": "product_card_border_mobile", "label": "Card border — Mobile", "default": "#EC64A4" },
       { "type": "color", "id": "product_card_title", "label": "Product title", "default": "#341824" },
       { "type": "color", "id": "product_card_description", "label": "Description", "default": "#4A4145" },
       { "type": "color", "id": "product_card_price", "label": "Price", "default": "#341824" },

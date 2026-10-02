@@ -20,6 +20,7 @@
     --color-charcoal: #4a4145;
     --cp-product-card-background: {{ settings.product_card_background }};
     --cp-product-card-border: {{ settings.product_card_border }};
+    --cp-product-card-border-mobile: {{ settings.product_card_border_mobile }};
     --cp-product-card-title: {{ settings.product_card_title }};
     --cp-product-card-description: {{ settings.product_card_description }};
     --cp-product-card-price: {{ settings.product_card_price }};
@@ -36,6 +37,10 @@
   @media screen and (max-width: 749px) {
     :root {
       --color-cocopoco-pink: var(--color-cocopoco-pink-mobile);
+      {% assign product_card_border = settings.product_card_border | downcase %}
+      {% if product_card_border == '#e83e8c' %}
+        --cp-product-card-border: var(--cp-product-card-border-mobile);
+      {% endif %}
       --cp-product-card-rating: var(--cp-product-card-rating-mobile);
       --cp-product-card-button-background: var(--cp-product-card-button-background-mobile);
     }

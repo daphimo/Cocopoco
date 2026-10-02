@@ -9,7 +9,7 @@
 
 <section
   class="custom-collection-list"
-  style="--section-page-width: {{ settings.page_width | divided_by: 10.0 }}rem; --collection-list-background: {{ section.settings.background_color }}; --collection-list-title-color: {{ section.settings.title_color }}; --collection-list-title-size: {{ section.settings.title_size }}px; --collection-list-link-color: {{ section.settings.link_color }}; --collection-list-link-hover-color: {{ section.settings.link_hover_color }}; --collection-list-item-color: {{ section.settings.item_color }}; --collection-list-image-size: {{ section.settings.image_size }}px; --collection-list-columns: {{ section.settings.columns_desktop }}; --collection-list-mobile-columns: {{ section.settings.columns_mobile }}; --collection-list-padding-top: {{ section.settings.padding_top }}px; --collection-list-padding-bottom: {{ section.settings.padding_bottom }}px; --collection-list-mobile-padding-top: {{ section.settings.mobile_padding_top }}px; --collection-list-mobile-padding-bottom: {{ section.settings.mobile_padding_bottom }}px;"
+  style="--section-page-width: {{ settings.page_width | divided_by: 10.0 }}rem; --collection-list-background: {{ section.settings.background_color }};{% assign collection_list_background = section.settings.background_color | downcase %}{% if collection_list_background == '#e83e8c' %} --collection-list-background-mobile: {{ section.settings.background_color_mobile }};{% endif %} --collection-list-title-color: {{ section.settings.title_color }}; --collection-list-title-size: {{ section.settings.title_size }}px; --collection-list-link-color: {{ section.settings.link_color }}; --collection-list-link-hover-color: {{ section.settings.link_hover_color }}; --collection-list-item-color: {{ section.settings.item_color }}; --collection-list-image-size: {{ section.settings.image_size }}px; --collection-list-columns: {{ section.settings.columns_desktop }}; --collection-list-mobile-columns: {{ section.settings.columns_mobile }}; --collection-list-padding-top: {{ section.settings.padding_top }}px; --collection-list-padding-bottom: {{ section.settings.padding_bottom }}px; --collection-list-mobile-padding-top: {{ section.settings.mobile_padding_top }}px; --collection-list-mobile-padding-bottom: {{ section.settings.mobile_padding_bottom }}px;"
 >
   <div class="custom-collection-list__inner">
     {%- if section.settings.title != blank or section.settings.show_view_all -%}
@@ -56,7 +56,7 @@
   "max_blocks": 16,
   "disabled_on": { "groups": ["header", "footer"] },
   "settings": [
-{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_background_mobile","label":"Button background — Mobile","default":"#EC64A4"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
+{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_background_color_mobile","label":"Background — Mobile","default":"#EC64A4"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_border_color_mobile","label":"Borders — Mobile","default":"#EC64A4"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_background_mobile","label":"Button background — Mobile","default":"#EC64A4"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},{"type":"color","id":"brand_button_text_color_mobile","label":"Button text — Mobile","default":"#EC64A4"},
     { "type": "inline_richtext", "id": "title", "label": "Title", "default": "Shop by Category" },
     {
       "type": "range",
@@ -82,6 +82,7 @@
     { "type": "color", "id": "link_hover_color", "label": "Link hover color", "default": "#BC286E" },
     { "type": "color", "id": "item_color", "label": "Collection title color", "default": "#2A0F1C" },
     { "type": "color", "id": "background_color", "label": "Background color", "default": "#FCE8F2" },
+    { "type": "color", "id": "background_color_mobile", "label": "Background color — Mobile", "default": "#EC64A4" },
     {
       "type": "range",
       "id": "image_size",

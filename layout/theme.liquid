@@ -125,6 +125,22 @@
       }
       {% endfor %}
 
+      @media screen and (max-width: 749px) {
+        {% for scheme in settings.color_schemes -%}
+          {% assign scheme_button = scheme.settings.button | downcase %}
+          {% assign scheme_secondary = scheme.settings.secondary_button_label | downcase %}
+          {% assign scheme_shadow = scheme.settings.shadow | downcase %}
+          {% if forloop.index == 1 -%}
+            :root,
+          {%- endif %}
+          .color-{{ scheme.id }} {
+            {% if scheme_button == '#e83e8c' %}--color-button: {{ settings.e83e8c_mobile.red }},{{ settings.e83e8c_mobile.green }},{{ settings.e83e8c_mobile.blue }};{% endif %}
+            {% if scheme_secondary == '#e83e8c' %}--color-secondary-button-text: {{ settings.e83e8c_mobile.red }},{{ settings.e83e8c_mobile.green }},{{ settings.e83e8c_mobile.blue }}; --color-link: {{ settings.e83e8c_mobile.red }},{{ settings.e83e8c_mobile.green }},{{ settings.e83e8c_mobile.blue }};{% endif %}
+            {% if scheme_shadow == '#e83e8c' %}--color-shadow: {{ settings.e83e8c_mobile.red }},{{ settings.e83e8c_mobile.green }},{{ settings.e83e8c_mobile.blue }};{% endif %}
+          }
+        {% endfor %}
+      }
+
       {{ scheme_classes | prepend: 'body' }} {
         color: rgba(var(--color-foreground), 0.75);
         background-color: rgb(var(--color-background));

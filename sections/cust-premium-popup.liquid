@@ -347,6 +347,7 @@
     { "type": "select", "id": "badge_position", "label": "Badge position", "options": [{"value":"bottom-right","label":"Bottom right"},{"value":"bottom-left","label":"Bottom left"},{"value":"middle-right","label":"Middle right"},{"value":"middle-left","label":"Middle left"}], "default": "bottom-right", "visible_if": "{{ section.settings.enable_badge }}" },
     { "type": "select", "id": "badge_icon", "label": "Badge icon", "options": [{"value":"gift","label":"Gift"},{"value":"tag","label":"Tag"},{"value":"discount","label":"Discount"},{"value":"message","label":"Message"},{"value":"none","label":"None"}], "default": "gift", "visible_if": "{{ section.settings.enable_badge }}" },
     { "type": "color", "id": "badge_background", "label": "Badge background", "default": "#E83E8C", "visible_if": "{{ section.settings.enable_badge }}" },
+    { "type": "color", "id": "badge_background_mobile", "label": "Badge background — Mobile", "default": "#EC64A4", "visible_if": "{{ section.settings.enable_badge }}" },
     { "type": "color", "id": "badge_text_color", "label": "Badge text color", "default": "#FFFFFF", "visible_if": "{{ section.settings.enable_badge }}" },
     { "type": "range", "id": "badge_delay", "label": "Badge show delay", "min": 0, "max": 30, "step": 1, "unit": "s", "default": 0, "visible_if": "{{ section.settings.enable_badge }}" },
     { "type": "header", "content": "Appearance" },

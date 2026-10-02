@@ -73,6 +73,10 @@
   .section-marquee {
     --marquee-item-gap: 3.2rem;
   }
+
+  .section-marquee .marquee {
+    background: var(--marquee-background-mobile, var(--marquee-background));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

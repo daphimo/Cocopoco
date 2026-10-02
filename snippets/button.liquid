@@ -14,9 +14,21 @@
 {% endcomment %}
 
 {%- if text != blank -%}
+  {%- liquid
+    assign rendered_background_mobile = background
+    assign rendered_text_mobile = text_color
+    assign rendered_background = background | downcase
+    assign rendered_text = text_color | downcase
+    if rendered_background == '#e83e8c' and background_mobile != blank
+      assign rendered_background_mobile = background_mobile
+    endif
+    if rendered_text == '#e83e8c' and text_color_mobile != blank
+      assign rendered_text_mobile = text_color_mobile
+    endif
+  -%}
   <a
     class="{{ class | escape }}"
-    style="--button-background: {{ background }}; --button-color: {{ text_color }}; --button-text: {{ text_color }};"
+    style="--button-background: {{ background }}; --button-background-mobile: {{ rendered_background_mobile }}; --button-color: {{ text_color }}; --button-text: {{ text_color }}; --button-text-mobile: {{ rendered_text_mobile }};"
     {% if link != blank %}href="{{ link }}"{% else %}role="link" aria-disabled="true"{% endif %}
     {% if link != blank and open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
     {{ attributes }}

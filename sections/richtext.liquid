@@ -2,7 +2,7 @@
 
 <section
   class="custom-richtext"
-  style="--section-page-width: {{ settings.page_width | divided_by: 10.0 }}rem; --richtext-background: {{ section.settings.background_color }}; --richtext-max-width: {{ section.settings.content_width }}px; --richtext-padding-top: {{ section.settings.padding_top }}px; --richtext-padding-bottom: {{ section.settings.padding_bottom }}px; --richtext-mobile-padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px; --richtext-mobile-padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;"
+  style="--section-page-width: {{ settings.page_width | divided_by: 10.0 }}rem; --richtext-background: {{ section.settings.background_color }};{% assign richtext_background = section.settings.background_color | downcase %}{% if richtext_background == '#e83e8c' %} --richtext-background-mobile: {{ section.settings.background_color_mobile }};{% endif %} --richtext-max-width: {{ section.settings.content_width }}px; --richtext-padding-top: {{ section.settings.padding_top }}px; --richtext-padding-bottom: {{ section.settings.padding_bottom }}px; --richtext-mobile-padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px; --richtext-mobile-padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;"
 >
   <div class="custom-richtext__inner">
     {%- for block in section.blocks -%}
@@ -38,6 +38,7 @@
                   link: block.settings.button_1_link,
                   background: block.settings.button_1_background,
                   text_color: block.settings.button_1_text_color,
+                  text_color_mobile: block.settings.button_1_text_color_mobile,
                   show_arrow: block.settings.button_1_arrow,
                   open_in_new_tab: block.settings.button_1_new_tab,
                   class: 'custom-richtext__button',
@@ -73,8 +74,9 @@
   "class": "custom-richtext-section section",
   "disabled_on": { "groups": ["header", "footer"] },
   "settings": [
-{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_background_mobile","label":"Button background — Mobile","default":"#EC64A4"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},
+{"type":"header","content":"Brand colors"},{"type":"color","id":"brand_background_color","label":"Background","default":"#FFFFFF"},{"type":"color","id":"brand_caption_color","label":"Caption and eyebrow","default":"#B86A8A"},{"type":"color","id":"brand_heading_color","label":"Headings","default":"#341824"},{"type":"color","id":"brand_text_color","label":"Body text","default":"#4A4145"},{"type":"color","id":"brand_border_color","label":"Borders","default":"#F9D5E6"},{"type":"color","id":"brand_button_background","label":"Button background","default":"#E83E8C"},{"type":"color","id":"brand_button_background_mobile","label":"Button background — Mobile","default":"#EC64A4"},{"type":"color","id":"brand_button_text_color","label":"Button text","default":"#FFFFFF"},{"type":"color","id":"brand_button_text_color_mobile","label":"Button text — Mobile","default":"#EC64A4"},
     { "type": "color", "id": "background_color", "label": "Background color", "default": "#FAD7E9" },
+    { "type": "color", "id": "background_color_mobile", "label": "Background color — Mobile", "default": "#EC64A4" },
     { "type": "range", "id": "content_width", "label": "Content width", "min": 400, "max": 1200, "step": 20, "unit": "px", "default": 760 },
     { "type": "range", "id": "padding_top", "label": "Top padding", "min": 20, "max": 160, "step": 4, "unit": "px", "default": 40 },
     { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 20, "max": 160, "step": 4, "unit": "px", "default": 36 }
@@ -110,6 +112,7 @@
         { "type": "url", "id": "button_1_link", "label": "Button 1 link" },
         { "type": "color", "id": "button_1_background", "label": "Button 1 background", "default": "#3D1729" },
         { "type": "color", "id": "button_1_text_color", "label": "Button 1 text color", "default": "#FFFFFF" },
+        { "type": "color", "id": "button_1_text_color_mobile", "label": "Button 1 text color — Mobile", "default": "#EC64A4" },
         { "type": "checkbox", "id": "button_1_arrow", "label": "Show arrow on button 1", "default": true },
         { "type": "checkbox", "id": "button_1_new_tab", "label": "Open button 1 in a new tab", "default": false },
         { "type": "text", "id": "button_2_text", "label": "Button 2 text" },

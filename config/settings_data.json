@@ -129,7 +129,9 @@
     "cart_drawer_collection": "accessories-1",
     "cart_color_scheme": "scheme-1",
     "customer_account_menu": "customer-account-main-menu",
-    "product_card_border": "#E34C93",
+    "product_card_border": "#E83E8C",
+    "product_card_border_mobile": "#EC64A4",
+    "e83e8c_mobile": "#EC64A4",
     "tab_switch_message": "WE MISS YOU!!",
     "enable_leave_alert": false,
     "leave_alert_message": "Wait! Explore our latest collection",
@@ -270,10 +272,10 @@
           "background": "#fffdfe",
           "background_gradient": "",
           "text": "#000000",
-          "button": "#e34c93",
+          "button": "#E83E8C",
           "button_label": "#ffffff",
-          "secondary_button_label": "#e34c93",
-          "shadow": "#e34c93"
+          "secondary_button_label": "#E83E8C",
+          "shadow": "#E83E8C"
         }
       },
       "scheme-2": {
@@ -325,10 +327,10 @@
           "background": "#fffdfe",
           "background_gradient": "",
           "text": "#000000",
-          "button": "#e34c93",
+          "button": "#E83E8C",
           "button_label": "#ffffff",
-          "secondary_button_label": "#e34c93",
-          "shadow": "#e34c93"
+          "secondary_button_label": "#E83E8C",
+          "shadow": "#E83E8C"
         }
       }
     }

@@ -97,6 +97,7 @@
   .custom-richtext-section .custom-richtext {
     padding-right: 1.6rem;
     padding-left: 1.6rem;
+    background: var(--richtext-background-mobile, var(--richtext-background));
   }
 
   .custom-richtext-section .custom-richtext__title {
@@ -114,6 +115,8 @@
 
   .custom-richtext-section .custom-richtext__button {
     width: 100%;
+    color: var(--button-text-mobile);
+    background: var(--button-background-mobile);
   }
 }
 
