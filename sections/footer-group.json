@@ -152,7 +152,6 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
-            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "logo_width": 100,
             "content": "Little things that make ordinary days feel a little more special. Designed in India, packed with far too much love.",
@@ -168,7 +167,6 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
-            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "heading": "Navigate to",
             "menu": "navigate-to"
@@ -183,7 +181,6 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
-            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "heading": "Quick links",
             "menu": "quick-links-1"
@@ -198,7 +195,6 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
-            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "heading": "Information",
             "menu": "information"
@@ -213,7 +209,6 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
-            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "heading": "Follow us",
             "menu": "follow-us"
@@ -234,7 +229,6 @@
         "brand_text_color": "#4a4145",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
-        "brand_button_background_mobile": "#ec64a4",
         "brand_button_text_color": "#ffffff",
         "background_color": "#fff0f7",
         "text_color": "#4a1c32",
@@ -257,7 +251,6 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
-            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "icon": "star",
             "text": "Secure payments"
@@ -272,7 +265,6 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
-            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "icon": "truck",
             "text": "₹99 flat shipping, pan-India"
@@ -287,7 +279,6 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
-            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "icon": "sparkles",
             "text": "5% off on prepaid orders"
@@ -302,7 +293,6 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
-            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "icon": "star",
             "text": "Made for gifting"
@@ -322,7 +312,6 @@
         "brand_text_color": "#4a4145",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
-        "brand_button_background_mobile": "#ec64a4",
         "brand_button_text_color": "#ffffff",
         "background_color": "#fff0f7",
         "text_color": "#5f3a50",
@@ -396,7 +385,6 @@
         "badge_position": "bottom-left",
         "badge_icon": "gift",
         "badge_background": "#e83e8c",
-        "badge_background_mobile": "#ec64a4",
         "badge_text_color": "#ffffff",
         "badge_delay": 0,
         "popup_width": 800,
