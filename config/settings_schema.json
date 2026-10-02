@@ -1476,10 +1476,10 @@
       { "type": "color", "id": "product_card_description", "label": "Description", "default": "#4A4145" },
       { "type": "color", "id": "product_card_price", "label": "Price", "default": "#341824" },
       { "type": "color", "id": "product_card_compare_price", "label": "Compare-at price", "default": "#B86A8A" },
-      { "type": "color", "id": "product_card_rating", "label": "Rating accent", "default": "#E83E8C" },
+      { "type": "color", "id": "product_card_rating", "label": "Rating accent", "default": "#E83E8C" },{"type": "color", "id": "product_card_rating_mobile", "label": "Rating accent — Mobile", "default": "#EC64A4"},
       { "type": "color", "id": "product_card_badge_background", "label": "Badge background", "default": "#FEDBEF" },
       { "type": "color", "id": "product_card_badge_text", "label": "Badge text", "default": "#341824" },
-      { "type": "color", "id": "product_card_button_background", "label": "Button background", "default": "#E83E8C" },
+      { "type": "color", "id": "product_card_button_background", "label": "Button background", "default": "#E83E8C" },{"type": "color", "id": "product_card_button_background_mobile", "label": "Button background — Mobile", "default": "#EC64A4"},
       { "type": "color", "id": "product_card_button_text", "label": "Button text", "default": "#FFFFFF" }
     ]
   },

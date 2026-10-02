@@ -21,6 +21,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "collection": "best-sellers",
             "title_override": "All"
@@ -35,6 +36,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "collection": "stationery",
             "title_override": "Stationery"
@@ -49,6 +51,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "collection": "bundle-_-premium_bottle",
             "title_override": "Bottles"
@@ -63,6 +66,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "collection": "keychains-charms",
             "title_override": "Keychains"
@@ -77,6 +81,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "collection": "jewellery",
             "title_override": ""
@@ -91,6 +96,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "collection": "bundles",
             "title_override": "Bundles & Gifts"
@@ -105,6 +111,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "collection": "just-in-newly-added-products",
             "title_override": "New Arrivals"
@@ -119,6 +126,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "collection": "best-sellers",
             "title_override": "Bestsellers"
@@ -142,6 +150,7 @@
         "brand_text_color": "#4a4145",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
+        "brand_button_background_mobile": "#ec64a4",
         "brand_button_text_color": "#ffffff",
         "background_color": "#ffffff",
         "accent_color": "#e64d95",

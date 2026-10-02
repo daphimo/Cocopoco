@@ -44,7 +44,7 @@
           -%}
           <li
             class="splide__slide cust__hero-slider-slide"
-            style="--cust-slide-focal:{{ block.settings.image_position }};--cust-slide-overlay:{{ block.settings.overlay_color }};--cust-slide-overlay-opacity:{{ block.settings.overlay_opacity | divided_by: 100.0 }};--cust-slide-horizontal:{{ horizontal }};--cust-slide-vertical:{{ block.settings.vertical_position }};--cust-slide-items:{{ items }};--cust-slide-align:{{ block.settings.text_alignment }};--cust-slide-content-width:{{ block.settings.content_width }}px;--cust-slide-eyebrow-color:{{ block.settings.eyebrow_text_color }};--cust-slide-eyebrow-background:{{ block.settings.eyebrow_background }};--cust-slide-eyebrow-border:{{ block.settings.eyebrow_border }};--cust-slide-eyebrow-radius:{{ block.settings.eyebrow_radius }}px;--cust-slide-eyebrow-py:{{ block.settings.eyebrow_padding_y }}px;--cust-slide-eyebrow-px:{{ block.settings.eyebrow_padding_x }}px;--cust-slide-title-color:{{ block.settings.heading_color }};--cust-slide-title-size:{{ block.settings.heading_size }}px;--cust-slide-description-color:{{ block.settings.description_color }};--cust-slide-description-size:{{ block.settings.description_size }}px;--cust-slide-primary-background:{{ block.settings.primary_background }};--cust-slide-primary-text:{{ block.settings.primary_text_color }};--cust-slide-primary-border:{{ block.settings.primary_border }};--cust-slide-secondary-background:{{ block.settings.secondary_background }};--cust-slide-secondary-text:{{ block.settings.secondary_text_color }};--cust-slide-secondary-border:{{ block.settings.secondary_border }};--cust-button-radius:{{ block.settings.button_radius }}px;--cust-slide-nav-color:{{ block.settings.navigation_color }};--cust-slide-nav-background:{{ block.settings.navigation_background }};--cust-slide-pagination-color:{{ block.settings.pagination_color }};--cust-slide-pagination-active:{{ block.settings.pagination_active_color }};"
+            style="--cust-slide-focal:{{ block.settings.image_position }};--cust-slide-overlay:{{ block.settings.overlay_color }};--cust-slide-overlay-opacity:{{ block.settings.overlay_opacity | divided_by: 100.0 }};--cust-slide-horizontal:{{ horizontal }};--cust-slide-vertical:{{ block.settings.vertical_position }};--cust-slide-items:{{ items }};--cust-slide-align:{{ block.settings.text_alignment }};--cust-slide-content-width:{{ block.settings.content_width }}px;--cust-slide-eyebrow-color:{{ block.settings.eyebrow_text_color }};--cust-slide-eyebrow-background:{{ block.settings.eyebrow_background }};--cust-slide-eyebrow-border:{{ block.settings.eyebrow_border }};--cust-slide-eyebrow-radius:{{ block.settings.eyebrow_radius }}px;--cust-slide-eyebrow-py:{{ block.settings.eyebrow_padding_y }}px;--cust-slide-eyebrow-px:{{ block.settings.eyebrow_padding_x }}px;--cust-slide-title-color:{{ block.settings.heading_color }};--cust-slide-title-size:{{ block.settings.heading_size }}px;--cust-slide-description-color:{{ block.settings.description_color }};--cust-slide-description-size:{{ block.settings.description_size }}px;--cust-slide-primary-background:{{ block.settings.primary_background }};--cust-slide-primary-background-mobile:{{ block.settings.primary_background_mobile }};--cust-slide-primary-text:{{ block.settings.primary_text_color }};--cust-slide-primary-border:{{ block.settings.primary_border }};--cust-slide-primary-border-mobile:{{ block.settings.primary_border_mobile }};--cust-slide-secondary-background:{{ block.settings.secondary_background }};--cust-slide-secondary-text:{{ block.settings.secondary_text_color }};--cust-slide-secondary-border:{{ block.settings.secondary_border }};--cust-button-radius:{{ block.settings.button_radius }}px;--cust-slide-nav-color:{{ block.settings.navigation_color }};--cust-slide-nav-background:{{ block.settings.navigation_background }};--cust-slide-pagination-color:{{ block.settings.pagination_color }};--cust-slide-pagination-active:{{ block.settings.pagination_active_color }};--cust-slide-pagination-active-mobile:{{ block.settings.pagination_active_color_mobile }};"
             {{ block.shopify_attributes }}
           >
             <div class="cust__hero-slider-media">
@@ -107,7 +107,7 @@
   {%- if benefits.size > 0 -%}
     <div class="cust__hero-slider-benefits" aria-label="Store benefits">
       {%- for block in benefits -%}
-        <div class="cust__hero-slider-benefit" style="--cust-benefit-icon:{{ block.settings.icon_color }};--cust-benefit-text:{{ block.settings.text_color }};" {{ block.shopify_attributes }}>
+        <div class="cust__hero-slider-benefit" style="--cust-benefit-icon:{{ block.settings.icon_color }};--cust-benefit-icon-mobile:{{ block.settings.icon_color_mobile }};--cust-benefit-text:{{ block.settings.text_color }};" {{ block.shopify_attributes }}>
           {%- if block.settings.link != blank -%}<a class="cust__hero-slider-benefit-link" href="{{ block.settings.link }}">{%- endif -%}
           <span class="cust__hero-slider-benefit-icon">{% render 'icons', icon: block.settings.icon %}</span><span>{{ block.settings.text }}</span>
           {%- if block.settings.link != blank -%}</a>{%- endif -%}
@@ -181,16 +181,16 @@
         { "type": "color", "id": "eyebrow_border", "label": "Eyebrow border", "default": "#F9D5E6" },
         { "type": "color", "id": "heading_color", "label": "Heading", "default": "#341824" },
         { "type": "color", "id": "description_color", "label": "Description", "default": "#4A4145" },
-        { "type": "color", "id": "primary_background", "label": "Primary button background", "default": "#E83E8C" },
+        { "type": "color", "id": "primary_background", "label": "Primary button background", "default": "#E83E8C" },{"type": "color", "id": "primary_background_mobile", "label": "Primary button background — Mobile", "default": "#EC64A4"},
         { "type": "color", "id": "primary_text_color", "label": "Primary button text", "default": "#FFFFFF" },
-        { "type": "color", "id": "primary_border", "label": "Primary button border", "default": "#E83E8C" },
+        { "type": "color", "id": "primary_border", "label": "Primary button border", "default": "#E83E8C" },{"type": "color", "id": "primary_border_mobile", "label": "Primary button border — Mobile", "default": "#EC64A4"},
         { "type": "color", "id": "secondary_background", "label": "Secondary button background", "default": "#FFFFFF" },
         { "type": "color", "id": "secondary_text_color", "label": "Secondary button text", "default": "#341824" },
         { "type": "color", "id": "secondary_border", "label": "Secondary button border", "default": "#F9D5E6" },
         { "type": "color", "id": "navigation_color", "label": "Navigation arrows", "default": "#341824" },
         { "type": "color", "id": "navigation_background", "label": "Navigation background", "default": "#FFFFFF" },
         { "type": "color", "id": "pagination_color", "label": "Pagination", "default": "#F9D5E6" },
-        { "type": "color", "id": "pagination_active_color", "label": "Active pagination", "default": "#E83E8C" }
+        { "type": "color", "id": "pagination_active_color", "label": "Active pagination", "default": "#E83E8C" },{"type": "color", "id": "pagination_active_color_mobile", "label": "Active pagination — Mobile", "default": "#EC64A4"}
       ]
     },
     {
@@ -201,7 +201,7 @@
         { "type": "inline_richtext", "id": "text", "label": "Text", "default": "Store benefit" },
         { "type": "url", "id": "link", "label": "Optional link" },
         { "type": "header", "content": "Colors" },
-        { "type": "color", "id": "icon_color", "label": "Icon", "default": "#E83E8C" },
+        { "type": "color", "id": "icon_color", "label": "Icon", "default": "#E83E8C" },{"type": "color", "id": "icon_color_mobile", "label": "Icon — Mobile", "default": "#EC64A4"},
         { "type": "color", "id": "text_color", "label": "Text", "default": "#4A4145" }
       ]
     }

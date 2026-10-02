@@ -19,6 +19,7 @@
         "brand_text_color": "#4a4145",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
+        "brand_button_background_mobile": "#ec64a4",
         "brand_button_text_color": "#ffffff",
         "padding_top": 28,
         "padding_bottom": 28

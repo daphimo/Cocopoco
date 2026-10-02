@@ -24,6 +24,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "text": "DELIVERED IN 24–48 HOURS",
             "link": ""
@@ -38,6 +39,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "text": "PARTIAL COD AVAILABLE",
             "link": ""
@@ -53,6 +55,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "text": "FREE KEYCHAIN ON ORDERS ABOVE ₹999/-",
             "link": ""
@@ -67,6 +70,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "text": "ANNIVERSARY DEALS NOW LIVE",
             "link": ""
@@ -81,6 +85,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "text": "ADDITIONAL 5% OFF ON ALL PREPAID ORDERS",
             "link": ""
@@ -95,6 +100,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "text": "₹99 FLAT SHIPPING CHARGES&nbsp;",
             "link": ""
@@ -109,6 +115,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "text": "DISPATCHED IN 24–48 HOURS",
             "link": ""
@@ -132,6 +139,7 @@
         "brand_text_color": "#4a4145",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
+        "brand_button_background_mobile": "#ec64a4",
         "brand_button_text_color": "#ffffff",
         "background_color": "#e74695",
         "text_color": "#ffffff",
@@ -151,6 +159,7 @@
         "brand_text_color": "#4a4145",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
+        "brand_button_background_mobile": "#ec64a4",
         "brand_button_text_color": "#ffffff",
         "menu": "main-menu-copy",
         "show_search": true,

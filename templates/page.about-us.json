@@ -18,6 +18,7 @@
         "brand_text_color": "#4a4145",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
+        "brand_button_background_mobile": "#ec64a4",
         "brand_button_text_color": "#ffffff",
         "eyebrow": "ABOUT US",
         "heading": "Romanticize Your Everyday",
@@ -42,6 +43,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "label": "Stationery",
             "link": ""
@@ -56,6 +58,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "label": "Sipper bottles",
             "link": ""
@@ -70,6 +73,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "label": "Keychains & charms",
             "link": ""
@@ -84,6 +88,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "label": "Bags & pouches",
             "link": ""
@@ -98,6 +103,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "label": "Gifts & hampers",
             "link": ""
@@ -112,6 +118,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "label": "The Cute Edit",
             "link": ""
@@ -133,6 +140,7 @@
         "brand_text_color": "#4a4145",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
+        "brand_button_background_mobile": "#ec64a4",
         "brand_button_text_color": "#ffffff",
         "eyebrow": "WHO WE ARE",
         "heading": "India’s Cute Essentials Store",
@@ -159,6 +167,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "heading": "Curated by founders",
             "description": "Every piece picked for quality, cuteness and daily use."
@@ -173,6 +182,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "heading": "Affordable",
             "description": "Gifts from ₹299, flat ₹99 shipping, partial COD."
@@ -187,6 +197,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "heading": "Trend-first",
             "description": "Stitch, Sanrio, Labubu and more — before local shops."
@@ -205,6 +216,7 @@
         "brand_text_color": "#4a4145",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
+        "brand_button_background_mobile": "#ec64a4",
         "brand_button_text_color": "#ffffff",
         "heading": "Why CocoPoco",
         "padding_top": 48,
@@ -222,6 +234,7 @@
         "brand_text_color": "#4a4145",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
+        "brand_button_background_mobile": "#ec64a4",
         "brand_button_text_color": "#ffffff",
         "image": "shopify://shop_images/gifting-CVgp4Sao.png",
         "image_position": "left",
@@ -253,6 +266,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "question": "What is CocoPoco?",
             "answer": "<p>An Indian e-commerce brand selling cute everyday essentials — kawaii stationery, sipper bottles, keychains, pouches and gift hampers — at cocopoco.in.</p>"
@@ -267,6 +281,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "question": "Where is CocoPoco based?",
             "answer": "<p>Kolkata, West Bengal, India. We ship to every state in India.</p>"
@@ -281,6 +296,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "question": "Who founded CocoPoco?",
             "answer": "<p>Sisters Smita Bara and Sweta Kindo, in 2024.</p>"
@@ -295,6 +311,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "question": "What does “Romanticize your everyday” mean?",
             "answer": "<p>Finding small joys in ordinary routines through cute, thoughtful things you use every day.</p>"
@@ -314,6 +331,7 @@
         "brand_text_color": "#4a4145",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
+        "brand_button_background_mobile": "#ec64a4",
         "brand_button_text_color": "#ffffff",
         "heading": "FAQs",
         "padding_top": 48,

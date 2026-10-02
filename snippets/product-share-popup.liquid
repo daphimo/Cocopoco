@@ -16,7 +16,7 @@
   assign dialog_id = 'ProductShareDialog-' | append: section.id | append: '-' | append: block.id
 -%}
 
-<cust-share-popup class="cust-share" style="--share-accent:{{ block.settings.accent_color }};--share-heading:{{ block.settings.heading_color }};--share-text:{{ block.settings.text_color }};--share-background:{{ block.settings.background_color }};--share-border:{{ block.settings.border_color }};" {{ block.shopify_attributes }}>
+<cust-share-popup class="cust-share" style="--share-accent:{{ block.settings.accent_color }};--share-accent-mobile:{{ block.settings.accent_color_mobile }};--share-heading:{{ block.settings.heading_color }};--share-text:{{ block.settings.text_color }};--share-background:{{ block.settings.background_color }};--share-border:{{ block.settings.border_color }};" {{ block.shopify_attributes }}>
   <button class="cust-share__trigger" type="button" aria-haspopup="dialog" aria-controls="{{ dialog_id }}" data-share-open>
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5"/></svg>
     <span>{{ block.settings.button_label | escape }}</span>

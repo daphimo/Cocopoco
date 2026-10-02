@@ -7,7 +7,7 @@
     {%- for block in section.blocks -%}
       <article
         class="card-color-tester__card"
-        style="--card-background: {{ block.settings.background_color }}; --card-text: {{ block.settings.text_color }};"
+        style="--card-background: {{ block.settings.background_color }}; --card-background-mobile: {{ block.settings.background_color_mobile }}; --card-text: {{ block.settings.text_color }};"
         {{ block.shopify_attributes }}
       >
         {{ forloop.index }}
@@ -87,6 +87,7 @@
     }
 
     .card-color-tester__card {
+      --card-background: var(--card-background-mobile);
       min-height: 16rem;
       padding: 2rem;
     }
@@ -129,7 +130,7 @@
           "id": "background_color",
           "label": "Background color",
           "default": "#E83E8C"
-        },
+        },{"type": "color","id": "background_color_mobile","label": "Background color — Mobile","default": "#EC64A4"},
         {
           "type": "color",
           "id": "text_color",
@@ -147,7 +148,8 @@
           "type": "sample_card",
           "settings": {
             "heading": "Original pink",
-            "background_color": "#E83E8C"
+            "background_color": "#E83E8C",
+            "background_color_mobile": "#EC64A4"
           }
         },
         {
