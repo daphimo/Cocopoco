@@ -29,7 +29,7 @@
         "subheading_CqYAVQ": {
           "type": "subheading",
           "settings": {
-            "text": "Get an EXTRA 5% OFF your order before you leave! ✨",
+            "text": "Get an EXTRA 5% OFF on your  First Order ✨",
             "font_size": 20,
             "mobile_font_size": 17,
             "color": "#ffffff",
@@ -69,9 +69,9 @@
             "copy_access": "after_subscription",
             "copy_button_text": "COPY CODE",
             "copy_success_text": "Copied to clipboard!",
-            "copy_background": "#FFFFFF",
-            "copy_color": "#E83E8C",
-            "copy_border_color": "#E83E8C",
+            "copy_background": "#ffffff",
+            "copy_color": "#e83e8c",
+            "copy_border_color": "#e83e8c",
             "copy_border_radius": 8,
             "copy_font_size": 14,
             "copy_vertical_padding": 12,
