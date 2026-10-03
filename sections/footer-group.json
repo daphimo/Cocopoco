@@ -108,7 +108,7 @@
         "trigger_type": "exit",
         "top_threshold": "50",
         "initialization_delay": 3,
-        "desktop_delay": "10",
+        "desktop_delay": "20",
         "separate_mobile_delay": true,
         "mobile_delay": "30",
         "desktop_background_type": "gradient",
