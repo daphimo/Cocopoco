@@ -143,8 +143,9 @@
               <span class="main-product__current-price">{{ selected_variant.price | money }}</span>
               {%- if selected_variant.compare_at_price > selected_variant.price -%}
                 <s class="main-product__compare-price">{{ selected_variant.compare_at_price | money }}</s>
-                {%- assign saving = selected_variant.compare_at_price | minus: selected_variant.price -%}
-                <span class="main-product__save">Save {{ saving | money }}</span>
+                <span class="main-product__save">
+                  {%- render 'discount-badge-text', price: selected_variant.price, compare_at_price: selected_variant.compare_at_price -%}
+                </span>
               {%- endif -%}
             </div>
             <div class="main-product__wishlist">{% render 'wishlist-button', product: product %}</div>

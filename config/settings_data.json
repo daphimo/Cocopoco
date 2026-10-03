@@ -187,11 +187,9 @@
           "enable_tiered_discount_progress": true,
           "custom_cart_content": "₹99 flat shipping on every order, Extra 5% off when you pay online",
           "recommendation_heading": "Add a little extra joy ✨",
-          "recommended_products": [
-            "1000-ml-sanrio-hot-water-bag"
-          ],
+          "recommended_products": [],
           "flat_shipping_amount": 99,
-          "enable_minimum_order": false,
+          "enable_minimum_order": true,
           "minimum_order_amount": 499,
           "minimum_order_message": "Add {amount} more to reach the minimum order total of {minimum}.",
           "enable_prepaid_discount": false,

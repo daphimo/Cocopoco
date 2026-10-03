@@ -1260,6 +1260,22 @@
         "default": 40
       },
       {
+        "type": "select",
+        "id": "save_badge_type",
+        "options": [
+          {
+            "value": "percentage_off",
+            "label": "Percentage off"
+          },
+          {
+            "value": "save_amount",
+            "label": "Save amount"
+          }
+        ],
+        "default": "percentage_off",
+        "label": "Save badge type"
+      },
+      {
         "type": "color_scheme",
         "id": "sale_badge_color_scheme",
         "label": "t:settings_schema.badges.settings.sale_badge_color_scheme.label",
