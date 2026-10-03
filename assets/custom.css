@@ -11,9 +11,9 @@ fieldset {
 }
 
 .cust__premium-badge--bottom-left.product-page{
-    bottom: 9rem
+    bottom: 9rem;
 }
 
-.cart-drawer__recommendation .rbr-container-element-volume{
+.cart-drawer__recommendations .rbr-container-element-volume{
     display: none !important;
 }
