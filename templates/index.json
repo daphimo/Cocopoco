@@ -26,7 +26,7 @@
             "heading": "",
             "description": "",
             "primary_text": "Shop the joy",
-            "primary_link": "",
+            "primary_link": "shopify://collections/show-me-all",
             "secondary_text": "Explore new arrivals",
             "secondary_link": "",
             "horizontal_position": "left",
@@ -229,6 +229,7 @@
             "button_1_link": "shopify://collections/all",
             "button_1_background": "#3d1729",
             "button_1_text_color": "#ffffff",
+            "button_1_text_color_mobile": "#ec64a4",
             "button_1_arrow": true,
             "button_1_new_tab": false,
             "button_2_text": "",
@@ -255,14 +256,10 @@
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#fffdfe",
         "brand_button_background_mobile": "#ec64a4",
-        "brand_button_text_color": "#E83E8C",
-<<<<<<< HEAD
-        "brand_button_text_color_mobile": "#EC64A4",
-        "background_color": "#E83E8C",
-        "background_color_mobile": "#EC64A4",
-=======
-        "background_color": "#E83E8C",
->>>>>>> 211b529e216d071b5f8b28b5ce9d467219ff2c32
+        "brand_button_text_color": "#e83e8c",
+        "brand_button_text_color_mobile": "#ec64a4",
+        "background_color": "#e83e8c",
+        "background_color_mobile": "#ec64a4",
         "content_width": 760,
         "padding_top": 40,
         "padding_bottom": 36
@@ -413,11 +410,8 @@
         "question_id": "shopping-for",
         "popup_content": "<p>Tap one — we'll curate the cutest picks just for you 💌</p>",
         "section_background": "#fff7fb",
-        "card_color_1": "#E83E8C",
-<<<<<<< HEAD
-        "card_color_1_mobile": "#EC64A4",
-=======
->>>>>>> 211b529e216d071b5f8b28b5ce9d467219ff2c32
+        "card_color_1": "#e83e8c",
+        "card_color_1_mobile": "#ec64a4",
         "accent_color": "#fffdfe",
         "text_color": "#fffdfe",
         "padding_top": 32,
@@ -563,26 +557,17 @@
       ],
       "name": "Collection list",
       "settings": {
-        "brand_background_color": "#E83E8C",
-<<<<<<< HEAD
-        "brand_background_color_mobile": "#EC64A4",
-=======
->>>>>>> 211b529e216d071b5f8b28b5ce9d467219ff2c32
+        "brand_background_color": "#e83e8c",
+        "brand_background_color_mobile": "#ec64a4",
         "brand_caption_color": "#b86a8a",
         "brand_heading_color": "#fffdfe",
         "brand_text_color": "#fffdfe",
-        "brand_border_color": "#E83E8C",
-<<<<<<< HEAD
-        "brand_border_color_mobile": "#EC64A4",
+        "brand_border_color": "#e83e8c",
+        "brand_border_color_mobile": "#ec64a4",
         "brand_button_background": "#fffdfe",
         "brand_button_background_mobile": "#ec64a4",
-        "brand_button_text_color": "#E83E8C",
-        "brand_button_text_color_mobile": "#EC64A4",
-=======
-        "brand_button_background": "#fffdfe",
-        "brand_button_background_mobile": "#ec64a4",
-        "brand_button_text_color": "#E83E8C",
->>>>>>> 211b529e216d071b5f8b28b5ce9d467219ff2c32
+        "brand_button_text_color": "#e83e8c",
+        "brand_button_text_color_mobile": "#ec64a4",
         "title": "Shop by Category",
         "title_size": 30,
         "title_color": "#2a0f1c",
@@ -593,11 +578,8 @@
         "link_color": "#fffdfe",
         "link_hover_color": "#fffdfe",
         "item_color": "#fffdfe",
-        "background_color": "#E83E8C",
-<<<<<<< HEAD
-        "background_color_mobile": "#EC64A4",
-=======
->>>>>>> 211b529e216d071b5f8b28b5ce9d467219ff2c32
+        "background_color": "#e83e8c",
+        "background_color_mobile": "#ec64a4",
         "image_size": 140,
         "columns_desktop": "6",
         "columns_mobile": "3",
@@ -687,6 +669,7 @@
             "link": "shopify://products/mix-match-9",
             "background": "#e64d95",
             "text_color": "#ffffff",
+            "text_color_mobile": "#ec64a4",
             "show_arrow": true,
             "open_in_new_tab": false
           }
@@ -970,6 +953,7 @@
             "link": "shopify://collections/new_return-gifs",
             "background": "#e64d95",
             "text_color": "#ffffff",
+            "text_color_mobile": "#ec64a4",
             "show_arrow": true,
             "open_in_new_tab": false
           }
@@ -988,11 +972,8 @@
             "text": "Need 10+ Gifts? Talk to Us",
             "link": "shopify://pages/contact",
             "background": "#ffffff",
-            "text_color": "#E83E8C",
-<<<<<<< HEAD
-            "text_color_mobile": "#EC64A4",
-=======
->>>>>>> 211b529e216d071b5f8b28b5ce9d467219ff2c32
+            "text_color": "#e83e8c",
+            "text_color_mobile": "#ec64a4",
             "show_arrow": false,
             "open_in_new_tab": false
           }
@@ -1208,16 +1189,13 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
-            "brand_button_background_mobile": "#FFFFFF",
-            "brand_button_text_color": "#E83E8C",
+            "brand_button_background_mobile": "#ffffff",
+            "brand_button_text_color": "#e83e8c",
             "button_1_text": "Our Story",
             "button_1_link": "shopify://pages/our-story",
-            "button_1_background": "#FFFFFF",
-            "button_1_text_color": "#E83E8C",
-<<<<<<< HEAD
-            "button_1_text_color_mobile": "#EC64A4",
-=======
->>>>>>> 211b529e216d071b5f8b28b5ce9d467219ff2c32
+            "button_1_background": "#ffffff",
+            "button_1_text_color": "#e83e8c",
+            "button_1_text_color_mobile": "#ec64a4",
             "button_1_arrow": true,
             "button_1_new_tab": false,
             "button_2_text": "",
@@ -1244,14 +1222,10 @@
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#fffdfe",
         "brand_button_background_mobile": "#ec64a4",
-        "brand_button_text_color": "#E83E8C",
-<<<<<<< HEAD
-        "brand_button_text_color_mobile": "#EC64A4",
-        "background_color": "#E83E8C",
-        "background_color_mobile": "#EC64A4",
-=======
-        "background_color": "#E83E8C",
->>>>>>> 211b529e216d071b5f8b28b5ce9d467219ff2c32
+        "brand_button_text_color": "#e83e8c",
+        "brand_button_text_color_mobile": "#ec64a4",
+        "background_color": "#e83e8c",
+        "background_color_mobile": "#ec64a4",
         "content_width": 760,
         "padding_top": 40,
         "padding_bottom": 36
@@ -1578,11 +1552,8 @@
         "brand_button_background": "#e83e8c",
         "brand_button_background_mobile": "#ec64a4",
         "brand_button_text_color": "#ffffff",
-        "background_color": "#E83E8C",
-<<<<<<< HEAD
-        "background_color_mobile": "#EC64A4",
-=======
->>>>>>> 211b529e216d071b5f8b28b5ce9d467219ff2c32
+        "background_color": "#e83e8c",
+        "background_color_mobile": "#ec64a4",
         "text_color": "#ffffff",
         "border_radius": 26,
         "margin_top": 28,
