@@ -187,13 +187,7 @@
           "enable_tiered_discount_progress": true,
           "custom_cart_content": "₹99 flat shipping on every order, Extra 5% off when you pay online",
           "recommendation_heading": "Add a little extra joy ✨",
-          "recommended_products": [
-            "10-in-1-stationery-gift-set",
-            "1000-ml-sanrio-hot-water-bag",
-            "insulated-lunch-box",
-            "premium-water-bottle",
-            "laptop-sleeve"
-          ],
+          "recommended_products": [],
           "flat_shipping_amount": 99,
           "enable_minimum_order": true,
           "minimum_order_amount": 499,
