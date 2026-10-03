@@ -83,3 +83,7 @@ body.overflow-hidden{overflow:hidden}@media screen and (max-width:479px){.cart-d
 .cart-drawer__recommendation-variant{display:block;width:100%;min-width:0;height:3rem;padding:0 2.5rem 0 .8rem;overflow:hidden;color:var(--color-deep-cocoa);font:inherit;font-size:.9rem;text-overflow:ellipsis;white-space:nowrap;background-color:var(--color-pure-white);border:.1rem solid var(--color-rose-mist);border-radius:999px;cursor:pointer}
 .cart-drawer__recommendation-variant:focus-visible{outline:.2rem solid var(--color-cocopoco-pink);outline-offset:.2rem}
 @media screen and (max-width:479px){.cart-drawer__recommendation{flex-basis:10.8rem}.cart-drawer__recommendation-variant{font-size:.85rem}}
+cart-drawer .rbr-container-element-volume,
+cart-drawer [class*='rbr-container'] {
+  display: none !important;
+}

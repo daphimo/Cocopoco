@@ -12,6 +12,14 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "fbp_fast_bundle_product_bundles_WmimGX": {
+          "type": "shopify://apps/fbp-fast-bundle/blocks/product_bundles/9e87fbe2-9041-4c23-acf5-322413994cef",
+          "settings": {}
+        },
+        "fbp_fast_bundle_add_on_position_tFjTPL": {
+          "type": "shopify://apps/fbp-fast-bundle/blocks/addOn_position/9e87fbe2-9041-4c23-acf5-322413994cef",
+          "settings": {}
+        },
         "fbp_fast_bundle_bap_position_ytJ7BQ": {
           "type": "shopify://apps/fbp-fast-bundle/blocks/bap_position/9e87fbe2-9041-4c23-acf5-322413994cef",
           "settings": {}
@@ -160,6 +168,13 @@
             "delhivery_api_token": "42aee75df734d21c8b6783b664c40ab76dda5508"
           }
         },
+        "product_highlights": {
+          "type": "product_highlights",
+          "settings": {
+            "label": "<strong>Product highlights</strong>",
+            "label_size": 16
+          }
+        },
         "details": {
           "type": "collapsible",
           "settings": {
@@ -174,13 +189,6 @@
             "heading": "Details & specs",
             "content": "{{ product.description }}",
             "open_by_default": false
-          }
-        },
-        "product_highlights": {
-          "type": "product_highlights",
-          "settings": {
-            "label": "<strong>Product highlights</strong>",
-            "label_size": 16
           }
         },
         "shipping": {
@@ -250,6 +258,8 @@
         }
       },
       "block_order": [
+        "fbp_fast_bundle_product_bundles_WmimGX",
+        "fbp_fast_bundle_add_on_position_tFjTPL",
         "fbp_fast_bundle_bap_position_ytJ7BQ",
         "benefit_shipping",
         "benefit_quality",

@@ -194,7 +194,7 @@
           "enable_minimum_order": false,
           "minimum_order_amount": 499,
           "minimum_order_message": "Add {amount} more to reach the minimum order total of {minimum}.",
-          "enable_prepaid_discount": true,
+          "enable_prepaid_discount": false,
           "prepaid_discount_text": "-5% at checkout",
           "empty_heading": "Your bag is feeling a little empty",
           "empty_subtext": "Let's fix that with something cute.",
@@ -273,10 +273,10 @@
           "background": "#fffdfe",
           "background_gradient": "",
           "text": "#000000",
-          "button": "#E83E8C",
+          "button": "#e83e8c",
           "button_label": "#ffffff",
-          "secondary_button_label": "#E83E8C",
-          "shadow": "#E83E8C"
+          "secondary_button_label": "#e83e8c",
+          "shadow": "#e83e8c"
         }
       },
       "scheme-2": {
@@ -328,10 +328,10 @@
           "background": "#fffdfe",
           "background_gradient": "",
           "text": "#000000",
-          "button": "#E83E8C",
+          "button": "#e83e8c",
           "button_label": "#ffffff",
-          "secondary_button_label": "#E83E8C",
-          "shadow": "#E83E8C"
+          "secondary_button_label": "#e83e8c",
+          "shadow": "#e83e8c"
         }
       }
     }

@@ -103,7 +103,7 @@
                     <a href="{{ recommendation.url }}" class="cart-drawer__recommendation-media">{%- if recommendation.featured_image -%}{{ recommendation.featured_image | image_url: width: 220 | image_tag: class: 'cart-drawer__recommendation-image', loading: 'lazy', alt: recommendation.featured_image.alt }}{%- endif -%}</a>
                     <a href="{{ recommendation.url }}" class="cart-drawer__recommendation-title">{{ recommendation.title | escape }}</a>
                     <span class="cart-drawer__recommendation-price">{{ recommendation_variant.price | money }}</span>
-                    <product-form class="cart-drawer__recommendation-form" data-section-id="{{ section.id }}">
+                    <cart-recommendation-form class="cart-drawer__recommendation-form" data-section-id="{{ section.id }}">
                       <div class="product-form__error-message-wrapper" role="alert" hidden><span class="product-form__error-message"></span></div>
                       {%- form 'product', recommendation, id: recommendation_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
                         {%- if recommendation.has_only_default_variant -%}
@@ -130,7 +130,7 @@
                         {%- endif -%}
                         <button type="submit" name="add" class="cart-drawer__recommendation-add"><span>Add</span>{% render 'loading-spinner' %}</button>
                       {%- endform -%}
-                    </product-form>
+                    </cart-recommendation-form>
                   </article>
                 {%- endif -%}
               {%- endunless -%}

@@ -211,3 +211,10 @@ if (!customElements.get('product-form')) {
     }
   );
 }
+
+if (!customElements.get('cart-recommendation-form')) {
+  customElements.define(
+    'cart-recommendation-form',
+    class CartRecommendationForm extends customElements.get('product-form') {}
+  );
+}
