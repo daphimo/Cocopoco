@@ -17,8 +17,8 @@
         "heading_Edejkp": {
           "type": "heading",
           "settings": {
-            "text": "WAIT! DON'T MISS OUT",
-            "font_size": 48,
+            "text": "WAIT!   YOUR CART JUST GOT 5% CUTER  💗",
+            "font_size": 40,
             "mobile_font_size": 34,
             "font_weight": "800",
             "color": "#ffffff",
@@ -29,7 +29,7 @@
         "subheading_CqYAVQ": {
           "type": "subheading",
           "settings": {
-            "text": "Get 20% off your first order before you go!",
+            "text": "Get an EXTRA 5% OFF your order before you leave! ✨",
             "font_size": 20,
             "mobile_font_size": 17,
             "color": "#ffffff",
@@ -78,7 +78,7 @@
         "discount_Y8zVCH": {
           "type": "discount",
           "settings": {
-            "code": "SAVE20",
+            "code": "STAY5",
             "button_text": "COPY CODE",
             "success_text": "Copied to clipboard!",
             "background": "#24102f",
@@ -152,6 +152,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "logo_width": 100,
             "content": "Little things that make ordinary days feel a little more special. Designed in India, packed with far too much love.",
@@ -167,6 +168,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "heading": "Navigate to",
             "menu": "navigate-to"
@@ -181,6 +183,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "heading": "Quick links",
             "menu": "quick-links-1"
@@ -195,6 +198,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "heading": "Information",
             "menu": "information"
@@ -209,6 +213,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "heading": "Follow us",
             "menu": "follow-us"
@@ -229,6 +234,7 @@
         "brand_text_color": "#4a4145",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
+        "brand_button_background_mobile": "#ec64a4",
         "brand_button_text_color": "#ffffff",
         "background_color": "#fff0f7",
         "text_color": "#4a1c32",
@@ -251,6 +257,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "icon": "star",
             "text": "Secure payments"
@@ -265,6 +272,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "icon": "truck",
             "text": "₹99 flat shipping, pan-India"
@@ -279,6 +287,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "icon": "sparkles",
             "text": "5% off on prepaid orders"
@@ -293,6 +302,7 @@
             "brand_text_color": "#4a4145",
             "brand_border_color": "#f9d5e6",
             "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
             "icon": "star",
             "text": "Made for gifting"
@@ -312,6 +322,7 @@
         "brand_text_color": "#4a4145",
         "brand_border_color": "#f9d5e6",
         "brand_button_background": "#e83e8c",
+        "brand_button_background_mobile": "#ec64a4",
         "brand_button_text_color": "#ffffff",
         "background_color": "#fff0f7",
         "text_color": "#5f3a50",
@@ -354,9 +365,9 @@
         "popup_description": "Join our list for first access to new arrivals, offers and little everyday joys.",
         "popup_logo": "shopify://shop_images/coco_logo.png",
         "logo_width": 100,
-        "content_alignment": "left",
-        "popup_image": "shopify://shop_images/cat-bundles-BC3pKoCc.png",
-        "image_position": "right",
+        "content_alignment": "center",
+        "popup_image": "shopify://shop_images/gift-wrapped-with-a-big-red-bow.jpg",
+        "image_position": "left",
         "image_overlay_color": "#000000",
         "image_overlay_opacity": 40,
         "trigger_type": "delay",
@@ -385,6 +396,7 @@
         "badge_position": "bottom-left",
         "badge_icon": "gift",
         "badge_background": "#e83e8c",
+        "badge_background_mobile": "#ec64a4",
         "badge_text_color": "#ffffff",
         "badge_delay": 0,
         "popup_width": 800,
