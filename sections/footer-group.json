@@ -371,7 +371,7 @@
         "image_overlay_color": "#000000",
         "image_overlay_opacity": 40,
         "trigger_type": "delay",
-        "trigger_delay": 5,
+        "trigger_delay": 10,
         "scroll_percentage": 50,
         "show_desktop": true,
         "show_mobile": true,
