@@ -173,13 +173,12 @@
 
           <div class="main-product__purchase">
             <div class="main-product__buy-buttons">
+              {%- for block in section.blocks -%}
+                {%- if block.type == '@app' -%}
+                  {% render block %}
+                {%- endif -%}
+              {%- endfor -%}
               {% if product.tags contains 'bundle' %}
-                {%- for block in section.blocks -%}
-                  {%- case block.type -%}
-                    {% when '@app' %}
-                      {% render block %}
-                  {%- endcase -%}
-                {%- endfor -%}
                 {% render 'bundle-buy',
                   block: section,
                   product: product,

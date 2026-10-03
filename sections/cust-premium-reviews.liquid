@@ -1,0 +1,147 @@
+{{ 'cust-premium-reviews.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --cust-review-page-width: {{ section.settings.content_width }}px;
+    --cust-review-background: {{ section.settings.background_color }};
+    --cust-review-surface: {{ section.settings.surface_color }};
+    --cust-review-heading: {{ section.settings.heading_color }};
+    --cust-review-text: {{ section.settings.description_color }};
+    --cust-review-meta: {{ section.settings.meta_color }};
+    --cust-review-border: {{ section.settings.border_color }};
+    --cust-review-accent: {{ section.settings.accent_color }};
+    --cust-review-accent-mobile: {{ section.settings.accent_color_mobile }};
+    --cust-review-button-text: {{ section.settings.button_text_color }};
+    --cust-review-heading-size: {{ section.settings.heading_size }}px;
+    --cust-review-heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
+    --cust-review-description-size: {{ section.settings.description_size }}px;
+    --cust-review-card-radius: {{ section.settings.card_radius }}px;
+    --cust-review-card-border-width: {{ section.settings.card_border_width }}px;
+    --cust-review-card-gap: {{ section.settings.card_gap }}px;
+    --cust-review-card-gap-mobile: {{ section.settings.card_gap_mobile }}px;
+    --cust-review-card-padding: {{ section.settings.card_padding }}px;
+    --cust-review-card-padding-mobile: {{ section.settings.card_padding_mobile }}px;
+    --cust-review-star-size: {{ section.settings.star_size }}px;
+    --cust-review-body-size: {{ section.settings.review_body_size }}px;
+    --cust-review-body-size-mobile: {{ section.settings.review_body_size_mobile }}px;
+    --cust-review-padding-top: {{ section.settings.padding_top }}px;
+    --cust-review-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --cust-review-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --cust-review-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --cust-review-shadow: {% if section.settings.enable_shadow %}0 1.2rem 3.2rem rgba(52, 24, 36, {{ section.settings.shadow_opacity | divided_by: 100.0 }}){% else %}none{% endif %};
+  }
+{%- endstyle -%}
+
+<section class="cust-review-page cust-review-page--{{ section.settings.text_alignment }} cust-review-page--{{ section.settings.review_layout }}">
+  <div class="cust-review-page__inner">
+    <header class="cust-review-page__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="cust-review-page__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h1 class="cust-review-page__heading">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <div class="cust-review-page__description rte">{{ section.settings.description }}</div>
+      {%- endif -%}
+      <svg class="cust-review-page__flourish" viewBox="0 0 72 16" aria-hidden="true" focusable="false">
+        <path d="M1 8h24M47 8h24" fill="none" stroke="currentColor" stroke-linecap="round"/>
+        <path d="M36 13.4 28.9 7A4.1 4.1 0 0 1 34.7.9L36 2.2 37.3.9A4.1 4.1 0 0 1 43.1 7Z" fill="currentColor"/>
+      </svg>
+    </header>
+
+    <div class="cust-review-page__widget" data-cust-review-widget>
+      {%- if section.settings.show_widget_heading -%}
+        <div class="cust-review-page__widget-header">
+          <div>
+            {%- if section.settings.widget_eyebrow != blank -%}<p>{{ section.settings.widget_eyebrow | escape }}</p>{%- endif -%}
+            {%- if section.settings.widget_heading != blank -%}<h2>{{ section.settings.widget_heading | escape }}</h2>{%- endif -%}
+          </div>
+          <span class="cust-review-page__trust-mark">
+            <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m4 10 3.5 3.5L16 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {{ section.settings.trust_text | escape }}
+          </span>
+        </div>
+      {%- endif -%}
+
+      <div class="cust-review-page__app" role="region" aria-label="{{ section.settings.widget_heading | default: section.settings.eyebrow | escape }}">
+        {%- for block in section.blocks -%}
+          <div class="cust-review-page__app-block" {{ block.shopify_attributes }}>
+            {% render block %}
+          </div>
+        {%- else -%}
+          <div class="cust-review-page__empty">
+            <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="m16 26-10.2-9.2A6.6 6.6 0 0 1 15 7.3L16 8.4l1-1.1a6.6 6.6 0 0 1 9.2 9.5Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            <p>{{ section.settings.empty_message | escape }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Premium reviews",
+  "tag": "section",
+  "class": "cust-premium-reviews-section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "CUSTOMER LOVE" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Tiny things. <em>Very big smiles.</em>" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Real words from customers who brought a little more joy into their everyday.</p>" },
+    { "type": "select", "id": "text_alignment", "label": "Text alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }], "default": "center" },
+    { "type": "range", "id": "content_width", "label": "Maximum content width", "min": 800, "max": 1600, "step": 20, "unit": "px", "default": 1200 },
+    { "type": "text", "id": "empty_message", "label": "Empty state message", "default": "No customer stories are available yet." },
+
+    { "type": "header", "content": "Judge.me widget" },
+    { "type": "checkbox", "id": "show_widget_heading", "label": "Show widget heading", "default": true },
+    { "type": "text", "id": "widget_eyebrow", "label": "Widget eyebrow", "default": "REAL REVIEWS" },
+    { "type": "text", "id": "widget_heading", "label": "Widget heading", "default": "Loved by the CocoPoco community" },
+    { "type": "text", "id": "trust_text", "label": "Trust label", "default": "Verified customer stories" },
+    { "type": "paragraph", "content": "Add the Judge.me Reviews Grid app block below. Judge.me remains responsible for review data, filters, media, forms, and pagination." },
+
+    { "type": "header", "content": "Reviews" },
+    { "type": "select", "id": "review_layout", "label": "Review layout", "options": [{ "value": "grid", "label": "Grid" }, { "value": "list", "label": "List" }], "default": "grid" },
+    { "type": "range", "id": "card_gap", "label": "Card gap", "min": 8, "max": 48, "step": 2, "unit": "px", "default": 20 },
+    { "type": "range", "id": "card_gap_mobile", "label": "Card gap — Mobile", "min": 8, "max": 32, "step": 2, "unit": "px", "default": 14 },
+
+    { "type": "header", "content": "Review cards" },
+    { "type": "range", "id": "card_padding", "label": "Card padding", "min": 12, "max": 48, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "card_padding_mobile", "label": "Card padding — Mobile", "min": 12, "max": 32, "step": 2, "unit": "px", "default": 18 },
+    { "type": "range", "id": "card_border_width", "label": "Border width", "min": 0, "max": 3, "step": 1, "unit": "px", "default": 1 },
+    { "type": "range", "id": "card_radius", "label": "Corner radius", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 20 },
+    { "type": "checkbox", "id": "enable_shadow", "label": "Show subtle shadow", "default": true },
+    { "type": "range", "id": "shadow_opacity", "label": "Shadow intensity", "min": 1, "max": 12, "step": 1, "unit": "%", "default": 5 },
+
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Section background", "default": "#FFFDFE" },
+    { "type": "color", "id": "surface_color", "label": "Cards and widget background", "default": "#FFFFFF" },
+    { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#341824" },
+    { "type": "color", "id": "description_color", "label": "Body text color", "default": "#4A4145" },
+    { "type": "color", "id": "meta_color", "label": "Secondary text color", "default": "#B86A8A" },
+    { "type": "color", "id": "border_color", "label": "Border and progress track", "default": "#F9D5E6" },
+    { "type": "color", "id": "accent_color", "label": "Primary accent", "default": "#E83E8C" },
+    { "type": "color", "id": "accent_color_mobile", "label": "Primary accent — Mobile", "default": "#EC64A4" },
+    { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#FFFFFF" },
+
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "heading_size", "label": "Heading size", "min": 28, "max": 76, "step": 2, "unit": "px", "default": 52 },
+    { "type": "range", "id": "heading_size_mobile", "label": "Heading size — Mobile", "min": 24, "max": 48, "step": 2, "unit": "px", "default": 36 },
+    { "type": "range", "id": "description_size", "label": "Description size", "min": 13, "max": 22, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "star_size", "label": "Star size", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 18 },
+    { "type": "range", "id": "review_body_size", "label": "Review text size", "min": 13, "max": 22, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "review_body_size_mobile", "label": "Review text size — Mobile", "min": 13, "max": 20, "step": 1, "unit": "px", "default": 15 },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 88 },
+    { "type": "header", "content": "Mobile" },
+    { "type": "range", "id": "padding_top_mobile", "label": "Top padding — Mobile", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 44 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Bottom padding — Mobile", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 56 }
+  ],
+  "blocks": [{ "type": "@app" }],
+  "presets": [{ "name": "Premium reviews" }]
+}
+{% endschema %}

@@ -190,7 +190,10 @@
           "recommended_products": [
             "1000-ml-sanrio-hot-water-bag"
           ],
-          "shipping_text": "Calculated at checkout",
+          "flat_shipping_amount": 99,
+          "enable_minimum_order": false,
+          "minimum_order_amount": 499,
+          "minimum_order_message": "Add {amount} more to reach the minimum order total of {minimum}.",
           "enable_prepaid_discount": true,
           "prepaid_discount_text": "-5% at checkout",
           "empty_heading": "Your bag is feeling a little empty",

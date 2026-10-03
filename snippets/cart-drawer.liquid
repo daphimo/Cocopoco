@@ -8,7 +8,16 @@
   #shopify-section-{{ section.id }} { --cart-drawer-accent: {{ section.settings.accent_color }}; --cart-drawer-bg: {{ section.settings.background_color }}; --cart-drawer-text: {{ section.settings.text_color }}; }
 {%- endstyle -%}
 
-{%- assign cart_product_ids = cart.items | map: 'product_id' -%}
+{%- liquid
+  assign cart_product_ids = cart.items | map: 'product_id'
+  assign flat_shipping_cents = section.settings.flat_shipping_amount | times: 100 | round
+  assign cart_total_with_shipping = cart.total_price | plus: flat_shipping_cents
+  assign minimum_order_cents = section.settings.minimum_order_amount | times: 100 | round
+  assign minimum_order_reached = true
+  if section.settings.enable_minimum_order and cart_total_with_shipping < minimum_order_cents
+    assign minimum_order_reached = false
+  endif
+-%}
 <cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
   <div id="CartDrawer" class="cart-drawer">
     <button id="CartDrawer-Overlay" class="cart-drawer__overlay" type="button" aria-label="{{ 'accessibility.close' | t }}"></button>
@@ -133,9 +142,24 @@
         </div>
 
         <footer class="cart-drawer__footer">
-          <div class="cart-drawer__summary"><div><span>Subtotal</span><strong>{{ cart.total_price | money }}</strong></div><div><span>Shipping</span><span>{{ section.settings.shipping_text | escape }}</span></div>{%- if section.settings.enable_prepaid_discount and section.settings.prepaid_discount_text != blank -%}<div><span>Prepaid discount</span><span class="cart-drawer__discount-text">{{ section.settings.prepaid_discount_text | escape }}</span></div>{%- endif -%}</div>
-          <div class="cart-drawer__total"><strong>Total</strong><strong>{{ cart.total_price | money }}</strong></div>
-          <button class="cart-drawer__checkout" type="submit" name="checkout" form="CartDrawer-Form"><span class="svg-wrapper" aria-hidden="true">{{ 'icon-lock.svg' | inline_asset_content }}</span> Checkout securely</button>
+          <div class="cart-drawer__summary"><div><span>Subtotal</span><strong>{{ cart.total_price | money }}</strong></div><div><span>Shipping</span><span>{{ flat_shipping_cents | money }}</span></div>{%- if section.settings.enable_prepaid_discount and section.settings.prepaid_discount_text != blank -%}<div><span>Prepaid discount</span><span class="cart-drawer__discount-text">{{ section.settings.prepaid_discount_text | escape }}</span></div>{%- endif -%}</div>
+          <div class="cart-drawer__total"><strong>Total</strong><strong>{{ cart_total_with_shipping | money }}</strong></div>
+          {%- unless minimum_order_reached -%}
+            {%- liquid
+              assign minimum_remaining_cents = minimum_order_cents | minus: cart_total_with_shipping | at_least: 0
+              assign minimum_progress = cart_total_with_shipping | times: 100.0 | divided_by: minimum_order_cents | at_most: 100
+              assign minimum_remaining_money = minimum_remaining_cents | money | strip_html
+              assign minimum_amount_money = minimum_order_cents | money | strip_html
+              assign minimum_message = section.settings.minimum_order_message | replace: '{amount}', minimum_remaining_money | replace: '{minimum}', minimum_amount_money
+            -%}
+            <div class="cart-drawer__minimum" id="CartDrawer-MinimumMessage" role="status">
+              <div class="cart-drawer__minimum-track" role="progressbar" aria-label="Minimum order progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ minimum_progress | round }}">
+                <span style="--minimum-progress: {{ minimum_progress }}%"></span>
+              </div>
+              <p>{{ minimum_message | escape }}</p>
+            </div>
+          {%- endunless -%}
+          <button class="cart-drawer__checkout" type="submit" name="checkout" form="CartDrawer-Form"{% unless minimum_order_reached %} disabled aria-describedby="CartDrawer-MinimumMessage"{% endunless %}><span class="svg-wrapper" aria-hidden="true">{{ 'icon-lock.svg' | inline_asset_content }}</span> Checkout securely</button>
           <button class="cart-drawer__continue" type="button" onclick="this.closest('cart-drawer').close()">{{ section.settings.continue_text | escape }}</button>
           <div class="cart-drawer__utilities">
             {%- for block in section.blocks -%}{%- if block.type == 'footer_utility' and block.settings.text != blank -%}<div class="cart-drawer__utility" {{ block.shopify_attributes }}>{%- if block.settings.icon != 'none' -%}<span>{% render 'icons', icon: block.settings.icon %}</span>{%- endif -%}{{ block.settings.text }}</div>{%- endif -%}{%- endfor -%}

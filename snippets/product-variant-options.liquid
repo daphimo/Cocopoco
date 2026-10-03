@@ -18,9 +18,12 @@
 {% endcomment %}
 {%- liquid
   assign product_form_id = 'product-form-' | append: section.id
+  assign available_option_values = option.values | where: 'available', true
+  assign unavailable_option_values = option.values | where: 'available', false
+  assign ordered_option_values = available_option_values | concat: unavailable_option_values
 -%}
 
-{%- for value in option.values -%}
+{%- for value in ordered_option_values -%}
   {%- liquid
     assign swatch_focal_point = null
     if value.swatch.image
