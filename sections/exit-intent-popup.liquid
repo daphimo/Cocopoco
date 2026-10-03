@@ -45,7 +45,7 @@
 
   <div
     id="ExitIntentPopup-{{ section.id }}"
-    class="exit-popup exit-popup--desktop-{{ section.settings.desktop_position }} exit-popup--mobile-{{ section.settings.mobile_position }} exit-popup--animation-{{ section.settings.animation }}"
+    class="exit-popup exit-popup--desktop-{{ section.settings.desktop_position }} exit-popup--mobile-{{ section.settings.mobile_position }} exit-popup--desktop-media-{{ section.settings.desktop_media_position }} exit-popup--mobile-media-{{ section.settings.mobile_media_position }} exit-popup--animation-{{ section.settings.animation }}"
     style="
       --exit-desktop-scale: {{ section.settings.desktop_scale | divided_by: 100.0 }};
       --exit-mobile-scale: {{ section.settings.mobile_scale | divided_by: 100.0 }};
@@ -157,21 +157,6 @@
                     >{{ block.settings.text | escape }}</a>
                   </div>
                 {%- endif -%}
-              {%- when 'discount' -%}
-                {%- if block.settings.code != blank -%}
-                  <div class="exit-popup__action" style="--exit-align:{{ block.settings.alignment }};--exit-space:{{ block.settings.bottom_spacing }}px;" {{ block.shopify_attributes }}>
-                    <button
-                      class="exit-popup__copy"
-                      type="button"
-                      data-exit-copy
-                      data-code="{{ block.settings.code | escape }}"
-                      data-label="{{ block.settings.button_text | escape }}"
-                      data-success="{{ block.settings.success_text | escape }}"
-                      style="--exit-bg:{{ block.settings.background }};--exit-color:{{ block.settings.color }};--exit-border-color:{{ block.settings.border_color }};--exit-radius:{{ block.settings.border_radius }}px;--exit-size:{{ block.settings.font_size }}px;--exit-vpad:{{ block.settings.vertical_padding }}px;--exit-hpad:{{ block.settings.horizontal_padding }}px;"
-                    >{{ block.settings.button_text | escape }}</button>
-                    <span class="visually-hidden" data-exit-copy-status role="status" aria-live="polite"></span>
-                  </div>
-                {%- endif -%}
               {%- when 'email_subscription' -%}
                 {%- assign email_form_id = 'ExitPopupEmailForm-' | append: block.id -%}
                 <div
@@ -179,7 +164,7 @@
                   style="--exit-align:{{ block.settings.alignment }};--exit-space:{{ block.settings.bottom_spacing }}px;--exit-field-bg:{{ block.settings.input_background }};--exit-field-color:{{ block.settings.input_color }};--exit-field-border:{{ block.settings.input_border_color }};--exit-button-bg:{{ block.settings.button_background }};--exit-button-color:{{ block.settings.button_color }};--exit-button-border:{{ block.settings.button_border_color }};--exit-field-radius:{{ block.settings.border_radius }}px;--exit-field-size:{{ block.settings.font_size }}px;"
                   {{ block.shopify_attributes }}
                 >
-                  {%- form 'customer', id: email_form_id, class: 'exit-popup__email-form', novalidate: 'novalidate', data-exit-email-form: '' -%}
+                  {%- form 'customer', id: email_form_id, class: 'exit-popup__email-form', novalidate: 'novalidate', data-exit-email-form: '', data-copy-access: block.settings.copy_access -%}
                     <input type="hidden" name="contact[tags]" value="newsletter,exit-intent-popup">
                     {%- if block.settings.label != blank -%}
                       <label class="exit-popup__email-label" for="ExitPopupEmail-{{ block.id }}">{{ block.settings.label | escape }}</label>
@@ -210,6 +195,18 @@
                       aria-live="polite"
                       hidden
                     ></p>
+                    {%- if block.settings.code != blank -%}
+                      <button
+                        class="exit-popup__copy"
+                        type="button"
+                        data-exit-copy
+                        data-code="{{ block.settings.code | escape }}"
+                        data-label="{{ block.settings.copy_button_text | escape }}"
+                        data-success="{{ block.settings.copy_success_text | escape }}"
+                        style="--exit-bg:{{ block.settings.copy_background }};--exit-color:{{ block.settings.copy_color }};--exit-border-color:{{ block.settings.copy_border_color }};--exit-radius:{{ block.settings.copy_border_radius }}px;--exit-size:{{ block.settings.copy_font_size }}px;--exit-vpad:{{ block.settings.copy_vertical_padding }}px;--exit-hpad:{{ block.settings.copy_horizontal_padding }}px;"
+                      >{{ block.settings.copy_button_text | escape }}</button>
+                      <span class="visually-hidden" data-exit-copy-status role="status" aria-live="polite"></span>
+                    {%- endif -%}
                   {%- endform -%}
                 </div>
             {%- endcase -%}
@@ -238,6 +235,9 @@
     .exit-popup[hidden]{display:none}.exit-popup{position:fixed;inset:0;z-index:999999;width:100vw;height:100dvh;font-family:var(--font-body-family,inherit);opacity:0;visibility:hidden;transition:opacity var(--exit-animation-duration) ease,visibility var(--exit-animation-duration) ease}.exit-popup.is-open{opacity:1;visibility:visible}.exit-popup__overlay{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:var(--exit-overlay-color);opacity:var(--exit-overlay-opacity);cursor:default}.exit-popup__positioner{position:absolute;inset:0;display:flex;padding:24px;pointer-events:none}.exit-popup--desktop-center .exit-popup__positioner{align-items:center;justify-content:center}.exit-popup--desktop-top-center .exit-popup__positioner{align-items:flex-start;justify-content:center}.exit-popup--desktop-bottom-center .exit-popup__positioner{align-items:flex-end;justify-content:center}.exit-popup--desktop-top-left .exit-popup__positioner{align-items:flex-start;justify-content:flex-start}.exit-popup--desktop-top-right .exit-popup__positioner{align-items:flex-start;justify-content:flex-end}.exit-popup--desktop-bottom-left .exit-popup__positioner{align-items:flex-end;justify-content:flex-start}.exit-popup--desktop-bottom-right .exit-popup__positioner{align-items:flex-end;justify-content:flex-end}.exit-popup__dialog{position:relative;width:min(calc(100vw - 48px),var(--exit-max-width));min-height:var(--exit-min-height);max-height:calc(100dvh - 48px);overflow:auto;border-radius:var(--exit-radius);box-shadow:0 24px 80px rgba(0,0,0,.28);pointer-events:auto;isolation:isolate;transform:scale(var(--exit-desktop-scale));transform-origin:center;background:var(--exit-desktop-gradient)}.exit-popup__background,.exit-popup__media,.exit-popup__image-overlay{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit}.exit-popup__background{z-index:-1;overflow:hidden}.exit-popup__media{display:block;object-fit:cover}.exit-popup__media--mobile{display:none}.exit-popup__video--desktop{filter:blur(var(--exit-desktop-blur));transform:scale(1.05)}.exit-popup__image-overlay{background:#000;opacity:var(--exit-image-overlay)}.exit-popup__close{position:absolute;z-index:3;top:12px;right:12px;display:grid;place-items:center;width:44px;height:44px;padding:0;color:currentColor;background:rgba(255,255,255,.8);border:0;border-radius:50%;cursor:pointer}.exit-popup__close svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.exit-popup__content{display:flex;flex-direction:column;justify-content:center;min-height:var(--exit-min-height);padding:var(--exit-padding)}.exit-popup__heading{margin:0 0 var(--exit-space);color:var(--exit-color);font-size:var(--exit-size);font-weight:var(--exit-weight);line-height:1.1;text-align:var(--exit-align)}.exit-popup__subheading{margin:0 0 var(--exit-space);color:var(--exit-color);font-size:var(--exit-size);line-height:1.45;text-align:var(--exit-align)}.exit-popup__countdown,.exit-popup__action{margin:0 0 var(--exit-space);text-align:var(--exit-align)}.exit-popup__timer{display:inline-flex;align-items:flex-start;gap:12px}.exit-popup__timer span{display:grid;gap:4px;text-align:center}.exit-popup__timer strong{color:var(--exit-number-color);font-size:var(--exit-number-size);font-variant-numeric:tabular-nums;line-height:1}.exit-popup__timer b{color:var(--exit-number-color);font-size:var(--exit-number-size);font-weight:400;line-height:.9}.exit-popup__timer small{color:var(--exit-label-color);font-size:var(--exit-label-size);line-height:1;text-transform:uppercase}.exit-popup__cta,.exit-popup__copy{display:inline-flex;align-items:center;justify-content:center;padding:var(--exit-vpad) var(--exit-hpad);color:var(--exit-color);background:var(--exit-bg);border:var(--exit-border-width,1px) solid var(--exit-border-color);border-radius:var(--exit-radius);font:inherit;font-size:var(--exit-size);font-weight:var(--exit-weight,700);line-height:1.2;text-decoration:none;cursor:pointer}.exit-popup__email{margin:0 0 var(--exit-space);text-align:var(--exit-align)}.exit-popup__email-form{display:inline-block;width:min(100%,560px);text-align:left}.exit-popup__email-label{display:block;margin:0 0 7px;color:var(--exit-field-color);font-size:var(--exit-field-size);font-weight:600}.exit-popup__email-fields{display:flex;gap:8px}.exit-popup__email-input,.exit-popup__email-button{min-height:48px;border:1px solid;border-radius:var(--exit-field-radius);font:inherit;font-size:var(--exit-field-size)}.exit-popup__email-input{min-width:0;flex:1;padding:10px 14px;color:var(--exit-field-color);background:var(--exit-field-bg);border-color:var(--exit-field-border)}.exit-popup__email-input::placeholder{color:inherit;opacity:.62}.exit-popup__email-button{flex:0 0 auto;padding:10px 22px;color:var(--exit-button-color);background:var(--exit-button-bg);border-color:var(--exit-button-border);font-weight:700;cursor:pointer}.exit-popup__email-button[disabled]{cursor:wait;opacity:.7}.exit-popup__email-status{margin:8px 0 0;color:var(--exit-field-color);font-size:calc(var(--exit-field-size) - 2px);line-height:1.35}.exit-popup__email-status.is-error{color:#ffd7d7}.exit-popup__close:focus-visible,.exit-popup__cta:focus-visible,.exit-popup__copy:focus-visible,.exit-popup__email-input:focus-visible,.exit-popup__email-button:focus-visible{outline:3px solid currentColor;outline-offset:3px}.exit-popup--animation-scale .exit-popup__dialog{transition:transform var(--exit-animation-duration) ease;transform:scale(calc(var(--exit-desktop-scale) * .86))}.exit-popup--animation-scale.is-open .exit-popup__dialog{transform:scale(var(--exit-desktop-scale))}.exit-popup--animation-slide-up .exit-popup__dialog{transition:transform var(--exit-animation-duration) ease;transform:translateY(48px) scale(var(--exit-desktop-scale))}.exit-popup--animation-slide-down .exit-popup__dialog{transition:transform var(--exit-animation-duration) ease;transform:translateY(-48px) scale(var(--exit-desktop-scale))}.exit-popup--animation-slide-left .exit-popup__dialog{transition:transform var(--exit-animation-duration) ease;transform:translateX(48px) scale(var(--exit-desktop-scale))}.exit-popup--animation-slide-right .exit-popup__dialog{transition:transform var(--exit-animation-duration) ease;transform:translateX(-48px) scale(var(--exit-desktop-scale))}.exit-popup--animation-slide-up.is-open .exit-popup__dialog,.exit-popup--animation-slide-down.is-open .exit-popup__dialog,.exit-popup--animation-slide-left.is-open .exit-popup__dialog,.exit-popup--animation-slide-right.is-open .exit-popup__dialog{transform:scale(var(--exit-desktop-scale))}
     @media(max-width:749px){.exit-popup__positioner{padding:12px}.exit-popup--mobile-center .exit-popup__positioner{align-items:center;justify-content:center}.exit-popup--mobile-top-center .exit-popup__positioner{align-items:flex-start;justify-content:center}.exit-popup--mobile-bottom-center .exit-popup__positioner{align-items:flex-end;justify-content:center}.exit-popup--mobile-top-left .exit-popup__positioner{align-items:flex-start;justify-content:flex-start}.exit-popup--mobile-top-right .exit-popup__positioner{align-items:flex-start;justify-content:flex-end}.exit-popup--mobile-bottom-left .exit-popup__positioner{align-items:flex-end;justify-content:flex-start}.exit-popup--mobile-bottom-right .exit-popup__positioner{align-items:flex-end;justify-content:flex-end}.exit-popup__dialog{width:min(calc(100vw - 24px),var(--exit-max-width));max-height:calc(100dvh - 24px);transform:scale(var(--exit-mobile-scale));background:var(--exit-mobile-gradient)}.exit-popup__media--desktop{display:none}.exit-popup__media--mobile{display:block}.exit-popup__video--mobile{filter:blur(var(--exit-mobile-blur));transform:scale(1.05)}.exit-popup__content{padding:calc(var(--exit-padding) * .72)}.exit-popup__heading{font-size:var(--exit-mobile-size)}.exit-popup__subheading{font-size:var(--exit-mobile-size)}.exit-popup__timer{gap:7px}.exit-popup__email-fields{flex-direction:column}.exit-popup__email-button{width:100%}.exit-popup--animation-scale .exit-popup__dialog{transform:scale(calc(var(--exit-mobile-scale) * .86))}.exit-popup--animation-scale.is-open .exit-popup__dialog,.exit-popup--animation-slide-up.is-open .exit-popup__dialog,.exit-popup--animation-slide-down.is-open .exit-popup__dialog,.exit-popup--animation-slide-left.is-open .exit-popup__dialog,.exit-popup--animation-slide-right.is-open .exit-popup__dialog{transform:scale(var(--exit-mobile-scale))}}
     @media(prefers-reduced-motion:reduce){.exit-popup,.exit-popup__dialog{transition:none!important}}
+    .exit-popup__copy{margin-top:12px}.exit-popup__copy[disabled]{cursor:wait;opacity:.7}
+    @media(min-width:750px){.exit-popup--desktop-media-left .exit-popup__dialog,.exit-popup--desktop-media-right .exit-popup__dialog,.exit-popup--desktop-media-top .exit-popup__dialog{display:grid}.exit-popup--desktop-media-left .exit-popup__dialog,.exit-popup--desktop-media-right .exit-popup__dialog{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.exit-popup--desktop-media-left .exit-popup__dialog{grid-template-areas:"media content"}.exit-popup--desktop-media-right .exit-popup__dialog{grid-template-areas:"content media"}.exit-popup--desktop-media-top .exit-popup__dialog{grid-template-areas:"media" "content";grid-template-rows:clamp(180px,35vh,320px) auto}.exit-popup--desktop-media-left .exit-popup__background,.exit-popup--desktop-media-right .exit-popup__background,.exit-popup--desktop-media-top .exit-popup__background{position:relative;inset:auto;z-index:0;grid-area:media;min-width:0;min-height:100%;border-radius:0}.exit-popup--desktop-media-left .exit-popup__content,.exit-popup--desktop-media-right .exit-popup__content,.exit-popup--desktop-media-top .exit-popup__content{grid-area:content;min-width:0}.exit-popup--desktop-media-top .exit-popup__content{min-height:auto}}
+    @media(max-width:749px){.exit-popup--mobile-media-left .exit-popup__dialog,.exit-popup--mobile-media-right .exit-popup__dialog,.exit-popup--mobile-media-top .exit-popup__dialog{display:grid}.exit-popup--mobile-media-left .exit-popup__dialog,.exit-popup--mobile-media-right .exit-popup__dialog{grid-template-columns:minmax(0,42%) minmax(0,58%)}.exit-popup--mobile-media-left .exit-popup__dialog{grid-template-areas:"media content"}.exit-popup--mobile-media-right .exit-popup__dialog{grid-template-areas:"content media";grid-template-columns:minmax(0,58%) minmax(0,42%)}.exit-popup--mobile-media-top .exit-popup__dialog{grid-template-areas:"media" "content";grid-template-rows:clamp(150px,28vh,240px) auto}.exit-popup--mobile-media-left .exit-popup__background,.exit-popup--mobile-media-right .exit-popup__background,.exit-popup--mobile-media-top .exit-popup__background{position:relative;inset:auto;z-index:0;grid-area:media;min-width:0;min-height:100%;border-radius:0}.exit-popup--mobile-media-left .exit-popup__content,.exit-popup--mobile-media-right .exit-popup__content,.exit-popup--mobile-media-top .exit-popup__content{grid-area:content;min-width:0;min-height:auto}.exit-popup--mobile-media-left .exit-popup__content,.exit-popup--mobile-media-right .exit-popup__content{padding:calc(var(--exit-padding) * .5)}.exit-popup--mobile-media-left .exit-popup__timer,.exit-popup--mobile-media-right .exit-popup__timer{gap:3px}.exit-popup--mobile-media-left .exit-popup__timer strong,.exit-popup--mobile-media-left .exit-popup__timer b,.exit-popup--mobile-media-right .exit-popup__timer strong,.exit-popup--mobile-media-right .exit-popup__timer b{font-size:calc(var(--exit-number-size) * .72)}}
   </style>
 
   <script>
@@ -389,7 +389,7 @@
       };
 
       root.querySelectorAll('[data-exit-close]').forEach((button) => button.addEventListener('click', close));
-      root.querySelectorAll('[data-exit-copy]').forEach((button) => button.addEventListener('click', async () => {
+      const copyCode = async (button) => {
         try {
           await navigator.clipboard.writeText(button.dataset.code);
         } catch (error) {
@@ -405,27 +405,37 @@
         button.textContent = button.dataset.success;
         button.parentElement.querySelector('[data-exit-copy-status]').textContent = button.dataset.success;
         window.setTimeout(() => { button.textContent = button.dataset.label; }, 2200);
-      }));
-      root.querySelectorAll('[data-exit-email-form]').forEach((form) => form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        if (form.dataset.submitting === 'true') return;
+      };
+      const validateEmail = (form) => {
         const email = form.querySelector('input[type="email"]');
-        const submit = form.querySelector('[data-exit-email-submit]');
         const status = form.querySelector('[data-exit-email-status]');
         email.value = email.value.trim();
-        if (!email.validity.valid) {
-          email.setAttribute('aria-invalid', 'true');
-          status.textContent = status.dataset.invalid;
-          status.classList.add('is-error');
-          status.hidden = false;
-          email.focus();
+        if (email.validity.valid) {
+          email.removeAttribute('aria-invalid');
+          status.classList.remove('is-error');
+          return true;
+        }
+        email.setAttribute('aria-invalid', 'true');
+        status.textContent = status.dataset.invalid;
+        status.classList.add('is-error');
+        status.hidden = false;
+        email.focus();
+        return false;
+      };
+      root.querySelectorAll('[data-exit-copy]').forEach((button) => button.addEventListener('click', async () => {
+        const form = button.closest('[data-exit-email-form]');
+        if (!form || form.dataset.submitting === 'true') return;
+        if (form.dataset.copyAccess === 'direct') {
+          await copyCode(button);
           return;
         }
-        email.removeAttribute('aria-invalid');
+        if (!validateEmail(form)) return;
+        const submit = form.querySelector('[data-exit-email-submit]');
+        const status = form.querySelector('[data-exit-email-status]');
         status.hidden = true;
-        status.classList.remove('is-error');
         form.dataset.submitting = 'true';
         submit.disabled = true;
+        button.disabled = true;
         try {
           const response = await fetch(form.action.split('#')[0], {
             method: 'POST',
@@ -438,18 +448,29 @@
             },
           });
           if (!response.ok) throw new Error(`Subscription failed with status ${response.status}`);
-          form.querySelector('.exit-popup__email-fields').hidden = true;
-          form.querySelector('.exit-popup__email-label')?.setAttribute('hidden', '');
+          await copyCode(button);
           status.textContent = status.dataset.success;
+          status.classList.remove('is-error');
           status.hidden = false;
           markShown();
         } catch (error) {
           status.textContent = status.dataset.error;
           status.classList.add('is-error');
           status.hidden = false;
+        } finally {
           form.dataset.submitting = 'false';
           submit.disabled = false;
+          button.disabled = false;
         }
+      }));
+      root.querySelectorAll('[data-exit-email-form]').forEach((form) => form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (form.dataset.submitting === 'true') return;
+        const status = form.querySelector('[data-exit-email-status]');
+        if (!validateEmail(form)) return;
+        status.textContent = status.dataset.success;
+        status.classList.remove('is-error');
+        status.hidden = false;
       }));
       document.addEventListener('keydown', onKeydown);
       document.addEventListener('shopify:section:unload', onSectionUnload);
@@ -502,6 +523,7 @@
 
     { "type": "header", "content": "Desktop background" },
     { "type": "select", "id": "desktop_background_type", "label": "Background type", "options": [{ "value": "image", "label": "Image" }, { "value": "video", "label": "Video" }, { "value": "gradient", "label": "Gradient" }], "default": "gradient" },
+    { "type": "select", "id": "desktop_media_position", "label": "Image or video position", "options": [{ "value": "background", "label": "Background" }, { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }, { "value": "top", "label": "Top" }], "default": "background" },
     { "type": "image_picker", "id": "desktop_image", "label": "Background image" },
     { "type": "url", "id": "desktop_video_url", "label": "MP4 video URL" },
     { "type": "range", "id": "desktop_video_blur", "label": "Video blur", "min": 0, "max": 20, "step": 1, "unit": "px", "default": 0 },
@@ -512,6 +534,7 @@
 
     { "type": "header", "content": "Mobile background" },
     { "type": "select", "id": "mobile_background_type", "label": "Background type", "options": [{ "value": "image", "label": "Image" }, { "value": "video", "label": "Video" }, { "value": "gradient", "label": "Gradient" }], "default": "gradient" },
+    { "type": "select", "id": "mobile_media_position", "label": "Image or video position", "options": [{ "value": "background", "label": "Background" }, { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }, { "value": "top", "label": "Top" }], "default": "background" },
     { "type": "image_picker", "id": "mobile_image", "label": "Background image" },
     { "type": "url", "id": "mobile_video_url", "label": "MP4 video URL" },
     { "type": "range", "id": "mobile_video_blur", "label": "Video blur", "min": 0, "max": 20, "step": 1, "unit": "px", "default": 0 },
@@ -603,25 +626,6 @@
       ]
     },
     {
-      "type": "discount",
-      "name": "Discount code",
-      "limit": 1,
-      "settings": [
-        { "type": "text", "id": "code", "label": "Discount code", "default": "SAVE20" },
-        { "type": "text", "id": "button_text", "label": "Button text", "default": "COPY CODE" },
-        { "type": "text", "id": "success_text", "label": "Success text", "default": "Copied to clipboard!" },
-        { "type": "color", "id": "background", "label": "Background color", "default": "#24102f" },
-        { "type": "color", "id": "color", "label": "Text color", "default": "#ffffff" },
-        { "type": "color", "id": "border_color", "label": "Border color", "default": "#ffffff" },
-        { "type": "range", "id": "border_radius", "label": "Border radius", "min": 0, "max": 50, "step": 2, "unit": "px", "default": 8 },
-        { "type": "range", "id": "font_size", "label": "Font size", "min": 12, "max": 30, "step": 1, "unit": "px", "default": 14 },
-        { "type": "range", "id": "vertical_padding", "label": "Vertical padding", "min": 8, "max": 30, "step": 1, "unit": "px", "default": 12 },
-        { "type": "range", "id": "horizontal_padding", "label": "Horizontal padding", "min": 12, "max": 60, "step": 2, "unit": "px", "default": 28 },
-        { "type": "text_alignment", "id": "alignment", "label": "Alignment", "default": "center" },
-        { "type": "range", "id": "bottom_spacing", "label": "Bottom spacing", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 0 }
-      ]
-    },
-    {
       "type": "email_subscription",
       "name": "Email subscription",
       "limit": 1,
@@ -632,6 +636,19 @@
         { "type": "text", "id": "success_text", "label": "Success message", "default": "Thank you for subscribing!" },
         { "type": "text", "id": "invalid_text", "label": "Invalid email message", "default": "Please enter a valid email address." },
         { "type": "text", "id": "error_text", "label": "Submission error message", "default": "Something went wrong. Please try again." },
+        { "type": "header", "content": "Copy code" },
+        { "type": "text", "id": "code", "label": "Discount code", "default": "SAVE20" },
+        { "type": "select", "id": "copy_access", "label": "Allow copying", "options": [{ "value": "direct", "label": "Directly" }, { "value": "after_subscription", "label": "After email subscription" }], "default": "after_subscription" },
+        { "type": "text", "id": "copy_button_text", "label": "Copy button text", "default": "COPY CODE" },
+        { "type": "text", "id": "copy_success_text", "label": "Copy success text", "default": "Copied to clipboard!" },
+        { "type": "color", "id": "copy_background", "label": "Copy button background", "default": "#24102f" },
+        { "type": "color", "id": "copy_color", "label": "Copy button text color", "default": "#ffffff" },
+        { "type": "color", "id": "copy_border_color", "label": "Copy button border color", "default": "#ffffff" },
+        { "type": "range", "id": "copy_border_radius", "label": "Copy button corner radius", "min": 0, "max": 50, "step": 2, "unit": "px", "default": 8 },
+        { "type": "range", "id": "copy_font_size", "label": "Copy button font size", "min": 12, "max": 30, "step": 1, "unit": "px", "default": 14 },
+        { "type": "range", "id": "copy_vertical_padding", "label": "Copy button vertical padding", "min": 8, "max": 30, "step": 1, "unit": "px", "default": 12 },
+        { "type": "range", "id": "copy_horizontal_padding", "label": "Copy button horizontal padding", "min": 12, "max": 60, "step": 2, "unit": "px", "default": 28 },
+        { "type": "header", "content": "Email form style" },
         { "type": "color", "id": "input_background", "label": "Input background", "default": "#ffffff" },
         { "type": "color", "id": "input_color", "label": "Input text color", "default": "#24102f" },
         { "type": "color", "id": "input_border_color", "label": "Input border color", "default": "#ffffff" },
@@ -654,8 +671,7 @@
         { "type": "subheading" },
         { "type": "email_subscription" },
         { "type": "countdown" },
-        { "type": "cta" },
-        { "type": "discount" }
+        { "type": "cta" }
       ]
     }
   ]

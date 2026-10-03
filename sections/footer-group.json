@@ -37,26 +37,6 @@
             "bottom_spacing": 24
           }
         },
-        "countdown_f7WBwp": {
-          "type": "countdown",
-          "disabled": true,
-          "settings": {
-            "enable": true,
-            "hours": 0,
-            "minutes": 14,
-            "seconds": 59,
-            "expiry_behavior": "loop",
-            "number_size": 40,
-            "label_size": 11,
-            "number_color": "#ffffff",
-            "label_color": "#ffffff",
-            "hours_label": "Hours",
-            "minutes_label": "Minutes",
-            "seconds_label": "Seconds",
-            "alignment": "center",
-            "bottom_spacing": 28
-          }
-        },
         "cta_x8p6rn": {
           "type": "cta",
           "settings": {
@@ -72,6 +52,27 @@
             "font_weight": "700",
             "vertical_padding": 15,
             "horizontal_padding": 34,
+            "alignment": "center",
+            "bottom_spacing": 16
+          }
+        },
+        "email_subscription_K937cg": {
+          "type": "email_subscription",
+          "settings": {
+            "label": "Join our email list",
+            "placeholder": "Enter your email address",
+            "button_text": "SUBSCRIBE",
+            "success_text": "Thank you for subscribing!",
+            "invalid_text": "Please enter a valid email address.",
+            "error_text": "Something went wrong. Please try again.",
+            "input_background": "#ffffff",
+            "input_color": "#FFFFFF",
+            "input_border_color": "#ffffff",
+            "button_background": "#FFFFFF",
+            "button_color": "#E83E8C",
+            "button_border_color": "#E83E8C",
+            "border_radius": 8,
+            "font_size": 15,
             "alignment": "center",
             "bottom_spacing": 16
           }
@@ -97,8 +98,8 @@
       "block_order": [
         "heading_Edejkp",
         "subheading_CqYAVQ",
-        "countdown_f7WBwp",
         "cta_x8p6rn",
+        "email_subscription_K937cg",
         "discount_Y8zVCH"
       ],
       "name": "Exit intent popup",
@@ -118,11 +119,12 @@
         "separate_mobile_delay": true,
         "mobile_delay": "30",
         "desktop_background_type": "gradient",
+        "desktop_image": "shopify://shop_images/gift-wrapped-with-a-big-red-bow.jpg",
         "desktop_video_url": "",
         "desktop_video_blur": 0,
         "desktop_gradient_type": "linear",
-        "desktop_gradient_1": "#4e1f6f",
-        "desktop_gradient_2": "#d94873",
+        "desktop_gradient_1": "#E83E8C",
+        "desktop_gradient_2": "#E83E8C",
         "desktop_gradient_angle": 135,
         "mobile_background_type": "gradient",
         "mobile_video_url": "",
@@ -360,6 +362,7 @@
     },
     "premium_popup": {
       "type": "cust-premium-popup",
+      "disabled": true,
       "settings": {
         "enable_popup": true,
         "popup_heading": "Join Our Community For latest offers",

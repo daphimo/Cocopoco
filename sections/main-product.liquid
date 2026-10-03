@@ -326,6 +326,24 @@
           {%- endfor -%}
 
           <div class="main-product__collapsibles">
+            {%- if product.metafields.custom.special_descriptions != blank -%}
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'product_highlights' -%}
+                  <div
+                    class="main-product__highlights"
+                    style="--product-highlights-label-size: {{ block.settings.label_size }}px;"
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.label != blank -%}
+                      <div class="main-product__highlights-label">{{ block.settings.label }}</div>
+                    {%- endif -%}
+                    <div class="main-product__highlights-content rte">
+                      {{ product.metafields.custom.special_descriptions | metafield_tag }}
+                    </div>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
             {%- for block in section.blocks -%}
               {%- if block.type == 'collapsible' -%}
                 {%- assign panel_id = 'ProductCollapsible-' | append: section.id | append: '-' | append: block.id -%}
@@ -675,6 +693,15 @@
       ]
     },
     {
+      "type": "product_highlights",
+      "name": "Product highlights",
+      "limit": 1,
+      "settings": [
+        { "type": "inline_richtext", "id": "label", "label": "Label", "default": "<strong>Product highlights</strong>" },
+        { "type": "range", "id": "label_size", "label": "Label size", "min": 10, "max": 32, "step": 1, "unit": "px", "default": 16 }
+      ]
+    },
+    {
       "type": "collapsible",
       "name": "Collapsible row",
       "settings": [
@@ -847,6 +874,7 @@
         { "type": "benefit", "settings": { "icon": "star", "text": "Quality-checked before packing" } },
         { "type": "benefit", "settings": { "icon": "sparkles", "text": "Secure payments" } },
         { "type": "benefit", "settings": { "icon": "rotate", "text": "Easy support" } },
+        { "type": "product_highlights" },
         { "type": "collapsible", "settings": { "heading": "Details & specs" } },
         { "type": "collapsible", "settings": { "heading": "Shipping & delivery" } },
         { "type": "collapsible", "settings": { "heading": "Quality promise" } }
