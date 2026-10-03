@@ -74,18 +74,43 @@
         this.type = this.dataset.stickyType;
         this.lastScroll = window.scrollY;
         this.stickyThreshold = this.getBoundingClientRect().bottom + window.scrollY;
+        // Reducing the logo also reduces this sticky section's layout height. Near
+        // stickyThreshold, scroll anchoring can consequently move scrollY back
+        // across that same boundary and make a one-threshold class toggle loop.
+        // Keep separate enter/exit boundaries, with a gap larger than the likely
+        // header-height change, so a transition cannot immediately undo itself.
+        this.reducedLogoExitThreshold = Math.max(
+          0,
+          this.stickyThreshold - Math.max(32, Math.ceil(this.header.offsetHeight * 0.35)),
+        );
+        this.isLogoReduced = false;
         this.onScroll = this.handleScroll.bind(this);
         this.header.classList.add('animate');
         document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
         if (this.type === 'always' || this.type === 'reduce-logo-size') this.header.classList.add('shopify-section-header-sticky');
-        this.handleScroll();
+        this.handleScroll(true);
         window.addEventListener('scroll', this.onScroll, { passive: true });
       }
       disconnectedCallback() { if (this.onScroll) window.removeEventListener('scroll', this.onScroll); }
-      handleScroll() {
+      handleScroll(initial = false) {
+        initial = initial === true;
         const current = window.scrollY;
         if (this.type === 'reduce-logo-size') {
-          this.header.classList.toggle('shopify-section-header-reduced-logo', current > this.stickyThreshold);
+          const scrollingDown = current > this.lastScroll;
+          const scrollingUp = current < this.lastScroll;
+
+          if (!this.isLogoReduced && current > this.stickyThreshold && (initial || scrollingDown)) {
+            this.isLogoReduced = true;
+            this.header.classList.add('shopify-section-header-reduced-logo');
+          } else if (
+            this.isLogoReduced
+            && current < this.reducedLogoExitThreshold
+            && (initial || scrollingUp)
+          ) {
+            this.isLogoReduced = false;
+            this.header.classList.remove('shopify-section-header-reduced-logo');
+          }
+
           this.lastScroll = current;
           return;
         }

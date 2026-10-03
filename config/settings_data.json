@@ -130,11 +130,6 @@
     "cart_color_scheme": "scheme-1",
     "customer_account_menu": "customer-account-main-menu",
     "product_card_border": "#E83E8C",
-<<<<<<< HEAD
-    "product_card_border_mobile": "#EC64A4",
-    "e83e8c_mobile": "#EC64A4",
-=======
->>>>>>> 211b529e216d071b5f8b28b5ce9d467219ff2c32
     "tab_switch_message": "WE MISS YOU!!",
     "enable_leave_alert": false,
     "leave_alert_message": "Wait! Explore our latest collection",
