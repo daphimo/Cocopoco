@@ -125,8 +125,6 @@
             "image_size": 60,
             "image_1": "shopify://shop_images/visa-light.png",
             "image_2": "shopify://shop_images/google-pay-light.png",
-            "image_3": "shopify://shop_images/apple-pay-light.png",
-            "image_4": "shopify://shop_images/paypal-light.png",
             "image_5": "shopify://shop_images/upi_color.png",
             "image_6": "shopify://shop_images/mastercard.png",
             "padding_top": 20,
