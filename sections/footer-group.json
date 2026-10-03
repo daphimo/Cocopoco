@@ -39,6 +39,7 @@
         },
         "countdown_f7WBwp": {
           "type": "countdown",
+          "disabled": true,
           "settings": {
             "enable": true,
             "hours": 0,
@@ -115,7 +116,7 @@
         "initialization_delay": 3,
         "desktop_delay": "10",
         "separate_mobile_delay": true,
-        "mobile_delay": "5",
+        "mobile_delay": "10",
         "desktop_background_type": "gradient",
         "desktop_video_url": "",
         "desktop_video_blur": 0,
