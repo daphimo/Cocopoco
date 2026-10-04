@@ -13,13 +13,11 @@
   assign unlocked_count = 0
   assign next_tier = nil
   assign latest_unlocked_tier = nil
-  assign final_threshold = 0
 
   for block in section.blocks
     if block.type == 'discount_tier' and block.settings.threshold > 0
       assign tier_count = tier_count | plus: 1
       assign threshold_cents = block.settings.threshold | times: 100 | round
-      assign final_threshold = threshold_cents
       if cart.items_subtotal_price >= threshold_cents
         assign unlocked_count = unlocked_count | plus: 1
         assign latest_unlocked_tier = block
@@ -50,11 +48,10 @@
     if unlocked_count == tier_count
       assign progress_percent = 100
     else
-      assign target_position = unlocked_count | times: 100 | plus: 50 | times: 1.0 | divided_by: tier_count
-      assign previous_position = 0
+      assign target_position = unlocked_count | plus: 1 | times: 100.0 | divided_by: tier_count
+      assign previous_position = unlocked_count | times: 100.0 | divided_by: tier_count
       assign previous_threshold = 0
       if latest_unlocked_tier
-        assign previous_position = unlocked_count | minus: 1 | times: 100 | plus: 50 | times: 1.0 | divided_by: tier_count
         assign previous_threshold = latest_unlocked_tier.settings.threshold | times: 100 | round
       endif
       assign interval_total = threshold_cents | minus: previous_threshold
@@ -65,18 +62,22 @@
     endif
   -%}
 
-  <cart-tier-progress class="cart-tier-progress" style="--cart-tier-progress: {{ progress_percent }}%; --cart-tier-count: {{ tier_count }};" data-unlocked-count="{{ unlocked_count }}">
+  <cart-tier-progress class="cart-tier-progress" style="--cart-tier-progress: {{ progress_percent }}%; --cart-tier-count: {{ tier_count | plus: 1 }};" data-unlocked-count="{{ unlocked_count }}">
     <p class="cart-tier-progress__status" data-tier-status aria-live="polite" aria-atomic="true">{{ status_message | escape }}</p>
     <div class="cart-tier-progress__visual" aria-hidden="true">
       <div class="cart-tier-progress__track"><span class="cart-tier-progress__fill" data-tier-fill></span></div>
       <div class="cart-tier-progress__tiers">
+        <div class="cart-tier-progress__tier cart-tier-progress__tier--start is-unlocked">
+          <span class="cart-tier-progress__marker" aria-hidden="true"></span>
+          <span class="cart-tier-progress__threshold">{{ 0 | money | strip_html }}</span>
+        </div>
         {%- for block in section.blocks -%}
           {%- if block.type == 'discount_tier' and block.settings.threshold > 0 -%}
             {%- assign block_threshold_cents = block.settings.threshold | times: 100 | round -%}
             {%- assign tier_unlocked = false -%}
             {%- if cart.items_subtotal_price >= block_threshold_cents -%}{%- assign tier_unlocked = true -%}{%- endif -%}
             <div class="cart-tier-progress__tier{% if tier_unlocked %} is-unlocked{% endif %}" data-tier-marker {{ block.shopify_attributes }}>
-              <span class="cart-tier-progress__marker"><svg viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path d="m3.25 8.25 3 3 6.5-6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="cart-tier-progress__marker"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" focusable="false" aria-hidden="true"><path d="M15.0049 2.00281C17.214 2.00281 19.0049 3.79367 19.0049 6.00281C19.0049 6.73184 18.8098 7.41532 18.4691 8.00392L23.0049 8.00281V10.0028H21.0049V20.0028C21.0049 20.5551 20.5572 21.0028 20.0049 21.0028H4.00488C3.4526 21.0028 3.00488 20.5551 3.00488 20.0028V10.0028H1.00488V8.00281L5.54065 8.00392C5.19992 7.41532 5.00488 6.73184 5.00488 6.00281C5.00488 3.79367 6.79574 2.00281 9.00488 2.00281C10.2001 2.00281 11.2729 2.52702 12.0058 3.35807C12.7369 2.52702 13.8097 2.00281 15.0049 2.00281ZM11.0049 10.0028H5.00488V19.0028H11.0049V10.0028ZM19.0049 10.0028H13.0049V19.0028H19.0049V10.0028ZM9.00488 4.00281C7.90031 4.00281 7.00488 4.89824 7.00488 6.00281C7.00488 7.05717 7.82076 7.92097 8.85562 7.99732L9.00488 8.00281H11.0049V6.00281C11.0049 5.00116 10.2686 4.1715 9.30766 4.02558L9.15415 4.00829L9.00488 4.00281ZM15.0049 4.00281C13.9505 4.00281 13.0867 4.81869 13.0104 5.85355L13.0049 6.00281V8.00281H15.0049C16.0592 8.00281 16.923 7.18693 16.9994 6.15207L17.0049 6.00281C17.0049 4.89824 16.1095 4.00281 15.0049 4.00281Z"></path></svg></span>
               <span class="cart-tier-progress__threshold">{{ block_threshold_cents | money | strip_html }}</span>
               <strong class="cart-tier-progress__discount">{{ block.settings.discount }}% OFF</strong>
               <span class="visually-hidden">{% if tier_unlocked %}Unlocked{% else %}Locked{% endif %}</span>

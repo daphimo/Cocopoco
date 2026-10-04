@@ -48,8 +48,8 @@ if (!customElements.get('cart-tier-progress')) {
 
     calculateProgress(cartAmount, tiers, unlockedCount) {
       if (unlockedCount === tiers.length) return 100;
-      const targetPosition = ((unlockedCount + 0.5) / tiers.length) * 100;
-      const previousPosition = unlockedCount ? ((unlockedCount - 0.5) / tiers.length) * 100 : 0;
+      const targetPosition = ((unlockedCount + 1) / tiers.length) * 100;
+      const previousPosition = (unlockedCount / tiers.length) * 100;
       const previousThreshold = unlockedCount ? tiers[unlockedCount - 1].threshold : 0;
       const interval = tiers[unlockedCount].threshold - previousThreshold;
       const intervalProgress = interval > 0 ? Math.min(1, Math.max(0, (cartAmount - previousThreshold) / interval)) : 0;

@@ -6,15 +6,13 @@
   "settings": [
     { "type": "text", "id": "cart_heading", "label": "Cart heading", "default": "Your bag" },
     { "type": "checkbox", "id": "enable_tiered_discount_progress", "label": "Enable tiered discount progress bar", "default": true },
-    { "type": "textarea", "id": "custom_cart_content", "label": "Custom Cart Content", "info": "Add multiple cart messages separated by commas.", "default": "₹99 flat shipping on every order, Extra 5% off when you pay online" },
+    { "type": "textarea", "id": "custom_cart_content", "label": "Custom Cart Content", "info": "Add multiple cart messages separated by commas.", "default": "₹99 flat shipping on every order" },
     { "type": "text", "id": "recommendation_heading", "label": "Recommendation heading", "default": "Add a little extra joy ✨" },
     { "type": "product_list", "id": "recommended_products", "label": "Recommended products", "limit": 12 },
     { "type": "number", "id": "flat_shipping_amount", "label": "Flat shipping amount", "info": "Enter the amount in your store currency, for example 99.", "default": 99 },
     { "type": "checkbox", "id": "enable_minimum_order", "label": "Enable minimum order total", "default": false },
     { "type": "number", "id": "minimum_order_amount", "label": "Minimum order total", "info": "Includes the flat shipping amount.", "default": 499 },
     { "type": "text", "id": "minimum_order_message", "label": "Minimum order progress message", "info": "Use {amount} for the amount remaining and {minimum} for the required total.", "default": "Add {amount} more to reach the minimum order total of {minimum}." },
-    { "type": "checkbox", "id": "enable_prepaid_discount", "label": "Show prepaid discount", "default": true },
-    { "type": "text", "id": "prepaid_discount_text", "label": "Prepaid discount text", "default": "-5% at checkout" },
     { "type": "text", "id": "empty_heading", "label": "Empty cart heading", "default": "Your bag is feeling a little empty" },
     { "type": "text", "id": "empty_subtext", "label": "Empty cart subtext", "default": "Let's fix that with something cute." },
     { "type": "text", "id": "empty_button_text", "label": "Empty cart button text", "default": "Shop the joy" },
@@ -36,6 +34,6 @@
       { "type": "inline_richtext", "id": "text", "label": "Text", "default": "Cart benefit" }
     ] }
   ],
-  "presets": [{ "name": "Cart drawer", "blocks": [{ "type": "footer_utility", "settings": { "icon": "sparkles", "text": "5% off prepaid" } }, { "type": "footer_utility", "settings": { "icon": "truck", "text": "Dispatch in 24–48 hrs" } }] }]
+  "presets": [{ "name": "Cart drawer", "blocks": [{ "type": "footer_utility", "settings": { "icon": "truck", "text": "Dispatch in 24–48 hrs" } }] }]
 }
 {% endschema %}

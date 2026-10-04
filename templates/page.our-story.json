@@ -161,11 +161,58 @@
         "mobile_padding_top": 0,
         "mobile_padding_bottom": 48
       }
+    },
+    "message_card": {
+      "type": "our-story-message-card",
+      "blocks": {
+        "intro": {
+          "type": "content",
+          "settings": {
+            "content": "<p><strong>Because life doesn’t need a special occasion to feel special. ✨</strong></p>",
+            "size": 14,
+            "color": "#e83e8c"
+          }
+        },
+        "body": {
+          "type": "content",
+          "settings": {
+            "content": "<p>Sometimes, all it takes is a cute notebook, a bottle that makes you smile, or a keychain that says a little something.</p>",
+            "size": 13,
+            "color": "#3d1729"
+          }
+        },
+        "bridge": {
+          "type": "content",
+          "settings": {
+            "content": "<p><strong>So why not</strong></p>",
+            "size": 14,
+            "color": "#3d1729"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "title": "“Romanticize your Everyday”",
+            "size": 20,
+            "color": "#e83e8c"
+          }
+        }
+      },
+      "block_order": ["intro", "body", "bridge", "title"],
+      "settings": {
+        "section_width": "custom",
+        "custom_width": 98,
+        "margin_top": 32,
+        "margin_bottom": 32,
+        "background_color": "#fffbfd",
+        "card_background": "#ffffff"
+      }
     }
   },
   "order": [
     "richtext_BPWRxp",
     "founders",
-    "story_content"
+    "story_content",
+    "message_card"
   ]
 }

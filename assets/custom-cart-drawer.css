@@ -87,3 +87,9 @@ cart-drawer .rbr-container-element-volume,
 cart-drawer [class*='rbr-container'] {
   display: none !important;
 }
+.cart-tier-progress__fill{background:var(--cart-drawer-accent)}
+.cart-tier-progress__marker{color:var(--color-muted-rose);background:var(--color-pure-white)}
+.cart-tier-progress__marker svg{opacity:1;transform:scale(1)}
+.cart-tier-progress__tier.is-unlocked .cart-tier-progress__marker{color:var(--color-pure-white);background:var(--cart-drawer-accent);box-shadow:0 0 0 .1rem var(--cart-drawer-accent)}
+.cart-tier-progress__tier.is-unlocked .cart-tier-progress__discount{color:var(--cart-drawer-accent)}
+.cart-tier-progress__tier--start .cart-tier-progress__marker{width:1.2rem;height:1.2rem;margin:.55rem;color:var(--cart-drawer-accent);background:var(--cart-drawer-accent);box-shadow:0 0 0 .1rem var(--cart-drawer-accent)}

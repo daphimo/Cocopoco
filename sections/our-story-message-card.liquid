@@ -1,0 +1,143 @@
+<section
+  class="our-story-message-card"
+  style="--story-message-margin-top: {{ section.settings.margin_top }}px; --story-message-margin-bottom: {{ section.settings.margin_bottom }}px; --story-message-width: {% if section.settings.section_width == 'full' %}100%{% else %}{{ section.settings.custom_width }}rem{% endif %}; --story-message-background: {{ section.settings.background_color }}; --story-message-card-background: {{ section.settings.card_background }};"
+>
+  <div class="our-story-message-card__container">
+    <div class="our-story-message-card__panel">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'content' -%}
+            {%- if block.settings.content != blank -%}
+              <div
+                class="our-story-message-card__content rte"
+                style="--story-message-text-size: {{ block.settings.size }}px; --story-message-text-color: {{ block.settings.color }};"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.content }}
+              </div>
+            {%- endif -%}
+          {%- when 'title' -%}
+            {%- if block.settings.title != blank -%}
+              <h2
+                class="our-story-message-card__title"
+                style="--story-message-title-size: {{ block.settings.size }}px; --story-message-title-color: {{ block.settings.color }};"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.title }}
+              </h2>
+            {%- endif -%}
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .our-story-message-card {
+    margin-block: var(--story-message-margin-top) var(--story-message-margin-bottom);
+    background: var(--story-message-background);
+  }
+
+  .our-story-message-card__container {
+    width: min(100%, var(--story-message-width));
+    margin-inline: auto;
+    padding-inline: 2.4rem;
+  }
+
+  .our-story-message-card__panel {
+    padding: 2rem clamp(2rem, 5vw, 5rem);
+    overflow: hidden;
+    text-align: center;
+    background: var(--story-message-card-background);
+    border-radius: 1.8rem;
+    box-shadow: 0 1.2rem 3.4rem rgba(52, 24, 36, 0.08);
+  }
+
+  .our-story-message-card__content {
+    margin: 0;
+    color: var(--story-message-text-color);
+    font-size: var(--story-message-text-size);
+    line-height: 1.5;
+  }
+
+  .our-story-message-card__content + .our-story-message-card__content,
+  .our-story-message-card__content + .our-story-message-card__title {
+    margin-top: 0.8rem;
+  }
+
+  .our-story-message-card__content p {
+    margin: 0;
+  }
+
+  .our-story-message-card__content strong {
+    color: inherit;
+    font-weight: 700;
+  }
+
+  .our-story-message-card__title {
+    margin: 0;
+    color: var(--story-message-title-color);
+    font-family: var(--font-heading-family);
+    font-size: var(--story-message-title-size);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight);
+    line-height: 1.2;
+  }
+
+  @media screen and (max-width: 749px) {
+    .our-story-message-card__container {
+      width: 100%;
+      padding-inline: 1.6rem;
+    }
+
+    .our-story-message-card__panel {
+      padding: 2rem 1.6rem;
+      border-radius: 1.6rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Our story message card",
+  "settings": [
+    { "type": "select", "id": "section_width", "label": "Section width", "options": [{ "value": "full", "label": "Full width" }, { "value": "custom", "label": "Custom width" }], "default": "custom" },
+    { "type": "range", "id": "custom_width", "label": "Custom width", "min": 50, "max": 150, "step": 1, "unit": "rem", "default": 98, "visible_if": "{{ section.settings.section_width == 'custom' }}" },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 32 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 32 },
+    { "type": "color", "id": "background_color", "label": "Section background", "default": "#fffbfd" },
+    { "type": "color", "id": "card_background", "label": "Card background", "default": "#ffffff" }
+  ],
+  "blocks": [
+    {
+      "type": "content",
+      "name": "Content",
+      "settings": [
+        { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Sometimes, all it takes is a cute notebook, a bottle that makes you smile, or a keychain that says a little something.</p>" },
+        { "type": "range", "id": "size", "label": "Content size", "min": 10, "max": 36, "step": 1, "unit": "px", "default": 13 },
+        { "type": "color", "id": "color", "label": "Content color", "default": "#3d1729" }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "settings": [
+        { "type": "inline_richtext", "id": "title", "label": "Title", "default": "“Romanticize your Everyday”" },
+        { "type": "range", "id": "size", "label": "Title size", "min": 14, "max": 64, "step": 1, "unit": "px", "default": 20 },
+        { "type": "color", "id": "color", "label": "Title color", "default": "#e83e8c" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our story message card",
+      "blocks": [
+        { "type": "content", "settings": { "content": "<p><strong>Because life doesn’t need a special occasion to feel special. ✨</strong></p>", "size": 14, "color": "#e83e8c" } },
+        { "type": "content", "settings": { "content": "<p>Sometimes, all it takes is a cute notebook, a bottle that makes you smile, or a keychain that says a little something.</p>", "size": 13, "color": "#3d1729" } },
+        { "type": "content", "settings": { "content": "<p><strong>So why not</strong></p>", "size": 14, "color": "#3d1729" } },
+        { "type": "title", "settings": { "title": "“Romanticize your Everyday”", "size": 20, "color": "#e83e8c" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

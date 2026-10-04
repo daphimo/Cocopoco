@@ -142,7 +142,7 @@
         </div>
 
         <footer class="cart-drawer__footer">
-          <div class="cart-drawer__summary"><div><span>Subtotal</span><strong>{{ cart.total_price | money }}</strong></div><div><span>Shipping</span><span>{{ flat_shipping_cents | money }}</span></div>{%- if section.settings.enable_prepaid_discount and section.settings.prepaid_discount_text != blank -%}<div><span>Prepaid discount</span><span class="cart-drawer__discount-text">{{ section.settings.prepaid_discount_text | escape }}</span></div>{%- endif -%}</div>
+          <div class="cart-drawer__summary"><div><span>Subtotal</span><strong>{{ cart.total_price | money }}</strong></div><div><span>Shipping</span><span>{{ flat_shipping_cents | money }}</span></div></div>
           <div class="cart-drawer__total"><strong>Total</strong><strong>{{ cart_total_with_shipping | money }}</strong></div>
           {%- unless minimum_order_reached -%}
             {%- liquid
