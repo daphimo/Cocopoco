@@ -169,7 +169,7 @@
           "type": "content",
           "settings": {
             "content": "<p><strong>Because life doesn’t need a special occasion to feel special. ✨</strong></p>",
-            "size": 14,
+            "size": 18,
             "color": "#e83e8c"
           }
         },
@@ -177,7 +177,7 @@
           "type": "content",
           "settings": {
             "content": "<p>Sometimes, all it takes is a cute notebook, a bottle that makes you smile, or a keychain that says a little something.</p>",
-            "size": 13,
+            "size": 14,
             "color": "#3d1729"
           }
         },
@@ -198,7 +198,12 @@
           }
         }
       },
-      "block_order": ["intro", "body", "bridge", "title"],
+      "block_order": [
+        "intro",
+        "body",
+        "bridge",
+        "title"
+      ],
       "settings": {
         "section_width": "custom",
         "custom_width": 98,
