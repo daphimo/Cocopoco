@@ -1493,25 +1493,117 @@
   {
     "name": "Product cards",
     "settings": [
-      { "type": "color", "id": "product_card_background", "label": "Card background", "default": "#FFFFFF" },
-      { "type": "color", "id": "product_card_border", "label": "Card border", "default": "#F9D5E6" },
-      { "type": "color", "id": "product_card_border_mobile", "label": "Card border — Mobile", "default": "#EC64A4" },
-      { "type": "color", "id": "product_card_title", "label": "Product title", "default": "#341824" },
-      { "type": "color", "id": "product_card_description", "label": "Description", "default": "#4A4145" },
-      { "type": "color", "id": "product_card_price", "label": "Price", "default": "#341824" },
-      { "type": "color", "id": "product_card_compare_price", "label": "Compare-at price", "default": "#B86A8A" },
-      { "type": "color", "id": "product_card_rating", "label": "Rating accent", "default": "#E83E8C" },{"type": "color", "id": "product_card_rating_mobile", "label": "Rating accent — Mobile", "default": "#EC64A4"},
-      { "type": "color", "id": "product_card_badge_background", "label": "Badge background", "default": "#FEDBEF" },
-      { "type": "color", "id": "product_card_badge_text", "label": "Badge text", "default": "#341824" },
-      { "type": "color", "id": "product_card_button_background", "label": "Button background", "default": "#E83E8C" },{"type": "color", "id": "product_card_button_background_mobile", "label": "Button background — Mobile", "default": "#EC64A4"},
-      { "type": "color", "id": "product_card_button_text", "label": "Button text", "default": "#FFFFFF" }
+      {
+        "type": "color",
+        "id": "product_card_background",
+        "label": "Card background",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "product_card_border",
+        "label": "Card border",
+        "default": "#F9D5E6"
+      },
+      {
+        "type": "color",
+        "id": "product_card_border_mobile",
+        "label": "Card border — Mobile",
+        "default": "#EC64A4"
+      },
+      {
+        "type": "color",
+        "id": "product_card_title",
+        "label": "Product title",
+        "default": "#341824"
+      },
+      {
+        "type": "color",
+        "id": "product_card_description",
+        "label": "Description",
+        "default": "#4A4145"
+      },
+      {
+        "type": "color",
+        "id": "product_card_price",
+        "label": "Price",
+        "default": "#341824"
+      },
+      {
+        "type": "color",
+        "id": "product_card_compare_price",
+        "label": "Compare-at price",
+        "default": "#B86A8A"
+      },
+      {
+        "type": "color",
+        "id": "product_card_rating",
+        "label": "Rating accent",
+        "default": "#E83E8C"
+      },
+      {
+        "type": "color",
+        "id": "product_card_rating_mobile",
+        "label": "Rating accent — Mobile",
+        "default": "#EC64A4"
+      },
+      {
+        "type": "color",
+        "id": "product_card_badge_background",
+        "label": "Badge background",
+        "default": "#FEDBEF"
+      },
+      {
+        "type": "color",
+        "id": "product_card_badge_text",
+        "label": "Badge text",
+        "default": "#341824"
+      },
+      {
+        "type": "color",
+        "id": "product_card_button_background",
+        "label": "Button background",
+        "default": "#E83E8C"
+      },
+      {
+        "type": "color",
+        "id": "product_card_button_background_mobile",
+        "label": "Button background — Mobile",
+        "default": "#EC64A4"
+      },
+      {
+        "type": "color",
+        "id": "product_card_button_text",
+        "label": "Button text",
+        "default": "#FFFFFF"
+      }
     ]
   },
   {
     "name": "Wishlist",
     "settings": [
-      {"type":"color","id":"wishlist_color","label":"Wishlist Color","default":"#E74695"},
-      {"type":"select","id":"wishlist_flow","label":"Wishlist Flow","options":[{"value":"guest_signin","label":"Guest + Sign In"},{"value":"login_required","label":"Login Required"}],"default":"guest_signin"}
+      {
+        "type": "color",
+        "id": "wishlist_color",
+        "label": "Wishlist Color",
+        "default": "#E74695"
+      },
+      {
+        "type": "select",
+        "id": "wishlist_flow",
+        "label": "Wishlist Flow",
+        "options": [
+          {
+            "value": "guest_signin",
+            "label": "Guest + Sign In"
+          },
+          {
+            "value": "login_required",
+            "label": "Login Required"
+          }
+        ],
+        "default": "guest_signin"
+      }
     ]
   },
   {
@@ -1535,6 +1627,140 @@
         "id": "leave_alert_message",
         "label": "Alert Message",
         "info": "Custom messages may not be displayed by modern browsers. The browser controls the actual confirmation text."
+      }
+    ]
+  },
+  {
+    "name": "Gokwik",
+    "settings": [
+      {
+        "type": "text",
+        "id": "mid",
+        "label": "Merchant Id"
+      },
+      {
+        "type": "header",
+        "content": "Select environment"
+      },
+      {
+        "type": "select",
+        "id": "envType",
+        "options": [
+          {
+            "value": "qa",
+            "label": "QA"
+          },
+          {
+            "value": "sandbox",
+            "label": "Sandbox"
+          },
+          {
+            "value": "production",
+            "label": "Production"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "hideFlow",
+        "label": "Button hide without disable",
+        "info": "To hide only button without disable Gokwik flow",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Data Tracking"
+      },
+      {
+        "type": "text",
+        "id": "ga4Gokwik",
+        "label": "Enter Google Analytics ID (GA4)",
+        "placeholder": "Starts with GA- ...."
+      },
+      {
+        "type": "text",
+        "id": "fbpixel",
+        "label": "FB Pixel"
+      },
+      {
+        "type": "text",
+        "id": "snapPixel",
+        "label": "Snapchat Pixel"
+      },
+      {
+        "type": "header",
+        "content": "Checkout Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "goEnable",
+        "label": "Enable Checkout Interception",
+        "info": "GoKwik will intercept native checkout buttons automatically",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "checkoutSubText",
+        "label": "Checkout Button Sub Text",
+        "placeholder": "e.g. ₹100 Off on prepaid orders",
+        "info": "Leave blank to hide sub text on checkout button"
+      },
+      {
+        "type": "checkbox",
+        "id": "checkoutEnableLogo",
+        "label": "Show Payment Icons on Checkout Button",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "checkoutEnableBanner",
+        "label": "Show Checkout Sub Text as Banner (above button)",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Buy Now Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "goBuynowEnable",
+        "label": "Enable Buy Now Interception",
+        "info": "GoKwik will intercept native buy now buttons automatically",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "buyNowText",
+        "label": "Buy Now Button Text",
+        "default": "Buy It Now"
+      },
+      {
+        "type": "text",
+        "id": "buyNowSubText",
+        "label": "Buy Now Button Sub Text",
+        "placeholder": "e.g. ₹100 Off on prepaid orders",
+        "info": "Leave blank to hide sub text on buy now button"
+      },
+      {
+        "type": "checkbox",
+        "id": "buyNowEnableLogo",
+        "label": "Show Payment Icons on Buy Now Button",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "buyNowEnableBanner",
+        "label": "Show Buy Now Sub Text as Banner (above button)",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Other Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "enableIntlFlow",
+        "label": "Enable International Flow"
       }
     ]
   }

@@ -171,13 +171,13 @@
 }
 
 .shoppable-videos__media,
-.shoppable-videos__media video {
+.shoppable-videos__video {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.shoppable-videos__media video {
+.shoppable-videos__video {
   object-fit: cover;
   pointer-events: none;
 }
@@ -331,7 +331,8 @@
   color: var(--color-warm-white);
 }
 
-.shoppable-reel__video {
+.shoppable-reel__video,
+.shoppable-reel__poster {
   position: absolute;
   z-index: 0;
   inset: 0;
@@ -339,6 +340,39 @@
   height: 100%;
   object-fit: cover;
   pointer-events: none;
+}
+
+.shoppable-reel__player.is-video-active .shoppable-reel__poster { visibility: hidden; }
+
+.shoppable-reel__loader {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.shoppable-reel__loader[hidden] { display: none; }
+
+.shoppable-reel__loader span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f7f7f7;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  animation: shoppable-reel-dot-jump 1s ease-in-out infinite;
+}
+
+.shoppable-reel__loader span:nth-child(2) { background: #d8d8d8; animation-delay: 0.12s; }
+.shoppable-reel__loader span:nth-child(3) { background: #a8a8a8; animation-delay: 0.24s; }
+.shoppable-reel__loader span:nth-child(4) { background: #747474; animation-delay: 0.36s; }
+
+@keyframes shoppable-reel-dot-jump {
+  0%, 60%, 100% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-12px) scale(1.35); }
 }
 
 .shoppable-reel__player::after {
@@ -381,6 +415,7 @@
 
 .shoppable-reel__logo img { display: block; max-width: 100%; max-height: 34px; width: auto; height: auto; object-fit: contain; }
 .shoppable-reel__close,
+.shoppable-reel__playback,
 .shoppable-reel__sound,
 .shoppable-reel__wishlist .wishlist-button {
   display: grid;
@@ -398,14 +433,22 @@
 
 .shoppable-reel__close { flex: none; pointer-events: auto; }
 .shoppable-reel__close svg,
+.shoppable-reel__playback svg,
 .shoppable-reel__sound svg,
 .shoppable-reel__wishlist svg { width: 22px; height: 22px; fill: none; stroke: currentColor; }
-.shoppable-reel__sound [hidden] { display: none; }
+.shoppable-reel__playback .shoppable-reel__play-icon { fill: currentColor; stroke: none; }
+.shoppable-reel__playback .shoppable-reel__play-icon,
+.shoppable-reel__playback .shoppable-reel__pause-icon,
+.shoppable-reel__sound .shoppable-reel__sound-on,
+.shoppable-reel__sound .shoppable-reel__sound-off { display: none; }
+.shoppable-reel__playback.is-playing .shoppable-reel__pause-icon { display: block; }
+.shoppable-reel__playback.is-paused .shoppable-reel__play-icon { display: block; }
 .shoppable-reel__sound.is-muted .shoppable-reel__sound-on { display: none; }
 .shoppable-reel__sound.is-muted .shoppable-reel__sound-off { display: block; }
 .shoppable-reel__sound:not(.is-muted) .shoppable-reel__sound-on { display: block; }
 .shoppable-reel__sound:not(.is-muted) .shoppable-reel__sound-off { display: none; }
 .shoppable-reel__close:focus-visible,
+.shoppable-reel__playback:focus-visible,
 .shoppable-reel__sound:focus-visible,
 .shoppable-reel__wishlist .wishlist-button:focus-visible { outline: 2px solid var(--color-soft-gold); outline-offset: 2px; }
 
@@ -423,6 +466,7 @@
 .shoppable-reel__wishlist { display: flex; flex-direction: column; align-items: center; gap: 3px; }
 .shoppable-reel__wishlist span { color: var(--color-warm-white); font-size: 10px; line-height: 1; text-shadow: 0 1px 3px var(--color-deep-cocoa); }
 .shoppable-reel__wishlist .wishlist-button,
+.shoppable-reel__playback,
 .shoppable-reel__sound { pointer-events: auto; }
 .shoppable-reel__wishlist .wishlist-button svg { fill: none; }
 .shoppable-reel__wishlist .wishlist-button.active svg { fill: var(--color-soft-gold); }
@@ -454,6 +498,10 @@
   .shoppable-videos__stripe { grid-template-columns: min(44px, var(--sv-image-size)) minmax(0, 1fr) auto; }
   .shoppable-videos__product-image { width: min(44px, var(--sv-image-size)); height: min(44px, var(--sv-image-size)); }
   .shoppable-videos__product-title { font-size: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shoppable-reel__loader span { animation: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

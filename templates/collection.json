@@ -38,7 +38,7 @@
             "brand_button_background": "#e83e8c",
             "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
-            "collection": "stationery",
+            "collection": "new_stationery",
             "title_override": "Stationery"
           }
         },
@@ -53,7 +53,7 @@
             "brand_button_background": "#e83e8c",
             "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
-            "collection": "bundle-_-premium_bottle",
+            "collection": "new_bottles",
             "title_override": "Bottles"
           }
         },
@@ -68,7 +68,7 @@
             "brand_button_background": "#e83e8c",
             "brand_button_background_mobile": "#ec64a4",
             "brand_button_text_color": "#ffffff",
-            "collection": "keychains-charms",
+            "collection": "new_keychains-charms-1",
             "title_override": "Keychains"
           }
         },

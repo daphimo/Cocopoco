@@ -31,11 +31,12 @@
       >
         <div class="shoppable-videos__media">
           <video
-            preload="metadata"
+            class="shoppable-videos__video"
+            autoplay
+            muted
+            loop
             playsinline
-            {% if section.settings.autoplay %}autoplay{% endif %}
-            {% if section.settings.loop %}loop{% endif %}
-            {% if section.settings.muted or section.settings.autoplay %}muted{% endif %}
+            preload="auto"
             {% if current_poster != blank %}poster="{{ current_poster | image_url: width: 800 }}"{% endif %}
           >
             {% for video_source in current_video.sources %}
@@ -44,10 +45,6 @@
           </video>
         </div>
         <button class="shoppable-videos__open" type="button" data-reel-open data-reel-index="{{ rendered_count | minus: 1 }}" aria-label="Watch shoppable video {{ rendered_count }}"></button>
-        <button class="shoppable-videos__play" type="button" aria-label="Play video" {% if section.settings.autoplay %}hidden{% endif %}>
-          <svg class="shoppable-videos__play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg>
-          <svg class="shoppable-videos__pause-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden><path d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg>
-        </button>
         {% render 'shoppable-video-product-stripe', product: current_product, button_label: section.settings.shop_button_label %}
       </li>
     {% endif %}
@@ -73,11 +70,19 @@
       {% assign popup_count = popup_count | plus: 1 %}
       <li class="splide__slide shoppable-reel__slide">
         <div class="shoppable-reel__player">
-          <video class="shoppable-reel__video" preload="metadata" playsinline {% if section.settings.loop %}loop{% endif %} {% if current_poster != blank %}poster="{{ current_poster | image_url: width: 1000 }}"{% endif %}>
-            {% for video_source in current_video.sources %}
-              <source src="{{ video_source.url }}" type="{{ video_source.mime_type }}">
-            {% endfor %}
-          </video>
+          {% if current_poster != blank %}
+            {{ current_poster | image_url: width: 1000 | image_tag: widths: '480, 720, 1000', sizes: '(max-width: 749px) 100vw, 460px', loading: 'lazy', class: 'shoppable-reel__poster', alt: current_product.title }}
+          {% endif %}
+          <template data-reel-video-template>
+            <video class="shoppable-reel__video" preload="none" playsinline {% if section.settings.loop %}loop{% endif %} {% if current_poster != blank %}poster="{{ current_poster | image_url: width: 1000 }}"{% endif %}>
+              {% for video_source in current_video.sources %}
+                <source src="{{ video_source.url }}" type="{{ video_source.mime_type }}">
+              {% endfor %}
+            </video>
+          </template>
+          <div class="shoppable-reel__loader" data-reel-loader role="status" aria-label="Loading video">
+            <span></span><span></span><span></span><span></span>
+          </div>
           <div class="shoppable-reel__overlay">
             <div class="shoppable-reel__top">
               <div class="shoppable-reel__logo">
@@ -98,9 +103,13 @@
                   <span>Wishlist</span>
                 </div>
               {% endif %}
+              <button class="shoppable-reel__playback is-playing" type="button" aria-label="Pause video" aria-pressed="true">
+                <svg class="shoppable-reel__pause-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+                <svg class="shoppable-reel__play-icon" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg>
+              </button>
               <button class="shoppable-reel__sound" type="button" aria-label="Mute video" aria-pressed="false">
                 <svg class="shoppable-reel__sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg>
-                <svg class="shoppable-reel__sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16 9 5 6m0-6-5 6"/></svg>
+                <svg class="shoppable-reel__sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16 9 5 6m0-6-5 6"/></svg>
               </button>
             </div>
             {% render 'shoppable-video-product-stripe', product: current_product, button_label: section.settings.shop_button_label %}

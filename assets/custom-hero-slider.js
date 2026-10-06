@@ -4,19 +4,21 @@
 
   const SCRIPT_ID = 'cust-splide-script';
   const STYLE_ID = 'cust-splide-style';
-  const SCRIPT_URL = 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js';
-  const STYLE_URL = 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css';
   const instances = new Map();
 
-  const loadSplide = () => {
+  const loadSplide = (slider) => {
     if (window.Splide) return Promise.resolve(window.Splide);
     if (window.__custSplideLoader) return window.__custSplideLoader;
+
+    const scriptUrl = slider.dataset.splideScript;
+    const styleUrl = slider.dataset.splideStyle;
+    if (!scriptUrl || !styleUrl) return Promise.reject(new Error('Missing Splide asset URLs'));
 
     if (!document.getElementById(STYLE_ID)) {
       const link = document.createElement('link');
       link.id = STYLE_ID;
       link.rel = 'stylesheet';
-      link.href = STYLE_URL;
+      link.href = styleUrl;
       document.head.appendChild(link);
     }
 
@@ -29,7 +31,7 @@
       }
       const script = document.createElement('script');
       script.id = SCRIPT_ID;
-      script.src = SCRIPT_URL;
+      script.src = scriptUrl;
       script.defer = true;
       script.addEventListener('load', () => resolve(window.Splide), { once: true });
       script.addEventListener('error', reject, { once: true });
@@ -44,6 +46,21 @@
     ['nav-color', 'nav-background', 'pagination-color', 'pagination-active'].forEach((token) => {
       root.style.setProperty(`--cust-slider-${token}`, styles.getPropertyValue(`--cust-slide-${token}`));
     });
+  };
+
+  const hydrateSlideImage = (slide) => {
+    const picture = slide?.querySelector('[data-deferred-hero-image]');
+    if (!picture) return;
+    picture.querySelectorAll('[data-srcset]').forEach((element) => {
+      element.srcset = element.dataset.srcset;
+      element.removeAttribute('data-srcset');
+    });
+    const image = picture.querySelector('img[data-src]');
+    if (image) {
+      image.src = image.dataset.src;
+      image.removeAttribute('data-src');
+    }
+    picture.removeAttribute('data-deferred-hero-image');
   };
 
   const mount = async (root) => {
@@ -63,16 +80,28 @@
     }
 
     try {
-      const Splide = await loadSplide();
+      const Splide = await loadSplide(slider);
       if (!root.isConnected || !Splide) return;
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reducedMotion) options.autoplay = false;
+      const autoplayRequested = options.autoplay === true && !reducedMotion;
+      options.autoplay = autoplayRequested ? 'pause' : false;
       const instance = new Splide(slider, options);
       instance.on('mounted active moved', (slide) => {
         const active = slide?.slide || slider.querySelector('.splide__slide.is-active') || slider.querySelector('.splide__slide');
+        hydrateSlideImage(active);
         updateControls(root, active);
       });
+      instance.on('move', (newIndex) => {
+        hydrateSlideImage(instance.Components.Slides.getAt(newIndex)?.slide);
+      });
       instance.mount();
+      if (autoplayRequested) {
+        const startAutoplay = () => window.setTimeout(() => {
+          if (root.isConnected) instance.Components.Autoplay?.play();
+        }, 8000);
+        if (document.readyState === 'complete') startAutoplay();
+        else window.addEventListener('load', startAutoplay, { once: true });
+      }
       instances.set(root.id, instance);
       root.dataset.initialized = 'true';
     } catch (error) {
