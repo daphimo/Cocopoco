@@ -43,17 +43,21 @@
     opener.addEventListener('click', openDrawer);
     closeButtons.forEach((button) => button.addEventListener('click', closeDrawer));
     root.addEventListener('click', (event) => { const trigger = event.target.closest('[data-accordion-trigger]'); if (trigger) setAccordion(trigger, trigger.getAttribute('aria-expanded') !== 'true'); });
-    root.querySelectorAll('[data-desktop-disclosure]').forEach((details) => {
+    const desktopDisclosures = [...root.querySelectorAll('[data-desktop-disclosure]')];
+    desktopDisclosures.forEach((details) => {
       const summary = details.querySelector('summary');
-      details.addEventListener('toggle', () => { summary.setAttribute('aria-expanded', String(details.open)); if (details.open) root.querySelectorAll('[data-desktop-disclosure][open]').forEach((other) => { if (other !== details) other.removeAttribute('open'); }); });
+      details.addEventListener('toggle', () => { summary.setAttribute('aria-expanded', String(details.open)); if (details.open) desktopDisclosures.forEach((other) => { if (other !== details && other.open) other.removeAttribute('open'); }); });
       details.addEventListener('pointerenter', () => { if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) details.open = true; });
       details.addEventListener('pointerleave', () => { if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) details.open = false; });
     });
-    document.addEventListener('click', (event) => { if (!root.contains(event.target)) root.querySelectorAll('[data-desktop-disclosure][open]').forEach((details) => details.removeAttribute('open')); });
+    document.addEventListener('click', (event) => {
+      if (root.contains(event.target) || !desktopDisclosures.some((details) => details.open)) return;
+      desktopDisclosures.forEach((details) => { if (details.open) details.removeAttribute('open'); });
+    });
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
         if (root.classList.contains('is-drawer-open')) closeDrawer();
-        root.querySelectorAll('[data-desktop-disclosure][open]').forEach((details) => details.removeAttribute('open'));
+        desktopDisclosures.forEach((details) => { if (details.open) details.removeAttribute('open'); });
       }
       if (event.key === 'Tab' && root.classList.contains('is-drawer-open')) {
         const focusable = [...drawer.querySelectorAll('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])')].filter((item) => item.offsetParent !== null);

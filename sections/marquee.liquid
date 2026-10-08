@@ -9,13 +9,12 @@
   <div class="marquee__track">
     {%- for group_index in (1..2) -%}
       <div class="marquee__group"{% if group_index == 2 %} aria-hidden="true"{% endif %}>
-        {%- for set_index in (1..2) -%}
-          <div class="marquee__set"{% if group_index == 1 and set_index > 1 %} aria-hidden="true"{% endif %}>
+          <div class="marquee__set">
             {%- for block in section.blocks -%}
               {%- if block.settings.text != blank -%}
                 <div
                   class="marquee__item"
-                  {% if group_index == 1 and set_index == 1 %}{{ block.shopify_attributes }}{% endif %}
+                  {% if group_index == 1 %}{{ block.shopify_attributes }}{% endif %}
                 >
                   {%- if block.settings.link != blank -%}
                     <a href="{{ block.settings.link }}">{{ block.settings.text }}</a>
@@ -26,7 +25,6 @@
               {%- endif -%}
             {%- endfor -%}
           </div>
-        {%- endfor -%}
       </div>
     {%- endfor -%}
   </div>
