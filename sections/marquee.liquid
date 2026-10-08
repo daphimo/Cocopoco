@@ -9,7 +9,7 @@
   <div class="marquee__track">
     {%- for group_index in (1..2) -%}
       <div class="marquee__group"{% if group_index == 2 %} aria-hidden="true"{% endif %}>
-        {%- for set_index in (1..6) -%}
+        {%- for set_index in (1..2) -%}
           <div class="marquee__set"{% if group_index == 1 and set_index > 1 %} aria-hidden="true"{% endif %}>
             {%- for block in section.blocks -%}
               {%- if block.settings.text != blank -%}

@@ -4,6 +4,7 @@
 
   const STORAGE_KEY = 'cocopoco_recently_viewed';
   const roots = new WeakSet();
+  const preparedRoots = new WeakSet();
 
   const readHistory = () => {
     try {
@@ -39,7 +40,29 @@
     if (grid.children.length) section.hidden = false;
   };
 
-  const mountAll = (scope = document) => scope.querySelectorAll('[data-recently-viewed]').forEach(mount);
+  const observer = 'IntersectionObserver' in window
+    ? new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          observer.unobserve(entry.target);
+          const section = entry.target.matches('[data-recently-viewed]')
+            ? entry.target
+            : entry.target.querySelector('[data-recently-viewed]');
+          mount(section);
+        });
+      }, { rootMargin: '300px 0px' })
+    : null;
+
+  const prepare = (section) => {
+    if (!section || preparedRoots.has(section)) return;
+    preparedRoots.add(section);
+    const history = readHistory();
+    saveCurrent(section.dataset.productHandle, history);
+    if (observer) observer.observe(section.parentElement || section);
+    else mount(section);
+  };
+
+  const mountAll = (scope = document) => scope.querySelectorAll('[data-recently-viewed]').forEach(prepare);
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => mountAll(), { once: true });
   else mountAll();
   document.addEventListener('shopify:section:load', (event) => mountAll(event.target));

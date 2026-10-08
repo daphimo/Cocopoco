@@ -7,6 +7,7 @@ if (!customElements.get('product-info')) {
       onVariantChangeUnsubscriber = undefined;
       cartUpdateUnsubscriber = undefined;
       abortController = undefined;
+      mediaModalUpdate = undefined;
       pendingRequestUrl = null;
       preProcessHtmlCallbacks = [];
       postProcessHtmlCallbacks = [];
@@ -48,6 +49,10 @@ if (!customElements.get('product-info')) {
       disconnectedCallback() {
         this.onVariantChangeUnsubscriber();
         this.cartUpdateUnsubscriber?.();
+        if (this.mediaModalUpdate) {
+          if ('cancelIdleCallback' in window) window.cancelIdleCallback(this.mediaModalUpdate);
+          else window.clearTimeout(this.mediaModalUpdate);
+        }
       }
 
       initializeProductSwapUtility() {
@@ -272,7 +277,16 @@ if (!customElements.get('product-info')) {
           return [mediaGallerySourceItems, sourceSet, sourceMap];
         };
 
-        if (mediaGallerySource && mediaGalleryDestination) {
+        const mediaSignature = (gallery) => Array.from(
+          gallery?.querySelectorAll('li[data-media-id]') || [],
+          (item) => item.dataset.mediaId
+        ).join(',');
+
+        if (
+          mediaGallerySource &&
+          mediaGalleryDestination &&
+          mediaSignature(mediaGallerySource) !== mediaSignature(mediaGalleryDestination)
+        ) {
           let [mediaGallerySourceItems, sourceSet, sourceMap] = refreshSourceData();
           const mediaGalleryDestinationItems = Array.from(
             mediaGalleryDestination.querySelectorAll('li[data-media-id]')
@@ -322,11 +336,26 @@ if (!customElements.get('product-info')) {
         );
 
         // update media modal
-        const modalContent = this.productModal?.querySelector(`.product-media-modal__content`);
+        this.scheduleMediaModalUpdate(html);
+      }
+
+      scheduleMediaModalUpdate(html) {
         const newModalContent = html.querySelector(`product-modal .product-media-modal__content`);
-        if (modalContent && newModalContent && modalContent.innerHTML !== newModalContent.innerHTML) {
-          modalContent.innerHTML = newModalContent.innerHTML;
+        if (!newModalContent) return;
+        const nextMarkup = newModalContent.innerHTML;
+        const update = () => {
+          this.mediaModalUpdate = undefined;
+          const modalContent = this.productModal?.querySelector(`.product-media-modal__content`);
+          if (modalContent && modalContent.innerHTML !== nextMarkup) modalContent.innerHTML = nextMarkup;
+        };
+
+        if (this.mediaModalUpdate) {
+          if ('cancelIdleCallback' in window) window.cancelIdleCallback(this.mediaModalUpdate);
+          else window.clearTimeout(this.mediaModalUpdate);
         }
+        this.mediaModalUpdate = 'requestIdleCallback' in window
+          ? window.requestIdleCallback(update, { timeout: 500 })
+          : window.setTimeout(update, 0);
       }
 
       setQuantityBoundries() {
