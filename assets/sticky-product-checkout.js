@@ -69,8 +69,10 @@
     };
 
     updateVisibility();
-    window.addEventListener('scroll', requestVisibilityUpdate, { passive: true, signal: controller.signal });
-    window.addEventListener('resize', requestVisibilityUpdate, { signal: controller.signal });
+    if (mode !== 'always') {
+      window.addEventListener('scroll', requestVisibilityUpdate, { passive: true, signal: controller.signal });
+      window.addEventListener('resize', requestVisibilityUpdate, { signal: controller.signal });
+    }
     if (typeof subscribe === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
       bar._variantUnsubscribe = subscribe(PUB_SUB_EVENTS.variantChange, ({ data }) => {
         if (String(data.sectionId) === String(bar.dataset.sectionId)) updateVariant(data.variant);

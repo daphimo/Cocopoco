@@ -197,8 +197,9 @@ if (!customElements.get('product-info')) {
             const source = html.getElementById(`${id}-${this.sectionId}`);
             const destination = this.querySelector(`#${id}-${this.dataset.section}`);
             if (source && destination) {
-              destination.innerHTML = source.innerHTML;
-              destination.classList.toggle('hidden', shouldHide(source));
+              if (destination.innerHTML !== source.innerHTML) destination.innerHTML = source.innerHTML;
+              const hidden = shouldHide(source);
+              if (destination.classList.contains('hidden') !== hidden) destination.classList.toggle('hidden', hidden);
             }
           };
 
@@ -323,7 +324,9 @@ if (!customElements.get('product-info')) {
         // update media modal
         const modalContent = this.productModal?.querySelector(`.product-media-modal__content`);
         const newModalContent = html.querySelector(`product-modal .product-media-modal__content`);
-        if (modalContent && newModalContent) modalContent.innerHTML = newModalContent.innerHTML;
+        if (modalContent && newModalContent && modalContent.innerHTML !== newModalContent.innerHTML) {
+          modalContent.innerHTML = newModalContent.innerHTML;
+        }
       }
 
       setQuantityBoundries() {
@@ -387,7 +390,7 @@ if (!customElements.get('product-info')) {
               }
             }
           } else {
-            current.innerHTML = updated.innerHTML;
+            if (current.innerHTML !== updated.innerHTML) current.innerHTML = updated.innerHTML;
             if (selector === '.quantity__label') {
               const updatedAriaLabelledBy = updated.getAttribute('aria-labelledby');
               if (updatedAriaLabelledBy) {
