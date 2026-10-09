@@ -12,7 +12,6 @@
 
 {%- if section.settings.quick_add == 'standard' -%}
   <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
 {%- if section.settings.quick_add == 'bulk' -%}
@@ -415,4 +414,3 @@
 }
 {% endschema %}
 {{ 'component-product-card-custom.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'component-product-card-custom.js' | asset_url }}" defer="defer"></script>

@@ -117,8 +117,12 @@
     if (root) instances.delete(root.id);
   };
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => mountAll(), { once: true });
-  else mountAll();
+  const scheduleMount = () => {
+    if ('requestIdleCallback' in window) window.requestIdleCallback(() => mountAll(), { timeout: 2000 });
+    else window.setTimeout(() => mountAll(), 1);
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', scheduleMount, { once: true });
+  else scheduleMount();
   document.addEventListener('shopify:section:load', (event) => mountAll(event.target));
   document.addEventListener('shopify:section:unload', (event) => unmount(event.detail.sectionId));
 })();

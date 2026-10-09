@@ -5,9 +5,6 @@
   assign slides = section.blocks | where: 'type', 'slide'
   assign benefits = section.blocks | where: 'type', 'benefit'
   assign splide_type = section.settings.slide_type
-  if splide_type == 'slide' and section.settings.loop
-    assign splide_type = 'loop'
-  endif
 -%}
 
 <section
