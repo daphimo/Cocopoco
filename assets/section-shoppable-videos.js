@@ -5,6 +5,38 @@
   const instances = new Map();
   const selector = '[data-shoppable-videos]';
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mobileMedia = window.matchMedia('(max-width: 749px)');
+
+  function loadSplide(section) {
+    if (window.Splide) return Promise.resolve(window.Splide);
+    if (window.__custSplideLoader) return window.__custSplideLoader;
+    const scriptUrl = section.dataset.splideScript;
+    const styleUrl = section.dataset.splideStyle;
+    if (!scriptUrl || !styleUrl) return Promise.reject(new Error('Missing Splide asset URLs'));
+    if (!document.getElementById('cust-splide-style')) {
+      const link = document.createElement('link');
+      link.id = 'cust-splide-style';
+      link.rel = 'stylesheet';
+      link.href = styleUrl;
+      document.head.appendChild(link);
+    }
+    window.__custSplideLoader = new Promise((resolve, reject) => {
+      const existing = document.getElementById('cust-splide-script');
+      if (existing) {
+        existing.addEventListener('load', () => resolve(window.Splide), { once: true });
+        existing.addEventListener('error', reject, { once: true });
+        return;
+      }
+      const script = document.createElement('script');
+      script.id = 'cust-splide-script';
+      script.src = scriptUrl;
+      script.defer = true;
+      script.addEventListener('load', () => resolve(window.Splide), { once: true });
+      script.addEventListener('error', reject, { once: true });
+      document.head.appendChild(script);
+    });
+    return window.__custSplideLoader;
+  }
 
   function find(root) {
     return [...(root.matches?.(selector) ? [root] : []), ...root.querySelectorAll(selector)];
@@ -40,6 +72,7 @@
     let dragMoved = false;
     let suppressClickUntil = 0;
     let slideTimer;
+    let cardObserver;
 
     if (modal) document.body.append(modal);
 
@@ -130,8 +163,13 @@
       opener?.focus({ preventScroll: true });
     }
 
-    function openReel(index, button) {
-      if (!modal || !reelRoot || !window.Splide) return;
+    async function openReel(index, button) {
+      if (!modal || !reelRoot) return;
+      try {
+        await loadSplide(section);
+      } catch (error) {
+        return;
+      }
       opener = button;
       previousBodyOverflow = document.body.style.overflow;
       previousHtmlOverflow = document.documentElement.style.overflow;
@@ -159,7 +197,7 @@
       if (next) next.disabled = !hasOverflow || (!loop && track.scrollLeft >= maxScroll - 1);
       if (!progress) return;
       const percent = track.scrollWidth ? Math.min(100, Math.max(0, ((track.scrollLeft + track.clientWidth) / track.scrollWidth) * 100)) : 100;
-      progress.querySelector('.shoppable-videos__progress-bar').style.width = `${percent}%`;
+      progress.querySelector('.shoppable-videos__progress-bar').style.transform = `scaleX(${percent / 100})`;
       progress.setAttribute('aria-valuenow', String(Math.round(percent)));
     }
 
@@ -207,6 +245,42 @@
       const width = Math.max(1, (track.clientWidth - gap * (count - 1)) / count);
       section.style.setProperty('--sv-item-width', `${width}px`);
       requestAnimationFrame(updateProgress);
+    }
+
+    function createCardVideo(card) {
+      if (!card || card.querySelector('.shoppable-videos__video')) return card?.querySelector('.shoppable-videos__video');
+      const template = card.querySelector('[data-card-video-template]');
+      const video = template?.content.firstElementChild?.cloneNode(true);
+      if (!(video instanceof HTMLVideoElement)) return null;
+      card.querySelector('.shoppable-videos__media')?.append(video);
+      video.addEventListener('playing', () => card.classList.add('is-video-active'), { once: true, signal });
+      video.addEventListener('error', () => card.classList.remove('is-video-active'), { signal });
+      video.load();
+      return video;
+    }
+
+    function unloadCardVideo(card) {
+      const video = card?.querySelector('.shoppable-videos__video');
+      if (!video) return;
+      video.pause();
+      video.querySelectorAll('source').forEach((source) => source.removeAttribute('src'));
+      video.load();
+      video.remove();
+      card.classList.remove('is-video-active');
+    }
+
+    if (!mobileMedia.matches && 'IntersectionObserver' in window) {
+      cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const video = createCardVideo(entry.target);
+            if (section.dataset.autoplay === 'true' && !reduceMotion.matches) video?.play().catch(() => {});
+          } else if (section.dataset.pauseOffscreen === 'true') {
+            unloadCardVideo(entry.target);
+          }
+        });
+      }, { rootMargin: '160px 0px', threshold: 0.2 });
+      cards.forEach((card) => cardObserver.observe(card));
     }
 
     track.addEventListener('scroll', updateProgress, { passive: true, signal });
@@ -345,6 +419,10 @@
       controller,
       stopSlideAutoplay,
       disconnectResize: () => resizeObserver?.disconnect(),
+      disconnectCards: () => {
+        cardObserver?.disconnect();
+        cards.forEach(unloadCardVideo);
+      },
       scrollToIndex,
       destroyReel: () => {
         closeReel();
@@ -367,6 +445,7 @@
       instance.controller.abort();
       instance.stopSlideAutoplay();
       instance.disconnectResize();
+      instance.disconnectCards();
       instance.destroyReel();
       instances.delete(section);
     });

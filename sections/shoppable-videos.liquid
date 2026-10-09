@@ -30,19 +30,23 @@
         {% if section.settings.data_source == 'blocks' %}{{ video_item.shopify_attributes }}{% endif %}
       >
         <div class="shoppable-videos__media">
-          <video
-            class="shoppable-videos__video"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto"
-            {% if current_poster != blank %}poster="{{ current_poster | image_url: width: 800 }}"{% endif %}
-          >
-            {% for video_source in current_video.sources %}
-              <source src="{{ video_source.url }}" type="{{ video_source.mime_type }}">
-            {% endfor %}
-          </video>
+          {% if current_poster != blank %}
+            {{ current_poster | image_url: width: 720 | image_tag: widths: '320, 480, 640, 720', sizes: '(max-width: 749px) 67vw, 29vw', loading: 'lazy', class: 'shoppable-videos__poster', alt: current_product.title }}
+          {% endif %}
+          <template data-card-video-template>
+            <video
+              class="shoppable-videos__video"
+              muted
+              loop
+              playsinline
+              preload="none"
+              {% if current_poster != blank %}poster="{{ current_poster | image_url: width: 720 }}"{% endif %}
+            >
+              {% for video_source in current_video.sources %}
+                <source src="{{ video_source.url }}" type="{{ video_source.mime_type }}">
+              {% endfor %}
+            </video>
+          </template>
         </div>
         <button class="shoppable-videos__open" type="button" data-reel-open data-reel-index="{{ rendered_count | minus: 1 }}" aria-label="Watch shoppable video {{ rendered_count }}"></button>
         {% render 'shoppable-video-product-stripe', product: current_product, button_label: section.settings.shop_button_label %}
@@ -134,12 +138,12 @@
     data-pause-offscreen="{{ section.settings.pause_offscreen }}"
     data-slide-type="{{ section.settings.slide_type }}"
     data-drag-enabled="{{ section.settings.enable_drag }}"
+    data-splide-script="{{ 'cust-splide.min.js' | asset_url }}"
+    data-splide-style="{{ 'cust-splide-core.min.css' | asset_url }}"
     style="--sv-padding-top: {{ section.settings.padding_top }}px; --sv-padding-bottom: {{ section.settings.padding_bottom }}px; --sv-padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --sv-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px; --sv-max-width: {{ section.settings.max_width }}px; --sv-aspect-ratio: {{ section.settings.video_aspect_ratio }}; --sv-card-radius: {{ section.settings.card_radius }}px; --sv-border-opacity: {{ section.settings.card_border_opacity }}%; --sv-stripe-bottom: {{ section.settings.product_stripe_bottom }}px; --sv-stripe-inset: {{ section.settings.product_stripe_inset }}px; --sv-stripe-radius: {{ section.settings.stripe_radius }}px; --sv-image-size: {{ section.settings.stripe_product_image_size }}px; --sv-header-alignment: {{ section.settings.header_alignment }}; --sv-desktop-count: {{ section.settings.desktop_count }}; --sv-mobile-count: {{ section.settings.mobile_count }}; --sv-card-gap: {{ section.settings.card_gap }}px; --sv-card-gap-mobile: {{ section.settings.card_gap_mobile }}px;"
   >
     <div class="shoppable-videos__inner">
       {% if rendered_count > 0 %}
-        {{ 'cust-splide-core.min.css' | asset_url | stylesheet_tag }}
-        <script src="{{ 'cust-splide.min.js' | asset_url }}" defer></script>
         <script src="{{ 'section-shoppable-videos.js' | asset_url }}" defer></script>
       {% endif %}
       {% if section.settings.show_header %}

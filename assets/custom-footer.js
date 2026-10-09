@@ -3,6 +3,7 @@
   const instances = new WeakMap();
   const setState = (toggle, panel, open) => {
     toggle.setAttribute('aria-expanded', String(open));
+    panel.setAttribute('aria-hidden', String(!open));
     panel.classList.toggle('is-open', open);
   };
   const init = (footer) => {
@@ -20,8 +21,12 @@
       }, { signal: controller.signal });
     });
     const sync = () => menus.forEach((menu) => {
+      const toggle = menu.querySelector('[data-footer-toggle]');
       const panel = menu.querySelector('[data-footer-panel]');
-      if (panel) panel.classList.toggle('is-desktop', !mq.matches);
+      if (!toggle || !panel) return;
+      const desktop = !mq.matches;
+      panel.classList.toggle('is-desktop', desktop);
+      setState(toggle, panel, desktop);
     });
     sync();
     mq.addEventListener?.('change', sync, { signal: controller.signal });
