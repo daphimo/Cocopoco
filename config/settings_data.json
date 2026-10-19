@@ -170,7 +170,7 @@
             "type": "discount_tier",
             "settings": {
               "discount": 0,
-              "reward_label": "",
+              "reward_label": "Free Shipping",
               "threshold": 1499,
               "before_message": "Add item worth {amount} to get FREE Shipping",
               "after_message": "Congratulations! You unlocked FREE SHIPPING"
