@@ -170,6 +170,7 @@
             "type": "discount_tier",
             "settings": {
               "discount": 0,
+              "reward_label": "",
               "threshold": 1499,
               "before_message": "Add item worth {amount} to get FREE Shipping",
               "after_message": "Congratulations! You unlocked FREE SHIPPING"
@@ -180,6 +181,7 @@
             "disabled": true,
             "settings": {
               "discount": 10,
+              "reward_label": "",
               "threshold": 1599,
               "before_message": "Add item worth {amount} to get 10% OFF",
               "after_message": "Congratulations! You unlocked 10% discount"
@@ -190,6 +192,7 @@
             "disabled": true,
             "settings": {
               "discount": 15,
+              "reward_label": "",
               "threshold": 2199,
               "before_message": "Add item worth {amount} to get 15% OFF",
               "after_message": "Congratulations! You unlocked 15% discount"
@@ -209,10 +212,10 @@
           "enable_dynamic_message_1": true,
           "dynamic_message_threshold_1": 1499,
           "dynamic_message_1": "You unlocked free shipping!",
-          "enable_dynamic_message_2": true,
+          "enable_dynamic_message_2": false,
           "dynamic_message_threshold_2": 1999,
           "dynamic_message_2": "Your order just unlocked an extra reward!",
-          "enable_dynamic_message_3": true,
+          "enable_dynamic_message_3": false,
           "dynamic_message_threshold_3": 2499,
           "dynamic_message_3": "Amazing! You unlocked our top cart reward!",
           "recommendation_heading": "Add a little extra joy ✨",
