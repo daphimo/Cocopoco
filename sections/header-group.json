@@ -45,22 +45,6 @@
             "link": ""
           }
         },
-        "text_mjVAna": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "brand_background_color": "#ffffff",
-            "brand_caption_color": "#b86a8a",
-            "brand_heading_color": "#341824",
-            "brand_text_color": "#4a4145",
-            "brand_border_color": "#f9d5e6",
-            "brand_button_background": "#e83e8c",
-            "brand_button_background_mobile": "#ec64a4",
-            "brand_button_text_color": "#ffffff",
-            "text": "FREE KEYCHAIN ON ORDERS ABOVE ₹999/-",
-            "link": ""
-          }
-        },
         "text_Bf96Px": {
           "type": "text",
           "disabled": true,
@@ -107,6 +91,21 @@
             "link": ""
           }
         },
+        "text_mjVAna": {
+          "type": "text",
+          "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
+            "brand_button_text_color": "#ffffff",
+            "text": "FREE SHIPPING ON ORDERS ABOVE ₹1499/-",
+            "link": ""
+          }
+        },
         "text_mmGtzi": {
           "type": "text",
           "settings": {
@@ -126,10 +125,10 @@
       "block_order": [
         "text_nEjjMi",
         "text_pexTwQ",
-        "text_mjVAna",
         "text_Bf96Px",
         "text_6XqC3B",
         "text_HUWbMU",
+        "text_mjVAna",
         "text_mmGtzi"
       ],
       "name": "Marquee",
