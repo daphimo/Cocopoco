@@ -177,7 +177,6 @@
           },
           "tier_2": {
             "type": "discount_tier",
-            "disabled": true,
             "settings": {
               "discount": 10,
               "threshold": 1599,
@@ -187,7 +186,6 @@
           },
           "tier_3": {
             "type": "discount_tier",
-            "disabled": true,
             "settings": {
               "discount": 15,
               "threshold": 2199,
