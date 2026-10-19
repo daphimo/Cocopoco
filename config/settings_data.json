@@ -133,6 +133,23 @@
     "tab_switch_message": "WE MISS YOU!!",
     "enable_leave_alert": false,
     "leave_alert_message": "Wait! Explore our latest collection",
+    "mid": "19g6jm1rz1s0p",
+    "envType": "production",
+    "goEnable": true,
+    "checkoutSubText": "",
+    "checkoutEnableLogo": false,
+    "checkoutEnableBanner": false,
+    "goBuynowEnable": true,
+    "buyNowText": "Buy It Now",
+    "buyNowSubText": "",
+    "buyNowEnableLogo": false,
+    "buyNowEnableBanner": false,
+    "enableIntlFlow": false,
+    "priClr": "#000000",
+    "secClr": "#ffffff",
+    "main-titile": "Checkout",
+    "btnBClr": "#000000",
+    "btnTextClr": "#ffffff",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -152,14 +169,15 @@
           "tier_1": {
             "type": "discount_tier",
             "settings": {
-              "discount": 5,
-              "threshold": 999,
-              "before_message": "Add item worth {amount} to get 5% OFF",
-              "after_message": "Congratulations! You unlocked 5% discount"
+              "discount": 0,
+              "threshold": 1499,
+              "before_message": "Add item worth {amount} to get FREE Shipping",
+              "after_message": "Congratulations! You unlocked FREE SHIPPING"
             }
           },
           "tier_2": {
             "type": "discount_tier",
+            "disabled": true,
             "settings": {
               "discount": 10,
               "threshold": 1599,
@@ -169,6 +187,7 @@
           },
           "tier_3": {
             "type": "discount_tier",
+            "disabled": true,
             "settings": {
               "discount": 15,
               "threshold": 2199,
@@ -241,16 +260,6 @@
           "mobile_horizontal_padding": 20,
           "mobile_vertical_padding": 20
         }
-      },
-      "16178409538858199964": {
-        "type": "shopify://apps/powr-sales-popup-email-pop-up/blocks/app-embed/c42eddd7-7bc0-47cc-aa8a-df388049f012",
-        "disabled": true,
-        "settings": {}
-      },
-      "15710897563947040993": {
-        "type": "shopify://apps/avada-boost-sales-trust-badge/blocks/app-embed/45454b7f-f6a7-4852-b770-8e0c3992a226",
-        "disabled": true,
-        "settings": {}
       },
       "144831480468751239": {
         "type": "shopify://apps/essential-upsell/blocks/app-embed/50627fd9-24fd-4250-8614-accc12826d80",
@@ -330,24 +339,7 @@
           "shadow": "#e83e8c"
         }
       }
-    },
-    "mid": "19g6jm1rz1s0p",
-    "envType": "production",
-    "goEnable": true,
-    "priClr": "#000000",
-    "secClr": "#ffffff",
-    "main-titile": "Checkout",
-    "goBuynowEnable": true,
-    "btnBClr": "#000000",
-    "btnTextClr": "#ffffff",
-    "buyNowText": "Buy It Now",
-    "checkoutSubText": "",
-    "checkoutEnableBanner": false,
-    "checkoutEnableLogo": false,
-    "buyNowSubText": "",
-    "buyNowEnableBanner": false,
-    "buyNowEnableLogo": false,
-    "enableIntlFlow": false
+    }
   },
   "presets": {
     "Dawn": {
