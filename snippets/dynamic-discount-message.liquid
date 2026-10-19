@@ -1,0 +1,39 @@
+{% doc %}
+  Renders one cart message based on the highest configured subtotal threshold reached.
+
+  @param {object} cart - The current cart object.
+  @param {object} section - The cart drawer section containing message settings.
+
+  @example
+  {% render 'dynamic-discount-message', cart: cart, section: section %}
+{% enddoc %}
+
+{%- liquid
+  assign active_message = blank
+  assign cart_subtotal = cart.items_subtotal_price
+
+  if section.settings.enable_dynamic_message_initial
+    assign active_message = section.settings.dynamic_message_initial
+  endif
+
+  assign threshold_1 = section.settings.dynamic_message_threshold_1 | times: 100 | round
+  if section.settings.enable_dynamic_message_1 and threshold_1 > 0 and cart_subtotal >= threshold_1 and section.settings.dynamic_message_1 != blank
+    assign active_message = section.settings.dynamic_message_1
+  endif
+
+  assign threshold_2 = section.settings.dynamic_message_threshold_2 | times: 100 | round
+  if section.settings.enable_dynamic_message_2 and threshold_2 > 0 and cart_subtotal >= threshold_2 and section.settings.dynamic_message_2 != blank
+    assign active_message = section.settings.dynamic_message_2
+  endif
+
+  assign threshold_3 = section.settings.dynamic_message_threshold_3 | times: 100 | round
+  if section.settings.enable_dynamic_message_3 and threshold_3 > 0 and cart_subtotal >= threshold_3 and section.settings.dynamic_message_3 != blank
+    assign active_message = section.settings.dynamic_message_3
+  endif
+-%}
+
+{%- if active_message != blank -%}
+  <div class="cart-drawer__dynamic-message" data-dynamic-discount-message role="status" aria-live="polite" aria-atomic="true">
+    <span>{{ active_message | escape }}</span>
+  </div>
+{%- endif -%}

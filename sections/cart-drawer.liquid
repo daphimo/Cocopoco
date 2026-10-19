@@ -6,7 +6,18 @@
   "settings": [
     { "type": "text", "id": "cart_heading", "label": "Cart heading", "default": "Your bag" },
     { "type": "checkbox", "id": "enable_tiered_discount_progress", "label": "Enable tiered discount progress bar", "default": true },
-    { "type": "textarea", "id": "custom_cart_content", "label": "Custom Cart Content", "info": "Add multiple cart messages separated by commas.", "default": "₹99 flat shipping on every order" },
+    { "type": "header", "content": "Dynamic discount message" },
+    { "type": "checkbox", "id": "enable_dynamic_message_initial", "label": "Enable first message", "default": true },
+    { "type": "text", "id": "dynamic_message_initial", "label": "First message", "info": "Shown before the first price threshold is reached.", "default": "₹99 flat shipping on every order" },
+    { "type": "checkbox", "id": "enable_dynamic_message_1", "label": "Enable threshold 1 message", "default": true },
+    { "type": "number", "id": "dynamic_message_threshold_1", "label": "Price threshold 1", "info": "Enter an amount in your store currency, for example 1499.", "default": 1499 },
+    { "type": "text", "id": "dynamic_message_1", "label": "Message after threshold 1", "default": "You unlocked free shipping!" },
+    { "type": "checkbox", "id": "enable_dynamic_message_2", "label": "Enable threshold 2 message", "default": true },
+    { "type": "number", "id": "dynamic_message_threshold_2", "label": "Price threshold 2", "info": "The second threshold should be higher than the first.", "default": 1999 },
+    { "type": "text", "id": "dynamic_message_2", "label": "Message after threshold 2", "default": "Your order just unlocked an extra reward!" },
+    { "type": "checkbox", "id": "enable_dynamic_message_3", "label": "Enable threshold 3 message", "default": true },
+    { "type": "number", "id": "dynamic_message_threshold_3", "label": "Price threshold 3", "info": "The third threshold should be higher than the second.", "default": 2499 },
+    { "type": "text", "id": "dynamic_message_3", "label": "Message after threshold 3", "default": "Amazing! You unlocked our top cart reward!" },
     { "type": "text", "id": "recommendation_heading", "label": "Recommendation heading", "default": "Add a little extra joy ✨" },
     { "type": "product_list", "id": "recommended_products", "label": "Recommended products", "limit": 12 },
     { "type": "number", "id": "flat_shipping_amount", "label": "Flat shipping amount", "info": "Enter the amount in your store currency, for example 99.", "default": 99 },
@@ -25,9 +36,10 @@
   "blocks": [
     { "type": "discount_tier", "name": "Tiered discount progress", "limit": 3, "settings": [
       { "type": "number", "id": "discount", "label": "Discount", "default": 5 },
+      { "type": "text", "id": "reward_label", "label": "Reward label", "info": "Optional. Enter any reward, for example Free Shipping, Free Gift, or Buy 2 Get 1. When blank, the numeric discount is shown; a discount of 0 defaults to Free Shipping." },
       { "type": "number", "id": "threshold", "label": "Price to achieve", "info": "Enter the amount in your store currency, for example 999.", "default": 999 },
-      { "type": "text", "id": "before_message", "label": "Before success message", "default": "Add item worth {amount} to get {discount}% OFF" },
-      { "type": "text", "id": "after_message", "label": "After success message", "default": "Congratulations! You unlocked {discount}% discount" }
+      { "type": "text", "id": "before_message", "label": "Before success message", "info": "Use {amount}, {reward}, {discount}, or {threshold}.", "default": "Add item worth {amount} to get {reward}" },
+      { "type": "text", "id": "after_message", "label": "After success message", "info": "Use {reward}, {discount}, or {threshold}.", "default": "Congratulations! You unlocked {reward}" }
     ] },
     { "type": "footer_utility", "name": "Footer utility", "limit": 2, "settings": [
       { "type": "select", "id": "icon", "label": "Icon", "default": "sparkles", "options": [{ "value": "sparkles", "label": "Sparkles" }, { "value": "star", "label": "Star" }, { "value": "truck", "label": "Truck" }, { "value": "rotate", "label": "Rotate" }, { "value": "arrow-right", "label": "Arrow right" }, { "value": "none", "label": "None" }] },

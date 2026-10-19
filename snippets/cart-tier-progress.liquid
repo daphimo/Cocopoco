@@ -44,7 +44,15 @@
     assign remaining_money = remaining_cents | money | strip_html
     assign threshold_cents = status_tier.settings.threshold | times: 100 | round
     assign threshold_money = threshold_cents | money | strip_html
-    assign status_message = status_template | replace: '{amount}', remaining_money | replace: '{discount}', status_tier.settings.discount | replace: '{threshold}', threshold_money
+    assign status_reward = status_tier.settings.reward_label | strip
+    if status_reward == blank
+      if status_tier.settings.discount > 0
+        assign status_reward = status_tier.settings.discount | append: '% OFF'
+      else
+        assign status_reward = 'Free Shipping'
+      endif
+    endif
+    assign status_message = status_template | replace: '{amount}', remaining_money | replace: '{reward}', status_reward | replace: '{discount}', status_tier.settings.discount | replace: '{threshold}', threshold_money
     if unlocked_count == tier_count
       assign progress_percent = 100
     else
@@ -76,10 +84,18 @@
             {%- assign block_threshold_cents = block.settings.threshold | times: 100 | round -%}
             {%- assign tier_unlocked = false -%}
             {%- if cart.items_subtotal_price >= block_threshold_cents -%}{%- assign tier_unlocked = true -%}{%- endif -%}
+            {%- assign reward_label = block.settings.reward_label | strip -%}
+            {%- if reward_label == blank -%}
+              {%- if block.settings.discount > 0 -%}
+                {%- assign reward_label = block.settings.discount | append: '% OFF' -%}
+              {%- else -%}
+                {%- assign reward_label = 'Free Shipping' -%}
+              {%- endif -%}
+            {%- endif -%}
             <div class="cart-tier-progress__tier{% if tier_unlocked %} is-unlocked{% endif %}" data-tier-marker {{ block.shopify_attributes }}>
               <span class="cart-tier-progress__marker"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" focusable="false" aria-hidden="true"><path d="M15.0049 2.00281C17.214 2.00281 19.0049 3.79367 19.0049 6.00281C19.0049 6.73184 18.8098 7.41532 18.4691 8.00392L23.0049 8.00281V10.0028H21.0049V20.0028C21.0049 20.5551 20.5572 21.0028 20.0049 21.0028H4.00488C3.4526 21.0028 3.00488 20.5551 3.00488 20.0028V10.0028H1.00488V8.00281L5.54065 8.00392C5.19992 7.41532 5.00488 6.73184 5.00488 6.00281C5.00488 3.79367 6.79574 2.00281 9.00488 2.00281C10.2001 2.00281 11.2729 2.52702 12.0058 3.35807C12.7369 2.52702 13.8097 2.00281 15.0049 2.00281ZM11.0049 10.0028H5.00488V19.0028H11.0049V10.0028ZM19.0049 10.0028H13.0049V19.0028H19.0049V10.0028ZM9.00488 4.00281C7.90031 4.00281 7.00488 4.89824 7.00488 6.00281C7.00488 7.05717 7.82076 7.92097 8.85562 7.99732L9.00488 8.00281H11.0049V6.00281C11.0049 5.00116 10.2686 4.1715 9.30766 4.02558L9.15415 4.00829L9.00488 4.00281ZM15.0049 4.00281C13.9505 4.00281 13.0867 4.81869 13.0104 5.85355L13.0049 6.00281V8.00281H15.0049C16.0592 8.00281 16.923 7.18693 16.9994 6.15207L17.0049 6.00281C17.0049 4.89824 16.1095 4.00281 15.0049 4.00281Z"></path></svg></span>
               <span class="cart-tier-progress__threshold">{{ block_threshold_cents | money | strip_html }}</span>
-              <strong class="cart-tier-progress__discount">{{ block.settings.discount }}% OFF</strong>
+              <strong class="cart-tier-progress__discount">{{ reward_label | escape }}</strong>
               <span class="visually-hidden">{% if tier_unlocked %}Unlocked{% else %}Locked{% endif %}</span>
             </div>
           {%- endif -%}
@@ -92,7 +108,7 @@
         {%- for block in section.blocks -%}
           {%- if block.type == 'discount_tier' and block.settings.threshold > 0 -%}
             {%- if config_index > 0 -%},{%- endif -%}
-            {"discount":{{ block.settings.discount | json }},"threshold":{{ block.settings.threshold | times: 100 | round | json }},"beforeMessage":{{ block.settings.before_message | json }},"afterMessage":{{ block.settings.after_message | json }}}
+            {"discount":{{ block.settings.discount | json }},"reward":{{ block.settings.reward_label | json }},"threshold":{{ block.settings.threshold | times: 100 | round | json }},"beforeMessage":{{ block.settings.before_message | json }},"afterMessage":{{ block.settings.after_message | json }}}
             {%- assign config_index = config_index | plus: 1 -%}
           {%- endif -%}
         {%- endfor -%}

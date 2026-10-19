@@ -16,8 +16,11 @@ if (!customElements.get('cart-tier-progress')) {
         const targetTier = tiers[unlockedCount] || tiers[tiers.length - 1];
         const remaining = Math.max(0, targetTier.threshold - cartAmount);
         const template = unlockedCount === tiers.length ? targetTier.afterMessage : targetTier.beforeMessage;
+        const reward = String(targetTier.reward || '').trim()
+          || (Number(targetTier.discount) > 0 ? `${targetTier.discount}% OFF` : 'Free Shipping');
         const message = String(template || '')
           .replaceAll('{amount}', this.formatMoney(remaining, config.moneyFormat))
+          .replaceAll('{reward}', reward)
           .replaceAll('{discount}', String(targetTier.discount ?? ''))
           .replaceAll('{threshold}', this.formatMoney(targetTier.threshold, config.moneyFormat));
 
