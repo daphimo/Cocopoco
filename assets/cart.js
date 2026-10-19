@@ -166,7 +166,7 @@ class CartItems extends window.StandardEvents.createViewEventElement(HTMLElement
       {
         id: 'main-cart-footer',
         section: document.getElementById('main-cart-footer').dataset.id,
-        selector: '.js-contents',
+        selector: '.cart__blocks',
       },
     ];
   }

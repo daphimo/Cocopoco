@@ -17,6 +17,16 @@
   }
 {%- endstyle -%}
 
+{%- liquid
+  assign minimum_order_cents = section.settings.minimum_order_amount | times: 100 | round
+  assign minimum_order_reached = true
+  if section.settings.enable_minimum_order and minimum_order_cents > 0
+    if cart.total_price < minimum_order_cents
+      assign minimum_order_reached = false
+    endif
+  endif
+-%}
+
 <div
   class="gradient color-{{ section.settings.color_scheme }}{% if cart == empty %} is-empty{% endif %}"
   id="main-cart-footer"
@@ -110,16 +120,35 @@
                   id="checkout"
                   class="cart__checkout-button button"
                   name="checkout"
-                  {% if cart == empty %}
+                  {% if cart == empty or minimum_order_reached == false %}
                     disabled
                   {% endif %}
+                  {% unless minimum_order_reached %}
+                    aria-describedby="CartPage-MinimumMessage"
+                  {% endunless %}
                   form="cart"
                 >
                   {{ 'sections.cart.checkout' | t }}
                 </button>
               </div>
 
-              {%- if additional_checkout_buttons -%}
+              {%- unless minimum_order_reached -%}
+                {%- liquid
+                  assign minimum_remaining_cents = minimum_order_cents | minus: cart.total_price | at_least: 0
+                  assign minimum_progress = cart.total_price | times: 100.0 | divided_by: minimum_order_cents | at_most: 100
+                  assign minimum_remaining_money = minimum_remaining_cents | money | strip_html
+                  assign minimum_amount_money = minimum_order_cents | money | strip_html
+                  assign minimum_message = section.settings.minimum_order_message | replace: '{amount}', minimum_remaining_money | replace: '{minimum}', minimum_amount_money
+                -%}
+                <div class="cart-page__minimum" id="CartPage-MinimumMessage" role="status">
+                  <div class="cart-page__minimum-track" role="progressbar" aria-label="Minimum order progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ minimum_progress | round }}">
+                    <span style="--minimum-progress: {{ minimum_progress }}%"></span>
+                  </div>
+                  <p>{{ minimum_message | escape }}</p>
+                </div>
+              {%- endunless -%}
+
+              {%- if additional_checkout_buttons and minimum_order_reached -%}
                 <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
                   {{ content_for_additional_checkout_buttons }}
                 </div>
@@ -143,6 +172,30 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Minimum order"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_minimum_order",
+      "label": "Enable minimum order total",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "minimum_order_amount",
+      "label": "Minimum order total",
+      "info": "Based on the cart subtotal before shipping.",
+      "default": 499
+    },
+    {
+      "type": "text",
+      "id": "minimum_order_message",
+      "label": "Minimum order progress message",
+      "info": "Use {amount} for the amount remaining and {minimum} for the required total.",
+      "default": "Add {amount} more to reach the minimum order total of {minimum}."
     },
     {
       "type": "header",
