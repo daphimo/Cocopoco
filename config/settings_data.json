@@ -171,7 +171,6 @@
             "settings": {
               "discount": 0,
               "threshold": 1499,
-              "reward_label": "Free Shipping",
               "before_message": "Add item worth {amount} to get FREE Shipping",
               "after_message": "Congratulations! You unlocked FREE SHIPPING"
             }
