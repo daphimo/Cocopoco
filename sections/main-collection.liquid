@@ -91,8 +91,27 @@
                       <input type="hidden" name="sort_by" value="{{ current_sort | escape }}">
                       <div class="collection-filter__body">
                         {%- for filter in collection.filters -%}
-                          <fieldset class="collection-filter__group">
-                            <legend>{{ filter.label | escape }}</legend>
+                          {%- liquid
+                            assign filter_group_open = false
+                            if forloop.first or filter.active_values.size > 0
+                              assign filter_group_open = true
+                            elsif filter.type == 'price_range' and filter.min_value.value != blank
+                              assign filter_group_open = true
+                            elsif filter.type == 'price_range' and filter.max_value.value != blank
+                              assign filter_group_open = true
+                            endif
+                          -%}
+                          <fieldset class="collection-filter__group{% if filter_group_open %} is-open{% endif %}" data-filter-group>
+                            <legend>
+                              <button class="collection-filter__group-toggle" type="button" aria-expanded="{{ filter_group_open }}" aria-controls="CollectionFilterGroup-{{ section.id }}-{{ forloop.index }}" data-filter-group-toggle>
+                                <span>{{ filter.label | escape }}</span>
+                                <span class="collection-filter__group-icon" aria-hidden="true">
+                                  <svg class="collection-filter__group-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path></svg>
+                                  <svg class="collection-filter__group-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 11V13H19V11H5Z"></path></svg>
+                                </span>
+                              </button>
+                            </legend>
+                            <div class="collection-filter__group-content" id="CollectionFilterGroup-{{ section.id }}-{{ forloop.index }}" data-filter-group-content{% unless filter_group_open %} style="height: 0px;"{% endunless %}>
                             {%- case filter.type -%}
                               {%- when 'boolean', 'list' -%}
                                 <ul class="collection-filter__options" role="list">
@@ -119,6 +138,7 @@
                                   <input type="range" name="{{ filter.max_value.param_name }}" min="0" max="{{ price_ceiling }}" step="1" value="{{ price_max }}" aria-label="Maximum price" data-price-max>
                                 </div>
                             {%- endcase -%}
+                            </div>
                           </fieldset>
                         {%- endfor -%}
                       </div>

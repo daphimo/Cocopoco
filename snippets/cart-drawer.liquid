@@ -45,15 +45,7 @@
         </div>
       {%- else -%}
         <div class="cart-drawer__content">
-          {%- assign statements = section.settings.custom_cart_content | split: ',' -%}
-          {%- assign statement_count = 0 -%}
-          {%- capture statement_markup -%}
-            {%- for statement in statements -%}{%- assign clean_statement = statement | strip -%}{%- if clean_statement != blank -%}
-              {%- if statement_count > 0 -%}<span class="cart-drawer__statement-separator" aria-hidden="true"></span>{%- endif -%}
-              <span class="cart-drawer__statement">{{ clean_statement | escape }}</span>{%- assign statement_count = statement_count | plus: 1 -%}
-            {%- endif -%}{%- endfor -%}
-          {%- endcapture -%}
-          {%- if statement_count > 0 -%}<div class="cart-drawer__statements">{{ statement_markup }}</div>{%- endif -%}
+          {% render 'dynamic-discount-message', cart: cart, section: section %}
 
           <cart-drawer-items view-event-payload="{{ cart | standard_event_data: 'view', context: 'dialog' | escape }}" view-event-trigger="manual">
             <form action="{{ routes.cart_url }}" id="CartDrawer-Form" method="post">

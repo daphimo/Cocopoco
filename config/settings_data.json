@@ -171,6 +171,7 @@
             "settings": {
               "discount": 0,
               "threshold": 1499,
+              "reward_label": "Free Shipping",
               "before_message": "Add item worth {amount} to get FREE Shipping",
               "after_message": "Congratulations! You unlocked FREE SHIPPING"
             }
@@ -204,7 +205,17 @@
         "settings": {
           "cart_heading": "Your bag",
           "enable_tiered_discount_progress": true,
-          "custom_cart_content": "₹99 flat shipping on every order",
+          "enable_dynamic_message_initial": true,
+          "dynamic_message_initial": "₹99 flat shipping on every order",
+          "enable_dynamic_message_1": true,
+          "dynamic_message_threshold_1": 1499,
+          "dynamic_message_1": "You unlocked free shipping!",
+          "enable_dynamic_message_2": true,
+          "dynamic_message_threshold_2": 1999,
+          "dynamic_message_2": "Your order just unlocked an extra reward!",
+          "enable_dynamic_message_3": true,
+          "dynamic_message_threshold_3": 2499,
+          "dynamic_message_3": "Amazing! You unlocked our top cart reward!",
           "recommendation_heading": "Add a little extra joy ✨",
           "recommended_products": [],
           "flat_shipping_amount": 99,
