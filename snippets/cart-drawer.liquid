@@ -10,11 +10,18 @@
 {%- liquid
   assign cart_product_ids = cart.items | map: 'product_id'
   assign flat_shipping_cents = section.settings.flat_shipping_amount | times: 100 | round
-  assign cart_total_with_shipping = cart.total_price | plus: flat_shipping_cents
+  assign free_shipping_threshold_cents = section.settings.free_shipping_threshold | times: 100 | round
+  assign effective_shipping_cents = flat_shipping_cents
+  if free_shipping_threshold_cents > 0 and cart.total_price >= free_shipping_threshold_cents
+    assign effective_shipping_cents = 0
+  endif
+  assign cart_total_with_shipping = cart.total_price | plus: effective_shipping_cents
   assign minimum_order_cents = section.settings.minimum_order_amount | times: 100 | round
   assign minimum_order_reached = true
-  if section.settings.enable_minimum_order and cart_total_with_shipping < minimum_order_cents
-    assign minimum_order_reached = false
+  if section.settings.enable_minimum_order and minimum_order_cents > 0
+    if cart.total_price < minimum_order_cents
+      assign minimum_order_reached = false
+    endif
   endif
 -%}
 <cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
@@ -133,12 +140,12 @@
         </div>
 
         <footer class="cart-drawer__footer">
-          <div class="cart-drawer__summary"><div><span>Subtotal</span><strong>{{ cart.total_price | money }}</strong></div><div><span>Shipping</span><span>{{ flat_shipping_cents | money }}</span></div></div>
+          <div class="cart-drawer__summary"><div><span>Subtotal</span><strong>{{ cart.total_price | money }}</strong></div><div><span>Shipping</span><span class="cart-drawer__shipping-value" role="status">{% if effective_shipping_cents == 0 %}Free{% else %}{{ effective_shipping_cents | money }}{% endif %}</span></div></div>
           <div class="cart-drawer__total"><strong>Total</strong><strong>{{ cart_total_with_shipping | money }}</strong></div>
           {%- unless minimum_order_reached -%}
             {%- liquid
-              assign minimum_remaining_cents = minimum_order_cents | minus: cart_total_with_shipping | at_least: 0
-              assign minimum_progress = cart_total_with_shipping | times: 100.0 | divided_by: minimum_order_cents | at_most: 100
+              assign minimum_remaining_cents = minimum_order_cents | minus: cart.total_price | at_least: 0
+              assign minimum_progress = cart.total_price | times: 100.0 | divided_by: minimum_order_cents | at_most: 100
               assign minimum_remaining_money = minimum_remaining_cents | money | strip_html
               assign minimum_amount_money = minimum_order_cents | money | strip_html
               assign minimum_message = section.settings.minimum_order_message | replace: '{amount}', minimum_remaining_money | replace: '{minimum}', minimum_amount_money

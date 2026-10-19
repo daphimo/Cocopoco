@@ -21,6 +21,9 @@
       "type": "main-cart-footer",
       "settings": {
         "color_scheme": "scheme-1",
+        "enable_minimum_order": true,
+        "minimum_order_amount": 499,
+        "minimum_order_message": "Add {amount} more to reach the minimum order total of {minimum}.",
         "padding_top": 20,
         "padding_bottom": 40
       },
