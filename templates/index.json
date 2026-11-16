@@ -14,6 +14,7 @@
       "blocks": {
         "slide_XPCKp7": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/Coco_Poco_Anniversary_Sale_Banner_-_20.png",
             "mobile_image": "shopify://shop_images/anniversary_Banner_Cocopoco_mobile_20.png",
