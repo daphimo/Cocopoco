@@ -1010,11 +1010,6 @@
     "1795761881d83b9305": {
       "type": "apps",
       "blocks": {
-        "judge_me_reviews_preview_badge_aY6EtG": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "disabled": true,
-          "settings": {}
-        },
         "judge_me_reviews_cards_carousel_44mjYf": {
           "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
@@ -1032,12 +1027,12 @@
             "review_length": "medium",
             "text_size": "medium",
             "image_ratio": "1",
-            "reviews_shown": 4,
+            "reviews_shown": 5,
             "show_reviewer_name": true,
             "show_product_name": true,
             "hide_arrows_mobile": true,
             "arrows_position": "sides",
-            "max_width": 1100,
+            "max_width": 1600,
             "corner_styling": "soft",
             "header_text_color": "#000000",
             "text_color": "#000000",
@@ -1047,12 +1042,11 @@
             "transition_speed": 5,
             "header_text": "Customers are saying",
             "show_average_rating": true,
-            "rating_display": "default"
+            "rating_display": "show_avg_text"
           }
         }
       },
       "block_order": [
-        "judge_me_reviews_preview_badge_aY6EtG",
         "judge_me_reviews_cards_carousel_44mjYf"
       ],
       "settings": {
@@ -1062,6 +1056,25 @@
     "testimonial_Vgrm9K": {
       "type": "testimonial",
       "blocks": {
+        "testimonial_DejHT7": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "brand_background_color": "#ffffff",
+            "brand_caption_color": "#b86a8a",
+            "brand_heading_color": "#341824",
+            "brand_text_color": "#4a4145",
+            "brand_border_color": "#f9d5e6",
+            "brand_button_background": "#e83e8c",
+            "brand_button_background_mobile": "#ec64a4",
+            "brand_button_text_color": "#ffffff",
+            "rating": 5,
+            "quote": "<p>Everything is so cute and the quality is amazing.</p>",
+            "name": "Customer name",
+            "location": "City",
+            "badge": "Verified buyer"
+          }
+        },
         "testimonial_GgQ33Y": {
           "type": "testimonial",
           "settings": {
@@ -1118,6 +1131,7 @@
         }
       },
       "block_order": [
+        "testimonial_DejHT7",
         "testimonial_GgQ33Y",
         "testimonial_QN986R",
         "testimonial_8BdnAb"
