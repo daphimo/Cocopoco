@@ -1007,6 +1007,58 @@
         "mobile_padding_bottom": 24
       }
     },
+    "1795761881d83b9305": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_preview_badge_aY6EtG": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {}
+        },
+        "judge_me_reviews_cards_carousel_44mjYf": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "reviews_selection": "product_reviews",
+            "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "product_image",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "medium",
+            "image_ratio": "1",
+            "reviews_shown": 4,
+            "show_reviewer_name": true,
+            "show_product_name": true,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#F9F9F9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_preview_badge_aY6EtG",
+        "judge_me_reviews_cards_carousel_44mjYf"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "testimonial_Vgrm9K": {
       "type": "testimonial",
       "blocks": {
@@ -1572,6 +1624,7 @@
     "image_with_text_hhGUDa",
     "pill_links_DnYNRy",
     "image_with_text_tLinQ7",
+    "1795761881d83b9305",
     "testimonial_Vgrm9K",
     "featured_collection_mMx74h",
     "richtext_tPnTPk",
